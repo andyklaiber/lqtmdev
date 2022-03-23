@@ -1,0 +1,31 @@
+{
+  "name": "lqtm",
+  "version": "1.0.0",
+  "description": "This project was bootstrapped with Fastify-CLI.",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "tap \"test/**/*.test.js\"",
+    "start": "fastify start -l info app.js",
+    "dev": "fastify start -r dotenv/config -w -l info -P app.js",
+    "build": "docker build . -t andyklaiber/lqtm:latest",
+    "publish": "docker push andyklaiber/lqtm:latest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "fastify": "^3.0.0",
+    "fastify-autoload": "^3.10.0",
+    "fastify-cli": "^2.15.0",
+    "fastify-plugin": "^3.0.0",
+    "fastify-sensible": "^3.1.2",
+    "fastify-static": "^4.6.1"
+  },
+  "devDependencies": {
+    "tap": "^16.0.1"
+  }
+}

@@ -1,0 +1,7 @@
+.env
+.vscode
+launch.json
+.history
+test
+node_modules
+npm-debug.log
