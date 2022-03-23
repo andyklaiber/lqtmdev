@@ -11,7 +11,8 @@
     "start": "fastify start -l info app.js",
     "dev": "fastify start -r dotenv/config -w -l info -P app.js",
     "build": "docker build . -t andyklaiber/lqtm:latest",
-    "publish": "docker push andyklaiber/lqtm:latest"
+    "publish": "docker push andyklaiber/lqtm:latest",
+    "docker": "docker run -p 3000:3000 --env UPLOAD_TOKEN=somethingsecret --mount source=pcrsdata,target=/usr/src/app/public/data andyklaiber/lqtm:latest"
   },
   "keywords": [],
   "author": "",
