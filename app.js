@@ -7,7 +7,9 @@ module.exports = async function (fastify, opts) {
         root: path.join(__dirname, 'public'),
         prefix: '/public/', // optional: default '/'
     })
-
+    fastify.register(require('fastify-cors'), { 
+        origin:true
+      })
     // This loads all plugins defined in plugins
     // those should be support plugins that are reused
     // through your application

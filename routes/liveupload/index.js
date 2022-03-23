@@ -40,6 +40,7 @@ module.exports = async function (fastify, opts) {
             }
             if(!out.categories[racerLap.cat]){
                 out.categories[racerLap.cat] = {
+                    id: racerLap.cat,
                     catdispname: racerLap.catdispname,
                     laps: racerLap.catmaxlaps,
                     columns: getColumns(racerLap.catmaxlaps),
@@ -55,6 +56,7 @@ module.exports = async function (fastify, opts) {
             }
             if(!out.categories[racerLap.cat].results[racerLap.racername]){
                 out.categories[racerLap.cat].results[racerLap.racername] = {
+                    Name: racerLap.racername,
                     Sponsor: racerLap.teamname,
                     Bib: racerLap.lapbib,
                     laps: [lap],
@@ -70,7 +72,46 @@ module.exports = async function (fastify, opts) {
             out.categories[racerLap.cat].results[racerLap.racername].laps.forEach((lapdata)=>{
                 totalTime = totalTime + lapdata.duration;
             })
+            out.categories[racerLap.cat].results[racerLap.racername].duration = totalTime;
             out.categories[racerLap.cat].results[racerLap.racername].Time = msToTimeString(totalTime);
+        })
+
+        Object.entries(out.categories).forEach(([key, value])=>{
+            let rawResults = value.results;
+            let ordered = []
+            Object.entries(rawResults).forEach(([racerName,racerData])=>{
+                ordered.push(racerData);
+            })
+            
+            ordered = ordered.sort((a,b)=>{
+                if(a.duration > b.duration){
+                    return 1;
+                }
+                if(a.duration < b.duration){
+                    return -1;
+                }
+                return 0;
+            })
+            ordered = ordered.sort((a,b)=>{
+                if(a.laps.length < b.laps.length){
+                    return 1;
+                }
+                if(a.laps.length > b.laps.length){
+                    return -1;
+                }
+                return 0;
+            })
+            ordered.forEach((racer,idx)=>{
+                if(idx === 0){
+                    return;
+                }
+                if(racer.laps.length === ordered[0].laps.length){   
+                    ordered[idx].back = msToTimeString(racer.duration - ordered[0].duration);
+                }
+            })
+            
+            out.categories[key].results = ordered;
+
         })
         
         fs.writeFileSync(path.resolve(__dirname, '../../public/data/'+rawFileName+'.json'), JSON.stringify(out));
