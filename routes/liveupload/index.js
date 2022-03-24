@@ -1,6 +1,7 @@
 'use strict'
 const fs = require('fs');
 const path = require('path');
+const categoryOrder = require('../../src/categories');
 
 const raceIds = {
     "53skko8l147vrnn":"pcrs-race-1"
@@ -49,6 +50,7 @@ module.exports = async function (fastify, opts) {
                     laps: racerLap.catmaxlaps,
                     columns: getColumns(racerLap.catmaxlaps),
                     results:{},
+                    disporder:categoryOrder.indexOf(racerLap.cat)
                 };
             }
             let lap = {
@@ -117,7 +119,6 @@ module.exports = async function (fastify, opts) {
             out.categories[key].results = ordered;
 
         })
-        
         fs.writeFileSync(path.resolve(__dirname, '../../public/data/'+rawFileName+'.json'), JSON.stringify(out));
         fs.writeFileSync(path.resolve(__dirname, '../../public/data/'+rawFileName+'-RAW.json'), JSON.stringify(request.body.data));
         
