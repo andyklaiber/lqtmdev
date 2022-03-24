@@ -1,4 +1,5 @@
 'use strict'
+require('newrelic');
 const path = require('path')
 const AutoLoad = require('fastify-autoload')
 

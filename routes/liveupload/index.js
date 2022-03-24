@@ -4,7 +4,7 @@ const path = require('path');
 const categoryOrder = require('../../src/categories');
 
 const raceIds = {
-    "53skko8l147vrnn":"pcrs-race-1"
+    "pcrs-race-1":"53skko8l147vrnn"
 }
 
 let msToTimeString = (ms)=>{
@@ -23,8 +23,10 @@ module.exports = async function (fastify, opts) {
         throw fastify.httpErrors.unauthorized();
     } else {
         let rawFileName = request.query.f;
-
         let raceMeta = request.body.data.race;
+        if(raceIds[rawFileName] && raceMeta.raceid !== raceIds[rawFileName]){
+            return fastify.httpErrors.conflict();
+        }
         let results = request.body.data.RESULTS;
 
         let out = {
