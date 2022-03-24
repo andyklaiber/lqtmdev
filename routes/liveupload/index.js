@@ -2,6 +2,10 @@
 const fs = require('fs');
 const path = require('path');
 
+const raceIds = {
+    "53skko8l147vrnn":"pcrs-race-1"
+}
+
 let msToTimeString = (ms)=>{
     const d = new Date(Date.UTC(0,0,0,0,0,0,ms)),
     parts = [

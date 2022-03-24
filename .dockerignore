@@ -5,3 +5,4 @@ launch.json
 test
 node_modules
 npm-debug.log
+rawjson
