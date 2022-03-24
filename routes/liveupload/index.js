@@ -115,7 +115,8 @@ module.exports = async function (fastify, opts) {
         })
         
         fs.writeFileSync(path.resolve(__dirname, '../../public/data/'+rawFileName+'.json'), JSON.stringify(out));
-
+        fs.writeFileSync(path.resolve(__dirname, '../../public/data/'+rawFileName+'-RAW.json'), JSON.stringify(request.body.data));
+        
 
         return out;
     }
