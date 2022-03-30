@@ -1,4 +1,6 @@
-module.exports = [
+const Category = require('./models/category')
+
+module.exports = {categoryOrder:[
     "pro_expert",
     "expert_men_39",
     "expert_men_4049",
@@ -29,4 +31,20 @@ module.exports = [
     "beginner_women_40",
     "freshsoph_boys",
     "freshsoph_girls",
-]
+],
+
+
+generateCategoryData: (resultData)=>{
+    let allCategories = [];
+    Object.keys(resultData.categories).forEach(catId => {
+        let catObject = resultData.categories[catId];
+        let catData = {
+            name: catObject.catdispname,
+            identifier: catObject.id,
+            displayOrder: catObject.disporder,
+        }
+        this.mongo.db.collection("categories")
+        .updateOne({ 'identifier': catObject.id }, { $set: catObject }, {upsert: true});
+    });
+}
+}
