@@ -25,7 +25,10 @@ module.exports = async function (fastify, opts) {
         this.mongo.db.collection("race_results")
         .updateOne({ 'raceid': raceMeta.raceid }, { $set: out }, {upsert: true});
         
-        generateCategoryData(out);
+        const catdata = generateCategoryData(out);
+        catdata.forEach(catObject => {
+            this.mongo.db.collection("categories").updateOne({ 'identifier': catObject.identifier }, { $set: catObject }, {upsert: true});
+        });
         return out;
     }
   })

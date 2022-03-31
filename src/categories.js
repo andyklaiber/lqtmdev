@@ -1,4 +1,4 @@
-const Category = require('./models/category')
+const Category = require('./models/Category')
 
 module.exports = {categoryOrder:[
     "pro_expert",
@@ -43,8 +43,8 @@ generateCategoryData: (resultData)=>{
             identifier: catObject.id,
             displayOrder: catObject.disporder,
         }
-        this.mongo.db.collection("categories")
-        .updateOne({ 'identifier': catObject.id }, { $set: catObject }, {upsert: true});
+        allCategories.push(catData);
     });
+    return allCategories;
 }
-}
+};
