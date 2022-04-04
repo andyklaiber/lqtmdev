@@ -12,6 +12,7 @@ module.exports = {categoryOrder:[
     "varsity_girls",
     "single_speed_sport",
     "emtb_men",
+    "emtb_women",
     "sport_men_1939",
     "sport_men_4049",
     "sport_men_5059",

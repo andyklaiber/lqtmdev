@@ -15,6 +15,7 @@ mongoose.connect(url)
  .catch(err => console.log(err))
 
 module.exports = async function (fastify, opts) {
+    fastify.register(require('fastify-websocket'));
     fastify.register(require('fastify-static'), {
         root: path.join(__dirname, 'public'),
         prefix: '/', // optional: default '/'
@@ -48,6 +49,14 @@ module.exports = async function (fastify, opts) {
             return `api/${folderName}`;
         }
     })
+
+    fastify.get('/live/', { websocket: true }, (connection /* SocketStream */, req /* FastifyRequest */) => {
+        
+        connection.socket.on('connect', message => {
+          // message.toString() === 'hi from client'
+          connection.socket.send('hi from server')
+        })
+      })
 
     fastify.get('/public/index.html', async function (request, reply) {
         reply.redirect('/')
