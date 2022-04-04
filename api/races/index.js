@@ -19,6 +19,9 @@ module.exports = async function (fastify, opts) {
   });
 
     fastify.post('/load_sponsors/', async function (request, reply) {
+        if(request.query.token !== process.env.UPLOAD_TOKEN){
+            throw fastify.httpErrors.unauthorized();
+        }
         console.log(request.query.srcid)
         const srcRace = await this.mongo.db.collection('race_results').findOne({ raceid: request.query.srcid });
         if (!srcRace) {
@@ -47,6 +50,9 @@ module.exports = async function (fastify, opts) {
     });
 
   fastify.post('/sync_sponsors/', async function (request, reply) {
+    if(request.query.token !== process.env.UPLOAD_TOKEN){
+        throw fastify.httpErrors.unauthorized();
+    }
       console.log(request.query.destid)
     const racersCursor = await this.mongo.db.collection('racers').find();
     const destRace = await this.mongo.db.collection('race_results').findOne({raceid:request.query.destid});
