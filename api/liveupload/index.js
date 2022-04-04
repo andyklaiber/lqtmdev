@@ -11,6 +11,12 @@ module.exports = async function (fastify, opts) {
     } else {
         let raceMeta = request.body.data.race;
 
+        let final = await this.mongo.db.collection("race_results")
+        .find({ 'raceid': raceMeta.raceid, 'final': true }).toArray();
+
+        if(final.length){
+            return fastify.httpErrors.conflict();
+        }
         this.mongo.db.collection("races")
         .updateOne({ 'raceid': raceMeta.raceid }, { $set: raceMeta }, {upsert: true});
 
@@ -21,7 +27,8 @@ module.exports = async function (fastify, opts) {
         .updateOne({ 'race.raceid': raceMeta.raceid }, { $set: request.body.data }, {upsert: true});
 
         const out = generateResultData(results, categoryOrder);
-     
+
+
         this.mongo.db.collection("race_results")
         .updateOne({ 'raceid': raceMeta.raceid }, { $set: out }, {upsert: true});
         
