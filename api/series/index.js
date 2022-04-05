@@ -22,11 +22,12 @@ module.exports = async function (fastify, opts) {
             console.log(series)
             const result = await this.mongo.db.collection('race_results').find({series}).toArray();
             const raceMeta = await this.mongo.db.collection('races').find({series}).toArray();
+            const racersMeta = await this.mongo.db.collection('racers').find().toArray();
 
             if (!raceMeta.length) {
                 return fastify.httpErrors.notFound();
             }
-            const seriesResults = generateSeriesResults(result, raceMeta, categoryOrder);
+            const seriesResults = generateSeriesResults(result, raceMeta, racersMeta, categoryOrder);
             this.mongo.db.collection("series_results")
                  .updateOne({ 'series': seriesResults.series }, { $set: seriesResults }, {upsert: true});
             return seriesResults

@@ -1,4 +1,5 @@
 const _ = require('lodash');
+const moment = require('moment');
 
 const getColumns = (maxLaps)=>{
     let cols = ["Pos","Bib","Name","Sponsor"]
@@ -108,7 +109,7 @@ const generateResultData = (results, categoryOrder)=>{
 
 
 const getSeriesColumns = (raceMeta)=>{
-    let cols = ["Pos","Bib","Name","Sponsor"]
+    let cols = ["Pos","Bib","Name","Age","Sponsor"]
     for (let i = 0; i < raceMeta.length; i++) {
         const race = raceMeta[i];
         cols.push(`${race.formattedStartDate}`);
@@ -116,7 +117,7 @@ const getSeriesColumns = (raceMeta)=>{
     return cols.concat(["Total Points"])
 }
 
-const generateSeriesResults = (raceResults, racesMeta, categoryOrder)=>{
+const generateSeriesResults = (raceResults, racesMeta, racersMeta, categoryOrder)=>{
     let out = {
         series:raceResults[0].series,
         categories:{
@@ -174,6 +175,16 @@ const generateSeriesResults = (raceResults, racesMeta, categoryOrder)=>{
                     "Sponsor": data.Sponsor,
                     results: [],
                     seriesPoints: 0
+                }
+                let racerMetaInfo = _.find(racersMeta, { Name: racerName })
+                if (racerMetaInfo && racerMetaInfo.Birthdate){
+                    let bday
+                    try{
+                        bday = moment(racerMetaInfo.Birthdate)
+                    } catch(error){
+                        console.log(`bad birthday string: ${racerName} - ${racerMetaInfo.Birthdate}`);
+                    }
+                    racerSeriesRow.Age = moment().diff(bday, 'years');
                 }
                 const racerFinishes = out.categories[catId].results[racerName].finishes;
                 // for each race date, add either an entry with points, or -/- to indicate they didn't race
