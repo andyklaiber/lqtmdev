@@ -124,6 +124,8 @@ const generateSeriesResults = (raceResults, racesMeta, racersMeta, categoryOrder
         }
     }
 
+    const bibList = [];
+    const dupBibs = [];
 
     raceResults.forEach((race) =>{
         let thisRaceMeta = racesMeta.find((obj)=>obj.raceid === race.raceid);
@@ -169,6 +171,13 @@ const generateSeriesResults = (raceResults, racesMeta, racersMeta, categoryOrder
         let catResults = [];
         if(catMeta.results){
             Object.entries(catMeta.results).forEach(([racerName,data])=>{
+                let existingBib = _.find(bibList, data.Bib);
+                if(!existingBib){
+                    bibList.push(data.Bib);
+                }
+                else{
+                    dupBibs.push(data.Bib);
+                }
                 let racerSeriesRow = {
                     "Bib":data.Bib,
                     "Name": racerName,
@@ -205,6 +214,8 @@ const generateSeriesResults = (raceResults, racesMeta, racersMeta, categoryOrder
             out.categories[catId].results = catResults;
         }
     })
+    out.dupBibs = dupBibs;
+    out.bibList = _.sortBy(bibList);
     return out;
 }
 
