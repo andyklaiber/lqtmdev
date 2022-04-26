@@ -15,7 +15,32 @@ let msToTimeString = (ms)=>{
         d.getUTCMinutes(),
         d.getUTCSeconds()
     ]
-    return parts.map(s => String(s).padStart(2,'0')).join(':')
+    return parts.map(s => String(s).padStart(2,'0')).join(':');//.concat(`.${d.getUTCMilliseconds()}`)
+}
+
+const parensRegexp = new RegExp(/\(+|\)+/ig);
+const capitalizeName = (nameString)=>{
+    let parts = nameString.split(' ');
+    _.forEach(parts, (part, id, collection)=>{
+        if(part.length === 2) return;
+        if(part.match(parensRegexp)) return;
+        if(part[1] === "'"){
+            let lastName = _.capitalize(part)
+            lastName = lastName.slice(0,2) + lastName.charAt(2).toUpperCase() + lastName.slice(3)
+            collection[id] = lastName;
+        }else{
+            if(part.indexOf("-") > -1){
+                let dashIdx = part.indexOf("-") + 1;
+                let lastName = _.capitalize(part)
+                collection[id] = lastName.slice(0,dashIdx) + lastName.charAt(dashIdx).toUpperCase() + lastName.slice(dashIdx+1)
+                
+            }else{
+
+                collection[id] = _.capitalize(part)
+            }
+        }
+    });
+    return parts.join(' ');
 }
 
 const generateResultData = (results, categoryOrder)=>{
@@ -29,6 +54,7 @@ const generateResultData = (results, categoryOrder)=>{
         if(racerLap.cat === 'uncategorized'){
             return;
         }
+        const racername = capitalizeName(racerLap.racername);
         if(!out.categories[racerLap.cat]){
             out.categories[racerLap.cat] = {
                 id: racerLap.cat,
@@ -46,8 +72,8 @@ const generateResultData = (results, categoryOrder)=>{
                 //lapendtime: racerLap.lapendtime,
                 //lapstarttime: racerLap.lapstarttime
         }
-        if(!out.categories[racerLap.cat].results[racerLap.racername]){
-            out.categories[racerLap.cat].results[racerLap.racername] = {
+        if(!out.categories[racerLap.cat].results[racername]){
+            out.categories[racerLap.cat].results[racername] = {
                 Name: racerLap.racername,
                 Sponsor: racerLap.teamname,
                 Bib: racerLap.lapbib,
@@ -55,7 +81,7 @@ const generateResultData = (results, categoryOrder)=>{
                 Time:null
             };
         }else{
-            out.categories[racerLap.cat].results[racerLap.racername].laps.push(lap);
+            out.categories[racerLap.cat].results[racername].laps.push(lap);
         }
 
         
@@ -108,11 +134,19 @@ const generateResultData = (results, categoryOrder)=>{
 }
 
 
-const getSeriesColumns = (raceMeta)=>{
+const getSeriesColumns = (raceMeta, catId)=>{
     let cols = ["Pos","Bib","Name","Age","Sponsor"]
     for (let i = 0; i < raceMeta.length; i++) {
         const race = raceMeta[i];
-        cols.push(`${race.formattedStartDate}`);
+        if(catId.indexOf('grom') == -1){
+            cols.push(`${race.formattedStartDate}`);
+        }
+        else{
+            if(i > 2){
+                cols.push(`${race.formattedStartDate}`);
+            }
+
+        }
     }
     return cols.concat(["Total Points"])
 }
@@ -130,13 +164,16 @@ const generateSeriesResults = (raceResults, racesMeta, racersMeta, categoryOrder
     raceResults.forEach((race) =>{
         let thisRaceMeta = racesMeta.find((obj)=>obj.raceid === race.raceid);
         Object.keys(race.categories).forEach((catId)=>{
+            if(catId == 'poker_league'){
+                return;
+            }
             const catMeta = race.categories[catId];
             if(!out.categories[catId]){
                 out.categories[catId] = {
                     id: catMeta.id,
                     catdispname: catMeta.catdispname,
                     laps: catMeta.laps,
-                    columns: getSeriesColumns(racesMeta),
+                    columns: getSeriesColumns(racesMeta, catMeta.id),
                     results:{},
                     disporder:categoryOrder.indexOf(catMeta.id)
                 }
@@ -145,20 +182,22 @@ const generateSeriesResults = (raceResults, racesMeta, racersMeta, categoryOrder
             
             // add racer result pos to results object
             catResults.forEach((racerRow, idx)=>{
-                if(!out.categories[catId].results[racerRow.Name]){
-                    out.categories[catId].results[racerRow.Name] = {
+                const racerName = capitalizeName(racerRow.Name);
+                if(!out.categories[catId].results[racerName]){
+                    out.categories[catId].results[racerName] = {
                     Name: racerRow.Name,
                     Bib: racerRow.Bib,
                     finishes:[]
                     }
                 }
-                out.categories[catId].results[racerRow.Name].finishes.push({
+                out.categories[catId].results[racerName].Bib = racerRow.Bib;
+                out.categories[catId].results[racerName].finishes.push({
                     raceDate: thisRaceMeta.formattedStartDate,
                     position: idx+1,
                     points: 50-idx
                 })
                 if(racerRow.Sponsor && racerRow.Sponsor.length > 0){
-                    out.categories[catId].results[racerRow.Name].Sponsor = racerRow.Sponsor;
+                    out.categories[catId].results[racerName].Sponsor = racerRow.Sponsor;
                 }
             })
         })
@@ -185,7 +224,11 @@ const generateSeriesResults = (raceResults, racesMeta, racersMeta, categoryOrder
                     results: [],
                     seriesPoints: 0
                 }
-                let racerMetaInfo = _.find(racersMeta, { Name: racerName })
+                let racerMetaInfo = _.find(racersMeta, (meta)=>{
+                        if(capitalizeName(meta.Name) === capitalizeName(racerName)) {
+                            return true;
+                        }
+                    })
                 if (racerMetaInfo && racerMetaInfo.Birthdate){
                     let bday
                     try{
@@ -194,6 +237,9 @@ const generateSeriesResults = (raceResults, racesMeta, racersMeta, categoryOrder
                         console.log(`bad birthday string: ${racerName} - ${racerMetaInfo.Birthdate}`);
                     }
                     racerSeriesRow.Age = moment().diff(bday, 'years');
+                }
+                if (racerMetaInfo && racerMetaInfo.Sponsor){
+                    racerSeriesRow.Sponsor = racerMetaInfo.Sponsor;
                 }
                 const racerFinishes = out.categories[catId].results[racerName].finishes;
                 // for each race date, add either an entry with points, or -/- to indicate they didn't race
@@ -204,7 +250,14 @@ const generateSeriesResults = (raceResults, racesMeta, racersMeta, categoryOrder
                         racerSeriesRow.seriesPoints += raceFinish.points;
                         resultString = `${raceFinish.position}/${raceFinish.points}`;
                     }
-                    racerSeriesRow.results.push({raceDate: race.formattedStartDate, resultString });
+                    if(catId.indexOf('grom') == -1){
+                        racerSeriesRow.results.push({raceDate: race.formattedStartDate, resultString });
+                    }
+                    else{
+                        if(["4/13","4/20","4/27","5/4","5/11"].indexOf(race.formattedStartDate) > -1){
+                            racerSeriesRow.results.push({raceDate: race.formattedStartDate, resultString });
+                        }
+                    }
                 })
                 catResults.push(racerSeriesRow);
             })
@@ -219,7 +272,62 @@ const generateSeriesResults = (raceResults, racesMeta, racersMeta, categoryOrder
     return out;
 }
 
+const moveRacerInResult = (raceResults, racerName, newCategory)=>{
+    let srcCategory, result;
+    Object.entries(raceResults.categories).some(([key, value])=>{
+        let rawResults = value.results;
+        
+        result = _.find(rawResults, {Name: racerName});
+        if(result){
+            srcCategory = key;
+            _.pull(rawResults, result);
+            return true;
+        }
+        return;
+    })
+    let ordered
+    if(raceResults.categories[newCategory]){
+        ordered = raceResults.categories[newCategory].results;
+        ordered.push(result);
+
+        ordered = ordered.sort((a,b)=>{
+            if(a.duration > b.duration){
+                return 1;
+            }
+            if(a.duration < b.duration){
+                return -1;
+            }
+            return 0;
+        })
+        ordered = ordered.sort((a,b)=>{
+            if(a.laps.length < b.laps.length){
+                return 1;
+            }
+            if(a.laps.length > b.laps.length){
+                return -1;
+            }
+            return 0;
+        })
+        ordered.forEach((racer,idx)=>{
+            if(idx === 0){
+                return;
+            }
+            if(result.laps.length === ordered[0].laps.length){   
+                ordered[idx].back = msToTimeString(racer.duration - ordered[0].duration);
+            }
+        })
+        raceResults.categories[newCategory].results = ordered;
+    }
+    else{
+        throw new Error('category does not exist in this result set');
+    }
+
+    return raceResults;
+}
+
 module.exports = {
     generateResultData,
-    generateSeriesResults
+    generateSeriesResults,
+    moveRacerInResult,
+    capitalizeName,
 }

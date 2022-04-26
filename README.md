@@ -21,3 +21,11 @@ Run the test cases.
 ## Learn More
 
 To learn Fastify, check out the [Fastify documentation](https://www.fastify.io/docs/latest/).
+
+
+TODO  
+rescore  - 30	Louis	Gaultney should be expert 39- for race 4/6
+
+43 last race, 405 this race - SS sport 4/6 result needs to be moved
+
+http://localhost:3000/#/race/33cjb7f8l1y6pa46

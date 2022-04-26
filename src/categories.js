@@ -32,6 +32,12 @@ module.exports = {categoryOrder:[
     "beginner_women_40",
     "freshsoph_boys",
     "freshsoph_girls",
+    "grom_boys_78_grade",
+    "grom_girls_78_grade",
+    "grom_boys_56_grade",
+    "grom_girls_56_grade",
+    "grom_coed_4_grade",
+    
 ],
 
 

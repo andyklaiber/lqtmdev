@@ -1,6 +1,7 @@
 'use strict'
 const { result } = require('lodash');
 const _ = require('lodash');
+const { moveRacerInResult } = require('../../src/result_lib');
 
 
 module.exports = async function (fastify, opts) {
@@ -17,7 +18,26 @@ module.exports = async function (fastify, opts) {
         return fastify.httpErrors.notFound();
     }
   });
+  fastify.post('/results/moveracer', async function (request, reply) {
+    if(request.query.token !== process.env.UPLOAD_TOKEN){
+        throw fastify.httpErrors.unauthorized();
+    }
+    const result = await this.mongo.db.collection('race_results').findOne({raceid:request.query.raceid});
+    if (result) {
 
+        const racer = request.body.racername;
+        const newCategory = request.body.newCategory
+
+        console.log(`${racer} - ${newCategory}`)
+
+        const modifiedResult = moveRacerInResult(result, racer, newCategory);
+
+        return this.mongo.db.collection("race_results")
+        .updateOne({ 'raceid': request.query.raceid }, { $set: { categories: modifiedResult.categories } }, {upsert: true});
+    } else {
+        return fastify.httpErrors.notFound();
+    }
+  });
     fastify.post('/load_sponsors/', async function (request, reply) {
         if(request.query.token !== process.env.UPLOAD_TOKEN){
             throw fastify.httpErrors.unauthorized();
