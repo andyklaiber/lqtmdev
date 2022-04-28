@@ -31,23 +31,23 @@ module.exports = async function (fastify, opts) {
     //   })
     //   return racerList;
     // })
-    fastify.patch('/:name', async function (request, reply) {
-        const result = await this.mongo.db.collection('racers').findOne({Name:request.params.name});
-        const data = request.body || {};
-        let updateData = {};
-        if(data.Birthdate){
-            updateData.Birthdate = moment(data.Birthdate).toString();
-        }
-        if(data.Sponsor){
-            updateData.Sponsor = data.Sponsor;
-        }
-        if (result && Object.keys(updateData).length) {
-            await this.mongo.db.collection('racers').updateOne({ '_id': result._id }, { $set: updateData  }, { upsert: true });
-            return updateData;
-        } else {
-            return fastify.httpErrors.notFound();
-        }
-      });
+    // fastify.patch('/:name', async function (request, reply) {
+    //     const result = await this.mongo.db.collection('racers').findOne({Name:request.params.name});
+    //     const data = request.body || {};
+    //     let updateData = {};
+    //     if(data.Birthdate){
+    //         updateData.Birthdate = moment(data.Birthdate).toString();
+    //     }
+    //     if(data.Sponsor){
+    //         updateData.Sponsor = data.Sponsor;
+    //     }
+    //     if (result && Object.keys(updateData).length) {
+    //         await this.mongo.db.collection('racers').updateOne({ '_id': result._id }, { $set: updateData  }, { upsert: true });
+    //         return updateData;
+    //     } else {
+    //         return fastify.httpErrors.notFound();
+    //     }
+    //   });
     fastify.get('/:name', async function (request, reply) {
       const result = await this.mongo.db.collection('racers').findOne({Name:request.params.name});
       if (result) {
