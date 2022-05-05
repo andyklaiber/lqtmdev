@@ -26,6 +26,7 @@ module.exports = async function (fastify, opts) {
             let raceMeta = request.body.data.race;
             let final = await this.mongo.db.collection("race_results")
                 .find({ 'raceid': raceMeta.raceid, 'final': true }).toArray();
+            console.log('RaceID', raceMeta.raceid)
             if (final.length) {
                 return fastify.httpErrors.conflict();
             }
@@ -41,13 +42,13 @@ module.exports = async function (fastify, opts) {
                 else{
                     console.log("creating new race record")
                     raceMeta.displayName = `Race ${request.params.raceNumber}`
-                    let startDate = new Date(raceMeta.eventStart)
+                    let startDate = new Date();
                     raceMeta.formattedStartDate = `${startDate.getMonth()}/${startDate.getDate()}`;
                     raceMeta.series = "pcrs_2022"
                     raceMeta.seriesRaceNumber = request.params.raceNumber
                     raceMeta.active = true;
                     await this.mongo.db.collection("races")
-                        .updateOne({ 'raceid': raceMeta.raceid }, { $set: raceMeta }, { upsert: true });
+                        .updateOne({ 'seriesRaceNumber': request.params.raceNumber }, { $set: raceMeta }, { upsert: true });
                 }
 
                 let results = request.body.data.RESULTS;
@@ -57,8 +58,8 @@ module.exports = async function (fastify, opts) {
                     .updateOne({ 'race.raceid': raceMeta.raceid }, { $set: request.body.data }, { upsert: true });
 
                 const out = generateResultData(results, categoryOrder);
-
-
+                out.series='pcrs_2022';
+                console.log("updating results data")
                 this.mongo.db.collection("race_results")
                     .updateOne({ 'raceid': raceMeta.raceid }, { $set: out }, { upsert: true });
 

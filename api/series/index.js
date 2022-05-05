@@ -1,7 +1,4 @@
 'use strict'
-const fs = require('fs');
-const { toArray } = require('lodash');
-const path = require('path');
 const {categoryOrder} = require('../../src/categories');
 const { generateSeriesResults } = require('../../src/result_lib')
 

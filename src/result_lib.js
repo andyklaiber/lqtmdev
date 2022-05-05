@@ -15,7 +15,11 @@ let msToTimeString = (ms)=>{
         d.getUTCMinutes(),
         d.getUTCSeconds()
     ]
-    return parts.map(s => String(s).padStart(2,'0')).join(':');//.concat(`.${d.getUTCMilliseconds()}`)
+    let minSecMillis=parts.map(s => String(s).padStart(2,'0')).join(':');//.concat(`.${d.getUTCMilliseconds()}`)
+    if(d.getUTCHours()){
+        minSecMillis = d.getUTCHours() + ":" +minSecMillis;
+    }
+    return minSecMillis;
 }
 
 const parensRegexp = new RegExp(/\(+|\)+/ig);
@@ -74,7 +78,7 @@ const generateResultData = (results, categoryOrder)=>{
         }
         if(!out.categories[racerLap.cat].results[racername]){
             out.categories[racerLap.cat].results[racername] = {
-                Name: racerLap.racername,
+                Name: racername,
                 Sponsor: racerLap.teamname,
                 Bib: racerLap.lapbib,
                 laps: [lap],
@@ -87,11 +91,16 @@ const generateResultData = (results, categoryOrder)=>{
         
         
         let totalTime = 0;
-        out.categories[racerLap.cat].results[racerLap.racername].laps.forEach((lapdata)=>{
-            totalTime = totalTime + lapdata.duration;
-        })
-        out.categories[racerLap.cat].results[racerLap.racername].duration = totalTime;
-        out.categories[racerLap.cat].results[racerLap.racername].Time = msToTimeString(totalTime);
+        if(out.categories[racerLap.cat].results[racername]){
+            out.categories[racerLap.cat].results[racername].laps.forEach((lapdata)=>{
+                totalTime = totalTime + lapdata.duration;
+            })
+            out.categories[racerLap.cat].results[racername].duration = totalTime;
+            out.categories[racerLap.cat].results[racername].Time = msToTimeString(totalTime);
+        }
+        else{
+            console.log("not found!!!!", racerLap.racername);
+        }
     })
 
     Object.entries(out.categories).forEach(([key, value])=>{
