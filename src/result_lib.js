@@ -160,7 +160,7 @@ const getSeriesColumns = (raceMeta, catId)=>{
     return cols.concat(["Total Points"])
 }
 
-const generateSeriesResults = (raceResults, racesMeta, racersMeta, categoryOrder)=>{
+const generateSeriesResults = (raceResults, racesMeta, racersMeta, categoryOrder, teamsRacers)=>{
     let out = {
         series:raceResults[0].series,
         categories:{
@@ -169,6 +169,7 @@ const generateSeriesResults = (raceResults, racesMeta, racersMeta, categoryOrder
 
     const bibList = [];
     const dupBibs = [];
+    const teamPoints = [];
 
     raceResults.forEach((race) =>{
         let thisRaceMeta = racesMeta.find((obj)=>obj.raceid === race.raceid);
@@ -233,6 +234,11 @@ const generateSeriesResults = (raceResults, racesMeta, racersMeta, categoryOrder
                     results: [],
                     seriesPoints: 0
                 }
+                let racerTeamComp = _.find(teamsRacers, (meta)=>{
+                    if(capitalizeName(meta.Name) === capitalizeName(racerName)) {
+                        return true;
+                    }
+                })
                 let racerMetaInfo = _.find(racersMeta, (meta)=>{
                         if(capitalizeName(meta.Name) === capitalizeName(racerName)) {
                             return true;
@@ -267,8 +273,22 @@ const generateSeriesResults = (raceResults, racesMeta, racersMeta, categoryOrder
                             racerSeriesRow.results.push({raceDate: race.formattedStartDate, resultString });
                         }
                     }
+                    if(racerTeamComp){
+                        console.log("++++ Team Racer: ", racerTeamComp.Name)
+                        // team points competition
+                        if(raceFinish && ["5/4","5/11","5/18","5/25"].indexOf(race.formattedStartDate) > -1){
+                            console.log(race.formattedStartDate, raceFinish.points);
+                            racerTeamComp[race.formattedStartDate] = raceFinish.points;
+                        }
+                        else{
+                            console.log("No Race Result: ", race.formattedStartDate);
+                        }
+                    }
                 })
                 catResults.push(racerSeriesRow);
+                if(racerTeamComp){
+                    teamPoints.push(racerTeamComp);
+                }
             })
 
             catResults = _.sortBy(catResults, 'seriesPoints');
@@ -278,7 +298,7 @@ const generateSeriesResults = (raceResults, racesMeta, racersMeta, categoryOrder
     })
     out.dupBibs = dupBibs;
     out.bibList = _.sortBy(bibList);
-    return out;
+    return { seriesResults: out, teamPoints };
 }
 
 const moveRacerInResult = (raceResults, racerName, newCategory)=>{
