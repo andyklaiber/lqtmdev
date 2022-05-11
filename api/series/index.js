@@ -25,9 +25,13 @@ module.exports = async function (fastify, opts) {
             if (!raceMeta.length) {
                 return fastify.httpErrors.notFound();
             }
+            let seriesId = series;
+            if(request.query.test){
+                seriesId = seriesId + '_test';
+            }
             const { seriesResults, teamPoints } = generateSeriesResults(result, raceMeta, racersMeta, categoryOrder, teamCompTeams);
             this.mongo.db.collection("series_results")
-                 .updateOne({ 'series': seriesResults.series }, { $set: seriesResults }, {upsert: true});
+                 .updateOne({ 'series': seriesId }, { $set: seriesResults }, {upsert: true});
             teamPoints.forEach(async (teamRacer, idx)=>{
                     await this.mongo.db.collection('team_comp').updateOne({ 'Name': teamRacer.Name }, { $set: teamRacer }, { upsert: true });
             })

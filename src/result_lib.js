@@ -162,7 +162,6 @@ const getSeriesColumns = (raceMeta, catId)=>{
 
 const generateSeriesResults = (raceResults, racesMeta, racersMeta, categoryOrder, teamsRacers)=>{
     let out = {
-        series:raceResults[0].series,
         categories:{
         }
     }
@@ -261,16 +260,17 @@ const generateSeriesResults = (raceResults, racesMeta, racersMeta, categoryOrder
                 racesMeta.forEach((race)=>{
                     const raceFinish = _.find(racerFinishes, {raceDate:race.formattedStartDate});
                     let resultString = "-/-";
+                    let finishPoints = 0;
                     if(raceFinish){
-                        racerSeriesRow.seriesPoints += raceFinish.points;
+                        finishPoints = raceFinish.points;
                         resultString = `${raceFinish.position}/${raceFinish.points}`;
                     }
                     if(catId.indexOf('grom') == -1){
-                        racerSeriesRow.results.push({raceDate: race.formattedStartDate, resultString });
+                        racerSeriesRow.results.push({raceDate: race.formattedStartDate, resultString, finishPoints });
                     }
                     else{
                         if(["4/13","4/20","4/27","5/4","5/11"].indexOf(race.formattedStartDate) > -1){
-                            racerSeriesRow.results.push({raceDate: race.formattedStartDate, resultString });
+                            racerSeriesRow.results.push({raceDate: race.formattedStartDate, resultString, finishPoints });
                         }
                     }
                     if(racerTeamComp){
@@ -285,6 +285,31 @@ const generateSeriesResults = (raceResults, racesMeta, racersMeta, categoryOrder
                         }
                     }
                 })
+                let orderedByPoints = _.orderBy(racerSeriesRow.results, 'finishPoints', 'asc');
+                if(catId.indexOf('grom') == -1){
+                    // drop 2 out of 10 for general categories
+                    if(orderedByPoints.length >= 9){
+                        let drop1 = _.findIndex(racerSeriesRow.results, (result)=>orderedByPoints[0].raceDate === result.raceDate)
+                        racerSeriesRow.results[drop1].dropped = true;
+                    }
+                    if(orderedByPoints.length >= 10){
+                        let drop2 = _.findIndex(racerSeriesRow.results, (result)=>orderedByPoints[1].raceDate === result.raceDate)
+                        racerSeriesRow.results[drop2].dropped = true;
+                    }
+                }else{
+                    // drop 1 race for groms
+                    if(orderedByPoints.length >= 5){
+                        let drop1 = _.findIndex(racerSeriesRow.results, (result)=>orderedByPoints[0].raceDate === result.raceDate)
+                        racerSeriesRow.results[drop1].dropped = true;
+                    }
+                }
+
+                racerSeriesRow.seriesPoints = _.reduce(racerSeriesRow.results, (sum, result)=>{
+                    if(result.dropped){
+                        return sum;
+                    }
+                    return sum + result.finishPoints;
+                }, 0)
                 catResults.push(racerSeriesRow);
                 if(racerTeamComp){
                     teamPoints.push(racerTeamComp);
