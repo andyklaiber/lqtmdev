@@ -1,12 +1,25 @@
 'use strict'
 const {categoryOrder} = require('../../src/categories');
-const { generateSeriesResults } = require('../../src/result_lib')
+const { generateSeriesResults,getAttendance } = require('../../src/result_lib')
 
 module.exports = async function (fastify, opts) {
     fastify.get('/results/:id', async function (request, reply) {
         const result = await this.mongo.db.collection('series_results').findOne({series:request.params.id});
         if (result) {
             return result;
+        } else {
+            return fastify.httpErrors.notFound();
+        }
+      });
+      fastify.get('/results/:id/attendance', async function (request, reply) {
+        const result = await this.mongo.db.collection('series_results').findOne({series:request.params.id});
+        if (result) {
+            let resArry = getAttendance(result);
+            let resString = '';
+            resArry.forEach((val)=>{
+                resString += `${val.last}\t${val.first}\t${val.count}\n`
+            })
+            return resString;
         } else {
             return fastify.httpErrors.notFound();
         }

@@ -1,6 +1,10 @@
 const _ = require('lodash');
 const teamDates = ["5/4","5/11","5/18","5/25"];
 
+const roundToTwo = (num) => {
+    return +(Math.round(num + "e+2")  + "e-2");
+    }
+
 module.exports = async function (fastify, opts) {
     fastify.get('/', async function (request, reply) {
         const cursor = this.mongo.db.collection('team_comp').find({ Series: request.query.series })
@@ -26,18 +30,18 @@ module.exports = async function (fastify, opts) {
                         }
                     })
                     if(datePoints > 0){
-                        let roundToTwo = (num) => {
-                            return +(Math.round(num + "e+2")  + "e-2");
-                            }
                         let dateScore = datePoints/teamCount
                         dateScore = roundToTwo(dateScore);
-                        teamScores[teamName].totalPoints += dateScore;
-                        teamScores[teamName].results = {};
+                        if(!teamScores[teamName].results){
+                            teamScores[teamName].results = {};
+                        }
+                        teamScores[teamName].totalPoints += datePoints;
                         teamScores[teamName].results[date] = { points: datePoints, avg: dateScore };
                     }
                 })
+                teamScores[teamName].totalScore = roundToTwo(teamScores[teamName].totalPoints / teamScores[teamName].count);
             })
-            return { teamDets, result:  _.orderBy(teamScores, 'totalPoints', 'desc') }
+            return { teamDets, result:  _.orderBy(teamScores, 'totalScore', 'desc') }
         } else {
             return fastify.httpErrors.notFound();
         }

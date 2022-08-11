@@ -1,3 +1,4 @@
+const { split } = require('lodash');
 const _ = require('lodash');
 const moment = require('moment');
 
@@ -379,9 +380,45 @@ const moveRacerInResult = (raceResults, racerName, newCategory)=>{
     return raceResults;
 }
 
+const getAttendance = (out)=>{
+    let attendees = {};
+    Object.keys(out.categories).forEach((catId)=>{
+        const catMeta = out.categories[catId];
+        if(catMeta.id.indexOf('grom') > -1){
+            return;
+        }
+        catMeta.results.forEach((racer)=>{
+            if(racer.Name.indexOf('Katherine')> -1){
+                console.log(racer);
+            }
+            let attended = _.filter(racer.results, (race)=>{return race.resultString != "-/-"})
+            if(attendees[racer.Name]){
+                attendees[racer.Name] += attended.length;
+            }else{
+                attendees[racer.Name] = attended.length;
+            }
+        })
+    })
+    let returnArry = [];
+    _.each(attendees,(count, name)=>{
+        let splitname = name.split(" ");
+        if(splitname.length > 3){
+            console.log('crap ' + splitname)
+            console.log(count)
+        }
+        if(splitname.length > 2){
+            splitname[1] = splitname[1].concat(splitname[2])
+        }
+        
+        returnArry.push({first: splitname[0], last: splitname[1], count})
+    })
+    
+    return _.sortBy(returnArry, ['last', 'first']);
+}
 module.exports = {
     generateResultData,
     generateSeriesResults,
+    getAttendance,
     moveRacerInResult,
     capitalizeName,
 }
