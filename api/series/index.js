@@ -3,6 +3,7 @@ const {categoryOrder} = require('../../src/categories');
 const { generateSeriesResults,getAttendance } = require('../../src/result_lib')
 
 module.exports = async function (fastify, opts) {
+    
     fastify.get('/results/:id', async function (request, reply) {
         const result = await this.mongo.db.collection('series_results').findOne({series:request.params.id});
         if (result) {
@@ -24,6 +25,26 @@ module.exports = async function (fastify, opts) {
             return fastify.httpErrors.notFound();
         }
       });
+      fastify.get('/:id/races', async function (request, reply) {
+        const result = await this.mongo.db.collection('series_results').findOne({series:request.params.id});
+        if (result) {
+            const races = await this.mongo.db.collection('races').find({active:true, series:request.params.id}).sort({eventStart:1}).toArray()
+            result.races = races;
+            return result;
+        } else {
+            return fastify.httpErrors.notFound();
+        }
+    
+      })
+      fastify.get('/:id', async function (request, reply) {
+        const result = await this.mongo.db.collection('series_results').findOne({series:request.params.id});
+        if (result) {
+            return result;
+        } else {
+            return fastify.httpErrors.notFound();
+        }
+    
+      })
     fastify.post('/:series_id/generate', async function (request, reply) {
         if(request.query.token !== process.env.UPLOAD_TOKEN){
             throw fastify.httpErrors.unauthorized();
@@ -49,6 +70,23 @@ module.exports = async function (fastify, opts) {
                     await this.mongo.db.collection('team_comp').updateOne({ 'Name': teamRacer.Name }, { $set: teamRacer }, { upsert: true });
             })
             return { seriesResults, teamPoints }
+        }
+    })
+    fastify.post('/:series_id/categories', async function (request, reply) {
+        if(request.query.token !== process.env.UPLOAD_TOKEN){
+            throw fastify.httpErrors.unauthorized();
+        } else {
+            const series = request.params.series_id
+            console.log(series)
+            const result = await this.mongo.db.collection('series_results').findOne({series});
+            if (!result) {
+                return fastify.httpErrors.notFound();
+            }
+            console.log(request.body);
+            
+            await this.mongo.db.collection("series_results").updateOne({ series }, { $set: {"regCategories": request.body} }, {upsert: true});
+           
+            return request.body;
         }
     })
 }

@@ -1,7 +1,7 @@
 'use strict'
 require('newrelic');
 const path = require('path')
-const AutoLoad = require('fastify-autoload')
+const AutoLoad = require('@fastify/autoload')
 const { url } = require('./src/db.config');
 console.log("mongo URL")
 console.log(url);
@@ -16,14 +16,14 @@ mongoose.connect(url)
 
 module.exports = async function (fastify, opts) {
     fastify.register(require('fastify-websocket'));
-    fastify.register(require('fastify-static'), {
+    fastify.register(require('@fastify/static'), {
         root: path.join(__dirname, 'public'),
         prefix: '/', // optional: default '/'
     })
-    fastify.register(require('fastify-cors'), { 
+    fastify.register(require('@fastify/cors'), { 
         origin:true
       })
-    fastify.register(require('fastify-mongodb'), {
+    fastify.register(require('@fastify/mongodb'), {
     // force to close the mongodb connection when app stopped
     // the default value is false
     forceClose: true,

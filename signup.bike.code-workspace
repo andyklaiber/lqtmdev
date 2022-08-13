@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../race-results"
+		},
+		{
+			"path": "../utils"
+		}
+	],
+	"settings": {}
+}

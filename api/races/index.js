@@ -10,7 +10,15 @@ module.exports = async function (fastify, opts) {
 
     return await cursor.toArray();
   })
-
+  fastify.get('/:id', async function (request, reply) {
+    const result = this.mongo.db.collection('races').findOne({'race.raceid':request.params.id, regActive:true});
+    
+    if (result) {
+        return result;
+    } else {
+        return fastify.httpErrors.notFound();
+    }
+  })
   fastify.post('/genresults/:id', async function (request, reply) {
     if(request.query.token !== process.env.UPLOAD_TOKEN){
         throw fastify.httpErrors.unauthorized();
@@ -32,7 +40,9 @@ module.exports = async function (fastify, opts) {
 
   fastify.get('/results/:id', async function (request, reply) {
     const result = await this.mongo.db.collection('race_results').findOne({raceid:request.params.id});
+    const raceMeta = await this.mongo.db.collection('races').findOne({'raceid':request.params.id});
     if (result) {
+        result.raceMeta = raceMeta;
         return result;
     } else {
         return fastify.httpErrors.notFound();
