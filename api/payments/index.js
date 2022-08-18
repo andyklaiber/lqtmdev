@@ -4,7 +4,7 @@ const moment = require('moment');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 module.exports = async function (fastify, opts) {
-    fastify.get('/status/', async function(request,reply){
+    fastify.get('/status', async function(request,reply){
         const result = await this.mongo.db.collection('payments').findOne({ 'payment_id': request.query.payment_id });
         if (result) {
             let returnObj = _.pick(result, 'regData', 'stripePayment.payment_status');

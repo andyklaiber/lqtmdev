@@ -37,7 +37,7 @@ module.exports = async function (fastify, opts) {
     
       })
       fastify.get('/:id', async function (request, reply) {
-        const result = await this.mongo.db.collection('series_results').findOne({series:request.params.id});
+        const result = await this.mongo.db.collection('series').findOne({series:request.params.id});
         if (result) {
             return result;
         } else {
