@@ -1,13 +1,14 @@
 
 const _ = require('lodash');
 const moment = require('moment');
+const ObjectId = require('mongodb').ObjectId;
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 module.exports = async function (fastify, opts) {
     fastify.get('/status', async function(request,reply){
-        const result = await this.mongo.db.collection('payments').findOne({ 'payment_id': request.query.payment_id });
+        const result = await this.mongo.db.collection('payments').findOne({ '_id': new ObjectId(request.query.payment_id) });
         if (result) {
-            let returnObj = _.pick(result, 'regData', 'stripePayment.payment_status');
+            let returnObj = _.pick(result, 'regData', 'stripePayment.payment_status', 'stripePayment.url');
             return returnObj;
         } else {
             return fastify.httpErrors.notFound();
@@ -21,7 +22,7 @@ module.exports = async function (fastify, opts) {
         regData.series = request.query.series;
         console.log('post body:')
         console.dir(regData);
-        const seriesData = await this.mongo.db.collection('series_results').findOne({ series: request.query.series });
+        const seriesData = await this.mongo.db.collection('series').findOne({ series: request.query.series });
         const payDets = _.find(seriesData.paymentOptions, (payment) => payment.type === request.body.paytype);
         if (!payDets) {
             throw fastify.httpErrors.badRequest('Payment type not found');
@@ -29,6 +30,7 @@ module.exports = async function (fastify, opts) {
         if (!seriesData.stripeMeta?.accountId) {
             throw fastify.httpErrors.preconditionFailed('Stripe connect account not defined');
         }
+        const paymentRecord = await this.mongo.db.collection('payments').insertOne({ regData });
         const regFee = 100 + (payDets.amount* 100 * .04)
         const sessionConfig = 
         {
@@ -44,8 +46,8 @@ module.exports = async function (fastify, opts) {
                 }
             }],
             mode: 'payment',
-            success_url: `${process.env.DOMAIN}/success`,
-            cancel_url: `${process.env.DOMAIN}/success`,
+            success_url: `${process.env.DOMAIN}/#/regconfirmation/${regData.series}/${paymentRecord.insertedId}`,
+            cancel_url: `${process.env.DOMAIN}/#/regconfirmation/${regData.series}/${paymentRecord.insertedId}`,
             payment_intent_data: {
                 application_fee_amount: regFee,
             },
@@ -58,7 +60,7 @@ module.exports = async function (fastify, opts) {
         const session = await stripe.checkout.sessions.create(sessionConfig, {
             stripeAccount: seriesData.stripeMeta.accountId,
         });
-        await this.mongo.db.collection('payments').updateOne({ 'payment_id': session.id }, { $set:{ stripePayment:session, regData} }, { upsert: true });
+        await this.mongo.db.collection('payments').updateOne({ '_id': new ObjectId(paymentRecord.insertedId) }, { $set:{ payment_id: session.id, stripePayment:session} }, { upsert: true });
         return session.url;
     });
 }
