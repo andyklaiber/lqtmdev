@@ -1,11 +1,7 @@
 'use strict'
-require('newrelic');
 const path = require('path')
 const AutoLoad = require('@fastify/autoload')
 const { url } = require('./src/db.config');
-console.log("mongo URL")
-console.log(url);
-
 
 const mongoose = require('mongoose')
 

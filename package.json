@@ -32,7 +32,6 @@
     "lodash": "^4.17.21",
     "moment": "^2.29.4",
     "mongoose": "^6.5.2",
-    "newrelic": "^8.9.1",
     "stripe": "^10.1.0"
   },
   "devDependencies": {

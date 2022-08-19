@@ -20,8 +20,6 @@ module.exports = async function (fastify, opts) {
         }
         const regData = request.body
         regData.series = request.query.series;
-        console.log('post body:')
-        console.dir(regData);
         const seriesData = await this.mongo.db.collection('series').findOne({ series: request.query.series });
         const payDets = _.find(seriesData.paymentOptions, (payment) => payment.type === request.body.paytype);
         if (!payDets) {
@@ -55,8 +53,6 @@ module.exports = async function (fastify, opts) {
                 class:'B Men'
             },
         }
-        console.dir(sessionConfig);
-        console.log(seriesData.stripeMeta.accountId)
         const session = await stripe.checkout.sessions.create(sessionConfig, {
             stripeAccount: seriesData.stripeMeta.accountId,
         });

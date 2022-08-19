@@ -33,7 +33,7 @@ module.exports = async function (fastify, opts) {
             console.dir(session);
             const pendingPayment = await this.mongo.db.collection('payments').findOne({ 'payment_id': session.id });
             if(pendingPayment){
-                console.log('found payment with id: '+session.id)
+                request.log.info('found payment with id: '+session.id)
                 if(pendingPayment.stripePayment?.payment_status === 'unpaid'){
                     //update and register
                     await this.mongo.db.collection('payments').updateOne({ 'payment_id': session.id }, { $set:{ stripePayment:session } }, { upsert: true });
@@ -46,11 +46,11 @@ module.exports = async function (fastify, opts) {
                 }
 
             }else{
-
+                request.log.info("Webhook event: "+ event.type)
             }
         }
             else{
-                console.log('got webhook: '+ event.type);
+                request.log.info('got webhook: '+ event.type);
             }
         return 'great success!!!'
     });
