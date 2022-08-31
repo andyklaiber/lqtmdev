@@ -1,6 +1,6 @@
 const { update } = require('lodash');
 const _ = require('lodash');
-const moment = require('moment');
+const dayjs = require('dayjs');
 const {capitalizeName} = require('../../src/result_lib');
 
 module.exports = async function (fastify, opts) {
@@ -36,7 +36,7 @@ module.exports = async function (fastify, opts) {
     //     const data = request.body || {};
     //     let updateData = {};
     //     if(data.Birthdate){
-    //         updateData.Birthdate = moment(data.Birthdate).toString();
+    //         updateData.Birthdate = dayjs(data.Birthdate).toString();
     //     }
     //     if(data.Sponsor){
     //         updateData.Sponsor = data.Sponsor;
@@ -66,7 +66,7 @@ module.exports = async function (fastify, opts) {
           let racers = request.body.split("\n");
           racers.forEach((row)=>{
             let cols = row.split("\t");
-            let birthday = moment(cols[3]);
+            let birthday = dayjs(cols[3]);
             let entry = {
                 Name: `${cols[0]} ${cols[1]}`,
                 Birthdate: birthday.toString()

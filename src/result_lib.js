@@ -1,6 +1,5 @@
-const { split } = require('lodash');
 const _ = require('lodash');
-const moment = require('moment');
+const dayjs = require('dayjs');
 
 const getColumns = (maxLaps)=>{
     let cols = ["Pos","Bib","Name","Sponsor"]
@@ -247,11 +246,11 @@ const generateSeriesResults = (raceResults, racesMeta, racersMeta, categoryOrder
                 if (racerMetaInfo && racerMetaInfo.Birthdate){
                     let bday
                     try{
-                        bday = moment(racerMetaInfo.Birthdate)
+                        bday = dayjs(racerMetaInfo.Birthdate)
                     } catch(error){
                         console.log(`bad birthday string: ${racerName} - ${racerMetaInfo.Birthdate}`);
                     }
-                    racerSeriesRow.Age = moment().diff(bday, 'years');
+                    racerSeriesRow.Age = dayjs().diff(bday, 'years');
                 }
                 if (racerMetaInfo && racerMetaInfo.Sponsor){
                     racerSeriesRow.Sponsor = racerMetaInfo.Sponsor;

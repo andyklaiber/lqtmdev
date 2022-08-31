@@ -2,7 +2,20 @@
 const _ = require('lodash');
 const { categoryOrder } = require('../../src/categories');
 const { moveRacerInResult, generateResultData } = require('../../src/result_lib');
+const { getFees } = require('../../src/fees');
 
+const sortByLast = (a, b) => {
+    const nameA = a.last_name.toUpperCase(); // ignore upper and lowercase
+    const nameB = b.last_name.toUpperCase(); // ignore upper and lowercase
+    if (nameA < nameB) {
+      return -1;
+    }
+    if (nameA > nameB) {
+      return 1;
+    }
+    // names must be equal
+    return 0;
+  }
 
 module.exports = async function (fastify, opts) {
   fastify.get('/', async function (request, reply) {
@@ -11,10 +24,53 @@ module.exports = async function (fastify, opts) {
     return await cursor.toArray();
   })
   fastify.get('/:id', async function (request, reply) {
-    const result = this.mongo.db.collection('races').findOne({'race.raceid':request.params.id, regActive:true});
+    const result = await this.mongo.db.collection('races').findOne({'raceid':request.params.id},{projection:{
+        displayName: 1,
+        eventDetails: 1,
+        racename:1,
+        formattedStartDate:1,
+        eventDate: 1,
+        paymentOptions: 1,
+        series: 1,
+        regCategories: 1,
+        raceid:1
+    }});
+    _.forEach(result.paymentOptions, (payOpt, idx)=>{
+        let fees = getFees(payOpt.amount);
+        _.merge(result.paymentOptions[idx], fees);
+    });
     
     if (result) {
-        return result;
+        return result; 
+    } else {
+        return fastify.httpErrors.notFound();
+    }
+  })
+  fastify.get('/roster/:id', async function (request, reply) {
+    const result = await this.mongo.db.collection('races').findOne({'raceid':request.params.id},{projection:{
+        "registeredRacers.first":1,
+        "registeredRacers.first_name":1,
+        "registeredRacers.last_name":1,
+        "registeredRacers.sponsor":1,
+        "registeredRacers.category":1,
+        displayName: 1,
+        eventDetails: 1,
+        racename:1,
+        formattedStartDate:1,
+        eventDate: 1,
+        paymentOptions: 1,
+        series: 1,
+        regCategories: 1,
+        raceid:1
+    }});
+
+    if (result) {
+        const sorted = result.registeredRacers.sort(sortByLast);
+        _.forEach(sorted, (el, idx)=>{
+            sorted[idx].first_name = _.capitalize(el.first_name)
+            sorted[idx].last_name = _.capitalize(el.last_name)
+        })
+        return {...result, registeredRacers:_.groupBy(sorted, "category")}
     } else {
         return fastify.httpErrors.notFound();
     }
