@@ -3,7 +3,16 @@ const _ = require('lodash');
 const Stripe = require('stripe');
 const { getFees } = require("../../src/fees");
 
-module.exports = async function (fastify, opts) {    
+module.exports = async function (fastify, opts) {
+    // fastify.post('/email', async function(request){
+    //     return fastify.sendRegConfirmEmail(request.body,'6311229e5e02e649cc13a7bf', {
+    //         raceid: 'test_race_id', 
+    //         eventDetails:{
+    //             name:"2022 Rodeo Cross",
+    //             homepageUrl:"http://folsomrodeocross.com"
+    //         }
+    //     })
+    // })    
     
     fastify.get('/status', async function(request,reply){
         const result = await this.mongo.db.collection('payments').findOne({ '_id': this.mongo.ObjectId(request.query.payment_id) },{
@@ -38,7 +47,7 @@ module.exports = async function (fastify, opts) {
             regData.paytype = 'season',
             await this.mongo.db.collection('payments').updateOne({ '_id': this.mongo.ObjectId(paymentRecord.insertedId) }, { $set:{ sponsoredPayment: true, status: "paid", regData } }, { upsert: true });
             request.log.info(regData, 'registering racer in sponsored category');
-            const results = await fastify.registerRacer(regData, paymentRecord.insertedId, raceData);
+            const results = await fastify.registerRacer(regData, paymentRecord.insertedId, raceData, request.log);
             return `${process.env.DOMAIN}/#/regconfirmation/${regData.raceid}/${paymentRecord.insertedId}`;
         }else{
 
@@ -58,7 +67,7 @@ module.exports = async function (fastify, opts) {
                         currency: 'USD',
                         unit_amount: (payDets.amount * 100) + regFee + stripeFee, // in cents
                         product_data:{
-                            name: payDets.name,
+                            name: raceData.displayName + ' ' + payDets.name,
                             description: payDets.description || payDets.type + ' entry fee'
                         },
                     }
