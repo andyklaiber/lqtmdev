@@ -34,11 +34,12 @@ module.exports = async function (fastify, opts) {
             const session = event.data.object;
             const pendingPayment = await this.mongo.db.collection('payments').findOne({ 'payment_id': session.id });
             if(pendingPayment){
-                request.log.info('found payment with id: '+session.id)
+                request.log.info('found payment with stripe id: '+session.id)
                 if(pendingPayment.stripePayment?.payment_status === 'unpaid'){
                     //update and register
                     await this.mongo.db.collection('payments').updateOne({ 'payment_id': session.id }, { $set:{ stripePayment:session, status: session.payment_status} }, { upsert: true });
-                    await fastify.registerRacer(pendingPayment.regData, pendingPayment.insertedId);
+                    const raceData = await this.mongo.db.collection('races').findOne({ raceid: pendingPayment.regData.raceid });
+                    await fastify.registerRacer(pendingPayment.regData, pendingPayment._id, raceData, request.log);
                 }else{
                     throw fastify.httpErrors.conflict(`Expected unpaid payment. \n
                     Payment_id:${session.id},\n
@@ -74,11 +75,12 @@ module.exports = async function (fastify, opts) {
             const session = event.data.object;
             const pendingPayment = await this.mongo.db.collection('payments').findOne({ 'payment_id': session.id });
             if(pendingPayment){
-                request.log.info('found payment with id: '+session.id)
+                request.log.info('found payment with stripe id: '+session.id)
                 if(pendingPayment.stripePayment?.payment_status === 'unpaid'){
                     //update and register
                     await this.mongo.db.collection('payments').updateOne({ 'payment_id': session.id }, { $set:{ stripePayment:session, status: session.payment_status} }, { upsert: true });
-                    await fastify.registerRacer(pendingPayment.regData, pendingPayment.insertedId);
+                    const raceData = await this.mongo.db.collection('races').findOne({ raceid: pendingPayment.regData.raceid });
+                    await fastify.registerRacer(pendingPayment.regData, pendingPayment._id, raceData, request.log);
                 }else{
                     throw fastify.httpErrors.conflict(`Expected unpaid payment. \n
                     Payment_id:${session.id},\n
