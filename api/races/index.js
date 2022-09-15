@@ -2,7 +2,7 @@
 const _ = require('lodash');
 const { categoryOrder } = require('../../src/categories');
 const { moveRacerInResult, generateResultData } = require('../../src/result_lib');
-const { getFees } = require('../../src/fees');
+const { getFees, updateRacePaymentOptions } = require('../../src/fees');
 
 const sortByLast = (a, b) => {
     const nameA = a.last_name.toUpperCase(); // ignore upper and lowercase
@@ -19,7 +19,17 @@ const sortByLast = (a, b) => {
 
 module.exports = async function (fastify, opts) {
   fastify.get('/', async function (request, reply) {
-    const cursor = this.mongo.db.collection('races').find({active:true}).sort({eventStart:1})
+    const cursor = this.mongo.db.collection('races').find({active:true},{projection:{
+        displayName: 1,
+        eventDetails: 1,
+        racename:1,
+        formattedStartDate:1,
+        eventDate: 1,
+        paymentOptions: 1,
+        series: 1,
+        regCategories: 1,
+        raceid:1
+    }}).sort({eventStart:1})
 
     return await cursor.toArray();
   })
@@ -33,12 +43,11 @@ module.exports = async function (fastify, opts) {
         paymentOptions: 1,
         series: 1,
         regCategories: 1,
-        raceid:1
+        raceid:1,
+        couponsEnabled:1,
+        facebookShare:1
     }});
-    _.forEach(result.paymentOptions, (payOpt, idx)=>{
-        let fees = getFees(payOpt.amount);
-        _.merge(result.paymentOptions[idx], fees);
-    });
+    result.paymentOptions = updateRacePaymentOptions(result.paymentOptions);
     
     if (result) {
         return result; 
@@ -48,7 +57,6 @@ module.exports = async function (fastify, opts) {
   })
   fastify.get('/roster/:id', async function (request, reply) {
     const result = await this.mongo.db.collection('races').findOne({'raceid':request.params.id},{projection:{
-        "registeredRacers.first":1,
         "registeredRacers.first_name":1,
         "registeredRacers.last_name":1,
         "registeredRacers.sponsor":1,
@@ -70,7 +78,7 @@ module.exports = async function (fastify, opts) {
             sorted[idx].first_name = _.capitalize(el.first_name)
             sorted[idx].last_name = _.capitalize(el.last_name)
         })
-        return {...result, registeredRacers:_.groupBy(sorted, "category")}
+        return {...result, count: sorted.length, registeredRacers:_.groupBy(sorted, "category")}
     } else {
         return fastify.httpErrors.notFound();
     }

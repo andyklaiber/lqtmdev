@@ -1,19 +1,38 @@
 
 const _ = require('lodash');
 const Stripe = require('stripe');
-const { getFees } = require("../../src/fees");
+const { getFees, updateRacePaymentOptions } = require("../../src/fees");
 
 module.exports = async function (fastify, opts) {
     // fastify.post('/email', async function(request){
-    //     return fastify.sendRegConfirmEmail(request.body,'6311229e5e02e649cc13a7bf', {
-    //         raceid: 'test_race_id', 
-    //         eventDetails:{
-    //             name:"2022 Rodeo Cross",
-    //             homepageUrl:"http://folsomrodeocross.com"
+    //     const payments = await this.mongo.db.collection('payments').find({status:"paid"}).toArray();
+
+    //     payments.forEach(async (payRecord)=>{
+    //         const raceData = await this.mongo.db.collection('races').findOne({raceid:"rcx_2022_1"});
+    //         const existingReg = _.find(raceData.registeredRacers, {paymentId:payRecord._id});
+    //         if(existingReg){
+    //             console.log('already reg:'+existingReg.email);
+    //         }else{
+    //             console.log('will add', payRecord.regData.email);
+    //             await fastify.registerRacer(payRecord.regData, payRecord._id, raceData, request.log)
     //         }
     //     })
+
+
     // })    
-    
+    fastify.post('/pricing', async function(request,reply){
+        const {raceid, couponCode} = request.body
+        const raceData = await this.mongo.db.collection('races').findOne({ raceid });
+        if(!raceData){
+            throw fastify.httpErrors.notFound('Race not found');
+        }
+        if(raceData.couponsEnabled && raceData.couponCodes[couponCode]){
+            let { percentDiscount } = raceData.couponCodes[couponCode];
+            return {validCoupon:true, paymentOptions: updateRacePaymentOptions(raceData.paymentOptions, percentDiscount) }
+        }
+        
+        return {validCoupon:false, paymentOptions: updateRacePaymentOptions(raceData.paymentOptions)}
+    });
     fastify.get('/status', async function(request,reply){
         const result = await this.mongo.db.collection('payments').findOne({ '_id': this.mongo.ObjectId(request.query.payment_id) },{
             projection:{
@@ -47,13 +66,21 @@ module.exports = async function (fastify, opts) {
             regData.paytype = 'season',
             await this.mongo.db.collection('payments').updateOne({ '_id': this.mongo.ObjectId(paymentRecord.insertedId) }, { $set:{ sponsoredPayment: true, status: "paid", regData } }, { upsert: true });
             request.log.info(regData, 'registering racer in sponsored category');
-            const results = await fastify.registerRacer(regData, paymentRecord.insertedId, raceData, request.log);
+            await fastify.registerRacer(regData, paymentRecord.insertedId, raceData, request.log);
             return `${process.env.DOMAIN}/#/regconfirmation/${regData.raceid}/${paymentRecord.insertedId}`;
         }else{
-
+            if(regData.coupon && raceData.couponsEnabled && raceData.couponCodes[regData.coupon]){
+                let { percentDiscount } = raceData.couponCodes[regData.coupon];
+                raceData.paymentOptions = updateRacePaymentOptions(raceData.paymentOptions, percentDiscount);
+            }
             const payDets = _.find(raceData.paymentOptions, (payment) => payment.type === request.body.paytype);
             if (!payDets) {
                 throw fastify.httpErrors.badRequest('Payment type not found');
+            }
+            if(payDets.amount == 0){
+                await this.mongo.db.collection('payments').updateOne({ '_id': this.mongo.ObjectId(paymentRecord.insertedId) }, { $set:{ couponCode:regData.coupon, status: "paid", regData } }, { upsert: true });
+                await fastify.registerRacer(regData, paymentRecord.insertedId, raceData, request.log);
+                return `${process.env.DOMAIN}/#/regconfirmation/${regData.raceid}/${paymentRecord.insertedId}`;
             }
             if (!raceData.stripeMeta?.accountId) {
                 throw fastify.httpErrors.preconditionFailed('Stripe connect account not defined');
@@ -88,7 +115,7 @@ module.exports = async function (fastify, opts) {
             const session = await stripe.checkout.sessions.create(sessionConfig, {
                 stripeAccount: raceData.stripeMeta.accountId,
             });
-            await this.mongo.db.collection('payments').updateOne({ '_id': this.mongo.ObjectId(paymentRecord.insertedId) }, { $set:{ payment_id: session.id, stripePayment:session,  status: session.payment_status } }, { upsert: true });
+            await this.mongo.db.collection('payments').updateOne({ '_id': this.mongo.ObjectId(paymentRecord.insertedId) }, { $set:{ payment_id: session.id, stripePayment:session,  status: session.payment_status, couponCode:regData.coupon, } }, { upsert: true });
             return session.url;
         }
     });
