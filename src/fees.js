@@ -15,14 +15,14 @@ function getFees(priceInDollars){
     return { stripeFee: ccFee - onlineFee - cents, regFee: onlineFee };
 }
 
-function updateRacePaymentOptions(paymentOptions, percentDiscount=false){
+function updateRacePaymentOptions(paymentOptions, fractionDiscount=false){
         
     _.forEach(paymentOptions, (payOpt, idx)=>{
         let fees;
-        if(percentDiscount){
+        if(fractionDiscount){
             paymentOptions[idx].discounted=true;
             paymentOptions[idx].orig = parseInt(paymentOptions[idx].amount);
-            paymentOptions[idx].amount = payOpt.amount - payOpt.amount * percentDiscount;
+            paymentOptions[idx].amount = payOpt.amount - payOpt.amount * fractionDiscount;
             fees = getFees(paymentOptions[idx].amount);
         }else{
             fees = getFees(payOpt.amount);
