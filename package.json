@@ -10,7 +10,7 @@
     "test": "tap \"test/**/*.test.js\"",
     "start": "fastify start -l info app.js",
     "dev": "fastify start -r dotenv/config -w --ignore-watch='newrelic_agent.log node_modules' -l info -P app.js",
-    "build": "docker build . -t andyklaiber/lqtm:latest",
+    "build": "docker build . -t andyklaiber/lqtm:latest --platform=linux/amd64",
     "publish": "docker push andyklaiber/lqtm:latest",
     "docker": "docker run -p 3000:3000 --env UPLOAD_TOKEN=somethingsecret --mount source=pcrsdata,target=/usr/src/app/public/data andyklaiber/lqtm:latest"
   },

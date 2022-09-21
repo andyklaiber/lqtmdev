@@ -28,7 +28,10 @@ module.exports = async function (fastify, opts) {
         paymentOptions: 1,
         series: 1,
         regCategories: 1,
-        raceid:1
+        raceid:1,
+        couponsEnabled:1,
+        showPaytypeOnRoster:1,
+        facebookShare:1
     }}).sort({eventStart:1})
 
     return await cursor.toArray();
@@ -45,6 +48,7 @@ module.exports = async function (fastify, opts) {
         regCategories: 1,
         raceid:1,
         couponsEnabled:1,
+        showPaytypeOnRoster:1,
         facebookShare:1
     }});
     result.paymentOptions = updateRacePaymentOptions(result.paymentOptions);
@@ -61,6 +65,7 @@ module.exports = async function (fastify, opts) {
         "registeredRacers.last_name":1,
         "registeredRacers.sponsor":1,
         "registeredRacers.category":1,
+        "registeredRacers.paytype":1,
         displayName: 1,
         eventDetails: 1,
         racename:1,
@@ -68,6 +73,7 @@ module.exports = async function (fastify, opts) {
         eventDate: 1,
         paymentOptions: 1,
         series: 1,
+        showPaytypeOnRoster:1,
         regCategories: 1,
         raceid:1
     }});
@@ -78,7 +84,7 @@ module.exports = async function (fastify, opts) {
             sorted[idx].first_name = _.capitalize(el.first_name)
             sorted[idx].last_name = _.capitalize(el.last_name)
         })
-        return {...result, count: sorted.length, registeredRacers:_.groupBy(sorted, "category")}
+        return {...result, count: sorted.length, registeredRacers:sorted}
     } else {
         return fastify.httpErrors.notFound();
     }
