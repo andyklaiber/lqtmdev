@@ -19,10 +19,9 @@ const sortByLast = (a, b) => {
 
 module.exports = async function (fastify, opts) {
   fastify.get('/', async function (request, reply) {
-    const cursor = this.mongo.db.collection('races').find({active:true},{projection:{
+    const cursor = this.mongo.db.collection('races').find({active:true,archived:{ $ne: true }},{projection:{
         displayName: 1,
         eventDetails: 1,
-        racename:1,
         formattedStartDate:1,
         eventDate: 1,
         paymentOptions: 1,
@@ -40,7 +39,6 @@ module.exports = async function (fastify, opts) {
     const result = await this.mongo.db.collection('races').findOne({'raceid':request.params.id},{projection:{
         displayName: 1,
         eventDetails: 1,
-        racename:1,
         formattedStartDate:1,
         eventDate: 1,
         paymentOptions: 1,
@@ -49,7 +47,8 @@ module.exports = async function (fastify, opts) {
         raceid:1,
         couponsEnabled:1,
         showPaytypeOnRoster:1,
-        facebookShare:1
+        facebookShare:1,
+        isTestData:1
     }});
     result.paymentOptions = updateRacePaymentOptions(result.paymentOptions);
     
@@ -57,6 +56,36 @@ module.exports = async function (fastify, opts) {
         return result; 
     } else {
         return fastify.httpErrors.notFound();
+    }
+  })
+  fastify.route({
+    method: 'PATCH',
+    url: '/:id',
+    preHandler: fastify.auth([fastify.verifyAdminSession]),
+    handler: async function (request, reply) {
+        const projection = {
+            displayName: 1,
+            eventDetails: 1,
+            formattedStartDate:1,
+            eventDate: 1,
+            paymentOptions: 1,
+            series: 1,
+            regCategories: 1,
+            raceid:1,
+            couponsEnabled:1,
+            showPaytypeOnRoster:1,
+            isTestData:1
+        };
+        const result = await this.mongo.db.collection('races').findOne({'raceid':request.params.id},{projection});
+        if (result) {
+            let updateKeys = _.pull(Object.keys(projection), ['raceid'])
+            console.log(updateKeys);
+            let updateObject = _.pick(request.body, updateKeys)
+            let op = await this.mongo.db.collection('races').updateOne({ '_id': this.mongo.ObjectId(result._id) }, { $set:updateObject });
+            return { op, updateObject}; 
+        } else {
+            return fastify.httpErrors.notFound();
+        }
     }
   })
   fastify.get('/roster/:id', async function (request, reply) {

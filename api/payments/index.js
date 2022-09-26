@@ -19,7 +19,16 @@ module.exports = async function (fastify, opts) {
     //     })
 
 
-    // })    
+    // })
+    fastify.route({
+        method: 'POST',
+        url: '/register',
+        preHandler: fastify.auth([fastify.verifyAdminSession]),
+        handler: (req, reply) => {
+          req.log.info('register route')
+          reply.send({ hello: 'register-me' })
+        }
+      })    
     fastify.post('/pricing', async function(request,reply){
         const {raceid, couponCode} = request.body
         const raceData = await this.mongo.db.collection('races').findOne({ raceid });
@@ -33,7 +42,24 @@ module.exports = async function (fastify, opts) {
         
         return {validCoupon:false, paymentOptions: updateRacePaymentOptions(raceData.paymentOptions)}
     });
+    fastify.route({
+        method: 'GET',
+        url: '/',
+        preHandler: fastify.auth([fastify.verifyAdminSession]),
+        handler: async function(request,reply){
+            const result = await this.mongo.db.collection('payments').find(
+            ).toArray();
+            if (result) {
+                return result;
+            } else {
+                return fastify.httpErrors.notFound();
+            }
+        }
+    });
     fastify.get('/status', async function(request,reply){
+        if(!request.query.payment_id){
+            return fastify.httpErrors.badRequest('Must provide payment_id query param');
+        }
         const result = await this.mongo.db.collection('payments').findOne({ '_id': this.mongo.ObjectId(request.query.payment_id) },{
             projection:{
                 regData: 1,

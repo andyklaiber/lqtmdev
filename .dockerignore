@@ -7,3 +7,5 @@ node_modules
 npm-debug.log
 rawjson
 newrelic_agent.log
+config/
+*.code-workspace

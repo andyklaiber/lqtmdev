@@ -19,3 +19,4 @@ dist-ssr
 coverage
 *.local
 .env
+config/
