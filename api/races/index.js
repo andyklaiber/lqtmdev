@@ -81,6 +81,7 @@ module.exports = async function (fastify, opts) {
             let updateKeys = _.pull(Object.keys(projection), ['raceid'])
             console.log(updateKeys);
             let updateObject = _.pick(request.body, updateKeys)
+            delete updateObject.registeredRacers;
             let op = await this.mongo.db.collection('races').updateOne({ '_id': this.mongo.ObjectId(result._id) }, { $set:updateObject });
             return { op, updateObject}; 
         } else {

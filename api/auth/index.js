@@ -9,7 +9,7 @@ module.exports = async function (fastify, opts) {
         }
         const { email, password } = request.body
 
-        if (password === 'abc123') {
+        if (password === 'abc123fed') {
             request.session.authenticated = true;
             return 'logged in';
         } else {

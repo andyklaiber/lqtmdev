@@ -36,7 +36,6 @@ module.exports = fp(async function (fastify, opts) {
     Name: ${_.capitalize(regData.first_name)}  ${_.capitalize(regData.last_name)}<br>
     ${regData.sponsor ? `Team/Sponsor: ${regData.sponsor}<br>` :""}
     Race Category: ${regCat.catdispname}<br>
-    Race Start: ${dayjs(`${dayjs(raceData.eventDate).format("YYYY-MM-DD")} ${regCat.startTime}`).format("ddd, MMM D, h:mm A")}</p>
     <p><a href="${process.env.DOMAIN}/#/roster/${regData.raceid}">Go Here</a> to see who else is signed up<p>
     <p>For information about the event, check out <a href="${raceData.eventDetails.homepageUrl}">${raceData.eventDetails.homepageUrl}</a></p>
     <p>For issues with your registration information, <a href="mailto:support@signup.bike">email us!</a>
