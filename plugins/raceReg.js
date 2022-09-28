@@ -9,7 +9,7 @@ const dayjs = require('dayjs');
 // to export the decorators to the outer scope
 
 module.exports = fp(async function (fastify, opts) {
-  fastify.decorate('registerRacer', async function (regData, paymentId, raceData, logger) {
+  fastify.decorate('registerRacer', async function (regData, paymentId, raceData, logger, sendEmail=true) {
     // payment type - single or season
     // registrant data, race category id, payment id - reference, add to race racers[] array
     const racerData = {
@@ -25,8 +25,10 @@ module.exports = fp(async function (fastify, opts) {
       await this.mongo.db.collection('races').updateOne({ raceid: regData.raceid },
         {$push: {registeredRacers: racerData}});
     }
-    return fastify.sendRegConfirmEmail(regData, paymentId, raceData, logger);
-    
+    if(sendEmail){
+      return fastify.sendRegConfirmEmail(regData, paymentId, raceData, logger);
+    }
+    return {};
   })
   fastify.decorate('sendRegConfirmEmail', async function (regData, paymentId, raceData, logger) {
     const regCat = _.find(raceData.regCategories, {"id": regData.category});

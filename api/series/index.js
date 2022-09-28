@@ -51,6 +51,18 @@ module.exports = async function (fastify, opts) {
         }
     
       })
+      // get the active series registration link based on event dates
+      fastify.get('/:id/registration', async function (request, reply) {
+        const result = await this.mongo.db.collection('races').findMany({series:request.params.id}).toArray();
+        if (result) {
+
+
+            return {};
+        } else {
+            return fastify.httpErrors.notFound('Could not find series');
+        }
+    
+      })
       fastify.get('/:id', async function (request, reply) {
         const result = await this.mongo.db.collection('series').findOne({series:request.params.id});
         if (result) {

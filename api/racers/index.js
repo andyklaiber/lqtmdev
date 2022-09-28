@@ -22,11 +22,15 @@ module.exports = async function (fastify, opts) {
         }
       })
       const unpaid = await this.mongo.db.collection('payments').find(
-        { 'regData.raceid': request.params.id, status: { $ne: 'paid' } },
+        { 'regData.raceid': request.params.id, 'regData.paytype': 'cash', status: { $ne: 'paid' } },
         { projection: { regData: 1, _id: 1, status: 1 } }).toArray();
       if (result) {
         if (unpaid.length) {
-          result.unpaid = unpaid;
+          let reformatted = _.map(unpaid, (record) => {
+            return _.assign({}, record.regData, { status: record.status, paymentId: record._id });
+          })
+
+          result.registeredRacers = [...result.registeredRacers, ...reformatted];
         }
         return result;
       } else {
@@ -46,14 +50,14 @@ module.exports = async function (fastify, opts) {
       if (!request.query.paymentId) {
         return fastify.httpErrors.badRequest('Registered racers must have a paymentID');
       }
-      const payment = await this.mongo.db.collection('payments').findOne({ '_id': this.mongo.ObjectId(request.query.paymentId) },{
-        projection:{
-            regData: 1,
-            status: 1,
-            sponsoredPayment:1,
+      const payment = await this.mongo.db.collection('payments').findOne({ '_id': this.mongo.ObjectId(request.query.paymentId) }, {
+        projection: {
+          regData: 1,
+          status: 1,
+          sponsoredPayment: 1,
         }
-    });
-      
+      });
+
       if (payment) {
 
         const allowedFields = [
@@ -68,38 +72,37 @@ module.exports = async function (fastify, opts) {
         ]
         let fieldsToSet = {}
         Object.keys(request.body).forEach((keyName) => {
-          if (_.includes(allowedFields, keyName)){
+          if (_.includes(allowedFields, keyName)) {
             fieldsToSet[`registeredRacers.$.${keyName}`] = request.body[keyName];
           }
         })
-        if(Object.keys(fieldsToSet).length < 1){
+        if (Object.keys(fieldsToSet).length < 1) {
           return fastify.httpErrors.badRequest('No valid fields provided for update');
         }
         //if part of a series, and paytype==season update all the series records?
         let updateResult;
-        if(payment.regData.paytype === 'season'){
-          const race = await this.mongo.db.collection('races').find({ 'raceid':payment.regData.raceid}, {projection:{
-            series:1
-          }})
+        if (payment.regData.paytype === 'season') {
+          const race = await this.mongo.db.collection('races').findOne({ 'raceid': payment.regData.raceid }, {
+            projection: {
+              series: 1
+            }
+          })
+          updateResult = await this.mongo.db.collection('races').updateMany({
+            'series': race.series,
+            "registeredRacers.paymentId": this.mongo.ObjectId(request.query.paymentId)
+          },
+            { $set: fieldsToSet })
+        }
+        else {
+          //if single race, just update the record for the 1 race
           updateResult = await this.mongo.db.collection('races').updateOne({
             'raceid': request.params.id,
             "registeredRacers.paymentId": this.mongo.ObjectId(request.query.paymentId)
           },
             { $set: fieldsToSet })
-        }
-        else{
-          updateResult = await this.mongo.db.collection('races').updateOne({
-            'raceid': request.params.id,
-            "registeredRacers.paymentId": this.mongo.ObjectId(request.query.paymentId)
-          },
-            { $set: fieldsToSet })
 
         }
-
-
-        //if single race, just update the record for the 1 race
-        
-        return result;
+        return updateResult;
       } else {
         return fastify.httpErrors.notFound();
       }
@@ -118,27 +121,27 @@ module.exports = async function (fastify, opts) {
       if (!request.query.paymentId) {
         return fastify.httpErrors.badRequest('Registered racers must have a paymentID');
       }
-      const payment = await this.mongo.db.collection('payments').findOne({ '_id': this.mongo.ObjectId(request.query.paymentId) },{
-        projection:{
-            regData: 1,
-            status: 1,
-            sponsoredPayment:1,
+      const payment = await this.mongo.db.collection('payments').findOne({ '_id': this.mongo.ObjectId(request.query.paymentId) }, {
+        projection: {
+          regData: 1,
+          status: 1,
+          sponsoredPayment: 1,
         }
-    });
-      
+      });
+
       if (payment) {
 
-       
+
         let fieldsToSet = {}
         Object.keys(request.body).forEach((keyName) => {
-          if (_.includes(allowedFields, keyName)){
+          if (_.includes(allowedFields, keyName)) {
             fieldsToSet[`registeredRacers.$.${keyName}`] = request.body[keyName];
           }
         })
-        if(Object.keys(fieldsToSet).length < 1){
+        if (Object.keys(fieldsToSet).length < 1) {
           return fastify.httpErrors.badRequest('No valid fields provided for update');
         }
-        
+
 
         //if part of a series, and paytype==season update all the series records?
 
@@ -167,7 +170,7 @@ module.exports = async function (fastify, opts) {
 
       const result = await this.mongo.db.collection('races').findOne({ 'raceid': request.params.id }, {
         projection: {
-          "regCategories": 1, "registeredRacers": 1, 'eventDate': 1, 'eventDetails.name':1
+          "regCategories": 1, "registeredRacers": 1, 'eventDate': 1, 'eventDetails.name': 1
         }
       })
       if (result) {
@@ -179,19 +182,19 @@ module.exports = async function (fastify, opts) {
           out.push(_.assign(racerObj, { category: cat.catdispname, start, eventName: result.eventDetails.name }));
         })
         const columns = [
-          {'key':'eventName','header': 'Event',},
-          {'key':'start','header': 'Start',},
-          {'key':'category','header': 'Category',},
-          {'key':'maxLaps','header': 'maxLaps',},
-          {'key':'sponsor','header': 'Team',},
-          {'key':'bibNumber','header': 'Bibs',},
-          {'key':'first_name','header': 'First',},
-          {'key':'last_name','header': 'Last'},
-          {'Relay':	'relay'},
-          {'Penalties':'penalties'	},
-          {'DNF':'dnf'}
+          { 'key': 'eventName', 'header': 'Event', },
+          { 'key': 'start', 'header': 'Start', },
+          { 'key': 'category', 'header': 'Category', },
+          { 'key': 'maxLaps', 'header': 'maxLaps', },
+          { 'key': 'sponsor', 'header': 'Team', },
+          { 'key': 'bibNumber', 'header': 'Bibs', },
+          { 'key': 'first_name', 'header': 'First', },
+          { 'key': 'last_name', 'header': 'Last' },
+          { 'Relay': 'relay' },
+          { 'Penalties': 'penalties' },
+          { 'DNF': 'dnf' }
         ]
-        let csvData = stringify(_.sortBy(out, ['category','last_name']), {columns, header:true});
+        let csvData = stringify(_.sortBy(out, ['category', 'last_name']), { columns, header: true });
         // return _.sortBy(out, ['category','last_name'])
         return reply.header('Content-disposition', `attachment; filename=${request.params.id}.csv`).type('text/csv').send(csvData);
       } else {

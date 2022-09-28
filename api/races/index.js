@@ -30,7 +30,8 @@ module.exports = async function (fastify, opts) {
         raceid:1,
         couponsEnabled:1,
         showPaytypeOnRoster:1,
-        facebookShare:1
+        facebookShare:1,
+        isTestData:1
     }}).sort({eventStart:1})
 
     return await cursor.toArray();
@@ -48,7 +49,8 @@ module.exports = async function (fastify, opts) {
         couponsEnabled:1,
         showPaytypeOnRoster:1,
         facebookShare:1,
-        isTestData:1
+        isTestData:1,
+        stripeMeta:1
     }});
     result.paymentOptions = updateRacePaymentOptions(result.paymentOptions);
     
@@ -74,7 +76,8 @@ module.exports = async function (fastify, opts) {
             raceid:1,
             couponsEnabled:1,
             showPaytypeOnRoster:1,
-            isTestData:1
+            isTestData:1,
+            stripeMeta:1
         };
         const result = await this.mongo.db.collection('races').findOne({'raceid':request.params.id},{projection});
         if (result) {
