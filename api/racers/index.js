@@ -190,13 +190,43 @@ module.exports = async function (fastify, opts) {
           { 'key': 'bibNumber', 'header': 'Bibs', },
           { 'key': 'first_name', 'header': 'First', },
           { 'key': 'last_name', 'header': 'Last' },
-          { 'Relay': 'relay' },
-          { 'Penalties': 'penalties' },
-          { 'DNF': 'dnf' }
+          { 'key': 'Relay', 'header': 'relay' },
+          { 'key': 'Penalties', 'header': 'penalties' },
+          { 'key': 'DNF', 'header': 'dnf' }
         ]
         let csvData = stringify(_.sortBy(out, ['category', 'last_name']), { columns, header: true });
         // return _.sortBy(out, ['category','last_name'])
         return reply.header('Content-disposition', `attachment; filename=${request.params.id}.csv`).type('text/csv').send(csvData);
+      } else {
+        return fastify.httpErrors.notFound();
+      }
+    }
+  })
+  fastify.route({
+    method: 'GET',
+    url: '/race/:id/exportjson',
+    preHandler: fastify.auth([fastify.verifyAdminSession]),
+    handler: async function (request, reply) {
+      if (!request.params.id) {
+        return fastify.httpErrors.badRequest('You must provide a race ID');
+      }
+
+      const result = await this.mongo.db.collection('races').findOne({ 'raceid': request.params.id }, {
+        projection: {
+          "regCategories": 1, "registeredRacers": 1, 'eventDate': 1, 'eventDetails.name': 1
+        }
+      })
+      if (result) {
+        let out = [];
+        console.log(result.eventDate)
+        result.registeredRacers.forEach((racerObj) => {
+          let cat = _.find(result.regCategories, { id: racerObj.category })
+          let start = dayjs(`${dayjs(result.eventDate).format('YYYY-MM-DD')} ${cat.startTime}`).format('MM/DD/YY h:mm A');
+          out.push(_.assign(racerObj, { category: cat.catdispname, start, eventName: result.eventDetails.name }));
+        })
+        const jsonData = JSON.stringify(out);
+        // return _.sortBy(out, ['category','last_name'])
+        return reply.header('Content-disposition', `attachment; filename=${request.params.id}.json`).type('text/json').send(jsonData);
       } else {
         return fastify.httpErrors.notFound();
       }

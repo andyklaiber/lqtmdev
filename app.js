@@ -1,7 +1,9 @@
 'use strict'
+
 const path = require('path')
 const AutoLoad = require('@fastify/autoload')
 const { url } = require('./src/db.config');
+
 
 const mongoose = require('mongoose')
 
@@ -12,6 +14,7 @@ mongoose.connect(url)
 
 module.exports = async function (fastify, opts) {
     // fastify.register(require('fastify-websocket'));
+    // fastify.register(require("fastify-sentry"))
     fastify.register(require('@fastify/auth'));
     fastify.register(require('@fastify/static'), {
         root: path.join(__dirname, 'public'),
