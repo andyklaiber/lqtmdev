@@ -1,4 +1,3 @@
-const { update } = require('lodash');
 const _ = require('lodash');
 const dayjs = require('dayjs');
 const { capitalizeName } = require('../../src/result_lib');
@@ -18,7 +17,7 @@ module.exports = async function (fastify, opts) {
 
       const result = await this.mongo.db.collection('races').findOne({ 'raceid': request.params.id }, {
         projection: {
-          "regCategories": 1, "paymentOptions": 1, "registeredRacers": 1,
+          "regCategories": 1, "paymentOptions": 1, "registeredRacers": 1
         }
       })
       const unpaid = await this.mongo.db.collection('payments').find(
@@ -38,6 +37,97 @@ module.exports = async function (fastify, opts) {
       }
     }
   })
+  fastify.route({
+  //get series single registrations for prev and current race
+  method: 'GET',
+  url: '/series/:id',
+  preHandler: fastify.auth([fastify.verifyAdminSession]),
+  handler: async function (request, reply) {
+    if (!request.params.id) {
+      return fastify.httpErrors.badRequest('You must provide a series ID');
+    }
+
+    //const {first_name, last_name} = request.body
+    const result = await this.mongo.db.collection('races').find({ 'series': request.params.id }, {
+      projection: {
+        "regCategories": 1, 
+        // "paymentOptions": 1, 
+        "registeredRacers": 1, 
+        eventDate:1, displayName:1, raceid:1
+      }
+    }).sort({eventDate: 1}).toArray();
+    // const unpaid = await this.mongo.db.collection('payments').find(
+    //   { 'regData.raceid': request.params.id, 'regData.paytype': 'cash', status: { $ne: 'paid' } },
+    //   { projection: { regData: 1, _id: 1, status: 1 } }).toArray();
+    if (result) {
+
+      let today = dayjs();
+      let prevIdx = 0;
+      let filteredRaces = _.filter(result, ({ eventDate }, idx) => {
+        if (dayjs(eventDate).isBefore(today.subtract(24, 'hour'))) {
+          prevIdx = idx;
+          console.log(dayjs(eventDate).format())
+          console.log(today.format());
+          return true;
+        }
+        return false;
+      })
+      console.log(prevIdx)
+      filteredRaces.push(result[prevIdx + 1])
+      let allracers = []
+      filteredRaces.forEach(({registeredRacers, displayName})=>{
+        registeredRacers.forEach((racer)=>{
+          racer.eventDisplayName = displayName;
+        })
+        allracers = [...allracers, ...registeredRacers];
+      })
+
+      //get all single entries with a bib
+        allracers = _.filter(allracers, (racer)=>{
+          if(racer.bibNumber && (racer.paytype=='cash' || racer.paytype=='single')){
+            return true
+          }
+        })
+      
+      // get all new (single) registrations without a bib 
+      let newRegs = _.filter(filteredRaces[filteredRaces.length-1].registeredRacers, (racer)=>{
+        if(!racer.bibNumber && (racer.paytype=='cash' || racer.paytype=='single')){
+          return true
+        }
+      })
+
+
+      let returnObj = {
+        //filteredRaces,
+        regCategories: filteredRaces[filteredRaces.length-1].regCategories,
+        racers: _.sortBy([...allracers, ...newRegs], 'last_name')
+      }
+      // if (unpaid.length) {
+      //   let reformatted = _.map(unpaid, (record) => {
+      //     return _.assign({}, record.regData, { status: record.status, paymentId: record._id });
+      //   })
+
+      //   returnObj.unpaid = reformatted;
+      // }
+      return returnObj;
+    } else {
+      return fastify.httpErrors.notFound();
+    }
+  }
+})
+  //get racer by bib number
+  fastify.post('/bib', async function(request,reply){
+    const {series, bibNumber} = request.body
+    if (!bibNumber) {
+      return fastify.httpErrors.badRequest('You must provide a bib number to look up');
+    }
+    let result = await fastify.findSeriesRacerByBib(bibNumber, series)
+    if (result) {
+      return _.omit(result, ['email']);
+    } else {
+      return fastify.httpErrors.notFound('Could not find previous entry with bib: '+bibNumber);
+    }
+})
   // edit registered racer
   fastify.route({
     method: 'PATCH',

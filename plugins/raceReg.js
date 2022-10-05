@@ -9,6 +9,24 @@ const dayjs = require('dayjs');
 // to export the decorators to the outer scope
 
 module.exports = fp(async function (fastify, opts) {
+  fastify.decorate('findSeriesRacerByBib', async function (bibNumber, series){
+    const raceData = await this.mongo.db.collection('races').find({ series }, {
+      projection: {
+        "registeredRacers": 1
+      }
+    }).toArray();
+    if(!raceData){
+        throw fastify.httpErrors.notFound('Race not found');
+    }
+    let allracers = []
+    raceData.forEach(({registeredRacers})=>{
+      allracers = [...allracers, ...registeredRacers];
+    })
+    let result = _.reverse(allracers).find((racer)=>{
+      return bibNumber === racer.bibNumber;
+    })
+    return result;
+  })
   fastify.decorate('registerRacer', async function (regData, paymentId, raceData, logger, sendEmail=true) {
     // payment type - single or season
     // registrant data, race category id, payment id - reference, add to race racers[] array
@@ -20,10 +38,10 @@ module.exports = fp(async function (fastify, opts) {
     // fastify.log.info(racerData, );
     if(regData.paytype === 'season'){
       await this.mongo.db.collection('races').updateMany({ series: raceData.series },
-        {$push: {registeredRacers: racerData}});
+        {$addToSet: {registeredRacers: racerData}});
     }else{
       await this.mongo.db.collection('races').updateOne({ raceid: regData.raceid },
-        {$push: {registeredRacers: racerData}});
+        {$addToSet: {registeredRacers: racerData}});
     }
     if(sendEmail){
       return fastify.sendRegConfirmEmail(regData, paymentId, raceData, logger);

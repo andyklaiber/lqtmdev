@@ -88,7 +88,7 @@ module.exports = async function (fastify, opts) {
             if (payment && payment.regData.paytype == 'single') {
                 let pullResult = await this.mongo.db.collection('races').updateMany(
                     {series: raceData.series },
-                    { $pull: { registeredRacers: { paymentId: request.query.paymentId } } }
+                    { $pull: { registeredRacers: { paymentId: paymentObjId } } }
                   )
                 
                 // set race id to destination race id
@@ -155,6 +155,29 @@ module.exports = async function (fastify, opts) {
         if(!raceData){
             throw fastify.httpErrors.badRequest('Race not found');
         }
+        //see if they are already signed up
+        let existingReg = _.find(raceData.registeredRacers,{
+            first_name:regData.first_name,
+            last_name: regData.last_name,
+            email: regData.email,
+            category: regData.category
+        })
+        if(existingReg){
+            throw fastify.httpErrors.conflict('There is already a registration with the same name, email and category');
+        }
+        if(regData.prevPaymentId){
+            //let prevSingleReg = await fastify.findSeriesRacerByBib(bibNumber, series);
+            let prevReg = await this.mongo.db.collection('payments').findOne({ '_id': this.mongo.ObjectId(regData.prevPaymentId) });
+            if(prevReg){
+                delete regData.prevPaymentId;
+                _.defaults(regData, prevReg.regData);
+            }
+            else{
+                throw fastify.httpErrors.badRequest('Could not find requested previous registration information');
+            }
+        }
+        return regData;
+
         const paymentRecord = await this.mongo.db.collection('payments').insertOne({ regData });
         //see if they registered for a sponsored category
         const regCat = _.find(raceData.regCategories, {"id": regData.category});
@@ -204,6 +227,7 @@ module.exports = async function (fastify, opts) {
                 success_url: `${process.env.DOMAIN}/#/regconfirmation/${regData.raceid}/${paymentRecord.insertedId}`,
                 cancel_url: `${process.env.DOMAIN}/#/regconfirmation/${regData.raceid}/${paymentRecord.insertedId}`,
                 payment_intent_data: {
+                    description: raceData.displayName + ' ' + payDets.name,
                     application_fee_amount: regFee,
                 },
             }
