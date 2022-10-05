@@ -176,7 +176,6 @@ module.exports = async function (fastify, opts) {
                 throw fastify.httpErrors.badRequest('Could not find requested previous registration information');
             }
         }
-        return regData;
 
         const paymentRecord = await this.mongo.db.collection('payments').insertOne({ regData });
         //see if they registered for a sponsored category
