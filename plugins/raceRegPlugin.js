@@ -23,7 +23,7 @@ module.exports = fp(async function (fastify, opts) {
       allracers = [...allracers, ...registeredRacers];
     })
     let result = _.reverse(allracers).find((racer)=>{
-      return bibNumber === racer.bibNumber;
+      return bibNumber == racer.bibNumber;
     })
     return result;
   })
@@ -34,11 +34,15 @@ module.exports = fp(async function (fastify, opts) {
       ...regData,
         paymentId
     }
-    delete racerData.raceid
     // fastify.log.info(racerData, );
     if(regData.paytype === 'season'){
-      await this.mongo.db.collection('races').updateMany({ series: raceData.series },
-        {$addToSet: {registeredRacers: racerData}});
+      if(raceData.series){
+        await this.mongo.db.collection('races').updateMany({ series: raceData.series },
+          {$addToSet: {registeredRacers: racerData}});
+        }else{
+          await this.mongo.db.collection('races').updateOne({ raceid: regData.raceid },
+            {$addToSet: {registeredRacers: racerData}});    
+        }
     }else{
       await this.mongo.db.collection('races').updateOne({ raceid: regData.raceid },
         {$addToSet: {registeredRacers: racerData}});
@@ -46,9 +50,13 @@ module.exports = fp(async function (fastify, opts) {
     if(sendEmail){
       return fastify.sendRegConfirmEmail(regData, paymentId, raceData, logger);
     }
-    return {};
+    return {regData, paymentId};
   })
   fastify.decorate('sendRegConfirmEmail', async function (regData, paymentId, raceData, logger) {
+    if(_.indexOf(regData.email,'test.com')){
+      logger.info('test email, not sending confirmation email');
+      return;
+    }
     const regCat = _.find(raceData.regCategories, {"id": regData.category});
     const template = `<html><head></head><body>
     <h1>Thank you for registering for ${raceData.eventDetails.name}</h1>

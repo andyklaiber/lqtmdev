@@ -20,7 +20,44 @@ module.exports = async function (fastify, opts) {
 
 
     // })
+    fastify.route({
+        method: 'PUT',
+        url: '/register',
+        preHandler: fastify.auth([fastify.verifyAdminSession]),
+        handler: async function (request, reply) {
+            if (!request.query.raceId) {
+                return fastify.httpErrors.badRequest('You must provide a race ID');
+            }
+            /*
+            body:{
+            first_name: 'Andy',
+            last_name: 'cashTester',
+            email: 'andy.klaiber@gmail.com',
+            sponsor: 'data',
+            category: 'b35+_men',
+            paytype: 'cash',
+            racerAge: 38,
+            raceid: 'rcx_2022_test_1',
+            status: 'unpaid',
+            paymentId: '63337dd58f99a6907d061a8f',
+            bibNumber: '545',
+            paymentReceived: true,
+            paymentAmount: '25'
+            }
+            */
+            let paymentId=request.query.paymentId;
+            if(!paymentId){
+                return fastify.httpErrors.badRequest('you must provide a paymentID to register a cash payment')
+            }
+            request.body.raceid=request.query.raceId;
+            let paymentData = _.omit(request.body, ['paymentId','status'])
+            
+            await this.mongo.db.collection('payments').updateOne({ _id: this.mongo.ObjectId(request.query.paymentId)}, { $set:{ regData:paymentData, status: 'paid'} }, { upsert: true });
 
+            const raceData = await this.mongo.db.collection('races').findOne({ raceid: paymentData.raceid });
+            return await fastify.registerRacer(_.omit(paymentData,['paymentAmount, paymentRecieved']), paymentId, raceData, request.log, false);
+        }
+    }) 
     // create new reg or mark cash unpaids as registered for single entry ONLY (for now)
     fastify.route({
         method: 'POST',
@@ -48,6 +85,7 @@ module.exports = async function (fastify, opts) {
             }
             */
             let paymentId=request.query.paymentId;
+            request.body.raceid=request.query.raceId;
             let paymentData = _.omit(request.body, ['paymentId','status'])
             if (!paymentId) {
                 let paymentRecord = await this.mongo.db.collection('payments').insertOne({ regData:paymentData, status: 'paid'});
@@ -59,8 +97,6 @@ module.exports = async function (fastify, opts) {
 
             const raceData = await this.mongo.db.collection('races').findOne({ raceid: paymentData.raceid });
             return await fastify.registerRacer(_.omit(paymentData,['paymentAmount, paymentRecieved']), paymentId, raceData, request.log, false);
-            
-            
         }
     }) 
     // move a single reg in a series to a new race (can lose bib number, not stored in payment record)
@@ -171,6 +207,8 @@ module.exports = async function (fastify, opts) {
             if(prevReg){
                 delete regData.prevPaymentId;
                 _.defaults(regData, prevReg.regData);
+                delete regData.paymentReceived;
+                delete regData.paymentAmount
             }
             else{
                 throw fastify.httpErrors.badRequest('Could not find requested previous registration information');

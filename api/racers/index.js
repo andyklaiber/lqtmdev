@@ -17,7 +17,7 @@ module.exports = async function (fastify, opts) {
 
       const result = await this.mongo.db.collection('races').findOne({ 'raceid': request.params.id }, {
         projection: {
-          "regCategories": 1, "paymentOptions": 1, "registeredRacers": 1
+          displayName:1,"regCategories": 1, "paymentOptions": 1, "registeredRacers": 1, series:1
         }
       })
       const unpaid = await this.mongo.db.collection('payments').find(
@@ -53,7 +53,7 @@ module.exports = async function (fastify, opts) {
         "regCategories": 1, 
         // "paymentOptions": 1, 
         "registeredRacers": 1, 
-        eventDate:1, displayName:1, raceid:1
+        eventDate:1, displayName:1, raceid:1, series:1
       }
     }).sort({eventDate: 1}).toArray();
     // const unpaid = await this.mongo.db.collection('payments').find(
@@ -75,9 +75,10 @@ module.exports = async function (fastify, opts) {
       console.log(prevIdx)
       filteredRaces.push(result[prevIdx + 1])
       let allracers = []
-      filteredRaces.forEach(({registeredRacers, displayName})=>{
+      filteredRaces.forEach(({registeredRacers, displayName, raceid})=>{
         registeredRacers.forEach((racer)=>{
           racer.eventDisplayName = displayName;
+          racer.raceid = raceid
         })
         allracers = [...allracers, ...registeredRacers];
       })
@@ -98,7 +99,7 @@ module.exports = async function (fastify, opts) {
 
 
       let returnObj = {
-        //filteredRaces,
+        races: _.map(result, 'raceid'),
         regCategories: filteredRaces[filteredRaces.length-1].regCategories,
         racers: _.sortBy([...allracers, ...newRegs], 'last_name')
       }
@@ -128,6 +129,25 @@ module.exports = async function (fastify, opts) {
       return fastify.httpErrors.notFound('Could not find previous entry with bib: '+bibNumber);
     }
 })
+  // authenticated bib lookup for admin site
+  fastify.route({
+    method: 'POST',
+    url: '/bib/:bib',
+    preHandler: fastify.auth([fastify.verifyAdminSession]),
+    handler: async function (request, reply) {
+      const bibNumber = request.params.bib;
+      const { series } = request.body
+      if (!bibNumber) {
+        return fastify.httpErrors.badRequest('You must provide a bib number to look up');
+      }
+      let result = await fastify.findSeriesRacerByBib(bibNumber, series)
+      if (result) {
+        return result;
+      } else {
+        return fastify.httpErrors.notFound('Could not find previous entry with bib: ' + bibNumber);
+      }
+    }
+  })
   // edit registered racer
   fastify.route({
     method: 'PATCH',
@@ -285,6 +305,43 @@ module.exports = async function (fastify, opts) {
           { 'key': 'DNF', 'header': 'dnf' }
         ]
         let csvData = stringify(_.sortBy(out, ['category', 'last_name']), { columns, header: true });
+        // return _.sortBy(out, ['category','last_name'])
+        return reply.header('Content-disposition', `attachment; filename=${request.params.id}.csv`).type('text/csv').send(csvData);
+      } else {
+        return fastify.httpErrors.notFound();
+      }
+    }
+  })
+  // export contacts csv
+  fastify.route({
+    method: 'GET',
+    url: '/race/:id/export-contact',
+    preHandler: fastify.auth([fastify.verifyAdminSession]),
+    handler: async function (request, reply) {
+      if (!request.params.id) {
+        return fastify.httpErrors.badRequest('You must provide a race ID');
+      }
+
+      const result = await this.mongo.db.collection('races').findOne({ 'raceid': request.params.id }, {
+        projection: {
+          "regCategories": 1, "registeredRacers": 1, 'eventDate': 1, 'eventDetails.name': 1
+        }
+      })
+      if (result) {
+        let out = [];
+        console.log(result.eventDate)
+        result.registeredRacers.forEach((racerObj) => {
+          let cat = _.find(result.regCategories, { id: racerObj.category })
+          let start = dayjs(`${dayjs(result.eventDate).format('YYYY-MM-DD')} ${cat.startTime}`).format('MM/DD/YY h:mm A');
+          out.push(_.assign(racerObj, { category: cat.catdispname, start, eventName: result.eventDetails.name }));
+        })
+        const columns = [
+          { 'key': 'email', 'header': 'Email' },
+          { 'key': 'first_name', 'header': 'First', },
+          { 'key': 'last_name', 'header': 'Last' },
+          { 'key': 'category', 'header': 'Category', },
+        ]
+        let csvData = stringify(_.sortBy(out, ['last_name']), { columns, header: true });
         // return _.sortBy(out, ['category','last_name'])
         return reply.header('Content-disposition', `attachment; filename=${request.params.id}.csv`).type('text/csv').send(csvData);
       } else {
