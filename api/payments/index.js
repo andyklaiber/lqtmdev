@@ -1,7 +1,9 @@
 
 const _ = require('lodash');
 const Stripe = require('stripe');
+const dayjs = require('dayjs');
 const { getFees, updateRacePaymentOptions } = require("../../src/fees");
+const { generate, parse, transform, stringify } = require('csv/sync');
 
 module.exports = async function (fastify, opts) {
     // fastify.post('/email', async function(request){
@@ -17,8 +19,44 @@ module.exports = async function (fastify, opts) {
     //             await fastify.registerRacer(payRecord.regData, payRecord._id, raceData, request.log)
     //         }
     //     })
+    // })
+    //     fastify.post('/register-csv', async function(request){
+    //         const raceid = request.query.raceid
+    //         const raceData = await this.mongo.db.collection('races').findOne({ raceid });
+        
+    //         const data = request.body;
+    //         freeEntries = parse(data, {columns: true,});
+
+    //     freeEntries.forEach(async (entryRow)=>{
+    //         let racerAge = undefined;
+    //         if(entryRow.DOB){
+    //             const dec31 = dayjs();
+    //             const bday = dayjs(entryRow.DOB);
+    //             racerAge = dec31.year() - bday.year();
+    //         }
 
 
+    //         const name = entryRow.Name.split(' ');
+    //         const first_name = name[0];
+    //         const last_name = name.slice(1).join(' ');
+    //         const regData = {
+    //             first_name,
+    //             last_name,
+    //             email: entryRow.Email,
+    //             category: entryRow.Category,
+    //             racerAge,
+    //             raceid,
+    //             status: 'paid',
+    //             paytype: 'comp',
+
+    //         }
+    //         //console.log(regData);
+    //         let paymentRecord = await this.mongo.db.collection('payments').insertOne({ regData, status: 'paid'});
+    //         let paymentId = paymentRecord.insertedId;
+
+    //         return await fastify.registerRacer(regData, paymentId, raceData, request.log, false);
+    //     })
+    //     //return freeEntries;
     // })
     fastify.route({
         method: 'PUT',

@@ -30,6 +30,7 @@ module.exports = async function (fastify, opts) {
         raceid:1,
         couponsEnabled:1,
         showPaytypeOnRoster:1,
+        cashPaymentsEnabled:1,
         facebookShare:1,
         isTestData:1
     }}).sort({eventStart:1})
@@ -48,6 +49,7 @@ module.exports = async function (fastify, opts) {
         raceid:1,
         couponsEnabled:1,
         showPaytypeOnRoster:1,
+        cashPaymentsEnabled:1,
         facebookShare:1,
         isTestData:1,
         stripeMeta:1
@@ -76,6 +78,7 @@ module.exports = async function (fastify, opts) {
             raceid:1,
             couponsEnabled:1,
             showPaytypeOnRoster:1,
+            cashPaymentsEnabled:1,
             isTestData:1,
             stripeMeta:1
         };
