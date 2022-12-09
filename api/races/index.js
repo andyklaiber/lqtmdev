@@ -52,7 +52,8 @@ module.exports = async function (fastify, opts) {
         cashPaymentsEnabled:1,
         facebookShare:1,
         isTestData:1,
-        stripeMeta:1
+        stripeMeta:1,
+        archived:1
     }});
     result.paymentOptions = updateRacePaymentOptions(result.paymentOptions);
     
@@ -80,7 +81,8 @@ module.exports = async function (fastify, opts) {
             showPaytypeOnRoster:1,
             cashPaymentsEnabled:1,
             isTestData:1,
-            stripeMeta:1
+            stripeMeta:1,
+            archived:1
         };
         const result = await this.mongo.db.collection('races').findOne({'raceid':request.params.id},{projection});
         if (result) {
