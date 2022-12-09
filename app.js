@@ -1,37 +1,38 @@
 'use strict'
 
-const path = require('path')
-const AutoLoad = require('@fastify/autoload')
+const path = require('path');
+const mongoose = require('mongoose');
+const fastifyAutoLoad = require('@fastify/autoload');
+const fastifyStatic = require('@fastify/static');
+const fastifyCors = require('@fastify/cors');
+const fastifyMongoDb = require('@fastify/mongodb');
+const fastifySecureSession = require('@fastify/secure-session');
 const { url } = require('./src/db.config');
 
-
-const mongoose = require('mongoose')
-
-// Connect to DB
-mongoose.connect(url)
-    .then(() => console.log(`MongoDB connected`))
-    .catch(err => console.log(err))
-
 module.exports = async function (fastify, opts) {
-    // fastify.register(require('fastify-websocket'));
-    // fastify.register(require("fastify-sentry"))
+    try {
+        await mongoose.connect(url);
+    } catch(err) {
+        console.log(err);
+    }
+    
     fastify.register(require('@fastify/auth'));
-    fastify.register(require('@fastify/static'), {
+    
+    fastify.register(fastifyStatic, {
         root: path.join(__dirname, 'public'),
-        prefix: '/', // optional: default '/'
+        prefix: '/'
     })
-    fastify.register(require('@fastify/cors'), {
+    fastify.register(fastifyCors, {
         origin: true,
         credentials: true
     })
-    fastify.register(require('@fastify/mongodb'), {
+    fastify.register(fastifyMongoDb, {
         // force to close the mongodb connection when app stopped
         // the default value is false
         forceClose: true,
-
         url
     });
-    fastify.register(require('@fastify/secure-session'), {
+    fastify.register(fastifySecureSession, {
         // the name of the session cookie, defaults to 'session'
         cookieName: 'signsessid',
         // adapt this to point to the directory where secret-key is located
@@ -47,14 +48,14 @@ module.exports = async function (fastify, opts) {
     // This loads all plugins defined in plugins
     // those should be support plugins that are reused
     // through your application
-    fastify.register(AutoLoad, {
+    fastify.register(fastifyAutoLoad, {
         dir: path.join(__dirname, 'plugins'),
         options: Object.assign({}, opts)
     })
 
     // This loads all plugins defined in routes
     // define your routes in one of these
-    fastify.register(AutoLoad, {
+    fastify.register(fastifyAutoLoad, {
         dir: path.join(__dirname, 'api'),
         options: Object.assign({}, opts),
         dirNameRoutePrefix: function rewrite(folderParent, folderName) {
@@ -62,14 +63,6 @@ module.exports = async function (fastify, opts) {
             return `api/${folderName}`;
         }
     })
-
-    // fastify.get('/live/', { websocket: true }, (connection /* SocketStream */, req /* FastifyRequest */) => {
-
-    //     connection.socket.on('connect', message => {
-    //         // message.toString() === 'hi from client'
-    //         connection.socket.send('hi from server')
-    //     })
-    // })
 
     fastify.get('/public/index.html', async function (request, reply) {
         reply.redirect('/')
