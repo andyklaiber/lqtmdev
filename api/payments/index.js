@@ -286,9 +286,9 @@ module.exports = async function (fastify, opts) {
             }
             let regAmt = parseFloat(payDets.amount);
             let { stripeFee, regFee, priceInCents } = getFees(payDets.amount);
-            if(raceData.optionalPurchases){
+            if(raceData.optionalPurchases && regData.optionalPurchases){
                 raceData.optionalPurchases.forEach(({ id, amount }) => {
-                    if (regData.optionalPurchases[id]) {
+                    if (regData.optionalPurchases && regData.optionalPurchases[id]) {
                         regAmt += parseFloat(amount);
                     }
                 })
