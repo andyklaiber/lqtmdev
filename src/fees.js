@@ -8,11 +8,14 @@ module.exports = {
 function getFees(priceInDollars){
     let cents = priceInDollars * 100;
 
-    let onlineFee = cents * .06;
+    let onlineFee = cents * .04;
+    if(onlineFee > 600){
+        onlineFee = 600
+    }
 
-    let ccFee = Math.round((cents + onlineFee + 30)/( 1 - .029 ));
+    let totalCharge = Math.round((cents + onlineFee + 30)/( 1 - .029 ));
 
-    return { stripeFee: ccFee - onlineFee - cents, regFee: onlineFee };
+    return { stripeFee: totalCharge - onlineFee - cents, regFee: onlineFee, priceInCents:cents };
 }
 
 function updateRacePaymentOptions(paymentOptions, fractionDiscount=false){

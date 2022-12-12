@@ -284,14 +284,26 @@ module.exports = async function (fastify, opts) {
             if (!raceData.stripeMeta?.accountId) {
                 throw fastify.httpErrors.preconditionFailed('Stripe connect account not defined');
             }
-            const { regFee, stripeFee } = getFees(payDets.amount);
+            let regAmt = parseFloat(payDets.amount);
+            let { stripeFee, regFee, priceInCents } = getFees(payDets.amount);
+            if(raceData.optionalPurchases){
+                raceData.optionalPurchases.forEach(({ id, amount }) => {
+                    if (regData.optionalPurchases[id]) {
+                        regAmt += parseFloat(amount);
+                    }
+                })
+                let allFees = getFees(regAmt)
+                priceInCents = allFees.priceInCents;
+                regFee = allFees.regFee;
+                stripeFee= allFees.stripeFee;
+            }
             const sessionConfig = 
             {
                 line_items: [{
                     quantity: 1,
                     price_data:{
                         currency: 'USD',
-                        unit_amount: (payDets.amount * 100) + regFee + stripeFee, // in cents
+                        unit_amount: priceInCents + stripeFee + regFee, // in cents
                         product_data:{
                             name: raceData.displayName + ' ' + payDets.name,
                             description: payDets.description || payDets.type + ' entry fee'
@@ -312,6 +324,7 @@ module.exports = async function (fastify, opts) {
             }else{
                 stripe = Stripe(process.env.STRIPE_SECRET_KEY)
             }
+            request.log.info({regData, sessionConfig}, 'initiating stripe checkout');
             const session = await stripe.checkout.sessions.create(sessionConfig, {
                 stripeAccount: raceData.stripeMeta.accountId,
             });
