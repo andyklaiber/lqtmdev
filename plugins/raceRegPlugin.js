@@ -53,8 +53,8 @@ module.exports = fp(async function (fastify, opts) {
     return {regData, paymentId};
   })
   fastify.decorate('sendRegConfirmEmail', async function (regData, paymentId, raceData, logger) {
-    if(_.indexOf(regData.email,'test.com')){
-      logger.info('test email, not sending confirmation email');
+    if(_.indexOf(regData.email,'test.com') > -1){
+      logger.info({regData},'test email, not sending confirmation email');
       return;
     }
     const regCat = _.find(raceData.regCategories, {"id": regData.category});

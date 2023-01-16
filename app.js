@@ -8,9 +8,10 @@ const fastifyCors = require('@fastify/cors');
 const fastifyMongoDb = require('@fastify/mongodb');
 const fastifySecureSession = require('@fastify/secure-session');
 const { url } = require('./src/db.config');
-
+console.log(url);
 module.exports = async function (fastify, opts) {
     try {
+        mongoose.set('strictQuery', false);
         await mongoose.connect(url);
     } catch(err) {
         console.log(err);

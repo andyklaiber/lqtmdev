@@ -310,9 +310,11 @@ module.exports = async function (fastify, opts) {
                         },
                     }
                 }],
+                invoice_creation: {enabled: true},
                 mode: 'payment',
                 success_url: `${process.env.DOMAIN}/#/regconfirmation/${regData.raceid}/${paymentRecord.insertedId}`,
                 cancel_url: `${process.env.DOMAIN}/#/regconfirmation/${regData.raceid}/${paymentRecord.insertedId}`,
+                customer_email: regData.email,
                 payment_intent_data: {
                     description: raceData.displayName + ' ' + payDets.name,
                     application_fee_amount: regFee,

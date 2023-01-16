@@ -1,3 +1,5 @@
+// These categories are specific to the results generation for 2022
+
 const Category = require('./models/Category')
 
 module.exports = {categoryOrder:[
