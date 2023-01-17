@@ -20,47 +20,75 @@ const sortByLast = (a, b) => {
 module.exports = async function (fastify, opts) {
   fastify.get('/', async function (request, reply) {
     const cursor = this.mongo.db.collection('races').find({active:true,archived:{ $ne: true }},{projection:{
-        displayName: 1,
-        eventDetails: 1,
-        formattedStartDate:1,
-        eventDate: 1,
-        paymentOptions: 1,
-        series: 1,
-        regCategories: 1,
-        raceid:1,
-        couponsEnabled:1,
-        showPaytypeOnRoster:1,
         cashPaymentsEnabled:1,
+        couponsEnabled:1,
+        displayName: 1,
+        eventDate: 1,
+        eventDetails: 1,
+        entryCountMax:1,
         facebookShare:1,
-        isTestData:1
+        formattedStartDate:1,
+        isTestData:1,
+        paymentOptions: 1,
+        raceid:1,
+        regCategories: 1,
+        series: 1,
+        showPaytypeOnRoster:1,
     }}).sort({eventStart:1})
 
     return await cursor.toArray();
   })
   fastify.get('/:id', async function (request, reply) {
-    const result = await this.mongo.db.collection('races').findOne({'raceid':request.params.id},{projection:{
-        displayName: 1,
-        eventDetails: 1,
-        formattedStartDate:1,
-        eventDate: 1,
-        paymentOptions: 1,
-        series: 1,
-        regCategories: 1,
-        raceid:1,
-        couponsEnabled:1,
-        showPaytypeOnRoster:1,
-        cashPaymentsEnabled:1,
-        optionalPurchases:1,
-        waiver:1,
-        facebookShare:1,
-        isTestData:1,
-        stripeMeta:1,
-        archived:1
-    }});
-    result.paymentOptions = updateRacePaymentOptions(result.paymentOptions);
+
+    const pipeline = [
+        {
+            $match:{
+                'raceid':request.params.id
+            }
+        },
+        {
+            '$limit': 1
+        },
+        {
+          '$addFields': {
+            'entryCount': {
+              '$size': '$registeredRacers'
+            }
+          }
+        },
+        {$project:{
+            archived:1,
+            cashPaymentsEnabled:1,
+            couponsEnabled:1,
+            displayName: 1,
+            entryCount:1,
+            entryCountMax:1,
+            eventDate: 1,
+            eventDetails: 1,
+            facebookShare:1,
+            formattedStartDate:1,
+            isTestData:1,
+            optionalPurchases:1,
+            paymentOptions: 1,
+            raceid:1,
+            regCategories: 1,
+            series: 1,
+            showPaytypeOnRoster:1,
+            stripeMeta:1,
+            waiver:1,
+        }
+    }
+    ];
+    const result = await this.mongo.db.collection('races').aggregate(pipeline).toArray();
     
-    if (result) {
-        return result; 
+    if (result && result.length > 0) {
+        if(result.length === 1){
+            const raceData = result[0]
+            raceData.paymentOptions = updateRacePaymentOptions(raceData.paymentOptions);
+            return raceData; 
+        }else{
+            return 
+        }
     } else {
         return fastify.httpErrors.notFound();
     }
@@ -71,20 +99,22 @@ module.exports = async function (fastify, opts) {
     preHandler: fastify.auth([fastify.verifyAdminSession]),
     handler: async function (request, reply) {
         const projection = {
+            archived:1,
+            cashPaymentsEnabled:1,
+            couponsEnabled:1,
+            couponCodes:1,
             displayName: 1,
+            entryCountMax:1,
+            eventDate: 1,
             eventDetails: 1,
             formattedStartDate:1,
-            eventDate: 1,
-            paymentOptions: 1,
-            series: 1,
-            regCategories: 1,
-            raceid:1,
-            couponsEnabled:1,
-            showPaytypeOnRoster:1,
-            cashPaymentsEnabled:1,
             isTestData:1,
+            paymentOptions: 1,
+            raceid:1,
+            regCategories: 1,
+            series: 1,
+            showPaytypeOnRoster:1,
             stripeMeta:1,
-            archived:1
         };
         const result = await this.mongo.db.collection('races').findOne({'raceid':request.params.id},{projection});
         if (result) {

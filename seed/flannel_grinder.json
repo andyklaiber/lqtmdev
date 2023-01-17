@@ -1,0 +1,177 @@
+{
+  "active": true,
+  "displayName": "Flannel Grinder 2023",
+  "eventStart": {
+    "$numberLong": "1653528053477"
+  },
+  "eventDate": "2023-03-25T00:00",
+  "formattedStartDate": "3/25",
+  "raceid": "flannel_grinder_2023",
+  "useActualStarts": false,
+  "eventDetails": {
+    "name": "Flannel Grinder 2023",
+    "formattedDates": "March 25, 9AM",
+    "tagline": "Meadow Vista, CA",
+    "regOpenDate": "2023-1-18T07:00",
+    "logoUrl": "/FlannelGrinder2023small.png",
+    "homepageUrl": "https://www.boundlesslocomotion.com/flannel-grinder",
+    "facebookShare": {}
+  },
+  "regCategories": [
+    {
+      "id": "normal_route",
+      "catdispname": "Normal Route",
+      "laps": 1,
+      "disporder": 0
+    },
+    {
+      "id": "longer_route",
+      "catdispname": "Longer Route",
+      "laps": 1,
+      "disporder": 1
+    }
+  ],
+  "paymentOptions": [
+    {
+      "name": "Single Entry - $90",
+      "type": "single",
+      "amount": "90"
+    }
+  ],
+  "stripeMeta": {
+    "accountId": "acct_1LjqwwBvZMvWryQV"
+  },
+  "isTestData": true,
+  "registeredRacers": [],
+  "couponsEnabled": true,
+    "couponCodes": {
+      "47MMRECH": {
+        "fractionDiscount": 1,
+        "singleUse": true
+      },
+      "5K3ZEHSM": {
+        "fractionDiscount": 1,
+        "singleUse": true
+      },
+      "5XX3VEBH": {
+        "fractionDiscount": 1,
+        "singleUse": true
+      },
+      "7PU3NPRT": {
+        "fractionDiscount": 1,
+        "singleUse": true
+      },
+      "9BLA3VKH": {
+        "fractionDiscount": 1,
+        "singleUse": true
+      },
+      "9Z4UVXNF": {
+        "fractionDiscount": 1,
+        "singleUse": true
+      },
+      "AX7TFLS9": {
+        "fractionDiscount": 1,
+        "singleUse": true
+      },
+      "DLLBMX3D": {
+        "fractionDiscount": 1,
+        "singleUse": true
+      },
+      "DSZ92TQD": {
+        "fractionDiscount": 1,
+        "singleUse": true
+      },
+      "ESWAPTC3": {
+        "fractionDiscount": 1,
+        "singleUse": true
+      },
+      "EXPH85YA": {
+        "fractionDiscount": 1,
+        "singleUse": true
+      },
+      "EYA5XK5J": {
+        "fractionDiscount": 1,
+        "singleUse": true
+      },
+      "F8A3YU8S": {
+        "fractionDiscount": 1,
+        "singleUse": true
+      },
+      "FKWPJ72S": {
+        "fractionDiscount": 1,
+        "singleUse": true
+      },
+      "FSNLYBVT": {
+        "fractionDiscount": 1,
+        "singleUse": true
+      },
+      "K47Q2VW7": {
+        "fractionDiscount": 1,
+        "singleUse": true
+      },
+      "MWKJHLFN": {
+        "fractionDiscount": 1,
+        "singleUse": true
+      },
+      "PAUC5MTN": {
+        "fractionDiscount": 1,
+        "singleUse": true
+      },
+      "PJTUD9NC": {
+        "fractionDiscount": 1,
+        "singleUse": true
+      },
+      "QN557V3U": {
+        "fractionDiscount": 1,
+        "singleUse": true
+      },
+      "QZCWPMN4": {
+        "fractionDiscount": 1,
+        "singleUse": true
+      },
+      "R3P9MRNT": {
+        "fractionDiscount": 1,
+        "singleUse": true
+      },
+      "ST2MPBWZ": {
+        "fractionDiscount": 1,
+        "singleUse": true
+      },
+      "T73FKCSJ": {
+        "fractionDiscount": 1,
+        "singleUse": true
+      },
+      "TUW397TK": {
+        "fractionDiscount": 1,
+        "singleUse": true
+      },
+      "VKCU3HRF": {
+        "fractionDiscount": 1,
+        "singleUse": true
+      },
+      "WJM8VPAQ": {
+        "fractionDiscount": 1,
+        "singleUse": true
+      },
+      "WXNXWRTA": {
+        "fractionDiscount": 1,
+        "singleUse": true
+      },
+      "WY8S4DDC": {
+        "fractionDiscount": 1,
+        "singleUse": true
+      },
+      "XASL8B4W": {
+        "fractionDiscount": 1,
+        "singleUse": true
+      },
+      "XCB7YF45": {
+        "fractionDiscount": 1,
+        "singleUse": true
+      },
+      "ZF3WBFUJ": {
+        "fractionDiscount": 1,
+        "singleUse": true
+      }
+    }
+}

@@ -181,7 +181,10 @@ module.exports = async function (fastify, opts) {
             throw fastify.httpErrors.notFound('Race not found');
         }
         if(raceData.couponsEnabled && raceData.couponCodes[couponCode]){
-            let { fractionDiscount } = raceData.couponCodes[couponCode];
+            let { fractionDiscount, singleUse, redemptionPaymentId } = raceData.couponCodes[couponCode];
+            if(singleUse && redemptionPaymentId){
+                return {validCoupon: false, reason: 'Code has already been redeemed', paymentOptions: updateRacePaymentOptions(raceData.paymentOptions)}
+            }
             return {validCoupon:true, paymentOptions: updateRacePaymentOptions(raceData.paymentOptions, fractionDiscount) }
         }
         
@@ -229,6 +232,12 @@ module.exports = async function (fastify, opts) {
         if(!raceData){
             throw fastify.httpErrors.badRequest('Race not found');
         }
+        // check for registration entry limit
+        if(raceData.entryCountMax && raceData.entryCountMax > 1){
+            if(raceData.registeredRacers?.length >= raceData.entryCountMax){
+                return {message: `Sorry, This event has reached the registration max of ${raceData.entryCountMax} participants`}
+            }
+        }
         //see if they are already signed up
         let existingReg = _.find(raceData.registeredRacers,{
             first_name:regData.first_name,
@@ -239,6 +248,7 @@ module.exports = async function (fastify, opts) {
         if(existingReg){
             throw fastify.httpErrors.conflict('There is already a registration with the same name, email and category');
         }
+
         if(regData.prevPaymentId){
             //let prevSingleReg = await fastify.findSeriesRacerByBib(bibNumber, series);
             let prevReg = await this.mongo.db.collection('payments').findOne({ '_id': this.mongo.ObjectId(regData.prevPaymentId) });
@@ -258,7 +268,7 @@ module.exports = async function (fastify, opts) {
         const regCat = _.find(raceData.regCategories, {"id": regData.category});
         if(request.body.paytype === 'cash'){
             await this.mongo.db.collection('payments').updateOne({ '_id': this.mongo.ObjectId(paymentRecord.insertedId) }, { $set:{ status: "unpaid", regData } });
-            return `${process.env.DOMAIN}/#/regconfirmation/${regData.raceid}/${paymentRecord.insertedId}`;
+            return {redirect: `${process.env.DOMAIN}/#/regconfirmation/${regData.raceid}/${paymentRecord.insertedId}`};
         }
         if(regCat && regCat.sponsored){
             // initate registration flow without payment
@@ -266,7 +276,7 @@ module.exports = async function (fastify, opts) {
             await this.mongo.db.collection('payments').updateOne({ '_id': this.mongo.ObjectId(paymentRecord.insertedId) }, { $set:{ sponsoredPayment: true, status: "paid", regData } }, { upsert: true });
             request.log.info(regData, 'registering racer in sponsored category');
             await fastify.registerRacer(regData, paymentRecord.insertedId, raceData, request.log);
-            return `${process.env.DOMAIN}/#/regconfirmation/${regData.raceid}/${paymentRecord.insertedId}`;
+            return {redirect: `${process.env.DOMAIN}/#/regconfirmation/${regData.raceid}/${paymentRecord.insertedId}`};
         }else{
             if(regData.coupon && raceData.couponsEnabled && raceData.couponCodes[regData.coupon]){
                 let { fractionDiscount } = raceData.couponCodes[regData.coupon];
@@ -277,12 +287,21 @@ module.exports = async function (fastify, opts) {
                 throw fastify.httpErrors.badRequest('Payment type not found');
             }
             if(payDets.amount == 0){
+                let { singleUse, redemptionPaymentId } = raceData.couponCodes[regData.coupon];
+                if (singleUse) {
+                    if (redemptionPaymentId) {
+                        return { message: "The provided coupon has already been redeemed" }
+                    }
+                    raceData.couponCodes[regData.coupon].redemptionPaymentId = paymentRecord.insertedId;
+                    
+                    await this.mongo.db.collection('races').updateOne({ raceid: regData.raceid }, {$set:{couponCodes:raceData.couponCodes}})
+                }
                 await this.mongo.db.collection('payments').updateOne({ '_id': this.mongo.ObjectId(paymentRecord.insertedId) }, { $set:{ couponCode:regData.coupon, status: "paid", regData } }, { upsert: true });
                 await fastify.registerRacer(regData, paymentRecord.insertedId, raceData, request.log);
-                return `${process.env.DOMAIN}/#/regconfirmation/${regData.raceid}/${paymentRecord.insertedId}`;
+                return {redirect: `${process.env.DOMAIN}/#/regconfirmation/${regData.raceid}/${paymentRecord.insertedId}`};
             }
             if (!raceData.stripeMeta?.accountId) {
-                throw fastify.httpErrors.preconditionFailed('Stripe connect account not defined');
+                throw fastify.httpErrors.internalServerError('Stripe connect account not defined');
             }
             let regAmt = parseFloat(payDets.amount);
             let { stripeFee, regFee, priceInCents } = getFees(payDets.amount);
@@ -331,7 +350,7 @@ module.exports = async function (fastify, opts) {
                 stripeAccount: raceData.stripeMeta.accountId,
             });
             await this.mongo.db.collection('payments').updateOne({ '_id': this.mongo.ObjectId(paymentRecord.insertedId) }, { $set:{ payment_id: session.id, stripePayment:session,  status: session.payment_status, couponCode:regData.coupon, } }, { upsert: true });
-            return session.url;
+            return {redirect: session.url};
         }
     });
 }
