@@ -13,8 +13,7 @@
     "start": "fastify start -l debug app.js",
     "build": "docker build . -t andyklaiber/lqtm:latest --platform=linux/amd64",
     "publish": "docker push andyklaiber/lqtm:latest",
-    "docker": "docker run -p 3000:3000 --env UPLOAD_TOKEN=somethingsecret --mount source=pcrsdata,target=/usr/src/app/public/data andyklaiber/lqtm:latest",
-    "start:db": "docker compose --env-file .env.dev up"
+    "docker": "docker run -p 3000:3000 --env UPLOAD_TOKEN=somethingsecret --mount source=pcrsdata,target=/usr/src/app/public/data andyklaiber/lqtm:latest"
   },
   "keywords": [],
   "author": "",

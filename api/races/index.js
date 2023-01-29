@@ -109,6 +109,7 @@ module.exports = async function (fastify, opts) {
             eventDetails: 1,
             formattedStartDate:1,
             isTestData:1,
+            optionalPurchases:1,
             paymentOptions: 1,
             raceid:1,
             regCategories: 1,
@@ -119,7 +120,7 @@ module.exports = async function (fastify, opts) {
         const result = await this.mongo.db.collection('races').findOne({'raceid':request.params.id},{projection});
         if (result) {
             let updateKeys = _.pull(Object.keys(projection), ['raceid'])
-            console.log(updateKeys);
+            
             let updateObject = _.pick(request.body, updateKeys)
             delete updateObject.registeredRacers;
             let op = await this.mongo.db.collection('races').updateOne({ '_id': this.mongo.ObjectId(result._id) }, { $set:updateObject });
@@ -198,7 +199,6 @@ module.exports = async function (fastify, opts) {
         const racer = request.body.racername;
         const newCategory = request.body.newCategory
 
-        console.log(`${racer} - ${newCategory}`)
 
         const modifiedResult = moveRacerInResult(result, racer, newCategory);
 
@@ -212,7 +212,6 @@ module.exports = async function (fastify, opts) {
         if(request.query.token !== process.env.UPLOAD_TOKEN){
             throw fastify.httpErrors.unauthorized();
         }
-        console.log(request.query.srcid)
         const srcRace = await this.mongo.db.collection('race_results').findOne({ raceid: request.query.srcid });
         if (!srcRace) {
             return fastify.httpErrors.notFound();

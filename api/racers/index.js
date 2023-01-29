@@ -218,6 +218,46 @@ module.exports = async function (fastify, opts) {
       }
     }
   })
+  fastify.route({
+    method: 'DELETE',
+    url: '/race/:id',
+    preHandler: fastify.auth([fastify.verifyAdminSession]),
+    handler: async function (request, reply) {
+      if (!request.params.id) {
+        return fastify.httpErrors.badRequest('You must provide a race ID');
+      }
+      if (!request.query.paymentId) {
+        return fastify.httpErrors.badRequest('Registered racers must have a paymentID');
+      }
+      const payment = await this.mongo.db.collection('payments').findOne({ '_id': this.mongo.ObjectId(request.query.paymentId) }, {
+        projection: {
+          regData: 1,
+          status: 1,
+          sponsoredPayment: 1,
+        }
+      });
+
+      if (payment) {
+      
+        //if part of a series, and paytype==season update all the series records?
+        let deleteResult;
+        if (payment.regData.paytype === 'season') {
+          return fastify.httpErrors.badRequest('season delete not implemented yet');
+        }
+        else {
+          //if single race, just delete 1 race
+          deleteResult = await this.mongo.db.collection('races').updateOne({
+            'raceid': request.params.id
+          },
+            { $pull: {registeredRacers: {paymentId: this.mongo.ObjectId(request.query.paymentId)} }})
+
+        }
+        return deleteResult;
+      } else {
+        return fastify.httpErrors.notFound();
+      }
+    }
+  })
 
   //move single payment registration racer within series
   fastify.route({

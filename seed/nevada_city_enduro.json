@@ -1,0 +1,155 @@
+{
+  "active": true,
+  "displayName": "2023 Nevada City Enduro",
+  "eventStart": {
+    "$numberLong": "1653528053477"
+  },
+  "eventDate": "2023-05-13T00:00",
+  "formattedStartDate": "5/13",
+  "raceid": "nv_enduro_2023",
+  "useActualStarts": false,
+  "eventDetails": {
+    "name": "2023 Nevada City Enduro",
+    "formattedDates": "May 13th",
+    "tagline": "Scotts Flat Lake, CA",
+    "regOpenDate": "2023-01-22T07:00",
+    "logoUrl": "/nce_logo_greenshort_small.png",
+    "homepageUrl": "https://bearadventure.wixsite.com/nevadacityenduro",
+    "facebookShare": {
+      "url": "https://bearadventure.wixsite.com/nevadacityenduro"
+    }
+  },
+  "registeredRacers": [],
+  "regCategories": [
+    {
+      "id": "pro_men",
+      "catdispname": "Pro Men",
+      "disporder": 0
+    },
+    {
+      "id": "pro_women",
+      "catdispname": "Pro Women",
+      "disporder": 1
+    },
+    {
+      "id": "exp_1939_men",
+      "catdispname": "Expert Men 19-39",
+      "disporder": 2,
+      "maxAge": 39,
+      "minAge": 19
+    },
+    {
+      "id": "exp_40_men",
+      "catdispname": "Expert Men 40+",
+      "disporder": 3,
+      "minAge": 40
+    },
+    {
+      "id": "exp_women_0_40",
+      "catdispname": "Expert Women 40-",
+      "disporder": 4
+    },
+    {
+      "id": "exp_women_40",
+      "catdispname": "Expert Women 40+",
+      "disporder": 5
+    },
+    {
+      "id": "sport_1939_men",
+      "catdispname": "Sport Men 19-39",
+      "disporder": 6,
+      "maxAge": 39,
+      "minAge": 19
+    },
+    {
+      "id": "sport_40_men",
+      "catdispname": "Sport Men 40+",
+      "disporder": 7,
+      "minAge": 40
+    },
+    {
+      "id": "sport_women_0_40",
+      "catdispname": "Sport Women 40-",
+      "disporder": 8
+    },
+    {
+      "id": "sport_women_40",
+      "catdispname": "Sport Women 40+",
+      "disporder": 9
+    },
+    {
+      "id": "beg_1939_men",
+      "catdispname": "Beginner Men 19-39",
+      "disporder": 10,
+      "maxAge": 39,
+      "minAge": 19
+    },
+    {
+      "id": "beg_40_men",
+      "catdispname": "Beginner Men 40+",
+      "disporder": 11,
+      "minAge": 40
+    },
+    {
+      "id": "beg_19plus_women",
+      "catdispname": "Beginner Women 19+",
+      "disporder": 12,
+      "minAge": 19
+    },
+    {
+      "id": "jv_boys",
+      "catdispname": "High School JV/Varsity Boys",
+      "disporder": 13
+    },
+    {
+      "id": "jv_girls",
+      "catdispname": "High School JV/Varsity Girls",
+      "disporder": 14
+    },
+    {
+      "id": "freshman_boys",
+      "catdispname": "High School Fresh/Soph Boys",
+      "disporder": 15
+    },
+    {
+      "id": "freshman_girls",
+      "catdispname": "High School Fresh/Soph Girls",
+      "disporder": 16
+    },
+    {
+      "id": "middle_sch_boys",
+      "catdispname": "Middle School Boys",
+      "disporder": 17
+    },
+    {
+      "id": "middle_sch_girls",
+      "catdispname": "Middle School Girls",
+      "disporder": 18
+    }
+    
+  ],
+  "paymentOptions": [
+    {
+      "name": "Single Entry - $100",
+      "type": "single",
+      "amount": "100"
+    }
+  ],
+  "couponsEnabled": true,
+  "couponCodes": {
+    "Nathanisgreat": {
+      "fractionDiscount": 1
+    },
+    "Nathaniscool": {
+      "fractionDiscount": 0.5
+    },
+    "Nathanisalrightwithme": {
+      "fractionDiscount": 0.25
+    }
+  },
+  "stripeMeta": {
+    "accountId": "acct_1LgSNzKWv3GtE7MP"
+  },
+  "showPaytypeOnRoster": true,
+  "series": "nv_enduro_2023"
+}
