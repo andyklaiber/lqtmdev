@@ -52,6 +52,9 @@ codes.forEach((code)=>{
 })
 
 async function seedDB() {
+    if(url.indexOf('local') == -1){
+        throw new Error('Dont seed production');
+    }
     const client = new MongoClient(url, {
         useNewUrlParser: true,
         // useUnifiedTopology: true,
@@ -61,6 +64,8 @@ async function seedDB() {
         await client.connect();
         console.log("Connected correctly to server");
 
+        const adminUsers = client.db(db_name).collection('administrators');
+        
         const collection = client.db(db_name).collection('races');
         // await collection.insertOne(pcrs);
         await collection.insertOne(flan);

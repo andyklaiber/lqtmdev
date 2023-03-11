@@ -41,7 +41,7 @@
   "stripeMeta": {
     "accountId": "acct_1LjqwwBvZMvWryQV"
   },
-  "isTestData": true,
+  "isTestData": false,
   "registeredRacers": [],
   "couponsEnabled": true,
     "couponCodes": {
