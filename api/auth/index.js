@@ -22,7 +22,7 @@ module.exports = async function (fastify, opts) {
     // add a logout route
     fastify.get('/logout', (request, reply) => {
         if (request.session.authenticated) {
-            request.session.authenticated = undefined;
+            delete request.session.authenticated;
             reply.redirect('/')
         } else {
             reply.redirect('/')

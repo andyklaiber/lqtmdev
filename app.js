@@ -8,7 +8,7 @@ const fastifyCors = require('@fastify/cors');
 const fastifyMongoDb = require('@fastify/mongodb');
 const fastifySecureSession = require('@fastify/secure-session');
 const { url } = require('./src/db.config');
-// console.log(url);
+console.log(`DB host: ${process.env.DB_HOST}`);
 module.exports = async function (fastify, opts) {
     try {
         mongoose.set('strictQuery', false);
