@@ -5,52 +5,6 @@ const pcrs = require('./pcrs_test.json');
 const flan = require('./flannel_grinder.json');
 
 
-const codes = [
-"47MMRECH",
-"5K3ZEHSM",
-"5XX3VEBH",
-"7PU3NPRT",
-"9BLA3VKH",
-"9Z4UVXNF",
-"AX7TFLS9",
-"DLLBMX3D",
-"DSZ92TQD",
-"ESWAPTC3",
-"EXPH85YA",
-"EYA5XK5J",
-"F8A3YU8S",
-"FKWPJ72S",
-"FSNLYBVT",
-"K47Q2VW7",
-"MWKJHLFN",
-"PAUC5MTN",
-"PJTUD9NC",
-"QN557V3U",
-"QZCWPMN4",
-"R3P9MRNT",
-"ST2MPBWZ",
-"T73FKCSJ",
-"TUW397TK",
-"VKCU3HRF",
-"WJM8VPAQ",
-"WXNXWRTA",
-"WY8S4DDC",
-"XASL8B4W",
-"XCB7YF45",
-"ZF3WBFUJ",
-// "TEST1",
-// "TEST2",
-// "TEST3"
-]
-
-flan.couponCodes = {};
-codes.forEach((code)=>{
-    flan.couponCodes[code] = {
-        fractionDiscount: 1,
-        singleUse: true
-    }
-})
-
 async function seedDB() {
     if(url.indexOf('local') == -1){
         throw new Error('Dont seed production');
@@ -64,7 +18,30 @@ async function seedDB() {
         await client.connect();
         console.log("Connected correctly to server");
 
-        const adminUsers = client.db(db_name).collection('administrators');
+        const orgsCollection = client.db(db_name).collection('administrators');
+        const orgs = [{
+            name: "BikeNerd"
+        },{
+            name: "CalBearAdventure"
+        }]
+        const insertManyresult = await orgsCollection.insertMany(orgs);
+        let ids = insertManyresult.insertedIds;
+        const adminsCollection = client.db(db_name).collection('administrators');
+        const result = await adminsCollection.createIndex({ username: 1 }, { unique: true });
+        const admins = [{
+            username: "andy",
+            email: "andy@eklaiber.com",
+            password: "test",
+            userType: "SUPER",
+            organizations:[]
+        },
+        {
+            username: "nate",
+            email: "andy.klaiber+testing@gmail.com",
+            password: "test",
+            userType: "PROMOTER",
+            organizations:[...Object.values(ids)]
+        }]
         
         const collection = client.db(db_name).collection('races');
         // await collection.insertOne(pcrs);

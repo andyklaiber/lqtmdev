@@ -1,5 +1,9 @@
 
 const _ = require('lodash');
+const USER_TYPES={
+    "SUPER":{},
+    "PROMOTER":{}
+}
 
 module.exports = async function (fastify, opts) {
 

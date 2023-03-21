@@ -19,8 +19,9 @@ const raceTemplate =
 
 
 module.exports = async function (fastify, opts) {
-    fastify.post('/:raceNumber', async function (request, reply) {
-        if (request.query.token !== process.env.UPLOAD_TOKEN) {
+    fastify.post('/race/:raceid/token/:authtoken', async function (request, reply) {
+        let raceRecord = await this.mongo.db.collection("races").findOne({ raceid })
+        if (!raceRecord.resultsAuthToken || request.params.authtoken !== raceRecord.resultsAuthToken) {
             throw fastify.httpErrors.unauthorized();
         } else {
             let raceMeta = request.body.data.race;
