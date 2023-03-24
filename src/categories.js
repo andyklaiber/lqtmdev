@@ -1,7 +1,5 @@
 // These categories are specific to the results generation for 2022
 
-const Category = require('./models/Category')
-
 module.exports = {categoryOrder:[
     "pro_expert",
     "expert_men_39",

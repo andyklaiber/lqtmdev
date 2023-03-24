@@ -160,7 +160,7 @@ const getSeriesColumns = (raceMeta, catId)=>{
     return cols.concat(["Total Points"])
 }
 
-const generateSeriesResults = (raceResults, racesMeta, racersMeta, categoryOrder, teamsRacers)=>{
+const generateSeriesResults = (raceResults, racersMeta, categoryOrder, teamsRacers)=>{
     let out = {
         categories:{
         }
@@ -171,7 +171,6 @@ const generateSeriesResults = (raceResults, racesMeta, racersMeta, categoryOrder
     const teamPoints = [];
 
     raceResults.forEach((race) =>{
-        let thisRaceMeta = racesMeta.find((obj)=>obj.raceid === race.raceid);
         Object.keys(race.categories).forEach((catId)=>{
             if(catId == 'poker_league'){
                 return;
@@ -182,7 +181,7 @@ const generateSeriesResults = (raceResults, racesMeta, racersMeta, categoryOrder
                     id: catMeta.id,
                     catdispname: catMeta.catdispname,
                     laps: catMeta.laps,
-                    columns: getSeriesColumns(racesMeta, catMeta.id),
+                    columns: getSeriesColumns(raceResults, catMeta.id),
                     results:{},
                     disporder:categoryOrder.indexOf(catMeta.id)
                 }
@@ -201,7 +200,7 @@ const generateSeriesResults = (raceResults, racesMeta, racersMeta, categoryOrder
                 }
                 out.categories[catId].results[racerName].Bib = racerRow.Bib;
                 out.categories[catId].results[racerName].finishes.push({
-                    raceDate: thisRaceMeta.formattedStartDate,
+                    raceDate: race.formattedStartDate,
                     position: idx+1,
                     points: 50-idx
                 })
@@ -257,7 +256,7 @@ const generateSeriesResults = (raceResults, racesMeta, racersMeta, categoryOrder
                 }
                 const racerFinishes = out.categories[catId].results[racerName].finishes;
                 // for each race date, add either an entry with points, or -/- to indicate they didn't race
-                racesMeta.forEach((race)=>{
+                raceResults.forEach((race)=>{
                     const raceFinish = _.find(racerFinishes, {raceDate:race.formattedStartDate});
                     let resultString = "-/-";
                     let finishPoints = 0;

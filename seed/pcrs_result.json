@@ -1,0 +1,5126 @@
+{
+    "raceid": "53skko8l147vrnn",
+    "categories": {
+      "beginner_men_1939": {
+        "id": "beginner_men_1939",
+        "catdispname": "Beginner Men 19-39",
+        "laps": 2,
+        "columns": [
+          "Pos",
+          "Bib",
+          "Name",
+          "Sponsor",
+          "Lap 1",
+          "Lap 2",
+          "Time",
+          "Back"
+        ],
+        "results": [
+          {
+            "Name": "Noah Brown",
+            "Sponsor": "",
+            "Bib": 185,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 919070,
+                "timeString": "15:19"
+              },
+              {
+                "lap": 2,
+                "duration": 949994,
+                "timeString": "15:49"
+              }
+            ],
+            "Time": "31:09",
+            "duration": 1869064
+          },
+          {
+            "Name": "Matt Austin",
+            "Sponsor": "",
+            "Bib": 120,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 938814,
+                "timeString": "15:38"
+              },
+              {
+                "lap": 2,
+                "duration": 984000,
+                "timeString": "16:24"
+              }
+            ],
+            "Time": "32:02",
+            "duration": 1922814,
+            "back": "00:53"
+          },
+          {
+            "Name": "Jeffrey Buscheck",
+            "Sponsor": "",
+            "Bib": 232,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 918065,
+                "timeString": "15:18"
+              },
+              {
+                "lap": 2,
+                "duration": 1021754,
+                "timeString": "17:01"
+              }
+            ],
+            "Time": "32:19",
+            "duration": 1939819,
+            "back": "01:10"
+          },
+          {
+            "Name": "Joey Rodrigues",
+            "Sponsor": "",
+            "Bib": 103,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 1105065,
+                "timeString": "18:25"
+              },
+              {
+                "lap": 2,
+                "duration": 1155798,
+                "timeString": "19:15"
+              }
+            ],
+            "Time": "37:40",
+            "duration": 2260863,
+            "back": "06:31"
+          }
+        ],
+        "disporder": 22
+      },
+      "beginner_men_4049": {
+        "id": "beginner_men_4049",
+        "catdispname": "Beginner Men 40-49",
+        "laps": 2,
+        "columns": [
+          "Pos",
+          "Bib",
+          "Name",
+          "Sponsor",
+          "Lap 1",
+          "Lap 2",
+          "Time",
+          "Back"
+        ],
+        "results": [
+          {
+            "Name": "Pete Stirling",
+            "Sponsor": "BEAS ACADEMY / Trafiq vs. Traffic",
+            "Bib": 122,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 856079,
+                "timeString": "14:16"
+              },
+              {
+                "lap": 2,
+                "duration": 871987,
+                "timeString": "14:31"
+              }
+            ],
+            "Time": "28:48",
+            "duration": 1728066
+          },
+          {
+            "Name": "Lucas Raley",
+            "Sponsor": "",
+            "Bib": 102,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 855065,
+                "timeString": "14:15"
+              },
+              {
+                "lap": 2,
+                "duration": 900999,
+                "timeString": "15:00"
+              }
+            ],
+            "Time": "29:16",
+            "duration": 1756064,
+            "back": "00:27"
+          },
+          {
+            "Name": "Leonardo Sanchez",
+            "Sponsor": "",
+            "Bib": 223,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 876814,
+                "timeString": "14:36"
+              },
+              {
+                "lap": 2,
+                "duration": 881500,
+                "timeString": "14:41"
+              }
+            ],
+            "Time": "29:18",
+            "duration": 1758314,
+            "back": "00:30"
+          },
+          {
+            "Name": "Alexander Bryant",
+            "Sponsor": "ABryant",
+            "Bib": 98,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 908565,
+                "timeString": "15:08"
+              },
+              {
+                "lap": 2,
+                "duration": 972249,
+                "timeString": "16:12"
+              }
+            ],
+            "Time": "31:20",
+            "duration": 1880814,
+            "back": "02:32"
+          },
+          {
+            "Name": "Clinton Beers",
+            "Sponsor": "",
+            "Bib": 174,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 1103316,
+                "timeString": "18:23"
+              },
+              {
+                "lap": 2,
+                "duration": 1026498,
+                "timeString": "17:06"
+              }
+            ],
+            "Time": "35:29",
+            "duration": 2129814,
+            "back": "06:41"
+          },
+          {
+            "Name": "Brian Ratliff",
+            "Sponsor": "",
+            "Bib": 183,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 1152317,
+                "timeString": "19:12"
+              },
+              {
+                "lap": 2,
+                "duration": 1236299,
+                "timeString": "20:36"
+              }
+            ],
+            "Time": "39:48",
+            "duration": 2388616,
+            "back": "11:00"
+          }
+        ],
+        "disporder": 23
+      },
+      "beginner_men_5059": {
+        "id": "beginner_men_5059",
+        "catdispname": "Beginner Men 50-59",
+        "laps": 2,
+        "columns": [
+          "Pos",
+          "Bib",
+          "Name",
+          "Sponsor",
+          "Lap 1",
+          "Lap 2",
+          "Time",
+          "Back"
+        ],
+        "results": [
+          {
+            "Name": "Jeff Liebig",
+            "Sponsor": "",
+            "Bib": 121,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 994065,
+                "timeString": "16:34"
+              },
+              {
+                "lap": 2,
+                "duration": 1024999,
+                "timeString": "17:04"
+              }
+            ],
+            "Time": "33:39",
+            "duration": 2019064
+          },
+          {
+            "Name": "Darryl Moxley",
+            "Sponsor": "",
+            "Bib": 100,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 1001315,
+                "timeString": "16:41"
+              },
+              {
+                "lap": 2,
+                "duration": 1027500,
+                "timeString": "17:07"
+              }
+            ],
+            "Time": "33:48",
+            "duration": 2028815,
+            "back": "00:09"
+          },
+          {
+            "Name": "Chris Marovich",
+            "Sponsor": "",
+            "Bib": 119,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 1015315,
+                "timeString": "16:55"
+              },
+              {
+                "lap": 2,
+                "duration": 1047750,
+                "timeString": "17:27"
+              }
+            ],
+            "Time": "34:23",
+            "duration": 2063065,
+            "back": "00:44"
+          },
+          {
+            "Name": "Peter O'Malley",
+            "Sponsor": "",
+            "Bib": 101,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 1045064,
+                "timeString": "17:25"
+              },
+              {
+                "lap": 2,
+                "duration": 1055003,
+                "timeString": "17:35"
+              }
+            ],
+            "Time": "35:00",
+            "duration": 2100067,
+            "back": "01:21"
+          },
+          {
+            "Name": "Nathan Manley",
+            "Sponsor": "",
+            "Bib": 117,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 1067576,
+                "timeString": "17:47"
+              },
+              {
+                "lap": 2,
+                "duration": 1109529,
+                "timeString": "18:29"
+              }
+            ],
+            "Time": "36:17",
+            "duration": 2177105,
+            "back": "02:38"
+          },
+          {
+            "Name": "Andy Litsas",
+            "Sponsor": "",
+            "Bib": 115,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 1321815,
+                "timeString": "22:01"
+              },
+              {
+                "lap": 2,
+                "duration": 1367552,
+                "timeString": "22:47"
+              }
+            ],
+            "Time": "44:49",
+            "duration": 2689367,
+            "back": "11:10"
+          }
+        ],
+        "disporder": 24
+      },
+      "beginner_men_60": {
+        "id": "beginner_men_60",
+        "catdispname": "Beginner Men 60+",
+        "laps": 2,
+        "columns": [
+          "Pos",
+          "Bib",
+          "Name",
+          "Sponsor",
+          "Lap 1",
+          "Lap 2",
+          "Time",
+          "Back"
+        ],
+        "results": [
+          {
+            "Name": "Brad Fox",
+            "Sponsor": "",
+            "Bib": 256,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 762000,
+                "timeString": "12:42"
+              },
+              {
+                "lap": 2,
+                "duration": 765564,
+                "timeString": "12:45"
+              }
+            ],
+            "Time": "25:27",
+            "duration": 1527564
+          },
+          {
+            "Name": "mark evans",
+            "Sponsor": "",
+            "Bib": 200,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 955064,
+                "timeString": "15:55"
+              },
+              {
+                "lap": 2,
+                "duration": 923482,
+                "timeString": "15:23"
+              }
+            ],
+            "Time": "31:18",
+            "duration": 1878546,
+            "back": "05:50"
+          },
+          {
+            "Name": "Tim Johnson",
+            "Sponsor": "",
+            "Bib": 263,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 1118325,
+                "timeString": "18:38"
+              },
+              {
+                "lap": 2,
+                "duration": 1249291,
+                "timeString": "20:49"
+              }
+            ],
+            "Time": "39:27",
+            "duration": 2367616,
+            "back": "14:00"
+          },
+          {
+            "Name": "David Whitsell",
+            "Sponsor": "",
+            "Bib": 219,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 1209564,
+                "timeString": "20:09"
+              },
+              {
+                "lap": 2,
+                "duration": 1314052,
+                "timeString": "21:54"
+              }
+            ],
+            "Time": "42:03",
+            "duration": 2523616,
+            "back": "16:36"
+          },
+          {
+            "Name": "Jon Northrop",
+            "Sponsor": "",
+            "Bib": 118,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 1153564,
+                "timeString": "19:13"
+              },
+              {
+                "lap": 2,
+                "duration": 1470751,
+                "timeString": "24:30"
+              }
+            ],
+            "Time": "43:44",
+            "duration": 2624315,
+            "back": "18:16"
+          },
+          {
+            "Name": "Paul Curtin",
+            "Sponsor": "",
+            "Bib": 116,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 1527000,
+                "timeString": "25:27"
+              },
+              {
+                "lap": 2,
+                "duration": 1562000,
+                "timeString": "26:02"
+              }
+            ],
+            "Time": "51:29",
+            "duration": 3089000,
+            "back": "26:01"
+          }
+        ],
+        "disporder": 25
+      },
+      "beginner_women_39": {
+        "id": "beginner_women_39",
+        "catdispname": "Beginner Women 39-",
+        "laps": 2,
+        "columns": [
+          "Pos",
+          "Bib",
+          "Name",
+          "Sponsor",
+          "Lap 1",
+          "Lap 2",
+          "Time",
+          "Back"
+        ],
+        "results": [
+          {
+            "Name": "Amy Katie Goad",
+            "Sponsor": "Team City Sacramento",
+            "Bib": 201,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 963748,
+                "timeString": "16:03"
+              },
+              {
+                "lap": 2,
+                "duration": 937316,
+                "timeString": "15:37"
+              }
+            ],
+            "Time": "31:41",
+            "duration": 1901064
+          },
+          {
+            "Name": "Beverley Newman-Burckhard",
+            "Sponsor": "Breakaway Womens Racing",
+            "Bib": 194,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 1007544,
+                "timeString": "16:47"
+              },
+              {
+                "lap": 2,
+                "duration": 1016020,
+                "timeString": "16:56"
+              }
+            ],
+            "Time": "33:43",
+            "duration": 2023564,
+            "back": "02:02"
+          },
+          {
+            "Name": "Gwendloyn Zeydel",
+            "Sponsor": "",
+            "Bib": 180,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 1473064,
+                "timeString": "24:33"
+              },
+              {
+                "lap": 2,
+                "duration": 1749072,
+                "timeString": "29:09"
+              }
+            ],
+            "Time": "53:42",
+            "duration": 3222136,
+            "back": "22:01"
+          }
+        ],
+        "disporder": 26
+      },
+      "beginner_women_40": {
+        "id": "beginner_women_40",
+        "catdispname": "Beginner Women 40+",
+        "laps": 2,
+        "columns": [
+          "Pos",
+          "Bib",
+          "Name",
+          "Sponsor",
+          "Lap 1",
+          "Lap 2",
+          "Time",
+          "Back"
+        ],
+        "results": [
+          {
+            "Name": "Angie Platis",
+            "Sponsor": "",
+            "Bib": 125,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 1033314,
+                "timeString": "17:13"
+              },
+              {
+                "lap": 2,
+                "duration": 1115803,
+                "timeString": "18:35"
+              }
+            ],
+            "Time": "35:49",
+            "duration": 2149117
+          },
+          {
+            "Name": "Laura Darling",
+            "Sponsor": "",
+            "Bib": 123,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 1081569,
+                "timeString": "18:01"
+              },
+              {
+                "lap": 2,
+                "duration": 1164044,
+                "timeString": "19:24"
+              }
+            ],
+            "Time": "37:25",
+            "duration": 2245613,
+            "back": "01:36"
+          },
+          {
+            "Name": "Liz Jorgensen",
+            "Sponsor": "I Love You More Book",
+            "Bib": 220,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 1301815,
+                "timeString": "21:41"
+              },
+              {
+                "lap": 2,
+                "duration": 1469311,
+                "timeString": "24:29"
+              }
+            ],
+            "Time": "46:11",
+            "duration": 2771126,
+            "back": "10:22"
+          }
+        ],
+        "disporder": 27
+      },
+      "clydesdale_210lb": {
+        "id": "clydesdale_210lb",
+        "catdispname": "Clydesdale 210lb+",
+        "laps": 3,
+        "columns": [
+          "Pos",
+          "Bib",
+          "Name",
+          "Sponsor",
+          "Lap 1",
+          "Lap 2",
+          "Lap 3",
+          "Time",
+          "Back"
+        ],
+        "results": [
+          {
+            "Name": "Brad Renoult",
+            "Sponsor": "Think MTB",
+            "Bib": 231,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 811076,
+                "timeString": "13:31"
+              },
+              {
+                "lap": 2,
+                "duration": 810999,
+                "timeString": "13:30"
+              },
+              {
+                "lap": 3,
+                "duration": 827549,
+                "timeString": "13:47"
+              }
+            ],
+            "Time": "40:49",
+            "duration": 2449624
+          },
+          {
+            "Name": "Steven Serkanic",
+            "Sponsor": "SWISHAHOUSE",
+            "Bib": 270,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 816316,
+                "timeString": "13:36"
+              },
+              {
+                "lap": 2,
+                "duration": 828999,
+                "timeString": "13:48"
+              },
+              {
+                "lap": 3,
+                "duration": 844300,
+                "timeString": "14:04"
+              }
+            ],
+            "Time": "41:29",
+            "duration": 2489615,
+            "back": "00:39"
+          },
+          {
+            "Name": "Matt Wilson",
+            "Sponsor": "",
+            "Bib": 111,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 835323,
+                "timeString": "13:55"
+              },
+              {
+                "lap": 2,
+                "duration": 858223,
+                "timeString": "14:18"
+              },
+              {
+                "lap": 3,
+                "duration": 850825,
+                "timeString": "14:10"
+              }
+            ],
+            "Time": "42:24",
+            "duration": 2544371,
+            "back": "01:34"
+          },
+          {
+            "Name": "Rick Guevel",
+            "Sponsor": "",
+            "Bib": 109,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 865564,
+                "timeString": "14:25"
+              },
+              {
+                "lap": 2,
+                "duration": 860003,
+                "timeString": "14:20"
+              },
+              {
+                "lap": 3,
+                "duration": 869299,
+                "timeString": "14:29"
+              }
+            ],
+            "Time": "43:14",
+            "duration": 2594866,
+            "back": "02:25"
+          },
+          {
+            "Name": "Josiah Mattsson-Boze",
+            "Sponsor": "Team City",
+            "Bib": 189,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 885815,
+                "timeString": "14:45"
+              },
+              {
+                "lap": 2,
+                "duration": 956257,
+                "timeString": "15:56"
+              },
+              {
+                "lap": 3,
+                "duration": 961296,
+                "timeString": "16:01"
+              }
+            ],
+            "Time": "46:43",
+            "duration": 2803368,
+            "back": "05:53"
+          },
+          {
+            "Name": "Mike Sellers",
+            "Sponsor": "OBG",
+            "Bib": 127,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 923565,
+                "timeString": "15:23"
+              },
+              {
+                "lap": 2,
+                "duration": 951276,
+                "timeString": "15:51"
+              },
+              {
+                "lap": 3,
+                "duration": 951277,
+                "timeString": "15:51"
+              }
+            ],
+            "Time": "47:06",
+            "duration": 2826118,
+            "back": "06:16"
+          },
+          {
+            "Name": "Ryan Coulson",
+            "Sponsor": "",
+            "Bib": 128,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 906816,
+                "timeString": "15:06"
+              },
+              {
+                "lap": 2,
+                "duration": 980750,
+                "timeString": "16:20"
+              },
+              {
+                "lap": 3,
+                "duration": 1065803,
+                "timeString": "17:45"
+              }
+            ],
+            "Time": "49:13",
+            "duration": 2953369,
+            "back": "08:23"
+          },
+          {
+            "Name": "Michael Oliver",
+            "Sponsor": "Kinetic Cycles",
+            "Bib": 73,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 949066,
+                "timeString": "15:49"
+              },
+              {
+                "lap": 2,
+                "duration": 1013499,
+                "timeString": "16:53"
+              },
+              {
+                "lap": 3,
+                "duration": 1035305,
+                "timeString": "17:15"
+              }
+            ],
+            "Time": "49:57",
+            "duration": 2997870,
+            "back": "09:08"
+          },
+          {
+            "Name": "Pete Conlin",
+            "Sponsor": "Kinetic Cycles",
+            "Bib": 108,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 1500564,
+                "timeString": "25:00"
+              }
+            ],
+            "Time": "25:00",
+            "duration": 1500564
+          }
+        ],
+        "disporder": 16
+      },
+      "expert_men_39": {
+        "id": "expert_men_39",
+        "catdispname": "Expert Men 39-",
+        "laps": 4,
+        "columns": [
+          "Pos",
+          "Bib",
+          "Name",
+          "Sponsor",
+          "Lap 1",
+          "Lap 2",
+          "Lap 3",
+          "Lap 4",
+          "Time",
+          "Back"
+        ],
+        "results": [
+          {
+            "Name": "Phillip Violett",
+            "Sponsor": "BEAS Academy - Celebrating Success",
+            "Bib": 18,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 731821,
+                "timeString": "12:11"
+              },
+              {
+                "lap": 2,
+                "duration": 778996,
+                "timeString": "12:58"
+              },
+              {
+                "lap": 3,
+                "duration": 817749,
+                "timeString": "13:37"
+              },
+              {
+                "lap": 4,
+                "duration": 827303,
+                "timeString": "13:47"
+              }
+            ],
+            "Time": "52:35",
+            "duration": 3155869
+          },
+          {
+            "Name": "Justin Paulson",
+            "Sponsor": "",
+            "Bib": 8,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 726068,
+                "timeString": "12:06"
+              },
+              {
+                "lap": 2,
+                "duration": 783996,
+                "timeString": "13:03"
+              },
+              {
+                "lap": 3,
+                "duration": 837350,
+                "timeString": "13:57"
+              },
+              {
+                "lap": 4,
+                "duration": 842956,
+                "timeString": "14:02"
+              }
+            ],
+            "Time": "53:10",
+            "duration": 3190370,
+            "back": "00:34"
+          },
+          {
+            "Name": "Justin Fodor",
+            "Sponsor": "",
+            "Bib": 235,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 839316,
+                "timeString": "13:59"
+              },
+              {
+                "lap": 2,
+                "duration": 842498,
+                "timeString": "14:02"
+              },
+              {
+                "lap": 3,
+                "duration": 848750,
+                "timeString": "14:08"
+              },
+              {
+                "lap": 4,
+                "duration": 839309,
+                "timeString": "13:59"
+              }
+            ],
+            "Time": "56:09",
+            "duration": 3369873,
+            "back": "03:34"
+          }
+        ],
+        "disporder": 1
+      },
+      "expert_men_4049": {
+        "id": "expert_men_4049",
+        "catdispname": "Expert Men 40-49",
+        "laps": 4,
+        "columns": [
+          "Pos",
+          "Bib",
+          "Name",
+          "Sponsor",
+          "Lap 1",
+          "Lap 2",
+          "Lap 3",
+          "Lap 4",
+          "Time",
+          "Back"
+        ],
+        "results": [
+          {
+            "Name": "Ben Cannon",
+            "Sponsor": "C4 Racing",
+            "Bib": 211,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 673568,
+                "timeString": "11:13"
+              },
+              {
+                "lap": 2,
+                "duration": 690247,
+                "timeString": "11:30"
+              },
+              {
+                "lap": 3,
+                "duration": 688251,
+                "timeString": "11:28"
+              },
+              {
+                "lap": 4,
+                "duration": 700548,
+                "timeString": "11:40"
+              }
+            ],
+            "Time": "45:52",
+            "duration": 2752614
+          },
+          {
+            "Name": "Joshua Hughes",
+            "Sponsor": "Victory Velo",
+            "Bib": 206,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 691066,
+                "timeString": "11:31"
+              },
+              {
+                "lap": 2,
+                "duration": 741249,
+                "timeString": "12:21"
+              },
+              {
+                "lap": 3,
+                "duration": 752499,
+                "timeString": "12:32"
+              },
+              {
+                "lap": 4,
+                "duration": 736554,
+                "timeString": "12:16"
+              }
+            ],
+            "Time": "48:41",
+            "duration": 2921368,
+            "back": "02:48"
+          },
+          {
+            "Name": "Adam Ross",
+            "Sponsor": "Rhythm Racing",
+            "Bib": 16,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 720565,
+                "timeString": "12:00"
+              },
+              {
+                "lap": 2,
+                "duration": 752502,
+                "timeString": "12:32"
+              },
+              {
+                "lap": 3,
+                "duration": 783497,
+                "timeString": "13:03"
+              },
+              {
+                "lap": 4,
+                "duration": 779060,
+                "timeString": "12:59"
+              }
+            ],
+            "Time": "50:35",
+            "duration": 3035624,
+            "back": "04:43"
+          },
+          {
+            "Name": "Ken Ballard",
+            "Sponsor": "Kinetic Cycles",
+            "Bib": 21,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 737815,
+                "timeString": "12:17"
+              },
+              {
+                "lap": 2,
+                "duration": 790749,
+                "timeString": "13:10"
+              },
+              {
+                "lap": 3,
+                "duration": 811500,
+                "timeString": "13:31"
+              },
+              {
+                "lap": 4,
+                "duration": 772555,
+                "timeString": "12:52"
+              }
+            ],
+            "Time": "51:52",
+            "duration": 3112619,
+            "back": "06:00"
+          },
+          {
+            "Name": "Mark Rosa",
+            "Sponsor": "",
+            "Bib": 9,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 761317,
+                "timeString": "12:41"
+              },
+              {
+                "lap": 2,
+                "duration": 828747,
+                "timeString": "13:48"
+              },
+              {
+                "lap": 3,
+                "duration": 881001,
+                "timeString": "14:41"
+              },
+              {
+                "lap": 4,
+                "duration": 847806,
+                "timeString": "14:07"
+              }
+            ],
+            "Time": "55:18",
+            "duration": 3318871,
+            "back": "09:26"
+          }
+        ],
+        "disporder": 2
+      },
+      "expert_men_5059": {
+        "id": "expert_men_5059",
+        "catdispname": "Expert Men 50-59",
+        "laps": 4,
+        "columns": [
+          "Pos",
+          "Bib",
+          "Name",
+          "Sponsor",
+          "Lap 1",
+          "Lap 2",
+          "Lap 3",
+          "Lap 4",
+          "Time",
+          "Back"
+        ],
+        "results": [
+          {
+            "Name": "Charlie Kropf",
+            "Sponsor": "OBG",
+            "Bib": 24,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 708318,
+                "timeString": "11:48"
+              },
+              {
+                "lap": 2,
+                "duration": 731997,
+                "timeString": "12:11"
+              },
+              {
+                "lap": 3,
+                "duration": 749001,
+                "timeString": "12:29"
+              },
+              {
+                "lap": 4,
+                "duration": 744553,
+                "timeString": "12:24"
+              }
+            ],
+            "Time": "48:53",
+            "duration": 2933869
+          },
+          {
+            "Name": "Dan Reynolds",
+            "Sponsor": "dfL. CVC",
+            "Bib": 170,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 712316,
+                "timeString": "11:52"
+              },
+              {
+                "lap": 2,
+                "duration": 730007,
+                "timeString": "12:10"
+              },
+              {
+                "lap": 3,
+                "duration": 757741,
+                "timeString": "12:37"
+              },
+              {
+                "lap": 4,
+                "duration": 762803,
+                "timeString": "12:42"
+              }
+            ],
+            "Time": "49:22",
+            "duration": 2962867,
+            "back": "00:28"
+          },
+          {
+            "Name": "jeremy lancaster",
+            "Sponsor": "Mike the Poolman",
+            "Bib": 20,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 712815,
+                "timeString": "11:52"
+              },
+              {
+                "lap": 2,
+                "duration": 751510,
+                "timeString": "12:31"
+              },
+              {
+                "lap": 3,
+                "duration": 785397,
+                "timeString": "13:05"
+              },
+              {
+                "lap": 4,
+                "duration": 771050,
+                "timeString": "12:51"
+              }
+            ],
+            "Time": "50:20",
+            "duration": 3020772,
+            "back": "01:26"
+          },
+          {
+            "Name": "Greg Ngo",
+            "Sponsor": "",
+            "Bib": 27,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 738066,
+                "timeString": "12:18"
+              },
+              {
+                "lap": 2,
+                "duration": 783003,
+                "timeString": "13:03"
+              },
+              {
+                "lap": 3,
+                "duration": 794998,
+                "timeString": "13:14"
+              },
+              {
+                "lap": 4,
+                "duration": 786054,
+                "timeString": "13:06"
+              }
+            ],
+            "Time": "51:42",
+            "duration": 3102121,
+            "back": "02:48"
+          },
+          {
+            "Name": "Tom Campeau",
+            "Sponsor": "",
+            "Bib": 11,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 735567,
+                "timeString": "12:15"
+              },
+              {
+                "lap": 2,
+                "duration": 807501,
+                "timeString": "13:27"
+              },
+              {
+                "lap": 3,
+                "duration": 839246,
+                "timeString": "13:59"
+              },
+              {
+                "lap": 4,
+                "duration": 847056,
+                "timeString": "14:07"
+              }
+            ],
+            "Time": "53:49",
+            "duration": 3229370,
+            "back": "04:55"
+          },
+          {
+            "Name": "Bruce Ceniceros",
+            "Sponsor": "",
+            "Bib": 15,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 732566,
+                "timeString": "12:12"
+              },
+              {
+                "lap": 2,
+                "duration": 838749,
+                "timeString": "13:58"
+              },
+              {
+                "lap": 3,
+                "duration": 839249,
+                "timeString": "13:59"
+              },
+              {
+                "lap": 4,
+                "duration": 820556,
+                "timeString": "13:40"
+              }
+            ],
+            "Time": "53:51",
+            "duration": 3231120,
+            "back": "04:57"
+          },
+          {
+            "Name": "Paul Newton",
+            "Sponsor": "",
+            "Bib": 25,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 774065,
+                "timeString": "12:54"
+              },
+              {
+                "lap": 2,
+                "duration": 871000,
+                "timeString": "14:31"
+              },
+              {
+                "lap": 3,
+                "duration": 870509,
+                "timeString": "14:30"
+              },
+              {
+                "lap": 4,
+                "duration": 849798,
+                "timeString": "14:09"
+              }
+            ],
+            "Time": "56:05",
+            "duration": 3365372,
+            "back": "07:11"
+          },
+          {
+            "Name": "Aaron Albor",
+            "Sponsor": "",
+            "Bib": 19,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 812078,
+                "timeString": "13:32"
+              },
+              {
+                "lap": 2,
+                "duration": 884236,
+                "timeString": "14:44"
+              },
+              {
+                "lap": 3,
+                "duration": 907299,
+                "timeString": "15:07"
+              },
+              {
+                "lap": 4,
+                "duration": 863009,
+                "timeString": "14:23"
+              }
+            ],
+            "Time": "57:46",
+            "duration": 3466622,
+            "back": "08:52"
+          },
+          {
+            "Name": "Rich Rocket",
+            "Sponsor": "",
+            "Bib": 26,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 855816,
+                "timeString": "14:15"
+              },
+              {
+                "lap": 2,
+                "duration": 913750,
+                "timeString": "15:13"
+              },
+              {
+                "lap": 3,
+                "duration": 947299,
+                "timeString": "15:47"
+              },
+              {
+                "lap": 4,
+                "duration": 963023,
+                "timeString": "16:03"
+              }
+            ],
+            "Time": "01:19",
+            "duration": 3679888,
+            "back": "12:26"
+          }
+        ],
+        "disporder": 3
+      },
+      "expert_men_60": {
+        "id": "expert_men_60",
+        "catdispname": "Expert Men 60+",
+        "laps": 4,
+        "columns": [
+          "Pos",
+          "Bib",
+          "Name",
+          "Sponsor",
+          "Lap 1",
+          "Lap 2",
+          "Lap 3",
+          "Lap 4",
+          "Time",
+          "Back"
+        ],
+        "results": [
+          {
+            "Name": "Don Haugen",
+            "Sponsor": "",
+            "Bib": 22,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 753567,
+                "timeString": "12:33"
+              },
+              {
+                "lap": 2,
+                "duration": 779500,
+                "timeString": "12:59"
+              },
+              {
+                "lap": 3,
+                "duration": 785747,
+                "timeString": "13:05"
+              },
+              {
+                "lap": 4,
+                "duration": 757304,
+                "timeString": "12:37"
+              }
+            ],
+            "Time": "51:16",
+            "duration": 3076118
+          },
+          {
+            "Name": "Rob Stark",
+            "Sponsor": "Kinetic Cycles",
+            "Bib": 14,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 753574,
+                "timeString": "12:33"
+              },
+              {
+                "lap": 2,
+                "duration": 779741,
+                "timeString": "12:59"
+              },
+              {
+                "lap": 3,
+                "duration": 785750,
+                "timeString": "13:05"
+              },
+              {
+                "lap": 4,
+                "duration": 760305,
+                "timeString": "12:40"
+              }
+            ],
+            "Time": "51:19",
+            "duration": 3079370,
+            "back": "00:03"
+          },
+          {
+            "Name": "Dean Klotz",
+            "Sponsor": "",
+            "Bib": 172,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 758546,
+                "timeString": "12:38"
+              },
+              {
+                "lap": 2,
+                "duration": 775270,
+                "timeString": "12:55"
+              },
+              {
+                "lap": 3,
+                "duration": 816498,
+                "timeString": "13:36"
+              },
+              {
+                "lap": 4,
+                "duration": 793558,
+                "timeString": "13:13"
+              }
+            ],
+            "Time": "52:23",
+            "duration": 3143872,
+            "back": "01:07"
+          },
+          {
+            "Name": "Dan Sovereign",
+            "Sponsor": "Sacramento Golden Wheelman",
+            "Bib": 10,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 757565,
+                "timeString": "12:37"
+              },
+              {
+                "lap": 2,
+                "duration": 775754,
+                "timeString": "12:55"
+              },
+              {
+                "lap": 3,
+                "duration": 809846,
+                "timeString": "13:29"
+              },
+              {
+                "lap": 4,
+                "duration": 813631,
+                "timeString": "13:33"
+              }
+            ],
+            "Time": "52:36",
+            "duration": 3156796,
+            "back": "01:20"
+          },
+          {
+            "Name": "Reed Jackson",
+            "Sponsor": "Team City",
+            "Bib": 215,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 770317,
+                "timeString": "12:50"
+              },
+              {
+                "lap": 2,
+                "duration": 815002,
+                "timeString": "13:35"
+              },
+              {
+                "lap": 3,
+                "duration": 817746,
+                "timeString": "13:37"
+              },
+              {
+                "lap": 4,
+                "duration": 812304,
+                "timeString": "13:32"
+              }
+            ],
+            "Time": "53:35",
+            "duration": 3215369,
+            "back": "02:19"
+          },
+          {
+            "Name": "Cliff Millemann",
+            "Sponsor": "Velocity bikes",
+            "Bib": 7,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 730907,
+                "timeString": "12:10"
+              },
+              {
+                "lap": 2,
+                "duration": 862907,
+                "timeString": "14:22"
+              },
+              {
+                "lap": 3,
+                "duration": 878044,
+                "timeString": "14:38"
+              },
+              {
+                "lap": 4,
+                "duration": 874569,
+                "timeString": "14:34"
+              }
+            ],
+            "Time": "55:46",
+            "duration": 3346427,
+            "back": "04:30"
+          },
+          {
+            "Name": "Robert Martinez",
+            "Sponsor": "Freakshow",
+            "Bib": 236,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 806816,
+                "timeString": "13:26"
+              },
+              {
+                "lap": 2,
+                "duration": 905501,
+                "timeString": "15:05"
+              },
+              {
+                "lap": 3,
+                "duration": 892796,
+                "timeString": "14:52"
+              },
+              {
+                "lap": 4,
+                "duration": 840009,
+                "timeString": "14:00"
+              }
+            ],
+            "Time": "57:25",
+            "duration": 3445122,
+            "back": "06:09"
+          },
+          {
+            "Name": "Harry Duncan",
+            "Sponsor": "",
+            "Bib": 12,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 799319,
+                "timeString": "13:19"
+              }
+            ],
+            "Time": "13:19",
+            "duration": 799319
+          }
+        ],
+        "disporder": 4
+      },
+      "expert_women": {
+        "id": "expert_women",
+        "catdispname": "Expert Women",
+        "laps": 4,
+        "columns": [
+          "Pos",
+          "Bib",
+          "Name",
+          "Sponsor",
+          "Lap 1",
+          "Lap 2",
+          "Lap 3",
+          "Lap 4",
+          "Time",
+          "Back"
+        ],
+        "results": [
+          {
+            "Name": "Caroline Dezendorf",
+            "Sponsor": "Easton Overland",
+            "Bib": 217,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 700569,
+                "timeString": "11:40"
+              },
+              {
+                "lap": 2,
+                "duration": 731498,
+                "timeString": "12:11"
+              },
+              {
+                "lap": 3,
+                "duration": 739249,
+                "timeString": "12:19"
+              },
+              {
+                "lap": 4,
+                "duration": 750561,
+                "timeString": "12:30"
+              }
+            ],
+            "Time": "48:41",
+            "duration": 2921877
+          },
+          {
+            "Name": "Emma Briggs",
+            "Sponsor": "Mikes Bikes",
+            "Bib": 202,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 787315,
+                "timeString": "13:07"
+              },
+              {
+                "lap": 2,
+                "duration": 817000,
+                "timeString": "13:37"
+              },
+              {
+                "lap": 3,
+                "duration": 850249,
+                "timeString": "14:10"
+              },
+              {
+                "lap": 4,
+                "duration": 816306,
+                "timeString": "13:36"
+              }
+            ],
+            "Time": "54:30",
+            "duration": 3270870,
+            "back": "05:48"
+          },
+          {
+            "Name": "Trinity Gleckler",
+            "Sponsor": "Breakaway Womens Racing",
+            "Bib": 199,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 800065,
+                "timeString": "13:20"
+              },
+              {
+                "lap": 2,
+                "duration": 832254,
+                "timeString": "13:52"
+              },
+              {
+                "lap": 3,
+                "duration": 845508,
+                "timeString": "14:05"
+              },
+              {
+                "lap": 4,
+                "duration": 831306,
+                "timeString": "13:51"
+              }
+            ],
+            "Time": "55:09",
+            "duration": 3309133,
+            "back": "06:27"
+          },
+          {
+            "Name": "Kathy Cervantez",
+            "Sponsor": "",
+            "Bib": 271,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 810072,
+                "timeString": "13:30"
+              },
+              {
+                "lap": 2,
+                "duration": 863492,
+                "timeString": "14:23"
+              },
+              {
+                "lap": 3,
+                "duration": 841297,
+                "timeString": "14:01"
+              },
+              {
+                "lap": 4,
+                "duration": 847260,
+                "timeString": "14:07"
+              }
+            ],
+            "Time": "56:02",
+            "duration": 3362121,
+            "back": "07:20"
+          },
+          {
+            "Name": "Marila Alvares",
+            "Sponsor": "Breakaway Womens Racing",
+            "Bib": 29,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 821077,
+                "timeString": "13:41"
+              },
+              {
+                "lap": 2,
+                "duration": 886490,
+                "timeString": "14:46"
+              },
+              {
+                "lap": 3,
+                "duration": 896799,
+                "timeString": "14:56"
+              },
+              {
+                "lap": 4,
+                "duration": 927520,
+                "timeString": "15:27"
+              }
+            ],
+            "Time": "58:51",
+            "duration": 3531886,
+            "back": "10:10"
+          },
+          {
+            "Name": "Fran Faulknor",
+            "Sponsor": "Roaring Mouse",
+            "Bib": 230,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 831815,
+                "timeString": "13:51"
+              },
+              {
+                "lap": 2,
+                "duration": 894001,
+                "timeString": "14:54"
+              },
+              {
+                "lap": 3,
+                "duration": 940299,
+                "timeString": "15:40"
+              },
+              {
+                "lap": 4,
+                "duration": 912773,
+                "timeString": "15:12"
+              }
+            ],
+            "Time": "59:38",
+            "duration": 3578888,
+            "back": "10:57"
+          },
+          {
+            "Name": "Mandi Seavers",
+            "Sponsor": "Breakaway Women’s Racing",
+            "Bib": 28,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 906066,
+                "timeString": "15:06"
+              },
+              {
+                "lap": 2,
+                "duration": 930249,
+                "timeString": "15:30"
+              },
+              {
+                "lap": 3,
+                "duration": 956301,
+                "timeString": "15:56"
+              },
+              {
+                "lap": 4,
+                "duration": 1005026,
+                "timeString": "16:45"
+              }
+            ],
+            "Time": "03:17",
+            "duration": 3797642,
+            "back": "14:35"
+          },
+          {
+            "Name": "Janell Marton",
+            "Sponsor": "Mike the Poolman",
+            "Bib": 195,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 856066,
+                "timeString": "14:16"
+              }
+            ],
+            "Time": "14:16",
+            "duration": 856066
+          }
+        ],
+        "disporder": 5
+      },
+      "freshsoph_boys": {
+        "id": "freshsoph_boys",
+        "catdispname": "Fresh/Soph Boys",
+        "laps": 2,
+        "columns": [
+          "Pos",
+          "Bib",
+          "Name",
+          "Sponsor",
+          "Lap 1",
+          "Lap 2",
+          "Time",
+          "Back"
+        ],
+        "results": [
+          {
+            "Name": "Justin Maciel",
+            "Sponsor": "Folsom Bulldogs",
+            "Bib": 210,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 770316,
+                "timeString": "12:50"
+              },
+              {
+                "lap": 2,
+                "duration": 814748,
+                "timeString": "13:34"
+              }
+            ],
+            "Time": "26:25",
+            "duration": 1585064
+          },
+          {
+            "Name": "Adam Coty",
+            "Sponsor": "Folsom high Bulldogs",
+            "Bib": 239,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 871816,
+                "timeString": "14:31"
+              },
+              {
+                "lap": 2,
+                "duration": 856248,
+                "timeString": "14:16"
+              }
+            ],
+            "Time": "28:48",
+            "duration": 1728064,
+            "back": "02:23"
+          },
+          {
+            "Name": "Chase Wanland",
+            "Sponsor": "",
+            "Bib": 258,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 871067,
+                "timeString": "14:31"
+              },
+              {
+                "lap": 2,
+                "duration": 870750,
+                "timeString": "14:30"
+              }
+            ],
+            "Time": "29:01",
+            "duration": 1741817,
+            "back": "02:36"
+          },
+          {
+            "Name": "Carson Harris",
+            "Sponsor": "",
+            "Bib": 157,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 879613,
+                "timeString": "14:39"
+              },
+              {
+                "lap": 2,
+                "duration": 931701,
+                "timeString": "15:31"
+              }
+            ],
+            "Time": "30:11",
+            "duration": 1811314,
+            "back": "03:46"
+          },
+          {
+            "Name": "Michael Robbins",
+            "Sponsor": "Chapmans Auto CAre",
+            "Bib": 176,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 965564,
+                "timeString": "16:05"
+              },
+              {
+                "lap": 2,
+                "duration": 935261,
+                "timeString": "15:35"
+              }
+            ],
+            "Time": "31:40",
+            "duration": 1900825,
+            "back": "05:15"
+          },
+          {
+            "Name": "Parker Ford",
+            "Sponsor": "",
+            "Bib": 168,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 964065,
+                "timeString": "16:04"
+              },
+              {
+                "lap": 2,
+                "duration": 951511,
+                "timeString": "15:51"
+              }
+            ],
+            "Time": "31:55",
+            "duration": 1915576,
+            "back": "05:30"
+          },
+          {
+            "Name": "Cash Lazard",
+            "Sponsor": "",
+            "Bib": 158,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 1091314,
+                "timeString": "18:11"
+              },
+              {
+                "lap": 2,
+                "duration": 1210552,
+                "timeString": "20:10"
+              }
+            ],
+            "Time": "38:21",
+            "duration": 2301866,
+            "back": "11:56"
+          }
+        ],
+        "disporder": 28
+      },
+      "jv_boys": {
+        "id": "jv_boys",
+        "catdispname": "JV Boys",
+        "laps": 3,
+        "columns": [
+          "Pos",
+          "Bib",
+          "Name",
+          "Sponsor",
+          "Lap 1",
+          "Lap 2",
+          "Lap 3",
+          "Time",
+          "Back"
+        ],
+        "results": [
+          {
+            "Name": "Ian Schweitzer",
+            "Sponsor": "Demo Worx",
+            "Bib": 162,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 728315,
+                "timeString": "12:08"
+              },
+              {
+                "lap": 2,
+                "duration": 729260,
+                "timeString": "12:09"
+              },
+              {
+                "lap": 3,
+                "duration": 747239,
+                "timeString": "12:27"
+              }
+            ],
+            "Time": "36:44",
+            "duration": 2204814
+          },
+          {
+            "Name": "Kai Sorensen",
+            "Sponsor": "",
+            "Bib": 221,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 816066,
+                "timeString": "13:36"
+              },
+              {
+                "lap": 2,
+                "duration": 859748,
+                "timeString": "14:19"
+              },
+              {
+                "lap": 3,
+                "duration": 875051,
+                "timeString": "14:35"
+              }
+            ],
+            "Time": "42:30",
+            "duration": 2550865,
+            "back": "05:46"
+          },
+          {
+            "Name": "Jaiden Ramiro",
+            "Sponsor": "Cyclistas Del Valle",
+            "Bib": 262,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 1001571,
+                "timeString": "16:41"
+              },
+              {
+                "lap": 2,
+                "duration": 1052743,
+                "timeString": "17:32"
+              },
+              {
+                "lap": 3,
+                "duration": 1055307,
+                "timeString": "17:35"
+              }
+            ],
+            "Time": "51:49",
+            "duration": 3109621,
+            "back": "15:04"
+          }
+        ],
+        "disporder": 15
+      },
+      "poker_league": {
+        "id": "poker_league",
+        "catdispname": "Poker League",
+        "laps": 3,
+        "columns": [
+          "Pos",
+          "Bib",
+          "Name",
+          "Sponsor",
+          "Lap 1",
+          "Lap 2",
+          "Lap 3",
+          "Time",
+          "Back"
+        ],
+        "results": [
+          {
+            "Name": "Blaine Quillin",
+            "Sponsor": "",
+            "Bib": 245,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 867565,
+                "timeString": "14:27"
+              },
+              {
+                "lap": 2,
+                "duration": 919500,
+                "timeString": "15:19"
+              },
+              {
+                "lap": 3,
+                "duration": 928053,
+                "timeString": "15:28"
+              }
+            ],
+            "Time": "45:15",
+            "duration": 2715118
+          },
+          {
+            "Name": "John Golden",
+            "Sponsor": "",
+            "Bib": 85,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 901816,
+                "timeString": "15:01"
+              },
+              {
+                "lap": 2,
+                "duration": 978252,
+                "timeString": "16:18"
+              },
+              {
+                "lap": 3,
+                "duration": 1001051,
+                "timeString": "16:41"
+              }
+            ],
+            "Time": "48:01",
+            "duration": 2881119,
+            "back": "02:46"
+          },
+          {
+            "Name": "Ken Mederios",
+            "Sponsor": "",
+            "Bib": 95,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 785567,
+                "timeString": "13:05"
+              },
+              {
+                "lap": 2,
+                "duration": 1301997,
+                "timeString": "21:41"
+              },
+              {
+                "lap": 3,
+                "duration": 840556,
+                "timeString": "14:00"
+              }
+            ],
+            "Time": "48:48",
+            "duration": 2928120,
+            "back": "03:33"
+          },
+          {
+            "Name": "Gil Inouye",
+            "Sponsor": "gil",
+            "Bib": 94,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 956316,
+                "timeString": "15:56"
+              },
+              {
+                "lap": 2,
+                "duration": 1031748,
+                "timeString": "17:11"
+              },
+              {
+                "lap": 3,
+                "duration": 1047058,
+                "timeString": "17:27"
+              }
+            ],
+            "Time": "50:35",
+            "duration": 3035122,
+            "back": "05:20"
+          },
+          {
+            "Name": "Charles Tobia",
+            "Sponsor": "",
+            "Bib": 191,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 962315,
+                "timeString": "16:02"
+              },
+              {
+                "lap": 2,
+                "duration": 1044001,
+                "timeString": "17:24"
+              },
+              {
+                "lap": 3,
+                "duration": 1043556,
+                "timeString": "17:23"
+              }
+            ],
+            "Time": "50:49",
+            "duration": 3049872,
+            "back": "05:34"
+          },
+          {
+            "Name": "Ed Golden",
+            "Sponsor": "",
+            "Bib": 198,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 1069566,
+                "timeString": "17:49"
+              },
+              {
+                "lap": 2,
+                "duration": 1231049,
+                "timeString": "20:31"
+              },
+              {
+                "lap": 3,
+                "duration": 1389038,
+                "timeString": "23:09"
+              }
+            ],
+            "Time": "01:29",
+            "duration": 3689653,
+            "back": "16:14"
+          },
+          {
+            "Name": "Jessica Boldrini",
+            "Sponsor": "",
+            "Bib": 224,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 982065,
+                "timeString": "16:22"
+              },
+              {
+                "lap": 2,
+                "duration": 979005,
+                "timeString": "16:19"
+              }
+            ],
+            "Time": "32:41",
+            "duration": 1961070
+          },
+          {
+            "Name": "connor Lindsay",
+            "Sponsor": "",
+            "Bib": 177,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 1070814,
+                "timeString": "17:50"
+              },
+              {
+                "lap": 2,
+                "duration": 1144523,
+                "timeString": "19:04"
+              }
+            ],
+            "Time": "36:55",
+            "duration": 2215337
+          },
+          {
+            "Name": "Brenda Hawkins",
+            "Sponsor": "",
+            "Bib": 273,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 1209317,
+                "timeString": "20:09"
+              },
+              {
+                "lap": 2,
+                "duration": 1082296,
+                "timeString": "18:02"
+              }
+            ],
+            "Time": "38:11",
+            "duration": 2291613
+          },
+          {
+            "Name": "Vivian Voochen",
+            "Sponsor": "",
+            "Bib": 242,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 1134073,
+                "timeString": "18:54"
+              },
+              {
+                "lap": 2,
+                "duration": 1178040,
+                "timeString": "19:38"
+              }
+            ],
+            "Time": "38:32",
+            "duration": 2312113
+          },
+          {
+            "Name": "Lynn Yelland",
+            "Sponsor": "",
+            "Bib": 124,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 1218814,
+                "timeString": "20:18"
+              },
+              {
+                "lap": 2,
+                "duration": 1366054,
+                "timeString": "22:46"
+              }
+            ],
+            "Time": "43:04",
+            "duration": 2584868
+          }
+        ],
+        "disporder": 21
+      },
+      "pro_expert": {
+        "id": "pro_expert",
+        "catdispname": "Pro Expert",
+        "laps": 4,
+        "columns": [
+          "Pos",
+          "Bib",
+          "Name",
+          "Sponsor",
+          "Lap 1",
+          "Lap 2",
+          "Lap 3",
+          "Lap 4",
+          "Time",
+          "Back"
+        ],
+        "results": [
+          {
+            "Name": "Timmy Bauer",
+            "Sponsor": "Bauer / Alicea Family Racing",
+            "Bib": 234,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 632122,
+                "timeString": "10:32"
+              },
+              {
+                "lap": 2,
+                "duration": 673696,
+                "timeString": "11:13"
+              },
+              {
+                "lap": 3,
+                "duration": 691247,
+                "timeString": "11:31"
+              },
+              {
+                "lap": 4,
+                "duration": 649301,
+                "timeString": "10:49"
+              }
+            ],
+            "Time": "44:06",
+            "duration": 2646366
+          },
+          {
+            "Name": "Nicolas Jimenez",
+            "Sponsor": "Flow Formulas - TransPerfect",
+            "Bib": 209,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 632092,
+                "timeString": "10:32"
+              },
+              {
+                "lap": 2,
+                "duration": 673973,
+                "timeString": "11:13"
+              },
+              {
+                "lap": 3,
+                "duration": 690749,
+                "timeString": "11:30"
+              },
+              {
+                "lap": 4,
+                "duration": 674549,
+                "timeString": "11:14"
+              }
+            ],
+            "Time": "44:31",
+            "duration": 2671363,
+            "back": "00:24"
+          },
+          {
+            "Name": "Jacob Velasco",
+            "Sponsor": "RHYTHM RACING",
+            "Bib": 226,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 636329,
+                "timeString": "10:36"
+              },
+              {
+                "lap": 2,
+                "duration": 694235,
+                "timeString": "11:34"
+              },
+              {
+                "lap": 3,
+                "duration": 701251,
+                "timeString": "11:41"
+              },
+              {
+                "lap": 4,
+                "duration": 686051,
+                "timeString": "11:26"
+              }
+            ],
+            "Time": "45:17",
+            "duration": 2717866,
+            "back": "01:11"
+          },
+          {
+            "Name": "Evan Rudd",
+            "Sponsor": "",
+            "Bib": 228,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 663322,
+                "timeString": "11:03"
+              },
+              {
+                "lap": 2,
+                "duration": 694245,
+                "timeString": "11:34"
+              },
+              {
+                "lap": 3,
+                "duration": 698978,
+                "timeString": "11:38"
+              },
+              {
+                "lap": 4,
+                "duration": 707070,
+                "timeString": "11:47"
+              }
+            ],
+            "Time": "46:03",
+            "duration": 2763615,
+            "back": "01:57"
+          },
+          {
+            "Name": "Ron Shevock",
+            "Sponsor": "Rhythm Racing",
+            "Bib": 31,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 632584,
+                "timeString": "10:32"
+              },
+              {
+                "lap": 2,
+                "duration": 697735,
+                "timeString": "11:37"
+              },
+              {
+                "lap": 3,
+                "duration": 726495,
+                "timeString": "12:06"
+              },
+              {
+                "lap": 4,
+                "duration": 765561,
+                "timeString": "12:45"
+              }
+            ],
+            "Time": "47:02",
+            "duration": 2822375,
+            "back": "02:56"
+          },
+          {
+            "Name": "Tony Bagnani",
+            "Sponsor": "Team City Sacramento",
+            "Bib": 240,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 663338,
+                "timeString": "11:03"
+              },
+              {
+                "lap": 2,
+                "duration": 723977,
+                "timeString": "12:03"
+              },
+              {
+                "lap": 3,
+                "duration": 734999,
+                "timeString": "12:14"
+              },
+              {
+                "lap": 4,
+                "duration": 738555,
+                "timeString": "12:18"
+              }
+            ],
+            "Time": "47:40",
+            "duration": 2860869,
+            "back": "03:34"
+          },
+          {
+            "Name": "Louis Gaultney",
+            "Sponsor": "LeadOut Racing",
+            "Bib": 30,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 761817,
+                "timeString": "12:41"
+              },
+              {
+                "lap": 2,
+                "duration": 791759,
+                "timeString": "13:11"
+              },
+              {
+                "lap": 3,
+                "duration": 783238,
+                "timeString": "13:03"
+              },
+              {
+                "lap": 4,
+                "duration": 757304,
+                "timeString": "12:37"
+              }
+            ],
+            "Time": "51:34",
+            "duration": 3094118,
+            "back": "07:27"
+          }
+        ],
+        "disporder": 0
+      },
+      "single_speed_expert": {
+        "id": "single_speed_expert",
+        "catdispname": "Single Speed Expert",
+        "laps": 4,
+        "columns": [
+          "Pos",
+          "Bib",
+          "Name",
+          "Sponsor",
+          "Lap 1",
+          "Lap 2",
+          "Lap 3",
+          "Lap 4",
+          "Time",
+          "Back"
+        ],
+        "results": [
+          {
+            "Name": "Ryan Terry",
+            "Sponsor": "Kinetic Cycles/WUBES",
+            "Bib": 205,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 712567,
+                "timeString": "11:52"
+              },
+              {
+                "lap": 2,
+                "duration": 713750,
+                "timeString": "11:53"
+              },
+              {
+                "lap": 3,
+                "duration": 718247,
+                "timeString": "11:58"
+              },
+              {
+                "lap": 4,
+                "duration": 720562,
+                "timeString": "12:00"
+              }
+            ],
+            "Time": "47:45",
+            "duration": 2865126
+          },
+          {
+            "Name": "Phil Smith",
+            "Sponsor": "LeadOut Racing",
+            "Bib": 33,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 725315,
+                "timeString": "12:05"
+              },
+              {
+                "lap": 2,
+                "duration": 739000,
+                "timeString": "12:19"
+              },
+              {
+                "lap": 3,
+                "duration": 752249,
+                "timeString": "12:32"
+              },
+              {
+                "lap": 4,
+                "duration": 758056,
+                "timeString": "12:38"
+              }
+            ],
+            "Time": "49:34",
+            "duration": 2974620,
+            "back": "01:49"
+          },
+          {
+            "Name": "Chris Maier",
+            "Sponsor": "Mike the Poolman",
+            "Bib": 34,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 745067,
+                "timeString": "12:25"
+              },
+              {
+                "lap": 2,
+                "duration": 771748,
+                "timeString": "12:51"
+              },
+              {
+                "lap": 3,
+                "duration": 807250,
+                "timeString": "13:27"
+              },
+              {
+                "lap": 4,
+                "duration": 802804,
+                "timeString": "13:22"
+              }
+            ],
+            "Time": "52:06",
+            "duration": 3126869,
+            "back": "04:21"
+          },
+          {
+            "Name": "javier villarreal",
+            "Sponsor": "",
+            "Bib": 35,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 727815,
+                "timeString": "12:07"
+              },
+              {
+                "lap": 2,
+                "duration": 812999,
+                "timeString": "13:32"
+              },
+              {
+                "lap": 3,
+                "duration": 820751,
+                "timeString": "13:40"
+              },
+              {
+                "lap": 4,
+                "duration": 849555,
+                "timeString": "14:09"
+              }
+            ],
+            "Time": "53:31",
+            "duration": 3211120,
+            "back": "05:45"
+          },
+          {
+            "Name": "John Salmon",
+            "Sponsor": "",
+            "Bib": 32,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 768817,
+                "timeString": "12:48"
+              },
+              {
+                "lap": 2,
+                "duration": 834249,
+                "timeString": "13:54"
+              },
+              {
+                "lap": 3,
+                "duration": 847261,
+                "timeString": "14:07"
+              },
+              {
+                "lap": 4,
+                "duration": 849547,
+                "timeString": "14:09"
+              }
+            ],
+            "Time": "54:59",
+            "duration": 3299874,
+            "back": "07:14"
+          },
+          {
+            "Name": "Myron Dong",
+            "Sponsor": "Unattached",
+            "Bib": 241,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 859566,
+                "timeString": "14:19"
+              },
+              {
+                "lap": 2,
+                "duration": 904998,
+                "timeString": "15:04"
+              },
+              {
+                "lap": 3,
+                "duration": 912050,
+                "timeString": "15:12"
+              },
+              {
+                "lap": 4,
+                "duration": 910772,
+                "timeString": "15:10"
+              }
+            ],
+            "Time": "59:47",
+            "duration": 3587386,
+            "back": "12:02"
+          }
+        ],
+        "disporder": 6
+      },
+      "single_speed_sport": {
+        "id": "single_speed_sport",
+        "catdispname": "Single Speed Sport",
+        "laps": 3,
+        "columns": [
+          "Pos",
+          "Bib",
+          "Name",
+          "Sponsor",
+          "Lap 1",
+          "Lap 2",
+          "Lap 3",
+          "Time",
+          "Back"
+        ],
+        "results": [
+          {
+            "Name": "Andrew Paxton",
+            "Sponsor": "LeadOut Racing",
+            "Bib": 40,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 743315,
+                "timeString": "12:23"
+              },
+              {
+                "lap": 2,
+                "duration": 798250,
+                "timeString": "13:18"
+              },
+              {
+                "lap": 3,
+                "duration": 822760,
+                "timeString": "13:42"
+              }
+            ],
+            "Time": "39:24",
+            "duration": 2364325
+          },
+          {
+            "Name": "Danny Martin",
+            "Sponsor": "",
+            "Bib": 38,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 778065,
+                "timeString": "12:58"
+              },
+              {
+                "lap": 2,
+                "duration": 852499,
+                "timeString": "14:12"
+              },
+              {
+                "lap": 3,
+                "duration": 832295,
+                "timeString": "13:52"
+              }
+            ],
+            "Time": "41:02",
+            "duration": 2462859,
+            "back": "01:38"
+          },
+          {
+            "Name": "Graham Faulknor",
+            "Sponsor": "Graham Faulknor",
+            "Bib": 222,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 800317,
+                "timeString": "13:20"
+              },
+              {
+                "lap": 2,
+                "duration": 862497,
+                "timeString": "14:22"
+              },
+              {
+                "lap": 3,
+                "duration": 825798,
+                "timeString": "13:45"
+              }
+            ],
+            "Time": "41:28",
+            "duration": 2488612,
+            "back": "02:04"
+          },
+          {
+            "Name": "Mitchell Stockwell",
+            "Sponsor": "Team City",
+            "Bib": 59,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 791565,
+                "timeString": "13:11"
+              },
+              {
+                "lap": 2,
+                "duration": 835499,
+                "timeString": "13:55"
+              },
+              {
+                "lap": 3,
+                "duration": 869299,
+                "timeString": "14:29"
+              }
+            ],
+            "Time": "41:36",
+            "duration": 2496363,
+            "back": "02:12"
+          },
+          {
+            "Name": "Ryan Anderson",
+            "Sponsor": "MTS",
+            "Bib": 37,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 795815,
+                "timeString": "13:15"
+              },
+              {
+                "lap": 2,
+                "duration": 846750,
+                "timeString": "14:06"
+              },
+              {
+                "lap": 3,
+                "duration": 881298,
+                "timeString": "14:41"
+              }
+            ],
+            "Time": "42:03",
+            "duration": 2523863,
+            "back": "02:39"
+          },
+          {
+            "Name": "Victor Mao",
+            "Sponsor": "Kinetic Cycles",
+            "Bib": 57,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 838817,
+                "timeString": "13:58"
+              },
+              {
+                "lap": 2,
+                "duration": 895249,
+                "timeString": "14:55"
+              },
+              {
+                "lap": 3,
+                "duration": 876299,
+                "timeString": "14:36"
+              }
+            ],
+            "Time": "43:30",
+            "duration": 2610365,
+            "back": "04:06"
+          },
+          {
+            "Name": "Doug Martin",
+            "Sponsor": "",
+            "Bib": 39,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 873317,
+                "timeString": "14:33"
+              },
+              {
+                "lap": 2,
+                "duration": 928997,
+                "timeString": "15:28"
+              },
+              {
+                "lap": 3,
+                "duration": 929051,
+                "timeString": "15:29"
+              }
+            ],
+            "Time": "45:31",
+            "duration": 2731365,
+            "back": "06:07"
+          },
+          {
+            "Name": "Ryan Wenker",
+            "Sponsor": "Kinetic Cycles",
+            "Bib": 227,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 892816,
+                "timeString": "14:52"
+              },
+              {
+                "lap": 2,
+                "duration": 987998,
+                "timeString": "16:27"
+              },
+              {
+                "lap": 3,
+                "duration": 1066804,
+                "timeString": "17:46"
+              }
+            ],
+            "Time": "49:07",
+            "duration": 2947618,
+            "back": "09:43"
+          },
+          {
+            "Name": "Kyle Hamilton",
+            "Sponsor": "Mikes Bikes",
+            "Bib": 203,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 757006,
+                "timeString": "12:37"
+              },
+              {
+                "lap": 2,
+                "duration": 816060,
+                "timeString": "13:36"
+              }
+            ],
+            "Time": "26:13",
+            "duration": 1573066
+          }
+        ],
+        "disporder": 9
+      },
+      "sport_men_1939": {
+        "id": "sport_men_1939",
+        "catdispname": "Sport Men 19-39",
+        "laps": 3,
+        "columns": [
+          "Pos",
+          "Bib",
+          "Name",
+          "Sponsor",
+          "Lap 1",
+          "Lap 2",
+          "Lap 3",
+          "Time",
+          "Back"
+        ],
+        "results": [
+          {
+            "Name": "John Kerslake",
+            "Sponsor": "",
+            "Bib": 81,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 725546,
+                "timeString": "12:05"
+              },
+              {
+                "lap": 2,
+                "duration": 787271,
+                "timeString": "13:07"
+              },
+              {
+                "lap": 3,
+                "duration": 800508,
+                "timeString": "13:20"
+              }
+            ],
+            "Time": "38:33",
+            "duration": 2313325
+          },
+          {
+            "Name": "Adam Aguilar",
+            "Sponsor": "Rhythm Racing p/b Mraz Brewing / Folsom Lake Realty",
+            "Bib": 68,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 753065,
+                "timeString": "12:33"
+              },
+              {
+                "lap": 2,
+                "duration": 798749,
+                "timeString": "13:18"
+              },
+              {
+                "lap": 3,
+                "duration": 823734,
+                "timeString": "13:43"
+              }
+            ],
+            "Time": "39:35",
+            "duration": 2375548,
+            "back": "01:02"
+          },
+          {
+            "Name": "Justin Slaight",
+            "Sponsor": "",
+            "Bib": 49,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 792067,
+                "timeString": "13:12"
+              },
+              {
+                "lap": 2,
+                "duration": 824748,
+                "timeString": "13:44"
+              },
+              {
+                "lap": 3,
+                "duration": 834049,
+                "timeString": "13:54"
+              }
+            ],
+            "Time": "40:50",
+            "duration": 2450864,
+            "back": "02:17"
+          },
+          {
+            "Name": "Irie Honeyeater",
+            "Sponsor": "",
+            "Bib": 43,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 798818,
+                "timeString": "13:18"
+              },
+              {
+                "lap": 2,
+                "duration": 826997,
+                "timeString": "13:46"
+              },
+              {
+                "lap": 3,
+                "duration": 837048,
+                "timeString": "13:57"
+              }
+            ],
+            "Time": "41:02",
+            "duration": 2462863,
+            "back": "02:29"
+          },
+          {
+            "Name": "Nikolas Martinelli",
+            "Sponsor": "",
+            "Bib": 264,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 826067,
+                "timeString": "13:46"
+              },
+              {
+                "lap": 2,
+                "duration": 871997,
+                "timeString": "14:31"
+              },
+              {
+                "lap": 3,
+                "duration": 885310,
+                "timeString": "14:45"
+              }
+            ],
+            "Time": "43:03",
+            "duration": 2583374,
+            "back": "04:30"
+          },
+          {
+            "Name": "Anthony Bott",
+            "Sponsor": "",
+            "Bib": 267,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 847565,
+                "timeString": "14:07"
+              },
+              {
+                "lap": 2,
+                "duration": 918001,
+                "timeString": "15:18"
+              },
+              {
+                "lap": 3,
+                "duration": 954052,
+                "timeString": "15:54"
+              }
+            ],
+            "Time": "45:19",
+            "duration": 2719618,
+            "back": "06:46"
+          },
+          {
+            "Name": "Trevor Buckenham",
+            "Sponsor": "",
+            "Bib": 269,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 922565,
+                "timeString": "15:22"
+              },
+              {
+                "lap": 2,
+                "duration": 1019001,
+                "timeString": "16:59"
+              },
+              {
+                "lap": 3,
+                "duration": 966302,
+                "timeString": "16:06"
+              }
+            ],
+            "Time": "48:27",
+            "duration": 2907868,
+            "back": "09:54"
+          },
+          {
+            "Name": "Davey King",
+            "Sponsor": "Support Special Olympics",
+            "Bib": 45,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 923566,
+                "timeString": "15:23"
+              },
+              {
+                "lap": 2,
+                "duration": 992750,
+                "timeString": "16:32"
+              },
+              {
+                "lap": 3,
+                "duration": 1016805,
+                "timeString": "16:56"
+              }
+            ],
+            "Time": "48:53",
+            "duration": 2933121,
+            "back": "10:19"
+          }
+        ],
+        "disporder": 11
+      },
+      "sport_men_4049": {
+        "id": "sport_men_4049",
+        "catdispname": "Sport Men 40-49",
+        "laps": 3,
+        "columns": [
+          "Pos",
+          "Bib",
+          "Name",
+          "Sponsor",
+          "Lap 1",
+          "Lap 2",
+          "Lap 3",
+          "Time",
+          "Back"
+        ],
+        "results": [
+          {
+            "Name": "Michael Meza",
+            "Sponsor": "",
+            "Bib": 66,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 758065,
+                "timeString": "12:38"
+              },
+              {
+                "lap": 2,
+                "duration": 802999,
+                "timeString": "13:22"
+              },
+              {
+                "lap": 3,
+                "duration": 806532,
+                "timeString": "13:26"
+              }
+            ],
+            "Time": "39:27",
+            "duration": 2367596
+          },
+          {
+            "Name": "Dave Christensen",
+            "Sponsor": "Atown Bikes",
+            "Bib": 84,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 768067,
+                "timeString": "12:48"
+              },
+              {
+                "lap": 2,
+                "duration": 809750,
+                "timeString": "13:29"
+              },
+              {
+                "lap": 3,
+                "duration": 813791,
+                "timeString": "13:33"
+              }
+            ],
+            "Time": "39:51",
+            "duration": 2391608,
+            "back": "00:24"
+          },
+          {
+            "Name": "Michael Lyster",
+            "Sponsor": "OBG",
+            "Bib": 86,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 781815,
+                "timeString": "13:01"
+              },
+              {
+                "lap": 2,
+                "duration": 821000,
+                "timeString": "13:41"
+              },
+              {
+                "lap": 3,
+                "duration": 818764,
+                "timeString": "13:38"
+              }
+            ],
+            "Time": "40:21",
+            "duration": 2421579,
+            "back": "00:53"
+          },
+          {
+            "Name": "Aaron Cox",
+            "Sponsor": "",
+            "Bib": 255,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 788315,
+                "timeString": "13:08"
+              },
+              {
+                "lap": 2,
+                "duration": 829259,
+                "timeString": "13:49"
+              },
+              {
+                "lap": 3,
+                "duration": 819791,
+                "timeString": "13:39"
+              }
+            ],
+            "Time": "40:37",
+            "duration": 2437365,
+            "back": "01:09"
+          },
+          {
+            "Name": "Michael Helquist",
+            "Sponsor": "",
+            "Bib": 71,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 845317,
+                "timeString": "14:05"
+              },
+              {
+                "lap": 2,
+                "duration": 849499,
+                "timeString": "14:09"
+              },
+              {
+                "lap": 3,
+                "duration": 826299,
+                "timeString": "13:46"
+              }
+            ],
+            "Time": "42:01",
+            "duration": 2521115,
+            "back": "02:33"
+          },
+          {
+            "Name": "David Burkett",
+            "Sponsor": "",
+            "Bib": 83,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 837092,
+                "timeString": "13:57"
+              },
+              {
+                "lap": 2,
+                "duration": 852723,
+                "timeString": "14:12"
+              },
+              {
+                "lap": 3,
+                "duration": 874792,
+                "timeString": "14:34"
+              }
+            ],
+            "Time": "42:44",
+            "duration": 2564607,
+            "back": "03:17"
+          },
+          {
+            "Name": "Michael Cain",
+            "Sponsor": "",
+            "Bib": 51,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 834331,
+                "timeString": "13:54"
+              },
+              {
+                "lap": 2,
+                "duration": 929243,
+                "timeString": "15:29"
+              },
+              {
+                "lap": 3,
+                "duration": 940542,
+                "timeString": "15:40"
+              }
+            ],
+            "Time": "45:04",
+            "duration": 2704116,
+            "back": "05:36"
+          },
+          {
+            "Name": "Daniel Jones",
+            "Sponsor": "",
+            "Bib": 79,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 882576,
+                "timeString": "14:42"
+              },
+              {
+                "lap": 2,
+                "duration": 931501,
+                "timeString": "15:31"
+              },
+              {
+                "lap": 3,
+                "duration": 953042,
+                "timeString": "15:53"
+              }
+            ],
+            "Time": "46:07",
+            "duration": 2767119,
+            "back": "06:39"
+          },
+          {
+            "Name": "Bart Zeydel",
+            "Sponsor": "",
+            "Bib": 179,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 898064,
+                "timeString": "14:58"
+              },
+              {
+                "lap": 2,
+                "duration": 925500,
+                "timeString": "15:25"
+              },
+              {
+                "lap": 3,
+                "duration": 950313,
+                "timeString": "15:50"
+              }
+            ],
+            "Time": "46:13",
+            "duration": 2773877,
+            "back": "06:46"
+          },
+          {
+            "Name": "Joshua Boyden",
+            "Sponsor": "LeadOut",
+            "Bib": 17,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 931315,
+                "timeString": "15:31"
+              },
+              {
+                "lap": 2,
+                "duration": 1010749,
+                "timeString": "16:50"
+              },
+              {
+                "lap": 3,
+                "duration": 948304,
+                "timeString": "15:48"
+              }
+            ],
+            "Time": "48:10",
+            "duration": 2890368,
+            "back": "08:42"
+          },
+          {
+            "Name": "Joe Honoroff",
+            "Sponsor": "",
+            "Bib": 72,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 911315,
+                "timeString": "15:11"
+              },
+              {
+                "lap": 2,
+                "duration": 1000253,
+                "timeString": "16:40"
+              },
+              {
+                "lap": 3,
+                "duration": 989550,
+                "timeString": "16:29"
+              }
+            ],
+            "Time": "48:21",
+            "duration": 2901118,
+            "back": "08:53"
+          },
+          {
+            "Name": "Garett McDermid",
+            "Sponsor": "",
+            "Bib": 265,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 926319,
+                "timeString": "15:26"
+              },
+              {
+                "lap": 2,
+                "duration": 999495,
+                "timeString": "16:39"
+              },
+              {
+                "lap": 3,
+                "duration": 988554,
+                "timeString": "16:28"
+              }
+            ],
+            "Time": "48:34",
+            "duration": 2914368,
+            "back": "09:06"
+          }
+        ],
+        "disporder": 12
+      },
+      "sport_men_5059": {
+        "id": "sport_men_5059",
+        "catdispname": "Sport Men 50-59",
+        "laps": 3,
+        "columns": [
+          "Pos",
+          "Bib",
+          "Name",
+          "Sponsor",
+          "Lap 1",
+          "Lap 2",
+          "Lap 3",
+          "Time",
+          "Back"
+        ],
+        "results": [
+          {
+            "Name": "Michael Medina",
+            "Sponsor": "Leadout",
+            "Bib": 65,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 753066,
+                "timeString": "12:33"
+              },
+              {
+                "lap": 2,
+                "duration": 787000,
+                "timeString": "13:07"
+              },
+              {
+                "lap": 3,
+                "duration": 804277,
+                "timeString": "13:24"
+              }
+            ],
+            "Time": "39:04",
+            "duration": 2344343
+          },
+          {
+            "Name": "Will Harris",
+            "Sponsor": "",
+            "Bib": 257,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 790065,
+                "timeString": "13:10"
+              },
+              {
+                "lap": 2,
+                "duration": 812751,
+                "timeString": "13:32"
+              },
+              {
+                "lap": 3,
+                "duration": 816546,
+                "timeString": "13:36"
+              }
+            ],
+            "Time": "40:19",
+            "duration": 2419362,
+            "back": "01:15"
+          },
+          {
+            "Name": "Ted Ornduff",
+            "Sponsor": "Victory Velo",
+            "Bib": 47,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 787065,
+                "timeString": "13:07"
+              },
+              {
+                "lap": 2,
+                "duration": 812749,
+                "timeString": "13:32"
+              },
+              {
+                "lap": 3,
+                "duration": 854314,
+                "timeString": "14:14"
+              }
+            ],
+            "Time": "40:54",
+            "duration": 2454128,
+            "back": "01:49"
+          },
+          {
+            "Name": "Steve Beauchamp",
+            "Sponsor": "",
+            "Bib": 62,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 808577,
+                "timeString": "13:28"
+              },
+              {
+                "lap": 2,
+                "duration": 827737,
+                "timeString": "13:47"
+              },
+              {
+                "lap": 3,
+                "duration": 843550,
+                "timeString": "14:03"
+              }
+            ],
+            "Time": "41:19",
+            "duration": 2479864,
+            "back": "02:15"
+          },
+          {
+            "Name": "Chris Crosta",
+            "Sponsor": "",
+            "Bib": 75,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 807066,
+                "timeString": "13:27"
+              },
+              {
+                "lap": 2,
+                "duration": 844499,
+                "timeString": "14:04"
+              },
+              {
+                "lap": 3,
+                "duration": 838548,
+                "timeString": "13:58"
+              }
+            ],
+            "Time": "41:30",
+            "duration": 2490113,
+            "back": "02:25"
+          },
+          {
+            "Name": "Daniel Nutley",
+            "Sponsor": "",
+            "Bib": 212,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 821315,
+                "timeString": "13:41"
+              },
+              {
+                "lap": 2,
+                "duration": 849250,
+                "timeString": "14:09"
+              },
+              {
+                "lap": 3,
+                "duration": 839299,
+                "timeString": "13:59"
+              }
+            ],
+            "Time": "41:49",
+            "duration": 2509864,
+            "back": "02:45"
+          },
+          {
+            "Name": "Shane Swan",
+            "Sponsor": "",
+            "Bib": 104,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 839565,
+                "timeString": "13:59"
+              },
+              {
+                "lap": 2,
+                "duration": 836999,
+                "timeString": "13:56"
+              },
+              {
+                "lap": 3,
+                "duration": 851302,
+                "timeString": "14:11"
+              }
+            ],
+            "Time": "42:07",
+            "duration": 2527866,
+            "back": "03:03"
+          },
+          {
+            "Name": "Earl (JR) Richardson",
+            "Sponsor": "Kinetic Cycles",
+            "Bib": 208,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 841065,
+                "timeString": "14:01"
+              },
+              {
+                "lap": 2,
+                "duration": 879249,
+                "timeString": "14:39"
+              },
+              {
+                "lap": 3,
+                "duration": 879801,
+                "timeString": "14:39"
+              }
+            ],
+            "Time": "43:20",
+            "duration": 2600115,
+            "back": "04:15"
+          },
+          {
+            "Name": "William Lindsay",
+            "Sponsor": "",
+            "Bib": 63,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 829566,
+                "timeString": "13:49"
+              },
+              {
+                "lap": 2,
+                "duration": 900998,
+                "timeString": "15:00"
+              },
+              {
+                "lap": 3,
+                "duration": 893302,
+                "timeString": "14:53"
+              }
+            ],
+            "Time": "43:43",
+            "duration": 2623866,
+            "back": "04:39"
+          },
+          {
+            "Name": "Jim(Racer McRacerface) Pavlichek",
+            "Sponsor": "Mikes Velo City",
+            "Bib": 53,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 840315,
+                "timeString": "14:00"
+              },
+              {
+                "lap": 2,
+                "duration": 909759,
+                "timeString": "15:09"
+              },
+              {
+                "lap": 3,
+                "duration": 895541,
+                "timeString": "14:55"
+              }
+            ],
+            "Time": "44:05",
+            "duration": 2645615,
+            "back": "05:01"
+          },
+          {
+            "Name": "Alan Gonsalves",
+            "Sponsor": "",
+            "Bib": 42,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 848315,
+                "timeString": "14:08"
+              },
+              {
+                "lap": 2,
+                "duration": 908500,
+                "timeString": "15:08"
+              },
+              {
+                "lap": 3,
+                "duration": 895553,
+                "timeString": "14:55"
+              }
+            ],
+            "Time": "44:12",
+            "duration": 2652368,
+            "back": "05:08"
+          },
+          {
+            "Name": "Mike Dean",
+            "Sponsor": "Cycling Development",
+            "Bib": 229,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 837065,
+                "timeString": "13:57"
+              },
+              {
+                "lap": 2,
+                "duration": 918499,
+                "timeString": "15:18"
+              },
+              {
+                "lap": 3,
+                "duration": 901054,
+                "timeString": "15:01"
+              }
+            ],
+            "Time": "44:16",
+            "duration": 2656618,
+            "back": "05:12"
+          },
+          {
+            "Name": "Michael Chandler",
+            "Sponsor": "",
+            "Bib": 188,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 881815,
+                "timeString": "14:41"
+              },
+              {
+                "lap": 2,
+                "duration": 902999,
+                "timeString": "15:02"
+              },
+              {
+                "lap": 3,
+                "duration": 908555,
+                "timeString": "15:08"
+              }
+            ],
+            "Time": "44:53",
+            "duration": 2693369,
+            "back": "05:49"
+          },
+          {
+            "Name": "Brent Yost",
+            "Sponsor": "Kinetic Cycles",
+            "Bib": 67,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 854065,
+                "timeString": "14:14"
+              },
+              {
+                "lap": 2,
+                "duration": 915250,
+                "timeString": "15:15"
+              },
+              {
+                "lap": 3,
+                "duration": 929801,
+                "timeString": "15:29"
+              }
+            ],
+            "Time": "44:59",
+            "duration": 2699116,
+            "back": "05:54"
+          },
+          {
+            "Name": "Brian Gaultney",
+            "Sponsor": "LeadOut Racing",
+            "Bib": 41,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 869565,
+                "timeString": "14:29"
+              },
+              {
+                "lap": 2,
+                "duration": 939749,
+                "timeString": "15:39"
+              },
+              {
+                "lap": 3,
+                "duration": 978305,
+                "timeString": "16:18"
+              }
+            ],
+            "Time": "46:27",
+            "duration": 2787619,
+            "back": "07:23"
+          },
+          {
+            "Name": "Terry Keplinger",
+            "Sponsor": "",
+            "Bib": 44,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 869572,
+                "timeString": "14:29"
+              },
+              {
+                "lap": 2,
+                "duration": 933742,
+                "timeString": "15:33"
+              },
+              {
+                "lap": 3,
+                "duration": 1005304,
+                "timeString": "16:45"
+              }
+            ],
+            "Time": "46:48",
+            "duration": 2808618,
+            "back": "07:44"
+          },
+          {
+            "Name": "Brandon Hawkins",
+            "Sponsor": "Kinetik Cycles",
+            "Bib": 186,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 923315,
+                "timeString": "15:23"
+              },
+              {
+                "lap": 2,
+                "duration": 952499,
+                "timeString": "15:52"
+              },
+              {
+                "lap": 3,
+                "duration": 966307,
+                "timeString": "16:06"
+              }
+            ],
+            "Time": "47:22",
+            "duration": 2842121,
+            "back": "08:17"
+          },
+          {
+            "Name": "Stephen Louie",
+            "Sponsor": "",
+            "Bib": 78,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 888067,
+                "timeString": "14:48"
+              },
+              {
+                "lap": 2,
+                "duration": 983748,
+                "timeString": "16:23"
+              },
+              {
+                "lap": 3,
+                "duration": 1011816,
+                "timeString": "16:51"
+              }
+            ],
+            "Time": "48:03",
+            "duration": 2883631,
+            "back": "08:59"
+          },
+          {
+            "Name": "Patrick Morin",
+            "Sponsor": "",
+            "Bib": 181,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 924065,
+                "timeString": "15:24"
+              },
+              {
+                "lap": 2,
+                "duration": 994252,
+                "timeString": "16:34"
+              },
+              {
+                "lap": 3,
+                "duration": 986063,
+                "timeString": "16:26"
+              }
+            ],
+            "Time": "48:24",
+            "duration": 2904380,
+            "back": "09:20"
+          },
+          {
+            "Name": "David Herrmann",
+            "Sponsor": "",
+            "Bib": 76,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 941566,
+                "timeString": "15:41"
+              },
+              {
+                "lap": 2,
+                "duration": 999759,
+                "timeString": "16:39"
+              },
+              {
+                "lap": 3,
+                "duration": 1004795,
+                "timeString": "16:44"
+              }
+            ],
+            "Time": "49:06",
+            "duration": 2946120,
+            "back": "10:01"
+          },
+          {
+            "Name": "Craig Learoyd",
+            "Sponsor": "",
+            "Bib": 46,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 926064,
+                "timeString": "15:26"
+              },
+              {
+                "lap": 2,
+                "duration": 1008501,
+                "timeString": "16:48"
+              },
+              {
+                "lap": 3,
+                "duration": 1049304,
+                "timeString": "17:29"
+              }
+            ],
+            "Time": "49:43",
+            "duration": 2983869,
+            "back": "10:39"
+          },
+          {
+            "Name": "Ed Ruble",
+            "Sponsor": "",
+            "Bib": 87,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 972066,
+                "timeString": "16:12"
+              },
+              {
+                "lap": 2,
+                "duration": 1066749,
+                "timeString": "17:46"
+              },
+              {
+                "lap": 3,
+                "duration": 1091309,
+                "timeString": "18:11"
+              }
+            ],
+            "Time": "52:10",
+            "duration": 3130124,
+            "back": "13:05"
+          },
+          {
+            "Name": "Jay Van Rein",
+            "Sponsor": "Team City Sacramento",
+            "Bib": 80,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 975564,
+                "timeString": "16:15"
+              },
+              {
+                "lap": 2,
+                "duration": 1050753,
+                "timeString": "17:30"
+              },
+              {
+                "lap": 3,
+                "duration": 1131054,
+                "timeString": "18:51"
+              }
+            ],
+            "Time": "52:37",
+            "duration": 3157371,
+            "back": "13:33"
+          }
+        ],
+        "disporder": 13
+      },
+      "sport_men_60": {
+        "id": "sport_men_60",
+        "catdispname": "Sport Men 60+",
+        "laps": 3,
+        "columns": [
+          "Pos",
+          "Bib",
+          "Name",
+          "Sponsor",
+          "Lap 1",
+          "Lap 2",
+          "Lap 3",
+          "Time",
+          "Back"
+        ],
+        "results": [
+          {
+            "Name": "Rob Wassmer",
+            "Sponsor": "Kinetic Cycles",
+            "Bib": 50,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 800815,
+                "timeString": "13:20"
+              },
+              {
+                "lap": 2,
+                "duration": 841008,
+                "timeString": "14:01"
+              },
+              {
+                "lap": 3,
+                "duration": 868041,
+                "timeString": "14:28"
+              }
+            ],
+            "Time": "41:49",
+            "duration": 2509864
+          },
+          {
+            "Name": "Dan Pollard",
+            "Sponsor": "",
+            "Bib": 74,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 800566,
+                "timeString": "13:20"
+              },
+              {
+                "lap": 2,
+                "duration": 852498,
+                "timeString": "14:12"
+              },
+              {
+                "lap": 3,
+                "duration": 871800,
+                "timeString": "14:31"
+              }
+            ],
+            "Time": "42:04",
+            "duration": 2524864,
+            "back": "00:15"
+          },
+          {
+            "Name": "Mark Poole",
+            "Sponsor": "Body Concepts Bicycle Racing Team",
+            "Bib": 48,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 840817,
+                "timeString": "14:00"
+              },
+              {
+                "lap": 2,
+                "duration": 851247,
+                "timeString": "14:11"
+              },
+              {
+                "lap": 3,
+                "duration": 864301,
+                "timeString": "14:24"
+              }
+            ],
+            "Time": "42:36",
+            "duration": 2556365,
+            "back": "00:46"
+          },
+          {
+            "Name": "Milan Vukovich",
+            "Sponsor": "",
+            "Bib": 268,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 841065,
+                "timeString": "14:01"
+              },
+              {
+                "lap": 2,
+                "duration": 888249,
+                "timeString": "14:48"
+              },
+              {
+                "lap": 3,
+                "duration": 875552,
+                "timeString": "14:35"
+              }
+            ],
+            "Time": "43:24",
+            "duration": 2604866,
+            "back": "01:35"
+          },
+          {
+            "Name": "Colin Carr-Hall",
+            "Sponsor": "Chainbreakers",
+            "Bib": 52,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 849064,
+                "timeString": "14:09"
+              },
+              {
+                "lap": 2,
+                "duration": 879010,
+                "timeString": "14:39"
+              },
+              {
+                "lap": 3,
+                "duration": 877291,
+                "timeString": "14:37"
+              }
+            ],
+            "Time": "43:25",
+            "duration": 2605365,
+            "back": "01:35"
+          },
+          {
+            "Name": "Edward Cruz",
+            "Sponsor": "Body Logic SERT",
+            "Bib": 70,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 857815,
+                "timeString": "14:17"
+              },
+              {
+                "lap": 2,
+                "duration": 880749,
+                "timeString": "14:40"
+              },
+              {
+                "lap": 3,
+                "duration": 887051,
+                "timeString": "14:47"
+              }
+            ],
+            "Time": "43:45",
+            "duration": 2625615,
+            "back": "01:55"
+          },
+          {
+            "Name": "Bobby Carpenter",
+            "Sponsor": "River Rat",
+            "Bib": 165,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 875818,
+                "timeString": "14:35"
+              },
+              {
+                "lap": 2,
+                "duration": 918746,
+                "timeString": "15:18"
+              },
+              {
+                "lap": 3,
+                "duration": 941563,
+                "timeString": "15:41"
+              }
+            ],
+            "Time": "45:36",
+            "duration": 2736127,
+            "back": "03:46"
+          },
+          {
+            "Name": "Steve Grove",
+            "Sponsor": "",
+            "Bib": 178,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 897567,
+                "timeString": "14:57"
+              },
+              {
+                "lap": 2,
+                "duration": 961006,
+                "timeString": "16:01"
+              },
+              {
+                "lap": 3,
+                "duration": 1005297,
+                "timeString": "16:45"
+              }
+            ],
+            "Time": "47:43",
+            "duration": 2863870,
+            "back": "05:54"
+          },
+          {
+            "Name": "Tom Leard",
+            "Sponsor": "",
+            "Bib": 167,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 957316,
+                "timeString": "15:57"
+              },
+              {
+                "lap": 2,
+                "duration": 975758,
+                "timeString": "16:15"
+              },
+              {
+                "lap": 3,
+                "duration": 993044,
+                "timeString": "16:33"
+              }
+            ],
+            "Time": "48:46",
+            "duration": 2926118,
+            "back": "06:56"
+          },
+          {
+            "Name": "Mark Thompson",
+            "Sponsor": "",
+            "Bib": 88,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 934565,
+                "timeString": "15:34"
+              },
+              {
+                "lap": 2,
+                "duration": 1017999,
+                "timeString": "16:57"
+              },
+              {
+                "lap": 3,
+                "duration": 1031055,
+                "timeString": "17:11"
+              }
+            ],
+            "Time": "49:43",
+            "duration": 2983619,
+            "back": "07:53"
+          },
+          {
+            "Name": "Richard McElman",
+            "Sponsor": "",
+            "Bib": 110,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 1227815,
+                "timeString": "20:27"
+              },
+              {
+                "lap": 2,
+                "duration": 1383051,
+                "timeString": "23:03"
+              },
+              {
+                "lap": 3,
+                "duration": 1291527,
+                "timeString": "21:31"
+              }
+            ],
+            "Time": "05:02",
+            "duration": 3902393,
+            "back": "23:12"
+          },
+          {
+            "Name": "Thomas Wood",
+            "Sponsor": "Body Logic/SERT",
+            "Bib": 196,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 843068,
+                "timeString": "14:03"
+              }
+            ],
+            "Time": "14:03",
+            "duration": 843068
+          }
+        ],
+        "disporder": 14
+      },
+      "sport_women_39": {
+        "id": "sport_women_39",
+        "catdispname": "Sport Women 39-",
+        "laps": 3,
+        "columns": [
+          "Pos",
+          "Bib",
+          "Name",
+          "Sponsor",
+          "Lap 1",
+          "Lap 2",
+          "Lap 3",
+          "Time",
+          "Back"
+        ],
+        "results": [
+          {
+            "Name": "Sarah Zabel",
+            "Sponsor": "Oak Ridge High School / Cycling Dev",
+            "Bib": 159,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 914326,
+                "timeString": "15:14"
+              },
+              {
+                "lap": 2,
+                "duration": 930248,
+                "timeString": "15:30"
+              },
+              {
+                "lap": 3,
+                "duration": 927544,
+                "timeString": "15:27"
+              }
+            ],
+            "Time": "46:12",
+            "duration": 2772118
+          },
+          {
+            "Name": "Amanda Moreland",
+            "Sponsor": "",
+            "Bib": 56,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 918565,
+                "timeString": "15:18"
+              },
+              {
+                "lap": 2,
+                "duration": 929752,
+                "timeString": "15:29"
+              },
+              {
+                "lap": 3,
+                "duration": 933551,
+                "timeString": "15:33"
+              }
+            ],
+            "Time": "46:21",
+            "duration": 2781868,
+            "back": "00:09"
+          },
+          {
+            "Name": "Sam Todhunter",
+            "Sponsor": "",
+            "Bib": 260,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 1003814,
+                "timeString": "16:43"
+              },
+              {
+                "lap": 2,
+                "duration": 1179000,
+                "timeString": "19:39"
+              },
+              {
+                "lap": 3,
+                "duration": 1199000,
+                "timeString": "19:59"
+              }
+            ],
+            "Time": "56:21",
+            "duration": 3381814,
+            "back": "10:09"
+          }
+        ],
+        "disporder": 18
+      },
+      "sport_women_40": {
+        "id": "sport_women_40",
+        "catdispname": "Sport Women 40+",
+        "laps": 3,
+        "columns": [
+          "Pos",
+          "Bib",
+          "Name",
+          "Sponsor",
+          "Lap 1",
+          "Lap 2",
+          "Lap 3",
+          "Time",
+          "Back"
+        ],
+        "results": [
+          {
+            "Name": "Mary Snovel",
+            "Sponsor": "Breakaway Women’s Racing",
+            "Bib": 91,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 978816,
+                "timeString": "16:18"
+              },
+              {
+                "lap": 2,
+                "duration": 1014249,
+                "timeString": "16:54"
+              },
+              {
+                "lap": 3,
+                "duration": 1009308,
+                "timeString": "16:49"
+              }
+            ],
+            "Time": "50:02",
+            "duration": 3002373
+          },
+          {
+            "Name": "Libby Conlin",
+            "Sponsor": "Breakaway Women’s  Racing",
+            "Bib": 54,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 979314,
+                "timeString": "16:19"
+              },
+              {
+                "lap": 2,
+                "duration": 1027760,
+                "timeString": "17:07"
+              },
+              {
+                "lap": 3,
+                "duration": 1047298,
+                "timeString": "17:27"
+              }
+            ],
+            "Time": "50:54",
+            "duration": 3054372,
+            "back": "00:51"
+          },
+          {
+            "Name": "Mara Pillott",
+            "Sponsor": "Team City Sacramento",
+            "Bib": 216,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 980564,
+                "timeString": "16:20"
+              },
+              {
+                "lap": 2,
+                "duration": 1071502,
+                "timeString": "17:51"
+              },
+              {
+                "lap": 3,
+                "duration": 1044805,
+                "timeString": "17:24"
+              }
+            ],
+            "Time": "51:36",
+            "duration": 3096871,
+            "back": "01:34"
+          },
+          {
+            "Name": "Carly Rinaldi",
+            "Sponsor": "",
+            "Bib": 55,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 998819,
+                "timeString": "16:38"
+              },
+              {
+                "lap": 2,
+                "duration": 1073495,
+                "timeString": "17:53"
+              },
+              {
+                "lap": 3,
+                "duration": 1087561,
+                "timeString": "18:07"
+              }
+            ],
+            "Time": "52:39",
+            "duration": 3159875,
+            "back": "02:37"
+          },
+          {
+            "Name": "Catherine McDonald",
+            "Sponsor": "",
+            "Bib": 272,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 1166567,
+                "timeString": "19:26"
+              },
+              {
+                "lap": 2,
+                "duration": 1214546,
+                "timeString": "20:14"
+              },
+              {
+                "lap": 3,
+                "duration": 1236014,
+                "timeString": "20:36"
+              }
+            ],
+            "Time": "00:17",
+            "duration": 3617127,
+            "back": "10:14"
+          },
+          {
+            "Name": "Karen Munoz",
+            "Sponsor": "Breakaway Women’s Racing",
+            "Bib": 90,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 1217065,
+                "timeString": "20:17"
+              },
+              {
+                "lap": 2,
+                "duration": 1304051,
+                "timeString": "21:44"
+              },
+              {
+                "lap": 3,
+                "duration": 1327029,
+                "timeString": "22:07"
+              }
+            ],
+            "Time": "04:08",
+            "duration": 3848145,
+            "back": "14:05"
+          },
+          {
+            "Name": "Madison Petrali",
+            "Sponsor": "",
+            "Bib": 259,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 1072315,
+                "timeString": "17:52"
+              },
+              {
+                "lap": 2,
+                "duration": 1377800,
+                "timeString": "22:57"
+              }
+            ],
+            "Time": "40:50",
+            "duration": 2450115
+          }
+        ],
+        "disporder": 19
+      },
+      "varsity_boys": {
+        "id": "varsity_boys",
+        "catdispname": "Varsity Boys",
+        "laps": 4,
+        "columns": [
+          "Pos",
+          "Bib",
+          "Name",
+          "Sponsor",
+          "Lap 1",
+          "Lap 2",
+          "Lap 3",
+          "Lap 4",
+          "Time",
+          "Back"
+        ],
+        "results": [
+          {
+            "Name": "Will Kendall",
+            "Sponsor": "Folsom bulldogs",
+            "Bib": 237,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 663816,
+                "timeString": "11:03"
+              },
+              {
+                "lap": 2,
+                "duration": 662749,
+                "timeString": "11:02"
+              },
+              {
+                "lap": 3,
+                "duration": 698001,
+                "timeString": "11:38"
+              },
+              {
+                "lap": 4,
+                "duration": 675799,
+                "timeString": "11:15"
+              }
+            ],
+            "Time": "45:00",
+            "duration": 2700365
+          },
+          {
+            "Name": "Eric Lopez",
+            "Sponsor": "",
+            "Bib": 163,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 718320,
+                "timeString": "11:58"
+              },
+              {
+                "lap": 2,
+                "duration": 759247,
+                "timeString": "12:39"
+              },
+              {
+                "lap": 3,
+                "duration": 753748,
+                "timeString": "12:33"
+              },
+              {
+                "lap": 4,
+                "duration": 776553,
+                "timeString": "12:56"
+              }
+            ],
+            "Time": "50:07",
+            "duration": 3007868,
+            "back": "05:07"
+          }
+        ],
+        "disporder": 7
+      },
+      "emtb_men": {
+        "id": "emtb_men",
+        "catdispname": "e-Mtb Men",
+        "laps": 4,
+        "columns": [
+          "Pos",
+          "Bib",
+          "Name",
+          "Sponsor",
+          "Lap 1",
+          "Lap 2",
+          "Lap 3",
+          "Lap 4",
+          "Time",
+          "Back"
+        ],
+        "results": [
+          {
+            "Name": "James Jordan",
+            "Sponsor": "",
+            "Bib": 254,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 678316,
+                "timeString": "11:18"
+              },
+              {
+                "lap": 2,
+                "duration": 693999,
+                "timeString": "11:33"
+              },
+              {
+                "lap": 3,
+                "duration": 700259,
+                "timeString": "11:40"
+              },
+              {
+                "lap": 4,
+                "duration": 706042,
+                "timeString": "11:46"
+              }
+            ],
+            "Time": "46:18",
+            "duration": 2778616
+          },
+          {
+            "Name": "Erik Kohler",
+            "Sponsor": "",
+            "Bib": 266,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 683315,
+                "timeString": "11:23"
+              },
+              {
+                "lap": 2,
+                "duration": 706252,
+                "timeString": "11:46"
+              },
+              {
+                "lap": 3,
+                "duration": 699248,
+                "timeString": "11:39"
+              },
+              {
+                "lap": 4,
+                "duration": 696553,
+                "timeString": "11:36"
+              }
+            ],
+            "Time": "46:25",
+            "duration": 2785368,
+            "back": "00:06"
+          },
+          {
+            "Name": "Mark Fain",
+            "Sponsor": "",
+            "Bib": 129,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 676824,
+                "timeString": "11:16"
+              },
+              {
+                "lap": 2,
+                "duration": 696751,
+                "timeString": "11:36"
+              },
+              {
+                "lap": 3,
+                "duration": 735490,
+                "timeString": "12:15"
+              },
+              {
+                "lap": 4,
+                "duration": 713801,
+                "timeString": "11:53"
+              }
+            ],
+            "Time": "47:02",
+            "duration": 2822866,
+            "back": "00:44"
+          },
+          {
+            "Name": "Bret Eckert",
+            "Sponsor": "",
+            "Bib": 130,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 755823,
+                "timeString": "12:35"
+              },
+              {
+                "lap": 2,
+                "duration": 718491,
+                "timeString": "11:58"
+              },
+              {
+                "lap": 3,
+                "duration": 748011,
+                "timeString": "12:28"
+              },
+              {
+                "lap": 4,
+                "duration": 749046,
+                "timeString": "12:29"
+              }
+            ],
+            "Time": "49:31",
+            "duration": 2971371,
+            "back": "03:12"
+          },
+          {
+            "Name": "Kevin Reinig",
+            "Sponsor": "",
+            "Bib": 131,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 717066,
+                "timeString": "11:57"
+              },
+              {
+                "lap": 2,
+                "duration": 754500,
+                "timeString": "12:34"
+              },
+              {
+                "lap": 3,
+                "duration": 780998,
+                "timeString": "13:00"
+              },
+              {
+                "lap": 4,
+                "duration": 744554,
+                "timeString": "12:24"
+              }
+            ],
+            "Time": "49:57",
+            "duration": 2997118,
+            "back": "03:38"
+          },
+          {
+            "Name": "Joseph Nielsen",
+            "Sponsor": "",
+            "Bib": 225,
+            "laps": [
+              {
+                "lap": 1,
+                "duration": 734065,
+                "timeString": "12:14"
+              },
+              {
+                "lap": 2,
+                "duration": 751250,
+                "timeString": "12:31"
+              },
+              {
+                "lap": 3,
+                "duration": 777759,
+                "timeString": "12:57"
+              },
+              {
+                "lap": 4,
+                "duration": 800045,
+                "timeString": "13:20"
+              }
+            ],
+            "Time": "51:03",
+            "duration": 3063119,
+            "back": "04:44"
+          }
+        ],
+        "disporder": 10
+      }
+    },
+    "series": "pcrs_2022",
+    "final": true
+  }

@@ -379,9 +379,9 @@ module.exports = async function (fastify, opts) {
           out.push(_.assign(racerObj, { category: cat.catdispname, start, eventName: result.eventDetails.name }));
         })
         const columns = [
-          { 'key': 'email', 'header': 'Email' },
-          { 'key': 'first_name', 'header': 'First', },
           { 'key': 'last_name', 'header': 'Last' },
+          { 'key': 'first_name', 'header': 'First', },
+          { 'key': 'email', 'header': 'Email' },
           { 'key': 'category', 'header': 'Category', },
         ]
         let csvData = stringify(_.sortBy(out, ['last_name']), { columns, header: true });
