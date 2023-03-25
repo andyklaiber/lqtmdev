@@ -19,14 +19,14 @@ const raceTemplate =
 
 
 module.exports = async function (fastify, opts) {
-    fastify.post('/:authtoken', async function (request, reply) {
-        if (request.params.authtoken !== process.env.UPLOAD_TOKEN) {
+    fastify.post('/', async function (request, reply) {
+        if (request.query.auth !== process.env.UPLOAD_TOKEN) {
             throw fastify.httpErrors.unauthorized();
         } else {
             let raceMeta = request.body.data.race;
             let final = await this.mongo.db.collection("race_results")
                 .find({ 'raceid': raceMeta.raceid, 'final': true }).toArray();
-            request.log.info('Rhesus RaceID '+ raceMeta.raceid)
+            request.log.info('Rhesus RaceID: "'+ raceMeta.raceid+'"')
             if (final.length) {
                 return fastify.httpErrors.conflict();
             }
@@ -36,6 +36,9 @@ module.exports = async function (fastify, opts) {
                 .updateOne({ 'race.raceid': raceMeta.raceid }, { $set: request.body.data }, { upsert: true });
 
             const out = generateResultData(results, categoryOrder);
+            if(request.query.series){
+                out.series = request.query.series;
+            }
             request.log.info("updating results data for rhesus id: "+raceMeta.raceid)
             this.mongo.db.collection("race_results")
                 .updateOne({ 'raceid': raceMeta.raceid }, { $set: out }, { upsert: true });

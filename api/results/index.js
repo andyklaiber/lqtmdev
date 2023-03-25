@@ -257,13 +257,14 @@ module.exports = async function (fastify, opts) {
             // if(request.query.test){
             //     seriesId = seriesId + '_test';
             // }
-            const { seriesResults, teamPoints } = generateSeriesResults(result, racersMeta, categoryOrder, teamCompTeams);
+            const { seriesResults } = generateSeriesResults(result, racersMeta);
+            // const { seriesResults, teamPoints } = generateSeriesResults(result, racersMeta, categoryOrder, teamCompTeams);
             this.mongo.db.collection("series_results")
                 .updateOne({ 'series': seriesId }, { $set: seriesResults }, {upsert: true});
-            teamPoints.forEach(async (teamRacer, idx)=>{
-                    await this.mongo.db.collection('team_comp').updateOne({ 'Name': teamRacer.Name }, { $set: teamRacer }, { upsert: true });
-            })
-            return { seriesResults, teamPoints }
+            // teamPoints.forEach(async (teamRacer, idx)=>{
+            //         await this.mongo.db.collection('team_comp').updateOne({ 'Name': teamRacer.Name }, { $set: teamRacer }, { upsert: true });
+            // })
+            return { seriesResults  }
         }
     })
 
