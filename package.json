@@ -36,7 +36,6 @@
     "fastify-cli": "^5.7.0",
     "fastify-plugin": "^4.5.0",
     "lodash": "^4.17.21",
-    "mongoose": "^6.5.2",
     "stripe": "^11.6.0",
     "uuid": "^9.0.0"
   },

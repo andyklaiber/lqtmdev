@@ -1,7 +1,6 @@
 'use strict'
 
 const path = require('path');
-const mongoose = require('mongoose');
 const fastifyAutoLoad = require('@fastify/autoload');
 const fastifyStatic = require('@fastify/static');
 const fastifyCors = require('@fastify/cors');
@@ -10,13 +9,6 @@ const fastifySecureSession = require('@fastify/secure-session');
 const { url } = require('./src/db.config');
 console.log(`DB host: ${process.env.DB_HOST}`);
 module.exports = async function (fastify, opts) {
-    try {
-        mongoose.set('strictQuery', false);
-        await mongoose.connect(url);
-    } catch(err) {
-        console.log(err);
-    }
-    
     fastify.register(require('@fastify/auth'));
     
     fastify.register(fastifyStatic, {
