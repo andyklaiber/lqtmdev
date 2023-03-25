@@ -147,8 +147,12 @@ const getSeriesColumns = (raceMeta, catId)=>{
     let cols = ["Pos","Bib","Name","Age","Sponsor"]
     for (let i = 0; i < raceMeta.length; i++) {
         const race = raceMeta[i];
+        let colHeader = race.shortName;
+        if(!colHeader){
+            colHeader = race.formattedStartDate;
+        }
         if(catId.indexOf('grom') == -1){
-            cols.push(`${race.formattedStartDate}`);
+            cols.push(`${colHeader}`);
         }
         else{
             if(i > 2){
@@ -160,7 +164,7 @@ const getSeriesColumns = (raceMeta, catId)=>{
     return cols.concat(["Total Points"])
 }
 
-const generateSeriesResults = (raceResults, racersMeta, categoryOrder, teamsRacers)=>{
+const generatePCRSSeriesResults = (raceResults, racersMeta, categoryOrder, teamsRacers)=>{
     let out = {
         categories:{
         }
@@ -325,6 +329,152 @@ const generateSeriesResults = (raceResults, racersMeta, categoryOrder, teamsRace
     return { seriesResults: out, teamPoints };
 }
 
+const getPoints = (place)=>{
+    let pts = 94 - place;
+    switch (place) {
+        case 1:
+            pts = 100;
+            break;
+        case 2:
+            pts = 95;
+            break;
+        case 3:
+            pts = 92;
+            break;
+        case 4:
+            pts = 90;
+            break;
+    
+        default:
+            break;
+    }
+    return pts;
+}
+
+const generateSeriesResults = (raceResults, racersMeta)=>{
+    let out = {
+        categories:{
+        }
+    }
+
+    const bibList = [];
+    const dupBibs = [];
+
+    raceResults.forEach((race) =>{
+        Object.keys(race.categories).forEach((catId)=>{
+            
+            const catMeta = race.categories[catId];
+            if(!out.categories[catId]){
+                out.categories[catId] = {
+                    id: catMeta.id,
+                    catdispname: catMeta.catdispname,
+                    laps: catMeta.laps,
+                    columns: getSeriesColumns(raceResults, catMeta.id),
+                    results:{},
+                    disporder:catMeta.disporder
+                }
+            }
+            const catResults = race.categories[catId].results;
+            
+            // add racer result pos to results object
+            catResults.forEach((racerRow, idx)=>{
+                const racerName = capitalizeName(racerRow.Name);
+                if(!out.categories[catId].results[racerName]){
+                    out.categories[catId].results[racerName] = {
+                    Name: racerRow.Name,
+                    Bib: racerRow.Bib,
+                    finishes:[]
+                    }
+                }
+                out.categories[catId].results[racerName].Bib = racerRow.Bib;
+                out.categories[catId].results[racerName].finishes.push({
+                    raceId: race.raceid,
+                    raceDate: race.formattedStartDate,
+                    position: idx+1,
+                    points: getPoints(idx+1)
+                })
+                if(racerRow.Sponsor && racerRow.Sponsor.length > 0){
+                    out.categories[catId].results[racerName].Sponsor = racerRow.Sponsor;
+                }
+            })
+        })
+        
+    })
+
+    Object.keys(out.categories).forEach((catId)=>{
+        const catMeta = out.categories[catId];
+
+        let catResults = [];
+        if(catMeta.results){
+            Object.entries(catMeta.results).forEach(([racerName,data])=>{
+                let existingBib = _.find(bibList, data.Bib);
+                if(!existingBib){
+                    bibList.push(data.Bib);
+                }
+                else{
+                    dupBibs.push(data.Bib);
+                }
+                let racerSeriesRow = {
+                    "Bib":data.Bib,
+                    "Name": racerName,
+                    "Sponsor": data.Sponsor,
+                    results: [],
+                    seriesPoints: 0
+                }
+                let racerMetaInfo = _.find(racersMeta, (meta)=>{
+                        if(capitalizeName(meta.Name) === capitalizeName(racerName)) {
+                            return true;
+                        }
+                    })
+                if (racerMetaInfo && racerMetaInfo.Birthdate){
+                    let bday
+                    try{
+                        bday = dayjs(racerMetaInfo.Birthdate)
+                    } catch(error){
+                        console.log(`bad birthday string: ${racerName} - ${racerMetaInfo.Birthdate}`);
+                    }
+                    racerSeriesRow.Age = dayjs().diff(bday, 'years');
+                }
+                if (racerMetaInfo && racerMetaInfo.Sponsor){
+                    racerSeriesRow.Sponsor = racerMetaInfo.Sponsor;
+                }
+                const racerFinishes = out.categories[catId].results[racerName].finishes;
+                // for each race ID, add either an entry with points, or -/- to indicate they didn't race
+                raceResults.forEach((race)=>{
+                    const raceFinish = _.find(racerFinishes, {raceId:race.raceid});
+                    let resultString = "-/-";
+                    let finishPoints = 0;
+                    if(raceFinish){
+                        finishPoints = raceFinish.points;
+                        resultString = `${raceFinish.position}/${raceFinish.points}`;
+                    }
+                    
+                        
+                    racerSeriesRow.results.push({raceDate: race.formattedStartDate, resultString, finishPoints, raceName: race.shortName });
+                        
+                    
+                })
+                let orderedByPoints = _.orderBy(racerSeriesRow.results, 'finishPoints', 'asc');
+
+                racerSeriesRow.seriesPoints = _.reduce(racerSeriesRow.results, (sum, result)=>{
+                    if(result.dropped){
+                        return sum;
+                    }
+                    return sum + result.finishPoints;
+                }, 0)
+                catResults.push(racerSeriesRow);
+            })
+
+            catResults = _.sortBy(catResults, 'seriesPoints');
+            _.reverse(catResults);
+            out.categories[catId].results = catResults;
+        }
+    })
+    out.dupBibs = dupBibs;
+    out.bibList = _.sortBy(bibList);
+    return { seriesResults: out };
+}
+
 const moveRacerInResult = (raceResults, racerName, newCategory)=>{
     let srcCategory, result;
     Object.entries(raceResults.categories).some(([key, value])=>{
@@ -415,6 +565,7 @@ const getAttendance = (out)=>{
 }
 module.exports = {
     generateResultData,
+    generatePCRSSeriesResults,
     generateSeriesResults,
     getAttendance,
     moveRacerInResult,

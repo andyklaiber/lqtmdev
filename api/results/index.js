@@ -95,7 +95,12 @@ module.exports = async function (fastify, opts) {
         //     raceid:1,
         //     series:1
         // };
-        const result = await this.mongo.db.collection('race_results').find().toArray();
+        let result;
+        if(request.query.series){
+            result = await this.mongo.db.collection('race_results').find({series:request.query.series}).toArray();
+        }else{
+            result = await this.mongo.db.collection('race_results').find().toArray();
+        }
         if (result) {
             return result;
         } else {
@@ -238,7 +243,42 @@ module.exports = async function (fastify, opts) {
         const result = await this.mongo.db.collection('series_results').find().toArray();
         return result;
     });
-
+    fastify.get('/series/:id', async function (request, reply) {
+        const projection = {
+            _id:1,
+            eventName:1,
+            series:1,
+            published:1,
+        };
+        const result = await this.mongo.db.collection('series_results').findOne({ _id: this.mongo.ObjectId(request.params.id) }, {projection});
+        if (result) {
+            return result;
+        } else {
+            return fastify.httpErrors.notFound();
+        }
+    });
+    fastify.route({
+        method: 'PATCH',
+        url: '/series/:id',
+        preHandler: fastify.auth([fastify.verifyAdminSession]),
+        handler: async function (request, reply) {
+            const resultRecord = {
+                eventName: request.body.eventName,
+                published: request.body.published,
+                final: request.body.final,
+                // authToken: uuidv4(),
+            };
+            // const getUploadUrl = function(authToken){
+            //     return `${process.env.DOMAIN}/api/race/${request.params.id}/token/${authToken}`
+            // }
+            let op = this.mongo.db.collection("series_results")
+                    .updateOne({ _id: this.mongo.ObjectId(request.params.id)}, { $set: resultRecord }, { upsert: true });
+           
+                // let op = await this.mongo.db.collection('races').updateOne({ '_id': this.mongo.ObjectId(result._id) }, { $set: updateObject });
+            return {op}
+        
+        }
+    })
     fastify.route({
         method: 'POST',
         url: '/series/:series_id/generate',
@@ -257,13 +297,14 @@ module.exports = async function (fastify, opts) {
             // if(request.query.test){
             //     seriesId = seriesId + '_test';
             // }
-            const { seriesResults, teamPoints } = generateSeriesResults(result, racersMeta, categoryOrder, teamCompTeams);
+            const { seriesResults } = generateSeriesResults(result, racersMeta);
+            // const { seriesResults, teamPoints } = generateSeriesResults(result, racersMeta, categoryOrder, teamCompTeams);
             this.mongo.db.collection("series_results")
                 .updateOne({ 'series': seriesId }, { $set: seriesResults }, {upsert: true});
-            teamPoints.forEach(async (teamRacer, idx)=>{
-                    await this.mongo.db.collection('team_comp').updateOne({ 'Name': teamRacer.Name }, { $set: teamRacer }, { upsert: true });
-            })
-            return { seriesResults, teamPoints }
+            // teamPoints.forEach(async (teamRacer, idx)=>{
+            //         await this.mongo.db.collection('team_comp').updateOne({ 'Name': teamRacer.Name }, { $set: teamRacer }, { upsert: true });
+            // })
+            return { seriesResults  }
         }
     })
 
