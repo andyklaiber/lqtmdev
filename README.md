@@ -1,18 +1,20 @@
 # Getting Started 
 
-copy the .env.example file to .env (change things if you want, but should work for dev as is)
+## Starting lqtmdev (api) server bash commands
+```
+cp .env.example .env   // Copy .env.example to .env: 
+docker-compose up      // Starts the mongo db
+npm run seed           // Seeds data in the db
+npm run dev            // Starts the api server
+```
 
-start the database - docker compose up
-seed a test race - npm run seed
-start the dev api server - npm run dev
-
-start the UI in the race-results project - npm run dev
-
-profit!!!
-
+## Starting race-results (frontend results) 
+// Note: These commands reference the race-results repo. Run these commands in that folder!
+```
+npm run dev            // Starts the vite dev server
+```
 
 ## Available Scripts
-
 In the project directory, you can run:
 
 ### `npm run dev`
@@ -32,10 +34,7 @@ Run the test cases.
 
 To learn Fastify, check out the [Fastify documentation](https://www.fastify.io/docs/latest/).
 
-
-TODO  
-rescore  - 30	Louis	Gaultney should be expert 39- for race 4/6
-
-43 last race, 405 this race - SS sport 4/6 result needs to be moved
-
-http://localhost:3000/#/race/33cjb7f8l1y6pa46
+## TODO  
+- rescore  - 30	Louis	Gaultney should be expert 39- for race 4/6
+- 43 last race, 405 this race - SS sport 4/6 result needs to be moved
+- http://localhost:3000/#/race/33cjb7f8l1y6pa46

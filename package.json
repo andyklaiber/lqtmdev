@@ -9,7 +9,7 @@
   "scripts": {
     "test": "tap \"test/**/*.test.js\"",
     "test-api": "tap \"test/api/**/*.test.js\"",
-    "dev": "fastify start -w --ignore-watch='node_modules' -l info -P app.js",
+    "dev": "nodemon --inspect server.js",
     "seed": "node ./seed/seed.js",
     "start": "fastify start -l trace app.js",
     "build": "docker build . -t andyklaiber/lqtm:latest --platform=linux/amd64",
@@ -40,6 +40,7 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "nodemon": "^2.0.22",
     "tap": "^16.3.2"
   }
 }
