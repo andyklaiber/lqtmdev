@@ -1,3 +1,6 @@
+# Links for reference:
+- [MongoDB Schema Best Practices](https://www.mongodb.com/developer/products/mongodb/mongodb-schema-design-best-practices/)
+
 # Roles 
 ## ADMIN
 This is Andy & Jeff. Carte blanche to see everything and edit/change everything.
@@ -20,23 +23,83 @@ This is Andy & Jeff. Carte blanche to see everything and edit/change everything.
 - Identified by email / password.
 - Note - they will live forever in the system, perhaps they should live in a different collection than the other roles.
 
-# Collections & Relationships
-## Organizations
-- Have Events (if we are going generic rather than races)
-- Have Users (admin-types, regusers dont belong here)
-- Have Stripe/Payment info setup? 
+# Collections & Relationships (DRAFT)
 
-## Events
-Tied to OrgId (one to many)
-    - Results could be embedded, as they are 1:1
-All events could be a series event (single event would just have 1)... for commonality
+## organizations
+{
+    _id:
+    name:
+    address:
+    stripeMeta:
+    users: [
+        {
+            name:
+            username:
+            email: // Needed for forgotten password
+            role: ADMIN/DIRECTOR/VOLUNTEER/(APIINTEGRATOR?) // Perhaps we will need an admin user per organization? No need to spoof then... 
+            password:
+        }
+    ]
+    races: [ objId1, objId2, objId3 ]
+}
+//Due to the above ... we would need 1 system level endpoint which allows us to add ADMINS to an organization using postman, then we can add more
+  users via the FrontEnd
 
-## AdminUsers (ADMIN/DIRECTOR/VOLUNTEER/APIINTEGRATOR)
-Tied to OrgId ()
+// Need director dash to
+    - Create races
+        - Update/set payment types
+    - Add/Manage app users as volunteers
+    - 
 
-## RegUsers
-Tied to EventIds (one to many)
+## payments
+{
+    first_name: 'Andy',
+    last_name: 'cashTester',
+    email: 'andy.klaiber@gmail.com',
+    sponsor: 'data',
+    category: 'b35+_men',
+    paytype: 'cash',
+    racerAge: 38,
+    raceid: 'rcx_2022_test_1',
+    status: 'unpaid',
+    paymentId: '63337dd58f99a6907d061a8f',
+    bibNumber: '545',
+    paymentReceived: true,
+    paymentAmount: '25',
+}
 
-## Payments
-Tied to RegUserID
+## racers 
+{
+    id
+}
 
+## races 
+{
+    series: 'series_name'
+    raceid: ''
+}
+
+## series
+{
+
+}
+
+## race_results
+{
+
+}
+
+## series_results
+{
+
+}
+
+## team_comp
+{
+
+}
+
+## liveresults
+{
+
+}
