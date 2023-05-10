@@ -6,6 +6,33 @@ const { getFees, updateRacePaymentOptions } = require("../../src/fees");
 const { generate, parse, transform, stringify } = require('csv/sync');
 
 module.exports = async function (fastify, opts) {
+    fastify.route({
+        method: 'POST',
+        url: '/test-confirm-email',
+        preHandler: fastify.auth([fastify.verifyAdminSession]),
+        handler: async function (request, reply) {
+            if (!request.query.raceId) {
+                return fastify.httpErrors.badRequest('You must provide a race ID');
+            }
+            const testData = {
+                first_name: 'Andy',
+                last_name: 'emailTester',
+                email: 'andy.klaiber@gmail.com',
+                sponsor: 'data',
+                category: 'b35+_men',
+                paytype: 'cash',
+                racerAge: 38,
+                raceid: 'rcx_2022_test_1',
+                status: 'unpaid',
+                paymentId: '63337dd58f99a6907d061a8f',
+                bibNumber: '545',
+                paymentReceived: true,
+                paymentAmount: '25'
+                };
+            const raceData = await this.mongo.db.collection('races').findOne({ raceid: request.query.raceId });
+            await fastify.sendRegConfirmEmail(testData, "testdataID", raceData, request.log);
+        }
+    });
     // fastify.post('/email', async function(request){
     //     const payments = await this.mongo.db.collection('payments').find({status:"paid"}).toArray();
 
@@ -159,7 +186,7 @@ module.exports = async function (fastify, opts) {
                 }
               });
         
-            if (payment && payment.regData.paytype == 'single') {
+            if (payment && payment.regData.paytype !== 'season') {
                 let pullResult = await this.mongo.db.collection('races').updateMany(
                     {series: raceData.series },
                     { $pull: { registeredRacers: { paymentId: paymentObjId } } }
@@ -197,6 +224,19 @@ module.exports = async function (fastify, opts) {
         handler: async function(request,reply){
             const result = await this.mongo.db.collection('payments').find(
             ).toArray();
+            if (result) {
+                return result;
+            } else {
+                return fastify.httpErrors.notFound();
+            }
+        }
+    });
+    fastify.route({
+        method: 'GET',
+        url: '/:raceid',
+        preHandler: fastify.auth([fastify.verifyAdminSession]),
+        handler: async function(request,reply){
+            const result = await this.mongo.db.collection('payments').find({"regData.raceid":request.params.raceid}).toArray();
             if (result) {
                 return result;
             } else {

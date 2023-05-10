@@ -30,6 +30,7 @@ module.exports = async function (fastify, opts) {
                 entryCountMax: 1,
                 facebookShare: 1,
                 formattedStartDate: 1,
+                headerContent:1,
                 isTestData: 1,
                 paymentOptions: 1,
                 raceid: 1,
@@ -71,6 +72,7 @@ module.exports = async function (fastify, opts) {
                     eventDetails: 1,
                     facebookShare: 1,
                     formattedStartDate: 1,
+                    headerContent:1,
                     isTestData: 1,
                     optionalPurchases: 1,
                     paymentOptions: 1,
@@ -111,7 +113,9 @@ module.exports = async function (fastify, opts) {
                 entryCountMax: 1,
                 eventDate: 1,
                 eventDetails: 1,
+                emailTemplate:1,
                 formattedStartDate: 1,
+                headerContent:1,
                 isTestData: 1,
                 optionalPurchases: 1,
                 paymentOptions: 1,
@@ -132,6 +136,39 @@ module.exports = async function (fastify, opts) {
             } else {
                 return fastify.httpErrors.notFound();
             }
+        }
+    })
+    //clone a race - include series registrations
+    fastify.route({
+        method: 'POST',
+        url: '/series/clone/:raceid/',
+        preHandler: fastify.auth([fastify.verifyAdminSession]),
+        handler: async function (request, reply) {
+            if (!request.params.raceid) {
+                return fastify.httpErrors.badRequest('You must provide a source race ID');
+            }
+            const result = await this.mongo.db.collection('races').findOne({ 'raceid': request.params.raceid })
+            if (!result) {
+                return fastify.httpErrors.notFound();
+            }
+
+
+            delete result['_id'];
+            const new_id = request.query.new_race_id;
+            if (_.isString(new_id) && new_id.length > 4) {
+                result.raceid = new_id;
+            } else {
+                result.raceid = v4();
+            }
+            let seriesRegs = _.filter(result.registeredRacers, { paytype: "season" });
+            let out = _.map(seriesRegs, (racerData) => {
+                racerData.raceid = result.raceid
+                return racerData;
+            })
+            
+            return await this.mongo.db.collection('races').insertOne({ ...result, registeredRacers: out });
+
+            //return fastify.httpErrors.notFound();
         }
     })
     fastify.get('/roster/:id', async function (request, reply) {
@@ -172,8 +209,8 @@ module.exports = async function (fastify, opts) {
             categories: 1,
             formattedStartDate: 1
         };
-        const result = await this.mongo.db.collection('race_results').findOne({ raceid: request.params.id }, {projection});
-        if(result && !result.formattedStartDate){
+        const result = await this.mongo.db.collection('race_results').findOne({ raceid: request.params.id }, { projection });
+        if (result && !result.formattedStartDate) {
             const raceMeta = await this.mongo.db.collection('races').findOne({ 'raceid': request.params.id }, { projection: { formattedStartDate: 1 } });
             result.raceMeta = raceMeta;
         }

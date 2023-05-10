@@ -23,25 +23,29 @@ module.exports = async function (fastify, opts) {
         if (request.query.auth !== process.env.UPLOAD_TOKEN) {
             throw fastify.httpErrors.unauthorized();
         } else {
+            let raceid = request.body.data.race?.raceid;
+            if(request.query.raceid){
+                raceid = request.query.raceid;
+            }
             let raceMeta = request.body.data.race;
             let final = await this.mongo.db.collection("race_results")
-                .find({ 'raceid': raceMeta.raceid, 'final': true }).toArray();
-            request.log.info('Rhesus RaceID: "'+ raceMeta.raceid+'"')
+                .find({ 'raceid': raceid, 'final': true }).toArray();
+            request.log.info('Rhesus RaceID: "'+ raceid+'"')
             if (final.length) {
                 return fastify.httpErrors.conflict();
             }
 
             let results = request.body.data.RESULTS;
             this.mongo.db.collection("liveresults")
-                .updateOne({ 'race.raceid': raceMeta.raceid }, { $set: request.body.data }, { upsert: true });
+                .updateOne({ 'race.raceid': raceid }, { $set: request.body.data }, { upsert: true });
 
             const out = generateResultData(results, categoryOrder);
             if(request.query.series){
                 out.series = request.query.series;
             }
-            request.log.info("updating results data for rhesus id: "+raceMeta.raceid)
+            request.log.info("updating results data for rhesus id: "+raceid)
             this.mongo.db.collection("race_results")
-                .updateOne({ 'raceid': raceMeta.raceid }, { $set: out }, { upsert: true });
+                .updateOne({ 'raceid': raceid }, { $set: out }, { upsert: true });
 
             return out;
             

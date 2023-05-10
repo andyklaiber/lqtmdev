@@ -1,7 +1,7 @@
 'use strict'
 const _ = require('lodash');
 const { categoryOrder } = require('../../src/categories');
-const { moveRacerInResult, generateResultData, generateSeriesResults } = require('../../src/result_lib');
+const { moveRacerInResult, generateResultData, generateSeriesResults, generatePCRSSeriesResults } = require('../../src/result_lib');
 const { v4: uuidv4 } = require('uuid');
 
 const sortByLast = (a, b) => {
@@ -249,6 +249,7 @@ module.exports = async function (fastify, opts) {
             eventName:1,
             series:1,
             published:1,
+            final:1,
         };
         const result = await this.mongo.db.collection('series_results').findOne({ _id: this.mongo.ObjectId(request.params.id) }, {projection});
         if (result) {
@@ -288,7 +289,7 @@ module.exports = async function (fastify, opts) {
             console.log(series)
             const result = await this.mongo.db.collection('race_results').find({series}).toArray();
             const racersMeta = await this.mongo.db.collection('racers').find().toArray();
-            const teamCompTeams = await this.mongo.db.collection('team_comp').find().toArray();
+            const teamCompTeams = await this.mongo.db.collection('team_comp').find({Series:series}).toArray();
 
             if (!result.length) {
                 return fastify.httpErrors.notFound();
@@ -297,12 +298,19 @@ module.exports = async function (fastify, opts) {
             // if(request.query.test){
             //     seriesId = seriesId + '_test';
             // }
-            const { seriesResults } = generateSeriesResults(result, racersMeta);
-            // const { seriesResults, teamPoints } = generateSeriesResults(result, racersMeta, categoryOrder, teamCompTeams);
+            let seriesResults, teamPoints;
+            if(series.indexOf('pcrs')>-1){
+                const res = generatePCRSSeriesResults(result, racersMeta, categoryOrder, teamCompTeams);
+                seriesResults = res.seriesResults;
+                teamPoints = res.teamPoints;
+            }else{
+                const res = generateSeriesResults(result, racersMeta);
+                seriesResults = res.seriesResults;
+            }
             this.mongo.db.collection("series_results")
                 .updateOne({ 'series': seriesId }, { $set: seriesResults }, {upsert: true});
             // teamPoints.forEach(async (teamRacer, idx)=>{
-            //         await this.mongo.db.collection('team_comp').updateOne({ 'Name': teamRacer.Name }, { $set: teamRacer }, { upsert: true });
+            //         await this.mongo.db.collection('team_comp').updateOne({ Series: series, 'Name': teamRacer.Name }, { $set: teamRacer }, { upsert: true });
             // })
             return { seriesResults  }
         }

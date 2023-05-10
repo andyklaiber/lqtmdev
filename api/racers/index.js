@@ -250,6 +250,12 @@ module.exports = async function (fastify, opts) {
             'raceid': request.params.id
           },
             { $pull: {registeredRacers: {paymentId: this.mongo.ObjectId(request.query.paymentId)} }})
+            await this.mongo.db.collection('payments').updateOne({ '_id': this.mongo.ObjectId(request.query.paymentId) },
+            {
+              $set:{
+                "regData.raceid": "",
+              }
+          });
 
         }
         return deleteResult;
@@ -259,55 +265,6 @@ module.exports = async function (fastify, opts) {
     }
   })
 
-  //move single payment registration racer within series
-  fastify.route({
-    method: 'PUT',
-    url: '/race/:id',
-    preHandler: fastify.auth([fastify.verifyAdminSession]),
-    handler: async function (request, reply) {
-      if (!request.params.id) {
-        return fastify.httpErrors.badRequest('You must provide a race ID');
-      }
-      if (!request.query.paymentId) {
-        return fastify.httpErrors.badRequest('Registered racers must have a paymentID');
-      }
-      const payment = await this.mongo.db.collection('payments').findOne({ '_id': this.mongo.ObjectId(request.query.paymentId) }, {
-        projection: {
-          regData: 1,
-          status: 1,
-          sponsoredPayment: 1,
-        }
-      });
-
-      if (payment) {
-
-
-        let fieldsToSet = {}
-        Object.keys(request.body).forEach((keyName) => {
-          if (_.includes(allowedFields, keyName)) {
-            fieldsToSet[`registeredRacers.$.${keyName}`] = request.body[keyName];
-          }
-        })
-        if (Object.keys(fieldsToSet).length < 1) {
-          return fastify.httpErrors.badRequest('No valid fields provided for update');
-        }
-
-
-        //if part of a series, and paytype==season update all the series records?
-
-
-        //if single race, just update the record for the 1 race
-        const result = await this.mongo.db.collection('races').updateOne({
-          'raceid': request.params.id,
-          "registeredRacers.paymentId": this.mongo.ObjectId(request.query.paymentId)
-        },
-          { $set: fieldsToSet })
-        return result;
-      } else {
-        return fastify.httpErrors.notFound();
-      }
-    }
-  })
   // export to csv
   fastify.route({
     method: 'GET',
@@ -383,6 +340,7 @@ module.exports = async function (fastify, opts) {
           { 'key': 'first_name', 'header': 'First', },
           { 'key': 'email', 'header': 'Email' },
           { 'key': 'category', 'header': 'Category', },
+          { 'key': 'paytype', 'header': 'Payment Type', },
         ]
         let csvData = stringify(_.sortBy(out, ['last_name']), { columns, header: true });
         // return _.sortBy(out, ['category','last_name'])

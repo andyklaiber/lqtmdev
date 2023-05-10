@@ -58,16 +58,22 @@ module.exports = fp(async function (fastify, opts) {
       return;
     }
     const regCat = _.find(raceData.regCategories, {"id": regData.category});
-    const template = `<html><head></head><body>
+    let template = `<html><head></head><body>
     <h1>Thank you for registering for ${raceData.eventDetails.name}</h1>
     <p>
     Name: ${_.capitalize(regData.first_name)}  ${_.capitalize(regData.last_name)}<br>
     ${regData.sponsor ? `Team/Sponsor: ${regData.sponsor}<br>` :""}
-    Race Category: ${regCat.catdispname}<br>
+    Race Category: ${regCat ? regCat.catdispname : "Category not found"}<br>
     <p><a href="${process.env.DOMAIN}/#/roster/${regData.raceid}">Go Here</a> to see who else is signed up<p>
     <p>For information about the event, check out <a href="${raceData.eventDetails.homepageUrl}">${raceData.eventDetails.homepageUrl}</a></p>
     <p>For issues with your registration information, <a href="mailto:support@signup.bike">email us!</a>
     </body></html>`
+
+
+    if(raceData.emailTemplate){
+      template = raceData.emailTemplate
+    }
+
     return axios.post("https://api.sendinblue.com/v3/smtp/email",{
          "sender":{  
             "name":"Signup.bike",
