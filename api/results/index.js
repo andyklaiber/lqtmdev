@@ -29,6 +29,7 @@ module.exports = async function (fastify, opts) {
                 shortName: request.body.shortName,
                 formattedStartDate: request.body.formattedStartDate,
                 series: request.body.series,
+                showMillis: request.body.showMillis,
                 final: request.body.final,
                 // authToken: uuidv4(),
             };
@@ -118,6 +119,7 @@ module.exports = async function (fastify, opts) {
             shortName:1,
             eventName:1,
             series:1,
+            showMillis:1,
             final:1
         };
         const result = await this.mongo.db.collection('race_results').findOne({ raceid: request.params.raceid }, {projection});

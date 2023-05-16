@@ -133,6 +133,7 @@ const generateResultData = (results, categoryOrder)=>{
                 return;
             }
             if(racer.laps.length === ordered[0].laps.length){   
+                ordered[idx].backMs = racer.duration - ordered[0].duration;
                 ordered[idx].back = msToTimeString(racer.duration - ordered[0].duration);
             }
         })
