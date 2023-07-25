@@ -286,10 +286,12 @@ module.exports = async function (fastify, opts) {
         result.registeredRacers.forEach((racerObj) => {
           let cat = _.find(result.regCategories, { id: racerObj.category })
           let start = dayjs(result.eventDate).format('MM/DD/YY h:mm A');
-          if(cat.startTime){
-            start = dayjs(`${dayjs(result.eventDate).format('YYYY-MM-DD')} ${cat.startTime}`).format('MM/DD/YY h:mm A');
-          }
+          if(cat){
+            if(cat.startTime){
+              start = dayjs(`${dayjs(result.eventDate).format('YYYY-MM-DD')} ${cat.startTime}`).format('MM/DD/YY h:mm A');
+            }
           out.push(_.assign(racerObj, { category: cat.catdispname, start, eventName: result.eventDetails.name }));
+          }
         })
         const columns = [
           { 'key': 'eventName', 'header': 'Event', },

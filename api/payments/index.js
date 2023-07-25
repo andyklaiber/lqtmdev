@@ -320,9 +320,13 @@ module.exports = async function (fastify, opts) {
         }else{
             if(regData.coupon && raceData.couponsEnabled && raceData.couponCodes[regData.coupon]){
                 let { fractionDiscount } = raceData.couponCodes[regData.coupon];
+                regData.fractionDiscount = fractionDiscount;
                 raceData.paymentOptions = updateRacePaymentOptions(raceData.paymentOptions, fractionDiscount);
             }
-            const payDets = _.find(raceData.paymentOptions, (payment) => payment.type === request.body.paytype);
+            let payDets = _.find(raceData.paymentOptions, (payment) => payment.type === request.body.paytype);
+            if(regCat && regCat.paytype){
+                payDets = _.find(raceData.paymentOptions, (payment) => payment.type === regCat.paytype);
+            }
             if (!payDets) {
                 throw fastify.httpErrors.badRequest('Payment type not found');
             }

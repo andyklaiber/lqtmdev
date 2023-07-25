@@ -1,0 +1,3906 @@
+{
+    "_id": {
+      "$oid": "641f4cf5cdd43e8098a9e385"
+    },
+    "race": {
+      "raceid": "59d4cw2b0lfo5oqip",
+      "racename": "Exchequer 2023",
+      "eventStart": 1679772291547,
+      "useActualStarts": false
+    },
+    "RESULTS": [
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "pro_men",
+        "catdispname": "Pro Men",
+        "catstarttime": 1679761812000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679761800000,
+        "lapendtime": 1679763707084,
+        "lapduration": 1907084,
+        "lapbib": 2,
+        "teambibs": [
+          2
+        ],
+        "teamname": "Kenda/Orbea",
+        "racername": "STEFANO BARBERI"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "pro_men",
+        "catdispname": "Pro Men",
+        "catstarttime": 1679761812000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679763707084,
+        "lapendtime": 1679766067665,
+        "lapduration": 2360581,
+        "lapbib": 2,
+        "teambibs": [
+          2
+        ],
+        "teamname": "Kenda/Orbea",
+        "racername": "STEFANO BARBERI"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "pro_men",
+        "catdispname": "Pro Men",
+        "catstarttime": 1679761812000,
+        "catmaxlaps": 4,
+        "lap": 3,
+        "lapstarttime": 1679766067665,
+        "lapendtime": 1679768050104,
+        "lapduration": 1982439,
+        "lapbib": 2,
+        "teambibs": [
+          2
+        ],
+        "teamname": "Kenda/Orbea",
+        "racername": "STEFANO BARBERI"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "pro_men",
+        "catdispname": "Pro Men",
+        "catstarttime": 1679761812000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679761800000,
+        "lapendtime": 1679763708081,
+        "lapduration": 1908081,
+        "lapbib": 7,
+        "teambibs": [
+          7
+        ],
+        "teamname": "TOUR OF NEVADA CITY BIKE SHOP",
+        "racername": "AUSTIN GILCHRIST"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "pro_men",
+        "catdispname": "Pro Men",
+        "catstarttime": 1679761812000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679763708081,
+        "lapendtime": 1679765822923,
+        "lapduration": 2114842,
+        "lapbib": 7,
+        "teambibs": [
+          7
+        ],
+        "teamname": "TOUR OF NEVADA CITY BIKE SHOP",
+        "racername": "AUSTIN GILCHRIST"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "pro_men",
+        "catdispname": "Pro Men",
+        "catstarttime": 1679761812000,
+        "catmaxlaps": 4,
+        "lap": 3,
+        "lapstarttime": 1679765822923,
+        "lapendtime": 1679768064105,
+        "lapduration": 2241182,
+        "lapbib": 7,
+        "teambibs": [
+          7
+        ],
+        "teamname": "TOUR OF NEVADA CITY BIKE SHOP",
+        "racername": "AUSTIN GILCHRIST"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "pro_men",
+        "catdispname": "Pro Men",
+        "catstarttime": 1679761812000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679761800000,
+        "lapendtime": 1679763867327,
+        "lapduration": 2067327,
+        "lapbib": 297,
+        "teambibs": [
+          297
+        ],
+        "teamname": "Above & Beyond Cancer",
+        "racername": "Timmy Bauer"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "pro_men",
+        "catdispname": "Pro Men",
+        "catstarttime": 1679761812000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679763867327,
+        "lapendtime": 1679766053419,
+        "lapduration": 2186092,
+        "lapbib": 297,
+        "teambibs": [
+          297
+        ],
+        "teamname": "Above & Beyond Cancer",
+        "racername": "Timmy Bauer"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "pro_men",
+        "catdispname": "Pro Men",
+        "catstarttime": 1679761812000,
+        "catmaxlaps": 4,
+        "lap": 3,
+        "lapstarttime": 1679766053419,
+        "lapendtime": 1679768374121,
+        "lapduration": 2320702,
+        "lapbib": 297,
+        "teambibs": [
+          297
+        ],
+        "teamname": "Above & Beyond Cancer",
+        "racername": "Timmy Bauer"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "pro_men",
+        "catdispname": "Pro Men",
+        "catstarttime": 1679761812000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679761800000,
+        "lapendtime": 1679763868326,
+        "lapduration": 2068326,
+        "lapbib": 3,
+        "teambibs": [
+          3
+        ],
+        "teamname": "Middletown MTB",
+        "racername": "Steven Beckstead"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "pro_men",
+        "catdispname": "Pro Men",
+        "catstarttime": 1679761812000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679763868326,
+        "lapendtime": 1679766137672,
+        "lapduration": 2269346,
+        "lapbib": 3,
+        "teambibs": [
+          3
+        ],
+        "teamname": "Middletown MTB",
+        "racername": "Steven Beckstead"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "pro_men",
+        "catdispname": "Pro Men",
+        "catstarttime": 1679761812000,
+        "catmaxlaps": 4,
+        "lap": 3,
+        "lapstarttime": 1679766137672,
+        "lapendtime": 1679768513871,
+        "lapduration": 2376199,
+        "lapbib": 3,
+        "teambibs": [
+          3
+        ],
+        "teamname": "Middletown MTB",
+        "racername": "Steven Beckstead"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "pro_men",
+        "catdispname": "Pro Men",
+        "catstarttime": 1679761812000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679761800000,
+        "lapendtime": 1679764017832,
+        "lapduration": 2217832,
+        "lapbib": 16,
+        "teambibs": [
+          16
+        ],
+        "teamname": "",
+        "racername": "Joey Smith"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "pro_men",
+        "catdispname": "Pro Men",
+        "catstarttime": 1679761812000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679764017832,
+        "lapendtime": 1679766235665,
+        "lapduration": 2217833,
+        "lapbib": 16,
+        "teambibs": [
+          16
+        ],
+        "teamname": "",
+        "racername": "Joey Smith"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "pro_men",
+        "catdispname": "Pro Men",
+        "catstarttime": 1679761812000,
+        "catmaxlaps": 4,
+        "lap": 3,
+        "lapstarttime": 1679766235665,
+        "lapendtime": 1679768634365,
+        "lapduration": 2398700,
+        "lapbib": 16,
+        "teambibs": [
+          16
+        ],
+        "teamname": "",
+        "racername": "Joey Smith"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_18",
+        "catdispname": "Expert Men 18-",
+        "catstarttime": 1679761927000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679761920000,
+        "lapendtime": 1679765994169,
+        "lapduration": 4074169,
+        "lapbib": 25,
+        "teambibs": [
+          25
+        ],
+        "teamname": "Roached",
+        "racername": "Omar Castro"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_18",
+        "catdispname": "Expert Men 18-",
+        "catstarttime": 1679761927000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679761920000,
+        "lapendtime": 1679765252372,
+        "lapduration": 3332372,
+        "lapbib": 31,
+        "teambibs": [
+          31
+        ],
+        "teamname": "Mikes Bikes",
+        "racername": "Wyatt Raley"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_18",
+        "catdispname": "Expert Men 18-",
+        "catstarttime": 1679761927000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679765252372,
+        "lapendtime": 1679765819673,
+        "lapduration": 567301,
+        "lapbib": 31,
+        "teambibs": [
+          31
+        ],
+        "teamname": "Mikes Bikes",
+        "racername": "Wyatt Raley"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_18",
+        "catdispname": "Expert Men 18-",
+        "catstarttime": 1679761927000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679761920000,
+        "lapendtime": 1679765182123,
+        "lapduration": 3262123,
+        "lapbib": 40,
+        "teambibs": [
+          40
+        ],
+        "teamname": "",
+        "racername": "kai sorensen"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_1939",
+        "catdispname": "Expert Men 19-39",
+        "catstarttime": 1679762039000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679762039000,
+        "lapendtime": 1679764355052,
+        "lapduration": 2316052,
+        "lapbib": 48,
+        "teambibs": [
+          48
+        ],
+        "teamname": "",
+        "racername": "Ben Fox"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_1939",
+        "catdispname": "Expert Men 19-39",
+        "catstarttime": 1679762039000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679764355052,
+        "lapendtime": 1679766730105,
+        "lapduration": 2375053,
+        "lapbib": 48,
+        "teambibs": [
+          48
+        ],
+        "teamname": "",
+        "racername": "Ben Fox"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_1939",
+        "catdispname": "Expert Men 19-39",
+        "catstarttime": 1679762039000,
+        "catmaxlaps": 4,
+        "lap": 3,
+        "lapstarttime": 1679766730105,
+        "lapendtime": 1679769142365,
+        "lapduration": 2412260,
+        "lapbib": 48,
+        "teambibs": [
+          48
+        ],
+        "teamname": "",
+        "racername": "Ben Fox"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_1939",
+        "catdispname": "Expert Men 19-39",
+        "catstarttime": 1679762039000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679762039000,
+        "lapendtime": 1679764366565,
+        "lapduration": 2327565,
+        "lapbib": 65,
+        "teambibs": [
+          65
+        ],
+        "teamname": "",
+        "racername": "Andrey Okhlopkov"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_1939",
+        "catdispname": "Expert Men 19-39",
+        "catstarttime": 1679762039000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679764366565,
+        "lapendtime": 1679766852105,
+        "lapduration": 2485540,
+        "lapbib": 65,
+        "teambibs": [
+          65
+        ],
+        "teamname": "",
+        "racername": "Andrey Okhlopkov"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_1939",
+        "catdispname": "Expert Men 19-39",
+        "catstarttime": 1679762039000,
+        "catmaxlaps": 4,
+        "lap": 3,
+        "lapstarttime": 1679766852105,
+        "lapendtime": 1679769411108,
+        "lapduration": 2559003,
+        "lapbib": 65,
+        "teambibs": [
+          65
+        ],
+        "teamname": "",
+        "racername": "Andrey Okhlopkov"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_1939",
+        "catdispname": "Expert Men 19-39",
+        "catstarttime": 1679762039000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679762039000,
+        "lapendtime": 1679764641032,
+        "lapduration": 2602032,
+        "lapbib": 68,
+        "teambibs": [
+          68
+        ],
+        "teamname": "",
+        "racername": "Gerardo Rivera"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_1939",
+        "catdispname": "Expert Men 19-39",
+        "catstarttime": 1679762039000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679764641032,
+        "lapendtime": 1679767302065,
+        "lapduration": 2661033,
+        "lapbib": 68,
+        "teambibs": [
+          68
+        ],
+        "teamname": "",
+        "racername": "Gerardo Rivera"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_1939",
+        "catdispname": "Expert Men 19-39",
+        "catstarttime": 1679762039000,
+        "catmaxlaps": 4,
+        "lap": 3,
+        "lapstarttime": 1679767302065,
+        "lapendtime": 1679769963098,
+        "lapduration": 2661033,
+        "lapbib": 68,
+        "teambibs": [
+          68
+        ],
+        "teamname": "",
+        "racername": "Gerardo Rivera"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_1939",
+        "catdispname": "Expert Men 19-39",
+        "catstarttime": 1679762039000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679762039000,
+        "lapendtime": 1679764679631,
+        "lapduration": 2640631,
+        "lapbib": 43,
+        "teambibs": [
+          43
+        ],
+        "teamname": "",
+        "racername": "Michael Best"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_1939",
+        "catdispname": "Expert Men 19-39",
+        "catstarttime": 1679762039000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679764679631,
+        "lapendtime": 1679767432868,
+        "lapduration": 2753237,
+        "lapbib": 43,
+        "teambibs": [
+          43
+        ],
+        "teamname": "",
+        "racername": "Michael Best"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_1939",
+        "catdispname": "Expert Men 19-39",
+        "catstarttime": 1679762039000,
+        "catmaxlaps": 4,
+        "lap": 3,
+        "lapstarttime": 1679767432868,
+        "lapendtime": 1679770303596,
+        "lapduration": 2870728,
+        "lapbib": 43,
+        "teambibs": [
+          43
+        ],
+        "teamname": "",
+        "racername": "Michael Best"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_1939",
+        "catdispname": "Expert Men 19-39",
+        "catstarttime": 1679762039000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679762039000,
+        "lapendtime": 1679764550131,
+        "lapduration": 2511131,
+        "lapbib": 78,
+        "teambibs": [
+          78
+        ],
+        "teamname": "",
+        "racername": "edylord fuerte"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_1939",
+        "catdispname": "Expert Men 19-39",
+        "catstarttime": 1679762039000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679764550131,
+        "lapendtime": 1679767698110,
+        "lapduration": 3147979,
+        "lapbib": 78,
+        "teambibs": [
+          78
+        ],
+        "teamname": "",
+        "racername": "edylord fuerte"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_1939",
+        "catdispname": "Expert Men 19-39",
+        "catstarttime": 1679762039000,
+        "catmaxlaps": 4,
+        "lap": 3,
+        "lapstarttime": 1679767698110,
+        "lapendtime": 1679770846090,
+        "lapduration": 3147980,
+        "lapbib": 78,
+        "teambibs": [
+          78
+        ],
+        "teamname": "",
+        "racername": "edylord fuerte"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_1939",
+        "catdispname": "Expert Men 19-39",
+        "catstarttime": 1679762039000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679762039000,
+        "lapendtime": 1679764569632,
+        "lapduration": 2530632,
+        "lapbib": 51,
+        "teambibs": [
+          51
+        ],
+        "teamname": "",
+        "racername": "Jannik Haas"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_1939",
+        "catdispname": "Expert Men 19-39",
+        "catstarttime": 1679762039000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679764569632,
+        "lapendtime": 1679767466119,
+        "lapduration": 2896487,
+        "lapbib": 51,
+        "teambibs": [
+          51
+        ],
+        "teamname": "",
+        "racername": "Jannik Haas"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_1939",
+        "catdispname": "Expert Men 19-39",
+        "catstarttime": 1679762039000,
+        "catmaxlaps": 4,
+        "lap": 3,
+        "lapstarttime": 1679767466119,
+        "lapendtime": 1679770867837,
+        "lapduration": 3401718,
+        "lapbib": 51,
+        "teambibs": [
+          51
+        ],
+        "teamname": "",
+        "racername": "Jannik Haas"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_1939",
+        "catdispname": "Expert Men 19-39",
+        "catstarttime": 1679762039000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679762039000,
+        "lapendtime": 1679765052128,
+        "lapduration": 3013128,
+        "lapbib": 45,
+        "teambibs": [
+          45
+        ],
+        "teamname": "",
+        "racername": "Gage Coffin"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_1939",
+        "catdispname": "Expert Men 19-39",
+        "catstarttime": 1679762039000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679765052128,
+        "lapendtime": 1679768076357,
+        "lapduration": 3024229,
+        "lapbib": 45,
+        "teambibs": [
+          45
+        ],
+        "teamname": "",
+        "racername": "Gage Coffin"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_1939",
+        "catdispname": "Expert Men 19-39",
+        "catstarttime": 1679762039000,
+        "catmaxlaps": 4,
+        "lap": 3,
+        "lapstarttime": 1679768076357,
+        "lapendtime": 1679772051219,
+        "lapduration": 3974862,
+        "lapbib": 45,
+        "teambibs": [
+          45
+        ],
+        "teamname": "",
+        "racername": "Gage Coffin"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_1939",
+        "catdispname": "Expert Men 19-39",
+        "catstarttime": 1679762039000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679762039000,
+        "lapendtime": 1679764246562,
+        "lapduration": 2207562,
+        "lapbib": 44,
+        "teambibs": [
+          44
+        ],
+        "teamname": "",
+        "racername": "Andrew Chapman"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_1939",
+        "catdispname": "Expert Men 19-39",
+        "catstarttime": 1679762039000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679764246562,
+        "lapendtime": 1679766717856,
+        "lapduration": 2471294,
+        "lapbib": 44,
+        "teambibs": [
+          44
+        ],
+        "teamname": "",
+        "racername": "Andrew Chapman"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_1939",
+        "catdispname": "Expert Men 19-39",
+        "catstarttime": 1679762039000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679762039000,
+        "lapendtime": 1679765544967,
+        "lapduration": 3505967,
+        "lapbib": 54,
+        "teambibs": [
+          54
+        ],
+        "teamname": "Team Ramrod",
+        "racername": "JD Hartnagle"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_1939",
+        "catdispname": "Expert Men 19-39",
+        "catstarttime": 1679762039000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679765544967,
+        "lapendtime": 1679769412117,
+        "lapduration": 3867150,
+        "lapbib": 54,
+        "teambibs": [
+          54
+        ],
+        "teamname": "Team Ramrod",
+        "racername": "JD Hartnagle"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_1939",
+        "catdispname": "Expert Men 19-39",
+        "catstarttime": 1679762039000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679762039000,
+        "lapendtime": 1679771765331,
+        "lapduration": 9726331,
+        "lapbib": 49,
+        "teambibs": [
+          49
+        ],
+        "teamname": "",
+        "racername": "Alexander Gayman"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_40",
+        "catdispname": "Expert Men 40+",
+        "catstarttime": 1679762160000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679762160000,
+        "lapendtime": 1679764207563,
+        "lapduration": 2047563,
+        "lapbib": 88,
+        "teambibs": [
+          88
+        ],
+        "teamname": "",
+        "racername": "Brad Day"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_40",
+        "catdispname": "Expert Men 40+",
+        "catstarttime": 1679762160000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679764207563,
+        "lapendtime": 1679766478113,
+        "lapduration": 2270550,
+        "lapbib": 88,
+        "teambibs": [
+          88
+        ],
+        "teamname": "",
+        "racername": "Brad Day"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_40",
+        "catdispname": "Expert Men 40+",
+        "catstarttime": 1679762160000,
+        "catmaxlaps": 4,
+        "lap": 3,
+        "lapstarttime": 1679766478113,
+        "lapendtime": 1679768659117,
+        "lapduration": 2181004,
+        "lapbib": 88,
+        "teambibs": [
+          88
+        ],
+        "teamname": "",
+        "racername": "Brad Day"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_40",
+        "catdispname": "Expert Men 40+",
+        "catstarttime": 1679762160000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679762160000,
+        "lapendtime": 1679764300181,
+        "lapduration": 2140181,
+        "lapbib": 91,
+        "teambibs": [
+          91
+        ],
+        "teamname": "Team Roaring Mouse",
+        "racername": "William Kemper"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_40",
+        "catdispname": "Expert Men 40+",
+        "catstarttime": 1679762160000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679764300181,
+        "lapendtime": 1679766560363,
+        "lapduration": 2260182,
+        "lapbib": 91,
+        "teambibs": [
+          91
+        ],
+        "teamname": "Team Roaring Mouse",
+        "racername": "William Kemper"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_40",
+        "catdispname": "Expert Men 40+",
+        "catstarttime": 1679762160000,
+        "catmaxlaps": 4,
+        "lap": 3,
+        "lapstarttime": 1679766560363,
+        "lapendtime": 1679768798367,
+        "lapduration": 2238004,
+        "lapbib": 91,
+        "teambibs": [
+          91
+        ],
+        "teamname": "Team Roaring Mouse",
+        "racername": "William Kemper"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_40",
+        "catdispname": "Expert Men 40+",
+        "catstarttime": 1679762160000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679762160000,
+        "lapendtime": 1679764326562,
+        "lapduration": 2166562,
+        "lapbib": 86,
+        "teambibs": [
+          86
+        ],
+        "teamname": "Team Roaring Mouse",
+        "racername": "Ross Cole-Hunter"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_40",
+        "catdispname": "Expert Men 40+",
+        "catstarttime": 1679762160000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679764326562,
+        "lapendtime": 1679766580861,
+        "lapduration": 2254299,
+        "lapbib": 86,
+        "teambibs": [
+          86
+        ],
+        "teamname": "Team Roaring Mouse",
+        "racername": "Ross Cole-Hunter"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_40",
+        "catdispname": "Expert Men 40+",
+        "catstarttime": 1679762160000,
+        "catmaxlaps": 4,
+        "lap": 3,
+        "lapstarttime": 1679766580861,
+        "lapendtime": 1679768831613,
+        "lapduration": 2250752,
+        "lapbib": 86,
+        "teambibs": [
+          86
+        ],
+        "teamname": "Team Roaring Mouse",
+        "racername": "Ross Cole-Hunter"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_40",
+        "catdispname": "Expert Men 40+",
+        "catstarttime": 1679762160000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679762160000,
+        "lapendtime": 1679764359807,
+        "lapduration": 2199807,
+        "lapbib": 87,
+        "teambibs": [
+          87
+        ],
+        "teamname": "Live Play Real Estate P/B LGBRC",
+        "racername": "Michael Cordova"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_40",
+        "catdispname": "Expert Men 40+",
+        "catstarttime": 1679762160000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679764359807,
+        "lapendtime": 1679766598362,
+        "lapduration": 2238555,
+        "lapbib": 87,
+        "teambibs": [
+          87
+        ],
+        "teamname": "Live Play Real Estate P/B LGBRC",
+        "racername": "Michael Cordova"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_40",
+        "catdispname": "Expert Men 40+",
+        "catstarttime": 1679762160000,
+        "catmaxlaps": 4,
+        "lap": 3,
+        "lapstarttime": 1679766598362,
+        "lapendtime": 1679768941361,
+        "lapduration": 2342999,
+        "lapbib": 87,
+        "teambibs": [
+          87
+        ],
+        "teamname": "Live Play Real Estate P/B LGBRC",
+        "racername": "Michael Cordova"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_40",
+        "catdispname": "Expert Men 40+",
+        "catstarttime": 1679762160000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679762160000,
+        "lapendtime": 1679764385306,
+        "lapduration": 2225306,
+        "lapbib": 97,
+        "teambibs": [
+          97
+        ],
+        "teamname": "King Kog",
+        "racername": "Kell McKenzie"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_40",
+        "catdispname": "Expert Men 40+",
+        "catstarttime": 1679762160000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679764385306,
+        "lapendtime": 1679766689111,
+        "lapduration": 2303805,
+        "lapbib": 97,
+        "teambibs": [
+          97
+        ],
+        "teamname": "King Kog",
+        "racername": "Kell McKenzie"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_40",
+        "catdispname": "Expert Men 40+",
+        "catstarttime": 1679762160000,
+        "catmaxlaps": 4,
+        "lap": 3,
+        "lapstarttime": 1679766689111,
+        "lapendtime": 1679769039109,
+        "lapduration": 2349998,
+        "lapbib": 97,
+        "teambibs": [
+          97
+        ],
+        "teamname": "King Kog",
+        "racername": "Kell McKenzie"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_40",
+        "catdispname": "Expert Men 40+",
+        "catstarttime": 1679762160000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679762160000,
+        "lapendtime": 1679764388055,
+        "lapduration": 2228055,
+        "lapbib": 83,
+        "teambibs": [
+          83
+        ],
+        "teamname": "Middletown Composite",
+        "racername": "Aaron Beckstead"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_40",
+        "catdispname": "Expert Men 40+",
+        "catstarttime": 1679762160000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679764388055,
+        "lapendtime": 1679766807602,
+        "lapduration": 2419547,
+        "lapbib": 83,
+        "teambibs": [
+          83
+        ],
+        "teamname": "Middletown Composite",
+        "racername": "Aaron Beckstead"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_40",
+        "catdispname": "Expert Men 40+",
+        "catstarttime": 1679762160000,
+        "catmaxlaps": 4,
+        "lap": 3,
+        "lapstarttime": 1679766807602,
+        "lapendtime": 1679769292107,
+        "lapduration": 2484505,
+        "lapbib": 83,
+        "teambibs": [
+          83
+        ],
+        "teamname": "Middletown Composite",
+        "racername": "Aaron Beckstead"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_40",
+        "catdispname": "Expert Men 40+",
+        "catstarttime": 1679762160000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679762160000,
+        "lapendtime": 1679764007574,
+        "lapduration": 1847574,
+        "lapbib": 104,
+        "teambibs": [
+          104
+        ],
+        "teamname": "",
+        "racername": "Akos Salga"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_40",
+        "catdispname": "Expert Men 40+",
+        "catstarttime": 1679762160000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679764007574,
+        "lapendtime": 1679766530612,
+        "lapduration": 2523038,
+        "lapbib": 104,
+        "teambibs": [
+          104
+        ],
+        "teamname": "",
+        "racername": "Akos Salga"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_40",
+        "catdispname": "Expert Men 40+",
+        "catstarttime": 1679762160000,
+        "catmaxlaps": 4,
+        "lap": 3,
+        "lapstarttime": 1679766530612,
+        "lapendtime": 1679769395607,
+        "lapduration": 2864995,
+        "lapbib": 104,
+        "teambibs": [
+          104
+        ],
+        "teamname": "",
+        "racername": "Akos Salga"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_40",
+        "catdispname": "Expert Men 40+",
+        "catstarttime": 1679762160000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679762160000,
+        "lapendtime": 1679764489432,
+        "lapduration": 2329432,
+        "lapbib": 92,
+        "teambibs": [
+          92
+        ],
+        "teamname": "OBG",
+        "racername": "Charlie Kropf"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_40",
+        "catdispname": "Expert Men 40+",
+        "catstarttime": 1679762160000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679764489432,
+        "lapendtime": 1679767025600,
+        "lapduration": 2536168,
+        "lapbib": 92,
+        "teambibs": [
+          92
+        ],
+        "teamname": "OBG",
+        "racername": "Charlie Kropf"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_40",
+        "catdispname": "Expert Men 40+",
+        "catstarttime": 1679762160000,
+        "catmaxlaps": 4,
+        "lap": 3,
+        "lapstarttime": 1679767025600,
+        "lapendtime": 1679769684553,
+        "lapduration": 2658953,
+        "lapbib": 92,
+        "teambibs": [
+          92
+        ],
+        "teamname": "OBG",
+        "racername": "Charlie Kropf"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_40",
+        "catdispname": "Expert Men 40+",
+        "catstarttime": 1679762160000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679762160000,
+        "lapendtime": 1679764704879,
+        "lapduration": 2544879,
+        "lapbib": 85,
+        "teambibs": [
+          85
+        ],
+        "teamname": "Roaring mouse",
+        "racername": "Rusty Buholz"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_40",
+        "catdispname": "Expert Men 40+",
+        "catstarttime": 1679762160000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679764704879,
+        "lapendtime": 1679767488614,
+        "lapduration": 2783735,
+        "lapbib": 85,
+        "teambibs": [
+          85
+        ],
+        "teamname": "Roaring mouse",
+        "racername": "Rusty Buholz"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_40",
+        "catdispname": "Expert Men 40+",
+        "catstarttime": 1679762160000,
+        "catmaxlaps": 4,
+        "lap": 3,
+        "lapstarttime": 1679767488614,
+        "lapendtime": 1679770369097,
+        "lapduration": 2880483,
+        "lapbib": 85,
+        "teambibs": [
+          85
+        ],
+        "teamname": "Roaring mouse",
+        "racername": "Rusty Buholz"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_40",
+        "catdispname": "Expert Men 40+",
+        "catstarttime": 1679762160000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679762160000,
+        "lapendtime": 1679764858877,
+        "lapduration": 2698877,
+        "lapbib": 103,
+        "teambibs": [
+          103
+        ],
+        "teamname": "Skratch Labs",
+        "racername": "John Sagebiel"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_40",
+        "catdispname": "Expert Men 40+",
+        "catstarttime": 1679762160000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679764858877,
+        "lapendtime": 1679767640361,
+        "lapduration": 2781484,
+        "lapbib": 103,
+        "teambibs": [
+          103
+        ],
+        "teamname": "Skratch Labs",
+        "racername": "John Sagebiel"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_40",
+        "catdispname": "Expert Men 40+",
+        "catstarttime": 1679762160000,
+        "catmaxlaps": 4,
+        "lap": 3,
+        "lapstarttime": 1679767640361,
+        "lapendtime": 1679770546091,
+        "lapduration": 2905730,
+        "lapbib": 103,
+        "teambibs": [
+          103
+        ],
+        "teamname": "Skratch Labs",
+        "racername": "John Sagebiel"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_40",
+        "catdispname": "Expert Men 40+",
+        "catstarttime": 1679762160000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679762160000,
+        "lapendtime": 1679764744379,
+        "lapduration": 2584379,
+        "lapbib": 89,
+        "teambibs": [
+          89
+        ],
+        "teamname": "Team Roaring Mouse",
+        "racername": "Graham Faulknor"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_40",
+        "catdispname": "Expert Men 40+",
+        "catstarttime": 1679762160000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679764744379,
+        "lapendtime": 1679767601871,
+        "lapduration": 2857492,
+        "lapbib": 89,
+        "teambibs": [
+          89
+        ],
+        "teamname": "Team Roaring Mouse",
+        "racername": "Graham Faulknor"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_40",
+        "catdispname": "Expert Men 40+",
+        "catstarttime": 1679762160000,
+        "catmaxlaps": 4,
+        "lap": 3,
+        "lapstarttime": 1679767601871,
+        "lapendtime": 1679770598091,
+        "lapduration": 2996220,
+        "lapbib": 89,
+        "teambibs": [
+          89
+        ],
+        "teamname": "Team Roaring Mouse",
+        "racername": "Graham Faulknor"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_40",
+        "catdispname": "Expert Men 40+",
+        "catstarttime": 1679762160000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679762160000,
+        "lapendtime": 1679764628636,
+        "lapduration": 2468636,
+        "lapbib": 109,
+        "teambibs": [
+          109
+        ],
+        "teamname": "",
+        "racername": "Pete Zlatnik"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_40",
+        "catdispname": "Expert Men 40+",
+        "catstarttime": 1679762160000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679764628636,
+        "lapendtime": 1679768130869,
+        "lapduration": 3502233,
+        "lapbib": 109,
+        "teambibs": [
+          109
+        ],
+        "teamname": "",
+        "racername": "Pete Zlatnik"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_40",
+        "catdispname": "Expert Men 40+",
+        "catstarttime": 1679762160000,
+        "catmaxlaps": 4,
+        "lap": 3,
+        "lapstarttime": 1679768130869,
+        "lapendtime": 1679770992337,
+        "lapduration": 2861468,
+        "lapbib": 109,
+        "teambibs": [
+          109
+        ],
+        "teamname": "",
+        "racername": "Pete Zlatnik"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_40",
+        "catdispname": "Expert Men 40+",
+        "catstarttime": 1679762160000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679762160000,
+        "lapendtime": 1679764953626,
+        "lapduration": 2793626,
+        "lapbib": 101,
+        "teambibs": [
+          101
+        ],
+        "teamname": "",
+        "racername": "Robert Ratz"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_40",
+        "catdispname": "Expert Men 40+",
+        "catstarttime": 1679762160000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679764953626,
+        "lapendtime": 1679768047354,
+        "lapduration": 3093728,
+        "lapbib": 101,
+        "teambibs": [
+          101
+        ],
+        "teamname": "",
+        "racername": "Robert Ratz"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_40",
+        "catdispname": "Expert Men 40+",
+        "catstarttime": 1679762160000,
+        "catmaxlaps": 4,
+        "lap": 3,
+        "lapstarttime": 1679768047354,
+        "lapendtime": 1679771419080,
+        "lapduration": 3371726,
+        "lapbib": 101,
+        "teambibs": [
+          101
+        ],
+        "teamname": "",
+        "racername": "Robert Ratz"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_40",
+        "catdispname": "Expert Men 40+",
+        "catstarttime": 1679762160000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679762160000,
+        "lapendtime": 1679765505174,
+        "lapduration": 3345174,
+        "lapbib": 82,
+        "teambibs": [
+          82
+        ],
+        "teamname": "Bear Valley Bikes",
+        "racername": "Mike Barbee"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_40",
+        "catdispname": "Expert Men 40+",
+        "catstarttime": 1679762160000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679765505174,
+        "lapendtime": 1679769510279,
+        "lapduration": 4005105,
+        "lapbib": 82,
+        "teambibs": [
+          82
+        ],
+        "teamname": "Bear Valley Bikes",
+        "racername": "Mike Barbee"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_40",
+        "catdispname": "Expert Men 40+",
+        "catstarttime": 1679762160000,
+        "catmaxlaps": 4,
+        "lap": 3,
+        "lapstarttime": 1679769510279,
+        "lapendtime": 1679773515384,
+        "lapduration": 4005105,
+        "lapbib": 82,
+        "teambibs": [
+          82
+        ],
+        "teamname": "Bear Valley Bikes",
+        "racername": "Mike Barbee"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_40",
+        "catdispname": "Expert Men 40+",
+        "catstarttime": 1679762160000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679762160000,
+        "lapendtime": 1679765110882,
+        "lapduration": 2950882,
+        "lapbib": 81,
+        "teambibs": [
+          81
+        ],
+        "teamname": "Team Roaring Mouse",
+        "racername": "Simon Ball"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_men_40",
+        "catdispname": "Expert Men 40+",
+        "catstarttime": 1679762160000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679765110882,
+        "lapendtime": 1679768679615,
+        "lapduration": 3568733,
+        "lapbib": 81,
+        "teambibs": [
+          81
+        ],
+        "teamname": "Team Roaring Mouse",
+        "racername": "Simon Ball"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_women",
+        "catdispname": "Expert Women",
+        "catstarttime": 1679762274000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679762274000,
+        "lapendtime": 1679764841877,
+        "lapduration": 2567877,
+        "lapbib": 116,
+        "teambibs": [
+          116
+        ],
+        "teamname": "Rubber Soul Bicycles",
+        "racername": "Michelle McGee"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_women",
+        "catdispname": "Expert Women",
+        "catstarttime": 1679762274000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679764841877,
+        "lapendtime": 1679767567863,
+        "lapduration": 2725986,
+        "lapbib": 116,
+        "teambibs": [
+          116
+        ],
+        "teamname": "Rubber Soul Bicycles",
+        "racername": "Michelle McGee"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_women",
+        "catdispname": "Expert Women",
+        "catstarttime": 1679762274000,
+        "catmaxlaps": 4,
+        "lap": 3,
+        "lapstarttime": 1679767567863,
+        "lapendtime": 1679770380093,
+        "lapduration": 2812230,
+        "lapbib": 116,
+        "teambibs": [
+          116
+        ],
+        "teamname": "Rubber Soul Bicycles",
+        "racername": "Michelle McGee"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_women",
+        "catdispname": "Expert Women",
+        "catstarttime": 1679762274000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679762274000,
+        "lapendtime": 1679765252122,
+        "lapduration": 2978122,
+        "lapbib": 111,
+        "teambibs": [
+          111
+        ],
+        "teamname": "",
+        "racername": "Lola Castro"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_women",
+        "catdispname": "Expert Women",
+        "catstarttime": 1679762274000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679765252122,
+        "lapendtime": 1679768606867,
+        "lapduration": 3354745,
+        "lapbib": 111,
+        "teambibs": [
+          111
+        ],
+        "teamname": "",
+        "racername": "Lola Castro"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_women",
+        "catdispname": "Expert Women",
+        "catstarttime": 1679762274000,
+        "catmaxlaps": 4,
+        "lap": 3,
+        "lapstarttime": 1679768606867,
+        "lapendtime": 1679772125223,
+        "lapduration": 3518356,
+        "lapbib": 111,
+        "teambibs": [
+          111
+        ],
+        "teamname": "",
+        "racername": "Lola Castro"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_women",
+        "catdispname": "Expert Women",
+        "catstarttime": 1679762274000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679762274000,
+        "lapendtime": 1679765391563,
+        "lapduration": 3117563,
+        "lapbib": 110,
+        "teambibs": [
+          110
+        ],
+        "teamname": "Breakaway Women’s Racing",
+        "racername": "Marila Alvares"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_women",
+        "catdispname": "Expert Women",
+        "catstarttime": 1679762274000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679765391563,
+        "lapendtime": 1679768757863,
+        "lapduration": 3366300,
+        "lapbib": 110,
+        "teambibs": [
+          110
+        ],
+        "teamname": "Breakaway Women’s Racing",
+        "racername": "Marila Alvares"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "expert_women",
+        "catdispname": "Expert Women",
+        "catstarttime": 1679762274000,
+        "catmaxlaps": 4,
+        "lap": 3,
+        "lapstarttime": 1679768757863,
+        "lapendtime": 1679772162454,
+        "lapduration": 3404591,
+        "lapbib": 110,
+        "teambibs": [
+          110
+        ],
+        "teamname": "Breakaway Women’s Racing",
+        "racername": "Marila Alvares"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "ebike_men_expertpro",
+        "catdispname": "E-Bike Men Expert/Pro",
+        "catstarttime": 1679761809000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679762160000,
+        "lapendtime": 1679763975961,
+        "lapduration": 1815961,
+        "lapbib": 126,
+        "teambibs": [
+          126
+        ],
+        "teamname": "This Is Home California",
+        "racername": "jayden raymond"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "ebike_men_expertpro",
+        "catdispname": "E-Bike Men Expert/Pro",
+        "catstarttime": 1679761809000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679763975961,
+        "lapendtime": 1679765791923,
+        "lapduration": 1815962,
+        "lapbib": 126,
+        "teambibs": [
+          126
+        ],
+        "teamname": "This Is Home California",
+        "racername": "jayden raymond"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "ebike_men_expertpro",
+        "catdispname": "E-Bike Men Expert/Pro",
+        "catstarttime": 1679761809000,
+        "catmaxlaps": 4,
+        "lap": 3,
+        "lapstarttime": 1679765791923,
+        "lapendtime": 1679768452366,
+        "lapduration": 2660443,
+        "lapbib": 126,
+        "teambibs": [
+          126
+        ],
+        "teamname": "This Is Home California",
+        "racername": "jayden raymond"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "ebike_men_expertpro",
+        "catdispname": "E-Bike Men Expert/Pro",
+        "catstarttime": 1679761809000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679762160000,
+        "lapendtime": 1679764633384,
+        "lapduration": 2473384,
+        "lapbib": 120,
+        "teambibs": [
+          120
+        ],
+        "teamname": "",
+        "racername": "Mike Pountney"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "ebike_men_expertpro",
+        "catdispname": "E-Bike Men Expert/Pro",
+        "catstarttime": 1679761809000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679764633384,
+        "lapendtime": 1679768145121,
+        "lapduration": 3511737,
+        "lapbib": 120,
+        "teambibs": [
+          120
+        ],
+        "teamname": "",
+        "racername": "Mike Pountney"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "ebike_men_expertpro",
+        "catdispname": "E-Bike Men Expert/Pro",
+        "catstarttime": 1679761809000,
+        "catmaxlaps": 4,
+        "lap": 3,
+        "lapstarttime": 1679768145121,
+        "lapendtime": 1679772503456,
+        "lapduration": 4358335,
+        "lapbib": 120,
+        "teambibs": [
+          120
+        ],
+        "teamname": "",
+        "racername": "Mike Pountney"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "ebike_men_beginnersport",
+        "catdispname": "E-Bike Men Beginner/Sport",
+        "catstarttime": 1679770826000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679770826000,
+        "lapendtime": 1679772702199,
+        "lapduration": 1876199,
+        "lapbib": 127,
+        "teambibs": [
+          127
+        ],
+        "teamname": "Carey Wealth Management",
+        "racername": "Jamie Carey"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "ebike_men_beginnersport",
+        "catdispname": "E-Bike Men Beginner/Sport",
+        "catstarttime": 1679770826000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679772702199,
+        "lapendtime": 1679774626629,
+        "lapduration": 1924430,
+        "lapbib": 127,
+        "teambibs": [
+          127
+        ],
+        "teamname": "Carey Wealth Management",
+        "racername": "Jamie Carey"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "ebike_men_beginnersport",
+        "catdispname": "E-Bike Men Beginner/Sport",
+        "catstarttime": 1679770826000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679770826000,
+        "lapendtime": 1679773119144,
+        "lapduration": 2293144,
+        "lapbib": 132,
+        "teambibs": [
+          132
+        ],
+        "teamname": "GoPro painters",
+        "racername": "Brian Vonderwerth"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "ebike_men_beginnersport",
+        "catdispname": "E-Bike Men Beginner/Sport",
+        "catstarttime": 1679770826000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679773119144,
+        "lapendtime": 1679775725905,
+        "lapduration": 2606761,
+        "lapbib": 132,
+        "teambibs": [
+          132
+        ],
+        "teamname": "GoPro painters",
+        "racername": "Brian Vonderwerth"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "ebike_women_beginnersport",
+        "catdispname": "E-Bike Women Beginner/Sport",
+        "catstarttime": 1679770830000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679770830000,
+        "lapendtime": 1679773059139,
+        "lapduration": 2229139,
+        "lapbib": 135,
+        "teambibs": [
+          135
+        ],
+        "teamname": "",
+        "racername": "Veronica mickelson"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "ebike_women_beginnersport",
+        "catdispname": "E-Bike Women Beginner/Sport",
+        "catstarttime": 1679770830000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679773059139,
+        "lapendtime": 1679775321864,
+        "lapduration": 2262725,
+        "lapbib": 135,
+        "teambibs": [
+          135
+        ],
+        "teamname": "",
+        "racername": "Veronica mickelson"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "ebike_women_beginnersport",
+        "catdispname": "E-Bike Women Beginner/Sport",
+        "catstarttime": 1679770830000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679770830000,
+        "lapendtime": 1679773423000,
+        "lapduration": 2593000,
+        "lapbib": 133,
+        "teambibs": [
+          133
+        ],
+        "teamname": "Beyond Bonked",
+        "racername": "Margaret Strickler"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "ebike_women_beginnersport",
+        "catdispname": "E-Bike Women Beginner/Sport",
+        "catstarttime": 1679770830000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679773423000,
+        "lapendtime": 1679776611642,
+        "lapduration": 3188642,
+        "lapbib": 133,
+        "teambibs": [
+          133
+        ],
+        "teamname": "Beyond Bonked",
+        "racername": "Margaret Strickler"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "ebike_women_beginnersport",
+        "catdispname": "E-Bike Women Beginner/Sport",
+        "catstarttime": 1679770830000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679770830000,
+        "lapendtime": 1679774593000,
+        "lapduration": 3763000,
+        "lapbib": 134,
+        "teambibs": [
+          134
+        ],
+        "teamname": "Trails Less Traveled",
+        "racername": "Kristen Whitt"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "ebike_women_beginnersport",
+        "catdispname": "E-Bike Women Beginner/Sport",
+        "catstarttime": 1679770830000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679774593000,
+        "lapendtime": 1679779026577,
+        "lapduration": 4433577,
+        "lapbib": 134,
+        "teambibs": [
+          134
+        ],
+        "teamname": "Trails Less Traveled",
+        "racername": "Kristen Whitt"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_18",
+        "catdispname": "Sport Men 18-",
+        "catstarttime": 1679770940000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679770940000,
+        "lapendtime": 1679773657320,
+        "lapduration": 2717320,
+        "lapbib": 23,
+        "teambibs": [
+          23
+        ],
+        "teamname": "",
+        "racername": "Oliver Arnold"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_18",
+        "catdispname": "Sport Men 18-",
+        "catstarttime": 1679770940000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679773657320,
+        "lapendtime": 1679776374640,
+        "lapduration": 2717320,
+        "lapbib": 23,
+        "teambibs": [
+          23
+        ],
+        "teamname": "",
+        "racername": "Oliver Arnold"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_18",
+        "catdispname": "Sport Men 18-",
+        "catstarttime": 1679770940000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679770940000,
+        "lapendtime": 1679773578135,
+        "lapduration": 2638135,
+        "lapbib": 140,
+        "teambibs": [
+          140
+        ],
+        "teamname": "MTBX",
+        "racername": "Theo Glebov"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_18",
+        "catdispname": "Sport Men 18-",
+        "catstarttime": 1679770940000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679773578135,
+        "lapendtime": 1679776658653,
+        "lapduration": 3080518,
+        "lapbib": 140,
+        "teambibs": [
+          140
+        ],
+        "teamname": "MTBX",
+        "racername": "Theo Glebov"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_18",
+        "catdispname": "Sport Men 18-",
+        "catstarttime": 1679770940000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679770940000,
+        "lapendtime": 1679773585633,
+        "lapduration": 2645633,
+        "lapbib": 139,
+        "teambibs": [
+          139
+        ],
+        "teamname": "MTBX",
+        "racername": "Lachlan Callahan"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_18",
+        "catdispname": "Sport Men 18-",
+        "catstarttime": 1679770940000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679773585633,
+        "lapendtime": 1679777357500,
+        "lapduration": 3771867,
+        "lapbib": 139,
+        "teambibs": [
+          139
+        ],
+        "teamname": "MTBX",
+        "racername": "Lachlan Callahan"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_18",
+        "catdispname": "Sport Men 18-",
+        "catstarttime": 1679770940000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679770940000,
+        "lapendtime": 1679773666132,
+        "lapduration": 2726132,
+        "lapbib": 143,
+        "teambibs": [
+          143
+        ],
+        "teamname": "MTBX",
+        "racername": "Max Puhoff"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_18",
+        "catdispname": "Sport Men 18-",
+        "catstarttime": 1679770940000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679773666132,
+        "lapendtime": 1679777400069,
+        "lapduration": 3733937,
+        "lapbib": 143,
+        "teambibs": [
+          143
+        ],
+        "teamname": "MTBX",
+        "racername": "Max Puhoff"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_1939",
+        "catdispname": "Sport Men 19-39",
+        "catstarttime": 1679771040000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679771040000,
+        "lapendtime": 1679773463387,
+        "lapduration": 2423387,
+        "lapbib": 153,
+        "teambibs": [
+          153
+        ],
+        "teamname": "Mikes Bikes Devo",
+        "racername": "Sam Bolster"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_1939",
+        "catdispname": "Sport Men 19-39",
+        "catstarttime": 1679771040000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679773463387,
+        "lapendtime": 1679775944395,
+        "lapduration": 2481008,
+        "lapbib": 153,
+        "teambibs": [
+          153
+        ],
+        "teamname": "Mikes Bikes Devo",
+        "racername": "Sam Bolster"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_1939",
+        "catdispname": "Sport Men 19-39",
+        "catstarttime": 1679771040000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679771040000,
+        "lapendtime": 1679773564515,
+        "lapduration": 2524515,
+        "lapbib": 59,
+        "teambibs": [
+          59
+        ],
+        "teamname": "Pursuit Strong Racing",
+        "racername": "Erik Johnson"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_1939",
+        "catdispname": "Sport Men 19-39",
+        "catstarttime": 1679771040000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679773564515,
+        "lapendtime": 1679776305238,
+        "lapduration": 2740723,
+        "lapbib": 59,
+        "teambibs": [
+          59
+        ],
+        "teamname": "Pursuit Strong Racing",
+        "racername": "Erik Johnson"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_1939",
+        "catdispname": "Sport Men 19-39",
+        "catstarttime": 1679771040000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679771040000,
+        "lapendtime": 1679773638024,
+        "lapduration": 2598024,
+        "lapbib": 177,
+        "teambibs": [
+          177
+        ],
+        "teamname": "",
+        "racername": "Alexander Silva"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_1939",
+        "catdispname": "Sport Men 19-39",
+        "catstarttime": 1679771040000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679773638024,
+        "lapendtime": 1679776527604,
+        "lapduration": 2889580,
+        "lapbib": 177,
+        "teambibs": [
+          177
+        ],
+        "teamname": "",
+        "racername": "Alexander Silva"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_1939",
+        "catdispname": "Sport Men 19-39",
+        "catstarttime": 1679771040000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679771040000,
+        "lapendtime": 1679773800637,
+        "lapduration": 2760637,
+        "lapbib": 163,
+        "teambibs": [
+          163
+        ],
+        "teamname": "King Factory Racing",
+        "racername": "Li King"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_1939",
+        "catdispname": "Sport Men 19-39",
+        "catstarttime": 1679771040000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679773800637,
+        "lapendtime": 1679776554389,
+        "lapduration": 2753752,
+        "lapbib": 163,
+        "teambibs": [
+          163
+        ],
+        "teamname": "King Factory Racing",
+        "racername": "Li King"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_1939",
+        "catdispname": "Sport Men 19-39",
+        "catstarttime": 1679771040000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679771040000,
+        "lapendtime": 1679773904884,
+        "lapduration": 2864884,
+        "lapbib": 151,
+        "teambibs": [
+          151
+        ],
+        "teamname": "Beyond Bonked",
+        "racername": "Michael Avery"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_1939",
+        "catdispname": "Sport Men 19-39",
+        "catstarttime": 1679771040000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679773904884,
+        "lapendtime": 1679776869385,
+        "lapduration": 2964501,
+        "lapbib": 151,
+        "teambibs": [
+          151
+        ],
+        "teamname": "Beyond Bonked",
+        "racername": "Michael Avery"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_1939",
+        "catdispname": "Sport Men 19-39",
+        "catstarttime": 1679771040000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679771040000,
+        "lapendtime": 1679773954128,
+        "lapduration": 2914128,
+        "lapbib": 187,
+        "teambibs": [
+          187
+        ],
+        "teamname": "Stay True Cycles",
+        "racername": "Andrew Weaver"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_1939",
+        "catdispname": "Sport Men 19-39",
+        "catstarttime": 1679771040000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679773954128,
+        "lapendtime": 1679776921388,
+        "lapduration": 2967260,
+        "lapbib": 187,
+        "teambibs": [
+          187
+        ],
+        "teamname": "Stay True Cycles",
+        "racername": "Andrew Weaver"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_1939",
+        "catdispname": "Sport Men 19-39",
+        "catstarttime": 1679771040000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679771040000,
+        "lapendtime": 1679773965631,
+        "lapduration": 2925631,
+        "lapbib": 181,
+        "teambibs": [
+          181
+        ],
+        "teamname": "Stay True Cycles",
+        "racername": "Winston Struye"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_1939",
+        "catdispname": "Sport Men 19-39",
+        "catstarttime": 1679771040000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679773965631,
+        "lapendtime": 1679777114631,
+        "lapduration": 3149000,
+        "lapbib": 181,
+        "teambibs": [
+          181
+        ],
+        "teamname": "Stay True Cycles",
+        "racername": "Winston Struye"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_1939",
+        "catdispname": "Sport Men 19-39",
+        "catstarttime": 1679771040000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679771040000,
+        "lapendtime": 1679773953128,
+        "lapduration": 2913128,
+        "lapbib": 182,
+        "teambibs": [
+          182
+        ],
+        "teamname": "MTBX",
+        "racername": "Lukas Swidler"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_1939",
+        "catdispname": "Sport Men 19-39",
+        "catstarttime": 1679771040000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679773953128,
+        "lapendtime": 1679777405468,
+        "lapduration": 3452340,
+        "lapbib": 182,
+        "teambibs": [
+          182
+        ],
+        "teamname": "MTBX",
+        "racername": "Lukas Swidler"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_1939",
+        "catdispname": "Sport Men 19-39",
+        "catstarttime": 1679771040000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679771040000,
+        "lapendtime": 1679774065381,
+        "lapduration": 3025381,
+        "lapbib": 76,
+        "teambibs": [
+          76
+        ],
+        "teamname": "",
+        "racername": "Alexander Wood-Thomas"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_1939",
+        "catdispname": "Sport Men 19-39",
+        "catstarttime": 1679771040000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679774065381,
+        "lapendtime": 1679777424822,
+        "lapduration": 3359441,
+        "lapbib": 76,
+        "teambibs": [
+          76
+        ],
+        "teamname": "",
+        "racername": "Alexander Wood-Thomas"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_1939",
+        "catdispname": "Sport Men 19-39",
+        "catstarttime": 1679771040000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679771040000,
+        "lapendtime": 1679774260123,
+        "lapduration": 3220123,
+        "lapbib": 162,
+        "teambibs": [
+          162
+        ],
+        "teamname": "",
+        "racername": "Mike Kalua"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_1939",
+        "catdispname": "Sport Men 19-39",
+        "catstarttime": 1679771040000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679774260123,
+        "lapendtime": 1679777502323,
+        "lapduration": 3242200,
+        "lapbib": 162,
+        "teambibs": [
+          162
+        ],
+        "teamname": "",
+        "racername": "Mike Kalua"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_1939",
+        "catdispname": "Sport Men 19-39",
+        "catstarttime": 1679771040000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679771040000,
+        "lapendtime": 1679774195379,
+        "lapduration": 3155379,
+        "lapbib": 155,
+        "teambibs": [
+          155
+        ],
+        "teamname": "",
+        "racername": "William Brewer"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_1939",
+        "catdispname": "Sport Men 19-39",
+        "catstarttime": 1679771040000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679774195379,
+        "lapendtime": 1679777775068,
+        "lapduration": 3579689,
+        "lapbib": 155,
+        "teambibs": [
+          155
+        ],
+        "teamname": "",
+        "racername": "William Brewer"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_1939",
+        "catdispname": "Sport Men 19-39",
+        "catstarttime": 1679771040000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679771040000,
+        "lapendtime": 1679774384874,
+        "lapduration": 3344874,
+        "lapbib": 178,
+        "teambibs": [
+          178
+        ],
+        "teamname": "Stay True Cycles",
+        "racername": "Austin Smith"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_1939",
+        "catdispname": "Sport Men 19-39",
+        "catstarttime": 1679771040000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679774384874,
+        "lapendtime": 1679777983052,
+        "lapduration": 3598178,
+        "lapbib": 178,
+        "teambibs": [
+          178
+        ],
+        "teamname": "Stay True Cycles",
+        "racername": "Austin Smith"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_1939",
+        "catdispname": "Sport Men 19-39",
+        "catstarttime": 1679771040000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679771040000,
+        "lapendtime": 1679774101887,
+        "lapduration": 3061887,
+        "lapbib": 180,
+        "teambibs": [
+          180
+        ],
+        "teamname": "Team City",
+        "racername": "Mitch Stockwell"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_1939",
+        "catdispname": "Sport Men 19-39",
+        "catstarttime": 1679771040000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679774101887,
+        "lapendtime": 1679778262300,
+        "lapduration": 4160413,
+        "lapbib": 180,
+        "teambibs": [
+          180
+        ],
+        "teamname": "Team City",
+        "racername": "Mitch Stockwell"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_1939",
+        "catdispname": "Sport Men 19-39",
+        "catstarttime": 1679771040000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679771040000,
+        "lapendtime": 1679774711119,
+        "lapduration": 3671119,
+        "lapbib": 183,
+        "teambibs": [
+          183
+        ],
+        "teamname": "Beyond Bonked / Kinetic Cycles",
+        "racername": "Jeffrey Tierney"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_1939",
+        "catdispname": "Sport Men 19-39",
+        "catstarttime": 1679771040000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679774711119,
+        "lapendtime": 1679779000076,
+        "lapduration": 4288957,
+        "lapbib": 183,
+        "teambibs": [
+          183
+        ],
+        "teamname": "Beyond Bonked / Kinetic Cycles",
+        "racername": "Jeffrey Tierney"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_1939",
+        "catdispname": "Sport Men 19-39",
+        "catstarttime": 1679771040000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679771040000,
+        "lapendtime": 1679774535622,
+        "lapduration": 3495622,
+        "lapbib": 171,
+        "teambibs": [
+          171
+        ],
+        "teamname": "",
+        "racername": "Hector Pina"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_1939",
+        "catdispname": "Sport Men 19-39",
+        "catstarttime": 1679771040000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679774535622,
+        "lapendtime": 1679779109575,
+        "lapduration": 4573953,
+        "lapbib": 171,
+        "teambibs": [
+          171
+        ],
+        "teamname": "",
+        "racername": "Hector Pina"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_1939",
+        "catdispname": "Sport Men 19-39",
+        "catstarttime": 1679771040000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679771040000,
+        "lapendtime": 1679779543843,
+        "lapduration": 8503843,
+        "lapbib": 150,
+        "teambibs": [
+          150
+        ],
+        "teamname": "",
+        "racername": "Ross Anderson"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_1939",
+        "catdispname": "Sport Men 19-39",
+        "catstarttime": 1679771040000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679771040000,
+        "lapendtime": 1679775438616,
+        "lapduration": 4398616,
+        "lapbib": 168,
+        "teambibs": [
+          168
+        ],
+        "teamname": "",
+        "racername": "Josiah Mattsson-Boze"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_women_39",
+        "catdispname": "Sport Women 39-",
+        "catstarttime": 1679771280000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679771280000,
+        "lapendtime": 1679774244881,
+        "lapduration": 2964881,
+        "lapbib": 222,
+        "teambibs": [
+          222
+        ],
+        "teamname": "Hella Mello",
+        "racername": "Alexis Bailey"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_women_39",
+        "catdispname": "Sport Women 39-",
+        "catstarttime": 1679771280000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679774244881,
+        "lapendtime": 1679777346884,
+        "lapduration": 3102003,
+        "lapbib": 222,
+        "teambibs": [
+          222
+        ],
+        "teamname": "Hella Mello",
+        "racername": "Alexis Bailey"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_women_39",
+        "catdispname": "Sport Women 39-",
+        "catstarttime": 1679771280000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679771280000,
+        "lapendtime": 1679774261377,
+        "lapduration": 2981377,
+        "lapbib": 227,
+        "teambibs": [
+          227
+        ],
+        "teamname": "Hella mello racing",
+        "racername": "Shannon Pitman"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_women_39",
+        "catdispname": "Sport Women 39-",
+        "catstarttime": 1679771280000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679774261377,
+        "lapendtime": 1679777298878,
+        "lapduration": 3037501,
+        "lapbib": 227,
+        "teambibs": [
+          227
+        ],
+        "teamname": "Hella mello racing",
+        "racername": "Shannon Pitman"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_women_39",
+        "catdispname": "Sport Women 39-",
+        "catstarttime": 1679771280000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679771280000,
+        "lapendtime": 1679774499623,
+        "lapduration": 3219623,
+        "lapbib": 225,
+        "teambibs": [
+          225
+        ],
+        "teamname": "",
+        "racername": "Sarah Dupree"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_women_39",
+        "catdispname": "Sport Women 39-",
+        "catstarttime": 1679771280000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679774499623,
+        "lapendtime": 1679777808307,
+        "lapduration": 3308684,
+        "lapbib": 225,
+        "teambibs": [
+          225
+        ],
+        "teamname": "",
+        "racername": "Sarah Dupree"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_women_40",
+        "catdispname": "Sport Women 40+",
+        "catstarttime": 1679771286000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679771286000,
+        "lapendtime": 1679774787870,
+        "lapduration": 3501870,
+        "lapbib": 229,
+        "teambibs": [
+          229
+        ],
+        "teamname": "Hella Mello Racing",
+        "racername": "Elizabeth Donahey"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_women_40",
+        "catdispname": "Sport Women 40+",
+        "catstarttime": 1679771286000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679774787870,
+        "lapendtime": 1679778639831,
+        "lapduration": 3851961,
+        "lapbib": 229,
+        "teambibs": [
+          229
+        ],
+        "teamname": "Hella Mello Racing",
+        "racername": "Elizabeth Donahey"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_women_40",
+        "catdispname": "Sport Women 40+",
+        "catstarttime": 1679771286000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679771286000,
+        "lapendtime": 1679774818621,
+        "lapduration": 3532621,
+        "lapbib": 230,
+        "teambibs": [
+          230
+        ],
+        "teamname": "Breakaway Womens Racing",
+        "racername": "Nikki Peterson"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_women_40",
+        "catdispname": "Sport Women 40+",
+        "catstarttime": 1679771286000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679774818621,
+        "lapendtime": 1679778656082,
+        "lapduration": 3837461,
+        "lapbib": 230,
+        "teambibs": [
+          230
+        ],
+        "teamname": "Breakaway Womens Racing",
+        "racername": "Nikki Peterson"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_women_40",
+        "catdispname": "Sport Women 40+",
+        "catstarttime": 1679771286000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679771286000,
+        "lapendtime": 1679775608399,
+        "lapduration": 4322399,
+        "lapbib": 228,
+        "teambibs": [
+          228
+        ],
+        "teamname": "Breakaway Womens Racing",
+        "racername": "Libby Conlin"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_women_40",
+        "catdispname": "Sport Women 40+",
+        "catstarttime": 1679771286000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679775608399,
+        "lapendtime": 1679780572600,
+        "lapduration": 4964201,
+        "lapbib": 228,
+        "teambibs": [
+          228
+        ],
+        "teamname": "Breakaway Womens Racing",
+        "racername": "Libby Conlin"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "beginner_men_18",
+        "catdispname": "Beginner Men 18-",
+        "catstarttime": 1679771762000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679771762000,
+        "lapendtime": 1679773504134,
+        "lapduration": 1742134,
+        "lapbib": 240,
+        "teambibs": [
+          240
+        ],
+        "teamname": "Work Health Solutions",
+        "racername": "Kaden Jaquias"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "beginner_men_18",
+        "catdispname": "Beginner Men 18-",
+        "catstarttime": 1679771762000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679773504134,
+        "lapendtime": 1679775448863,
+        "lapduration": 1944729,
+        "lapbib": 240,
+        "teambibs": [
+          240
+        ],
+        "teamname": "Work Health Solutions",
+        "racername": "Kaden Jaquias"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "beginner_men_18",
+        "catdispname": "Beginner Men 18-",
+        "catstarttime": 1679771762000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679771762000,
+        "lapendtime": 1679773747382,
+        "lapduration": 1985382,
+        "lapbib": 239,
+        "teambibs": [
+          239
+        ],
+        "teamname": "MTBX",
+        "racername": "Parker Harrington"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "beginner_men_18",
+        "catdispname": "Beginner Men 18-",
+        "catstarttime": 1679771762000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679773747382,
+        "lapendtime": 1679776126147,
+        "lapduration": 2378765,
+        "lapbib": 239,
+        "teambibs": [
+          239
+        ],
+        "teamname": "MTBX",
+        "racername": "Parker Harrington"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "beginner_men_18",
+        "catdispname": "Beginner Men 18-",
+        "catstarttime": 1679771762000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679771762000,
+        "lapendtime": 1679773837131,
+        "lapduration": 2075131,
+        "lapbib": 244,
+        "teambibs": [
+          244
+        ],
+        "teamname": "MTBX",
+        "racername": "Will Nichols"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "beginner_men_18",
+        "catdispname": "Beginner Men 18-",
+        "catstarttime": 1679771762000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679773837131,
+        "lapendtime": 1679776378140,
+        "lapduration": 2541009,
+        "lapbib": 244,
+        "teambibs": [
+          244
+        ],
+        "teamname": "MTBX",
+        "racername": "Will Nichols"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "beginner_men_18",
+        "catdispname": "Beginner Men 18-",
+        "catstarttime": 1679771762000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679771762000,
+        "lapendtime": 1679773877629,
+        "lapduration": 2115629,
+        "lapbib": 233,
+        "teambibs": [
+          233
+        ],
+        "teamname": "Green Machine CrossFit Palo Alto",
+        "racername": "Luke Dymmel"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "beginner_men_18",
+        "catdispname": "Beginner Men 18-",
+        "catstarttime": 1679771762000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679773877629,
+        "lapendtime": 1679776609638,
+        "lapduration": 2732009,
+        "lapbib": 233,
+        "teambibs": [
+          233
+        ],
+        "teamname": "Green Machine CrossFit Palo Alto",
+        "racername": "Luke Dymmel"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "beginner_men_18",
+        "catdispname": "Beginner Men 18-",
+        "catstarttime": 1679771762000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679771762000,
+        "lapendtime": 1679773988627,
+        "lapduration": 2226627,
+        "lapbib": 243,
+        "teambibs": [
+          243
+        ],
+        "teamname": "MTBX",
+        "racername": "Christopher Morales"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "beginner_men_1939",
+        "catdispname": "Beginner Men 19-39",
+        "catstarttime": 1679771881000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679771881000,
+        "lapendtime": 1679773586428,
+        "lapduration": 1705428,
+        "lapbib": 270,
+        "teambibs": [
+          270
+        ],
+        "teamname": "Staal Construction and Fabrication",
+        "racername": "Daniel Staal"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "beginner_men_1939",
+        "catdispname": "Beginner Men 19-39",
+        "catstarttime": 1679771881000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679773586428,
+        "lapendtime": 1679775291857,
+        "lapduration": 1705429,
+        "lapbib": 270,
+        "teambibs": [
+          270
+        ],
+        "teamname": "Staal Construction and Fabrication",
+        "racername": "Daniel Staal"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "beginner_men_1939",
+        "catdispname": "Beginner Men 19-39",
+        "catstarttime": 1679771881000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679771881000,
+        "lapendtime": 1679773580885,
+        "lapduration": 1699885,
+        "lapbib": 255,
+        "teambibs": [
+          255
+        ],
+        "teamname": "MTBX",
+        "racername": "Vincent Brickey"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "beginner_men_1939",
+        "catdispname": "Beginner Men 19-39",
+        "catstarttime": 1679771881000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679773580885,
+        "lapendtime": 1679775332362,
+        "lapduration": 1751477,
+        "lapbib": 255,
+        "teambibs": [
+          255
+        ],
+        "teamname": "MTBX",
+        "racername": "Vincent Brickey"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "beginner_men_1939",
+        "catdispname": "Beginner Men 19-39",
+        "catstarttime": 1679771881000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679771881000,
+        "lapendtime": 1679773715132,
+        "lapduration": 1834132,
+        "lapbib": 254,
+        "teambibs": [
+          254
+        ],
+        "teamname": "",
+        "racername": "Dan Brackney"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "beginner_men_1939",
+        "catdispname": "Beginner Men 19-39",
+        "catstarttime": 1679771881000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679773715132,
+        "lapendtime": 1679775826897,
+        "lapduration": 2111765,
+        "lapbib": 254,
+        "teambibs": [
+          254
+        ],
+        "teamname": "",
+        "racername": "Dan Brackney"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "beginner_men_1939",
+        "catdispname": "Beginner Men 19-39",
+        "catstarttime": 1679771881000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679771881000,
+        "lapendtime": 1679775003000,
+        "lapduration": 3122000,
+        "lapbib": 266,
+        "teambibs": [
+          266
+        ],
+        "teamname": "",
+        "racername": "Daniel Mendoza"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "beginner_men_1939",
+        "catdispname": "Beginner Men 19-39",
+        "catstarttime": 1679771881000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679775003000,
+        "lapendtime": 1679778112804,
+        "lapduration": 3109804,
+        "lapbib": 266,
+        "teambibs": [
+          266
+        ],
+        "teamname": "",
+        "racername": "Daniel Mendoza"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "beginner_men_40",
+        "catdispname": "Beginner Men 40+",
+        "catstarttime": 1679772001000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679772001000,
+        "lapendtime": 1679773899540,
+        "lapduration": 1898540,
+        "lapbib": 275,
+        "teambibs": [
+          275
+        ],
+        "teamname": "Sierra Bicycle Werks",
+        "racername": "Christopher Bawdon"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "beginner_men_40",
+        "catdispname": "Beginner Men 40+",
+        "catstarttime": 1679772001000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679773899540,
+        "lapendtime": 1679775977646,
+        "lapduration": 2078106,
+        "lapbib": 275,
+        "teambibs": [
+          275
+        ],
+        "teamname": "Sierra Bicycle Werks",
+        "racername": "Christopher Bawdon"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "beginner_men_40",
+        "catdispname": "Beginner Men 40+",
+        "catstarttime": 1679772001000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679772001000,
+        "lapendtime": 1679773996877,
+        "lapduration": 1995877,
+        "lapbib": 282,
+        "teambibs": [
+          282
+        ],
+        "teamname": "Full Throttle Motorcycle Shop",
+        "racername": "Tommy Loredo"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "beginner_men_40",
+        "catdispname": "Beginner Men 40+",
+        "catstarttime": 1679772001000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679773996877,
+        "lapendtime": 1679776178898,
+        "lapduration": 2182021,
+        "lapbib": 282,
+        "teambibs": [
+          282
+        ],
+        "teamname": "Full Throttle Motorcycle Shop",
+        "racername": "Tommy Loredo"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "beginner_men_40",
+        "catdispname": "Beginner Men 40+",
+        "catstarttime": 1679772001000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679772001000,
+        "lapendtime": 1679774208375,
+        "lapduration": 2207375,
+        "lapbib": 273,
+        "teambibs": [
+          273
+        ],
+        "teamname": "",
+        "racername": "Adrian Aguilera"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "beginner_men_40",
+        "catdispname": "Beginner Men 40+",
+        "catstarttime": 1679772001000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679774208375,
+        "lapendtime": 1679776750638,
+        "lapduration": 2542263,
+        "lapbib": 273,
+        "teambibs": [
+          273
+        ],
+        "teamname": "",
+        "racername": "Adrian Aguilera"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "beginner_men_40",
+        "catdispname": "Beginner Men 40+",
+        "catstarttime": 1679772001000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679772001000,
+        "lapendtime": 1679775447118,
+        "lapduration": 3446118,
+        "lapbib": 283,
+        "teambibs": [
+          283
+        ],
+        "teamname": "",
+        "racername": "Garett Murphy"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "beginner_men_40",
+        "catdispname": "Beginner Men 40+",
+        "catstarttime": 1679772001000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679772001000,
+        "lapendtime": 1679776305154,
+        "lapduration": 4304154,
+        "lapbib": 276,
+        "teambibs": [
+          276
+        ],
+        "teamname": "Green Machine CrossFit Palo Alto",
+        "racername": "Tim Dymmel"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "beginner_women_18",
+        "catdispname": "Beginner Women 18-",
+        "catstarttime": 1679772120000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679772120000,
+        "lapendtime": 1679774325875,
+        "lapduration": 2205875,
+        "lapbib": 288,
+        "teambibs": [
+          288
+        ],
+        "teamname": "",
+        "racername": "Faith Lura"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "beginner_women_18",
+        "catdispname": "Beginner Women 18-",
+        "catstarttime": 1679772120000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679774325875,
+        "lapendtime": 1679776727137,
+        "lapduration": 2401262,
+        "lapbib": 288,
+        "teambibs": [
+          288
+        ],
+        "teamname": "",
+        "racername": "Faith Lura"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "beginner_women_19",
+        "catdispname": "Beginner Women 19+",
+        "catstarttime": 1679772127000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679772127000,
+        "lapendtime": 1679774571871,
+        "lapduration": 2444871,
+        "lapbib": 292,
+        "teambibs": [
+          292
+        ],
+        "teamname": "",
+        "racername": "Andrea Magallanes"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "beginner_women_19",
+        "catdispname": "Beginner Women 19+",
+        "catstarttime": 1679772127000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679774571871,
+        "lapendtime": 1679777303128,
+        "lapduration": 2731257,
+        "lapbib": 292,
+        "teambibs": [
+          292
+        ],
+        "teamname": "",
+        "racername": "Andrea Magallanes"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "beginner_women_19",
+        "catdispname": "Beginner Women 19+",
+        "catstarttime": 1679772127000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679772127000,
+        "lapendtime": 1679774767118,
+        "lapduration": 2640118,
+        "lapbib": 291,
+        "teambibs": [
+          291
+        ],
+        "teamname": "",
+        "racername": "Tanya Leers"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "beginner_women_19",
+        "catdispname": "Beginner Women 19+",
+        "catstarttime": 1679772127000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679774767118,
+        "lapendtime": 1679777623812,
+        "lapduration": 2856694,
+        "lapbib": 291,
+        "teambibs": [
+          291
+        ],
+        "teamname": "",
+        "racername": "Tanya Leers"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "beginner_women_19",
+        "catdispname": "Beginner Women 19+",
+        "catstarttime": 1679772127000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679772127000,
+        "lapendtime": 1679775409363,
+        "lapduration": 3282363,
+        "lapbib": 295,
+        "teambibs": [
+          295
+        ],
+        "teamname": "",
+        "racername": "Diana Rapa"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "beginner_women_19",
+        "catdispname": "Beginner Women 19+",
+        "catstarttime": 1679772127000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679775409363,
+        "lapendtime": 1679779311100,
+        "lapduration": 3901737,
+        "lapbib": 295,
+        "teambibs": [
+          295
+        ],
+        "teamname": "",
+        "racername": "Diana Rapa"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "beginner_women_19",
+        "catdispname": "Beginner Women 19+",
+        "catstarttime": 1679772127000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679772127000,
+        "lapendtime": 1679775419864,
+        "lapduration": 3292864,
+        "lapbib": 289,
+        "teambibs": [
+          289
+        ],
+        "teamname": "",
+        "racername": "Jaime Domond"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_40",
+        "catdispname": "Sport Men 40+",
+        "catstarttime": 1679771160000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679771160000,
+        "lapendtime": 1679773536384,
+        "lapduration": 2376384,
+        "lapbib": 189,
+        "teambibs": [
+          189
+        ],
+        "teamname": "",
+        "racername": "Ruben Balderas"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_40",
+        "catdispname": "Sport Men 40+",
+        "catstarttime": 1679771160000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679773536384,
+        "lapendtime": 1679776030645,
+        "lapduration": 2494261,
+        "lapbib": 189,
+        "teambibs": [
+          189
+        ],
+        "teamname": "",
+        "racername": "Ruben Balderas"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_40",
+        "catdispname": "Sport Men 40+",
+        "catstarttime": 1679771160000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679771160000,
+        "lapendtime": 1679773530365,
+        "lapduration": 2370365,
+        "lapbib": 198,
+        "teambibs": [
+          198
+        ],
+        "teamname": "",
+        "racername": "Zeeb Guarneros"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_40",
+        "catdispname": "Sport Men 40+",
+        "catstarttime": 1679771160000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679773530365,
+        "lapendtime": 1679776189899,
+        "lapduration": 2659534,
+        "lapbib": 198,
+        "teambibs": [
+          198
+        ],
+        "teamname": "",
+        "racername": "Zeeb Guarneros"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_40",
+        "catdispname": "Sport Men 40+",
+        "catstarttime": 1679771160000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679771160000,
+        "lapendtime": 1679773612642,
+        "lapduration": 2452642,
+        "lapbib": 210,
+        "teambibs": [
+          210
+        ],
+        "teamname": "",
+        "racername": "Neil Robinson"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_40",
+        "catdispname": "Sport Men 40+",
+        "catstarttime": 1679771160000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679773612642,
+        "lapendtime": 1679776200153,
+        "lapduration": 2587511,
+        "lapbib": 210,
+        "teambibs": [
+          210
+        ],
+        "teamname": "",
+        "racername": "Neil Robinson"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_40",
+        "catdispname": "Sport Men 40+",
+        "catstarttime": 1679771160000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679770767827,
+        "lapendtime": 1679773609636,
+        "lapduration": 2841809,
+        "lapbib": 214,
+        "teambibs": [
+          214
+        ],
+        "teamname": "",
+        "racername": "Mike TImpano"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_40",
+        "catdispname": "Sport Men 40+",
+        "catstarttime": 1679771160000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679773609636,
+        "lapendtime": 1679776268391,
+        "lapduration": 2658755,
+        "lapbib": 214,
+        "teambibs": [
+          214
+        ],
+        "teamname": "",
+        "racername": "Mike TImpano"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_40",
+        "catdispname": "Sport Men 40+",
+        "catstarttime": 1679771160000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679771160000,
+        "lapendtime": 1679773752382,
+        "lapduration": 2592382,
+        "lapbib": 203,
+        "teambibs": [
+          203
+        ],
+        "teamname": "OBG",
+        "racername": "Michael Lyster"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_40",
+        "catdispname": "Sport Men 40+",
+        "catstarttime": 1679771160000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679773752382,
+        "lapendtime": 1679776629642,
+        "lapduration": 2877260,
+        "lapbib": 203,
+        "teambibs": [
+          203
+        ],
+        "teamname": "OBG",
+        "racername": "Michael Lyster"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_40",
+        "catdispname": "Sport Men 40+",
+        "catstarttime": 1679771160000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679771160000,
+        "lapendtime": 1679773770634,
+        "lapduration": 2610634,
+        "lapbib": 206,
+        "teambibs": [
+          206
+        ],
+        "teamname": "OBG",
+        "racername": "Jonathan Melton"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_40",
+        "catdispname": "Sport Men 40+",
+        "catstarttime": 1679771160000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679773770634,
+        "lapendtime": 1679776668887,
+        "lapduration": 2898253,
+        "lapbib": 206,
+        "teambibs": [
+          206
+        ],
+        "teamname": "OBG",
+        "racername": "Jonathan Melton"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_40",
+        "catdispname": "Sport Men 40+",
+        "catstarttime": 1679771160000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679771160000,
+        "lapendtime": 1679773962629,
+        "lapduration": 2802629,
+        "lapbib": 191,
+        "teambibs": [
+          191
+        ],
+        "teamname": "",
+        "racername": "Nick Calenda"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_40",
+        "catdispname": "Sport Men 40+",
+        "catstarttime": 1679771160000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679773962629,
+        "lapendtime": 1679776806138,
+        "lapduration": 2843509,
+        "lapbib": 191,
+        "teambibs": [
+          191
+        ],
+        "teamname": "",
+        "racername": "Nick Calenda"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_40",
+        "catdispname": "Sport Men 40+",
+        "catstarttime": 1679771160000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679771160000,
+        "lapendtime": 1679773824342,
+        "lapduration": 2664342,
+        "lapbib": 196,
+        "teambibs": [
+          196
+        ],
+        "teamname": "OBG",
+        "racername": "Eric Elliott"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_40",
+        "catdispname": "Sport Men 40+",
+        "catstarttime": 1679771160000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679773824342,
+        "lapendtime": 1679777108342,
+        "lapduration": 3284000,
+        "lapbib": 196,
+        "teambibs": [
+          196
+        ],
+        "teamname": "OBG",
+        "racername": "Eric Elliott"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_40",
+        "catdispname": "Sport Men 40+",
+        "catstarttime": 1679771160000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679771160000,
+        "lapendtime": 1679773982377,
+        "lapduration": 2822377,
+        "lapbib": 216,
+        "teambibs": [
+          216
+        ],
+        "teamname": "",
+        "racername": "Amador Vargas"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_40",
+        "catdispname": "Sport Men 40+",
+        "catstarttime": 1679771160000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679773982377,
+        "lapendtime": 1679777293130,
+        "lapduration": 3310753,
+        "lapbib": 216,
+        "teambibs": [
+          216
+        ],
+        "teamname": "",
+        "racername": "Amador Vargas"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_40",
+        "catdispname": "Sport Men 40+",
+        "catstarttime": 1679771160000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679771160000,
+        "lapendtime": 1679774289401,
+        "lapduration": 3129401,
+        "lapbib": 217,
+        "teambibs": [
+          217
+        ],
+        "teamname": "Davis Bike Club Race Team",
+        "racername": "Akwetee Watkins"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_40",
+        "catdispname": "Sport Men 40+",
+        "catstarttime": 1679771160000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679774289401,
+        "lapendtime": 1679777724559,
+        "lapduration": 3435158,
+        "lapbib": 217,
+        "teambibs": [
+          217
+        ],
+        "teamname": "Davis Bike Club Race Team",
+        "racername": "Akwetee Watkins"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_40",
+        "catdispname": "Sport Men 40+",
+        "catstarttime": 1679771160000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679771160000,
+        "lapendtime": 1679774613621,
+        "lapduration": 3453621,
+        "lapbib": 192,
+        "teambibs": [
+          192
+        ],
+        "teamname": "",
+        "racername": "Victor Castillo"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_40",
+        "catdispname": "Sport Men 40+",
+        "catstarttime": 1679771160000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679774613621,
+        "lapendtime": 1679778418085,
+        "lapduration": 3804464,
+        "lapbib": 192,
+        "teambibs": [
+          192
+        ],
+        "teamname": "",
+        "racername": "Victor Castillo"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_40",
+        "catdispname": "Sport Men 40+",
+        "catstarttime": 1679771160000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679771160000,
+        "lapendtime": 1679774612622,
+        "lapduration": 3452622,
+        "lapbib": 218,
+        "teambibs": [
+          218
+        ],
+        "teamname": "",
+        "racername": "Brandon Whitt"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_40",
+        "catdispname": "Sport Men 40+",
+        "catstarttime": 1679771160000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679774612622,
+        "lapendtime": 1679778618333,
+        "lapduration": 4005711,
+        "lapbib": 218,
+        "teambibs": [
+          218
+        ],
+        "teamname": "",
+        "racername": "Brandon Whitt"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_40",
+        "catdispname": "Sport Men 40+",
+        "catstarttime": 1679771160000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679771160000,
+        "lapendtime": 1679774853339,
+        "lapduration": 3693339,
+        "lapbib": 205,
+        "teambibs": [
+          205
+        ],
+        "teamname": "",
+        "racername": "Julio Martinez"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_40",
+        "catdispname": "Sport Men 40+",
+        "catstarttime": 1679771160000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679774853339,
+        "lapendtime": 1679779503847,
+        "lapduration": 4650508,
+        "lapbib": 205,
+        "teambibs": [
+          205
+        ],
+        "teamname": "",
+        "racername": "Julio Martinez"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_40",
+        "catdispname": "Sport Men 40+",
+        "catstarttime": 1679771160000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679771160000,
+        "lapendtime": 1679775178364,
+        "lapduration": 4018364,
+        "lapbib": 204,
+        "teambibs": [
+          204
+        ],
+        "teamname": "",
+        "racername": "Joel Martinez"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_40",
+        "catdispname": "Sport Men 40+",
+        "catstarttime": 1679771160000,
+        "catmaxlaps": 4,
+        "lap": 2,
+        "lapstarttime": 1679775178364,
+        "lapendtime": 1679780055338,
+        "lapduration": 4876974,
+        "lapbib": 204,
+        "teambibs": [
+          204
+        ],
+        "teamname": "",
+        "racername": "Joel Martinez"
+      },
+      {
+        "raceID": "59d4cw2b0lfo5oqip",
+        "cat": "sport_men_40",
+        "catdispname": "Sport Men 40+",
+        "catstarttime": 1679771160000,
+        "catmaxlaps": 4,
+        "lap": 1,
+        "lapstarttime": 1679771160000,
+        "lapendtime": 1679775525360,
+        "lapduration": 4365360,
+        "lapbib": 193,
+        "teambibs": [
+          193
+        ],
+        "teamname": "",
+        "racername": "Pedro Cuevas"
+      }
+    ]
+  }

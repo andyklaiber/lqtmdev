@@ -66,7 +66,7 @@ module.exports = fp(async function (fastify, opts) {
     Race Category: ${regCat ? regCat.catdispname : "Category not found"}<br>
     <p><a href="${process.env.DOMAIN}/#/roster/${regData.raceid}">Go Here</a> to see who else is signed up<p>
     <p>For information about the event, check out <a href="${raceData.eventDetails.homepageUrl}">${raceData.eventDetails.homepageUrl}</a></p>
-    <p>For issues with your registration information, <a href="mailto:support@signup.bike">email us!</a>
+    <p>For issues with your registration information, <a href="mailto:${raceData.contactEmail ? raceData.contactEmail : `support@signup.bike`}">email us!</a>
     </body></html>`
 
 

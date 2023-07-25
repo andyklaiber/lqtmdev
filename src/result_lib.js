@@ -144,7 +144,7 @@ const generateResultData = (results, categoryOrder)=>{
 }
 
 
-const getSeriesColumns = (raceMeta, catId)=>{
+const getSeriesColumns = (raceMeta, catId, gromRaceNumbers)=>{
     let cols = ["Pos","Bib","Name","Age","Sponsor"]
     for (let i = 0; i < raceMeta.length; i++) {
         const race = raceMeta[i];
@@ -156,7 +156,7 @@ const getSeriesColumns = (raceMeta, catId)=>{
             cols.push(`${colHeader}`);
         }
         else{
-            if(i > 2){
+            if(gromRaceNumbers.indexOf(race.formattedStartDate) > -1){
                 cols.push(`${race.formattedStartDate}`);
             }
 
@@ -165,7 +165,7 @@ const getSeriesColumns = (raceMeta, catId)=>{
     return cols.concat(["Total Points"])
 }
 
-const generatePCRSSeriesResults = (raceResults, racersMeta, categoryOrder, teamsRacers)=>{
+const generatePCRSSeriesResults = (raceResults, racersMeta, categoryOrder, gromRaceDates, teamsRacers, teamCompDates = [])=>{
     let out = {
         categories:{
         }
@@ -186,7 +186,7 @@ const generatePCRSSeriesResults = (raceResults, racersMeta, categoryOrder, teams
                     id: catMeta.id,
                     catdispname: catMeta.catdispname,
                     laps: catMeta.laps,
-                    columns: getSeriesColumns(raceResults, catMeta.id),
+                    columns: getSeriesColumns(raceResults, catMeta.id, gromRaceDates),
                     results:{},
                     disporder:categoryOrder.indexOf(catMeta.id)
                 }
@@ -273,14 +273,14 @@ const generatePCRSSeriesResults = (raceResults, racersMeta, categoryOrder, teams
                         racerSeriesRow.results.push({raceDate: race.formattedStartDate, resultString, finishPoints });
                     }
                     else{
-                        if(["4/13","4/20","4/27","5/4","5/11"].indexOf(race.formattedStartDate) > -1){
+                        if(gromRaceDates.indexOf(race.formattedStartDate) > -1){
                             racerSeriesRow.results.push({raceDate: race.formattedStartDate, resultString, finishPoints });
                         }
                     }
                     if(racerTeamComp){
                         console.log("++++ Team Racer: ", racerTeamComp.Name)
                         // team points competition
-                        if(raceFinish && ["5/4","5/11","5/18","5/25"].indexOf(race.formattedStartDate) > -1){
+                        if(raceFinish && teamCompDates.indexOf(race.formattedStartDate) > -1){
                             console.log(race.formattedStartDate, raceFinish.points);
                             racerTeamComp[race.formattedStartDate] = raceFinish.points;
                         }
@@ -302,7 +302,7 @@ const generatePCRSSeriesResults = (raceResults, racersMeta, categoryOrder, teams
                     }
                 }else{
                     // drop 1 race for groms
-                    if(orderedByPoints.length >= 5){
+                    if(orderedByPoints.length >= gromRaceDates.length - 1){
                         let drop1 = _.findIndex(racerSeriesRow.results, (result)=>orderedByPoints[0].raceDate === result.raceDate)
                         racerSeriesRow.results[drop1].dropped = true;
                     }
@@ -537,9 +537,7 @@ const getAttendance = (out)=>{
             return;
         }
         catMeta.results.forEach((racer)=>{
-            if(racer.Name.indexOf('Katherine')> -1){
-                console.log(racer);
-            }
+            
             let attended = _.filter(racer.results, (race)=>{return race.resultString != "-/-"})
             if(attendees[racer.Name]){
                 attendees[racer.Name] += attended.length;

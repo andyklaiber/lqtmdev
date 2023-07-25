@@ -7,6 +7,7 @@ const roundToTwo = (num) => {
 
 module.exports = async function (fastify, opts) {
     fastify.get('/', async function (request, reply) {
+        const series_data = await this.mongo.db.collection('series_results').findOne({ series: request.query.series });
         const cursor = this.mongo.db.collection('team_comp').find({ Series: request.query.series })
 
         let result = await cursor.toArray();
@@ -22,7 +23,7 @@ module.exports = async function (fastify, opts) {
                     totalPoints: 0
                 }
 
-                teamDates.forEach((date)=>{
+                series_data.teamCompDates.forEach((date)=>{
                     let datePoints = 0;
                     team.forEach((teamMember)=>{
                         if(teamMember[date]){
@@ -41,11 +42,31 @@ module.exports = async function (fastify, opts) {
                 })
                 teamScores[teamName].totalScore = roundToTwo(teamScores[teamName].totalPoints / teamScores[teamName].count);
             })
-            return { teamDets, result:  _.orderBy(teamScores, 'totalScore', 'desc') }
+            return { teamCompDates:series_data.teamCompDates, teamDets, result:  _.orderBy(teamScores, 'totalScore', 'desc') }
         } else {
             return fastify.httpErrors.notFound();
         }
     })
+    fastify.get('/racers/', async function (request, reply) {
+        const cursor = this.mongo.db.collection('team_comp').find({ Series: request.query.series }).toArray();
+        return cursor;
+    })
+    fastify.route({
+        method: 'POST',
+        url: '/racers/',
+        preHandler: fastify.auth([fastify.verifyAdminSession]),
+        handler: async function (request, reply) {
+          const racerData = request.body;
+          const { series } = request.query;
+          console.log(series);
+          console.log(racerData);
+          if(racerData.Sponsor && !racerData.Team){
+            racerData.Team = racerData.Sponsor;
+          }
+          racerData.Series = series;
+          return await this.mongo.db.collection('team_comp').updateOne({ 'Name': racerData.Name }, { $set: racerData }, { upsert: true });
+        }
+    });
     // fastify.get('/:name', async function (request, reply) {
     //   const result = await this.mongo.db.collection('racers').findOne({Name:request.params.name});
     //   if (result) {

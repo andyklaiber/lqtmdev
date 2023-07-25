@@ -23,6 +23,7 @@ module.exports = async function (fastify, opts) {
         const cursor = this.mongo.db.collection('races').find({ active: true, archived: { $ne: true } }, {
             projection: {
                 cashPaymentsEnabled: 1,
+                contactEmail: 1,
                 couponsEnabled: 1,
                 displayName: 1,
                 eventDate: 1,
@@ -36,6 +37,7 @@ module.exports = async function (fastify, opts) {
                 raceid: 1,
                 regCategories: 1,
                 series: 1,
+                seriesRaceNumber: 1,
                 showPaytypeOnRoster: 1,
             }
         }).sort({ eventStart: 1 })
@@ -64,6 +66,7 @@ module.exports = async function (fastify, opts) {
                 $project: {
                     archived: 1,
                     cashPaymentsEnabled: 1,
+                    contactEmail: 1,
                     couponsEnabled: 1,
                     displayName: 1,
                     entryCount: 1,
@@ -79,6 +82,7 @@ module.exports = async function (fastify, opts) {
                     raceid: 1,
                     regCategories: 1,
                     series: 1,
+                    seriesRaceNumber: 1,
                     showPaytypeOnRoster: 1,
                     stripeMeta: 1,
                     waiver: 1,
@@ -107,6 +111,7 @@ module.exports = async function (fastify, opts) {
             const projection = {
                 archived: 1,
                 cashPaymentsEnabled: 1,
+                contactEmail: 1,
                 couponsEnabled: 1,
                 couponCodes: 1,
                 displayName: 1,
@@ -122,6 +127,7 @@ module.exports = async function (fastify, opts) {
                 raceid: 1,
                 regCategories: 1,
                 series: 1,
+                seriesRaceNumber: 1,
                 showPaytypeOnRoster: 1,
                 stripeMeta: 1,
             };

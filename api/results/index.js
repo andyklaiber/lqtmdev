@@ -165,7 +165,7 @@ module.exports = async function (fastify, opts) {
             return fastify.httpErrors.notFound();
         } else {
             let updated = {};
-            Object.keys(srcRace.categories).forEach((catId) => {
+            Object.keys(srcRace.categories).forEach(async (catId) => {
                 let category = srcRace.categories[catId];
                 if (!category) {
                     console.log(`not category resultable? ${catId}`);
@@ -173,64 +173,67 @@ module.exports = async function (fastify, opts) {
                 }
                 category.results.forEach(async (resultData) => {
                     let racer = {
-                        Name: resultData.Name
+                        Name: resultData.Name,
+                        series:srcRace.series
                     }
                     if (resultData.Sponsor && resultData.Sponsor.length > 0) {
                         racer.Sponsor = resultData.Sponsor;
                         updated[racer.Name] = racer.Sponsor;
                     }
-                    await mongo.db.collection('racers').updateOne({ 'Name': racer.Name }, { $set: racer }, { upsert: true });
+                    await mongo.db.collection('racers').updateOne({ 'Name': racer.Name, series }, { $set: racer }, { upsert: true });
                 })
             })
             return updated;
         }
     });
-
-    fastify.post('/sync_sponsors/', async function (request, reply) {
-        if (request.query.token !== process.env.UPLOAD_TOKEN) {
-            throw fastify.httpErrors.unauthorized();
-        }
-        console.log(request.query.destid)
-        const racersCursor = await this.mongo.db.collection('racers').find();
-        const destRace = await this.mongo.db.collection('race_results').findOne({ raceid: request.query.destid });
-        if (!destRace) {
-            return fastify.httpErrors.notFound();
-        } else {
-            let racersArray = await racersCursor.toArray();
-            let changes = {};
-            Object.keys(destRace.categories).forEach((catId) => {
-                let category = destRace.categories[catId];
-                if (!category) {
-                    console.log(`not category resultable? ${catId}`);
-                    return;
-                }
-                category.results.forEach(async (resultData, idx) => {
-                    // console.log(`${resultData.Name}: ${resultData.Sponsor}: len ${resultData.Sponsor.length}`)
-                    if (!resultData.Sponsor || resultData.Sponsor.length === 0) {
-                        console.log(`racer without sponsor: ${resultData.Name}`)
-                        let racer = racersArray.filter((elem) => elem.Name === resultData.Name && elem.Sponsor && elem.Sponsor.length > 0);
-                        if (racer.length > 0) {
-                            if (racer.length > 1) {
-                                console.log("found multiple racer entries")
-                                racer.forEach((elem) => {
-                                    console.log(elem)
-                                })
-                            } else {
-                                _.set(destRace, `${catId}.results[${idx}].Sponsor`, racer[0].Sponsor)
-                                _.set(changes, `${catId}.results[${idx}].Sponsor`, racer[0].Sponsor)
-                                _.set(changes, `${catId}.results[${idx}].Name`, racer[0].Name)
+    fastify.route({
+        method: 'POST',
+        url: '/sync_sponsors/',
+        preHandler: fastify.auth([fastify.verifyAdminSession]),
+        handler: async function(request, reply) {
+            console.log(request.query.destid)
+            const destRace = await this.mongo.db.collection('race_results').findOne({ raceid: request.query.destid });
+            const racersCursor = await this.mongo.db.collection('racers').find({series:destRace.series});
+            if (!destRace) {
+                return fastify.httpErrors.notFound();
+            } else {
+                let racersArray = await racersCursor.toArray();
+                let changes = {};
+                Object.keys(destRace.categories).forEach((catId) => {
+                    let category = destRace.categories[catId];
+                    if (!category) {
+                        console.log(`not category resultable? ${catId}`);
+                        return;
+                    }
+                    category.results.forEach((resultData, idx) => {
+                        // console.log(`${resultData.Name}: ${resultData.Sponsor}: len ${resultData.Sponsor.length}`)
+                        if (!resultData.Sponsor || resultData.Sponsor.length === 0) {
+                            console.log(`racer without sponsor: ${resultData.Name}`)
+                            let racer = racersArray.filter((elem) => elem.Name === resultData.Name && elem.Sponsor && elem.Sponsor.length > 0);
+                            if (racer.length > 0) {
+                                console.log("racer new sponsor: ",racer[0].Sponsor)
+                                if (racer.length > 1) {
+                                    console.log("found multiple racer entries")
+                                    racer.forEach((elem) => {
+                                        console.log(elem)
+                                    })
+                                } else {
+                                    _.set(destRace, `categories.${catId}.results[${idx}].Sponsor`, racer[0].Sponsor)
+                                    _.set(changes, `${catId}.results[${idx}].Sponsor`, racer[0].Sponsor)
+                                    _.set(changes, `${catId}.results[${idx}].Name`, racer[0].Name)
+                                }
+                            }
+                            else {
+                                console.log(`no maching racer sponsor entry: ${resultData.Name}`)
                             }
                         }
-                        else {
-                            console.log(`no maching racer sponsor entry: ${resultData.Name}`)
-                        }
-                    }
 
+                    })
                 })
-            })
-            this.mongo.db.collection("race_results")
-                .updateOne({ 'raceid': destRace.raceid }, { $set: { categories: destRace.categories } }, { upsert: true });
-            return reply.send({ changes });
+                await this.mongo.db.collection("race_results")
+                    .updateOne({ 'raceid': destRace.raceid }, { $set: { categories: destRace.categories } }, { upsert: true });
+                return reply.send({ changes });
+            }
         }
     })
     fastify.get('/series/', async function (request, reply) {
@@ -242,18 +245,25 @@ module.exports = async function (fastify, opts) {
         //     raceid:1,
         //     series:1
         // };
-        const result = await this.mongo.db.collection('series_results').find().toArray();
-        return result;
+        let filter = {};
+        if(request.query.series){
+            filter.series = request.query.series;
+            return await this.mongo.db.collection('series_results').findOne(filter);
+        }
+        
+        return await this.mongo.db.collection('series_results').find(filter).toArray();
     });
     fastify.get('/series/:id', async function (request, reply) {
-        const projection = {
-            _id:1,
-            eventName:1,
-            series:1,
-            published:1,
-            final:1,
-        };
-        const result = await this.mongo.db.collection('series_results').findOne({ _id: this.mongo.ObjectId(request.params.id) }, {projection});
+        // const projection = {
+        //     _id:1,
+        //     eventName:1,
+        //     gromRaceDates:1,
+        //     teamCompDates:1,
+        //     series:1,
+        //     published:1,
+        //     final:1,
+        // };
+        const result = await this.mongo.db.collection('series_results').findOne({ _id: this.mongo.ObjectId(request.params.id) });
         if (result) {
             return result;
         } else {
@@ -265,8 +275,19 @@ module.exports = async function (fastify, opts) {
         url: '/series/:id',
         preHandler: fastify.auth([fastify.verifyAdminSession]),
         handler: async function (request, reply) {
+            let gromRaceDates = request.body.gromRaceDates, teamCompDates =  request.body.teamCompDates;
+            if(typeof request.body.gromRaceDates === 'string')
+            {
+                gromRaceDates = request.body.gromRaceDates.split(',') 
+            }
+            if(typeof request.body.teamCompDates === 'string')
+            {
+                teamCompDates = request.body.teamCompDates.split(',') 
+            }
             const resultRecord = {
                 eventName: request.body.eventName,
+                gromRaceDates,
+                teamCompDates,
                 published: request.body.published,
                 final: request.body.final,
                 // authToken: uuidv4(),
@@ -289,6 +310,7 @@ module.exports = async function (fastify, opts) {
         handler: async function (request, reply) {
             const series = request.params.series_id
             console.log(series)
+            const series_data = await this.mongo.db.collection('series_results').findOne({ series });
             const result = await this.mongo.db.collection('race_results').find({series}).toArray();
             const racersMeta = await this.mongo.db.collection('racers').find().toArray();
             const teamCompTeams = await this.mongo.db.collection('team_comp').find({Series:series}).toArray();
@@ -302,7 +324,7 @@ module.exports = async function (fastify, opts) {
             // }
             let seriesResults, teamPoints;
             if(series.indexOf('pcrs')>-1){
-                const res = generatePCRSSeriesResults(result, racersMeta, categoryOrder, teamCompTeams);
+                const res = generatePCRSSeriesResults(result, racersMeta, categoryOrder, series_data.gromRaceNumbers, teamCompTeams, series_data.teamCompDates);
                 seriesResults = res.seriesResults;
                 teamPoints = res.teamPoints;
             }else{
@@ -310,10 +332,10 @@ module.exports = async function (fastify, opts) {
                 seriesResults = res.seriesResults;
             }
             this.mongo.db.collection("series_results")
-                .updateOne({ 'series': seriesId }, { $set: seriesResults }, {upsert: true});
-            // teamPoints.forEach(async (teamRacer, idx)=>{
-            //         await this.mongo.db.collection('team_comp').updateOne({ Series: series, 'Name': teamRacer.Name }, { $set: teamRacer }, { upsert: true });
-            // })
+                .updateOne({ series }, { $set: seriesResults }, {upsert: true});
+            teamPoints.forEach(async (teamRacer, idx)=>{
+                    await this.mongo.db.collection('team_comp').updateOne({ Series: series, 'Name': teamRacer.Name }, { $set: teamRacer }, { upsert: true });
+            })
             return { seriesResults  }
         }
     })

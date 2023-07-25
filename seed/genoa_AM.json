@@ -1,0 +1,151 @@
+{
+  "active": true,
+  "displayName": "2023 Genoa All-Mountain",
+  "eventStart": {
+    "$numberLong": "1653528053477"
+  },
+  "eventDate": "2023-09-17T07:00",
+  "formattedStartDate": "9/17",
+  "raceid": "genoa_am_2023",
+  "useActualStarts": false,
+  "eventDetails": {
+    "name": "2023 Genoa All-Mountain",
+    "formattedDates": "Sept 17th",
+    "tagline": "Genoa, NV - September 17th 9:00 AM",
+    "regOpenDate": "2023-06-03T07:00",
+    "homepageUrl": "https://bearadventure.wixsite.com/genoa-all-mountain",
+    "facebookShare": {
+      "url": "https://bearadventure.wixsite.com/genoa-all-mountain"
+    }
+  },
+  "registeredRacers": [],
+  "regCategories": [
+    {
+      "id": "pro_men",
+      "catdispname": "Pro Men (Long Course)",
+      "disporder": 0
+    },
+    {
+      "id": "pro_women",
+      "catdispname": "Pro Women (Long Course)",
+      "disporder": 1
+    },
+    {
+      "id": "lg_18_men",
+      "catdispname": "Long Course Men 18-",
+      "disporder": 2,
+      "maxAge": 18,
+      "minAge": 0
+    },
+    {
+      "id": "lg_1939_men",
+      "catdispname": "Long Course Men 19-39",
+      "disporder": 3,
+      "maxAge": 39,
+      "minAge": 19
+    },
+    {
+      "id": "lg_40_men",
+      "catdispname": "Long Course Men 40+",
+      "disporder": 4,
+      "minAge": 40
+    },
+    {
+      "id": "lg_women_0_18",
+      "catdispname": "Long Course Women 18-",
+      "disporder": 5
+    },
+    {
+      "id": "lg_women_40",
+      "catdispname": "Long Course Women 19-39",
+      "disporder": 6
+    },
+    {
+      "id": "lg_women_40+",
+      "catdispname": "Long Course Women 40+",
+      "disporder": 7
+    },
+    {
+      "id": "long_ss",
+      "catdispname": "Long Course Singlespeed",
+      "disporder": 8
+    },
+    {
+      "id": "short_0_18_men",
+      "catdispname": "Short Course Men 18-",
+      "disporder": 9
+    },
+    {
+      "id": "short_19_39_men",
+      "catdispname": "Short Course Men 19-39",
+      "disporder": 10
+    },
+    {
+      "id": "short_40_men",
+      "catdispname": "Short Course Men 40+",
+      "disporder": 11,
+      "minAge": 40
+    },
+    {
+      "id": "short_0_18_women",
+      "catdispname": "Short Course Women 18-",
+      "disporder": 12
+    },
+    {
+      "id": "short_19_39_women",
+      "catdispname": "Short Course Women 19-39",
+      "disporder": 13
+    },
+    {
+      "id": "short_40_women",
+      "catdispname": "Short Course Women 40+",
+      "disporder": 14,
+      "minAge": 40
+    },
+    {
+      "id": "short_ss",
+      "catdispname": "Short Course Singlespeed",
+      "disporder": 15
+    }
+    
+  ],
+  "paymentOptions": [
+    {
+      "name": "Long Course - $130",
+      "type": "long",
+      "amount": "130"
+    },
+    {
+      "name": "Short Course - $80",
+      "type": "short",
+      "amount": "80"
+    },
+    {
+      "name": "18- Juniors Long Course - $100",
+      "type": "18long",
+      "amount": "100"
+    },
+    {
+      "name": "18- Juniors Short Course - $50",
+      "type": "18short",
+      "amount": "50"
+    }
+  ],
+  "couponsEnabled": true,
+  "couponCodes": {
+    "Nathanisgreat": {
+      "fractionDiscount": 1
+    },
+    "Nathaniscool": {
+      "fractionDiscount": 0.5
+    },
+    "Nathanisalrightwithme": {
+      "fractionDiscount": 0.25
+    }
+  },
+  "stripeMeta": {
+    "accountId": "acct_1LgSNzKWv3GtE7MP"
+  },
+  "showPaytypeOnRoster": true,
+  "series": "genoa_am_2023"
+}
