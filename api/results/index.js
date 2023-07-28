@@ -4,6 +4,7 @@ const { categoryOrder } = require('../../src/categories');
 const { moveRacerInResult, generateResultData, generateSeriesResults, generatePCRSSeriesResults } = require('../../src/result_lib');
 const { v4: uuidv4 } = require('uuid');
 
+
 const sortByLast = (a, b) => {
     const nameA = a.last_name.toUpperCase(); // ignore upper and lowercase
     const nameB = b.last_name.toUpperCase(); // ignore upper and lowercase
@@ -117,6 +118,7 @@ module.exports = async function (fastify, opts) {
             categories: 1,
             formattedStartDate: 1,
             shortName:1,
+            scoringType:1,
             eventName:1,
             series:1,
             showMillis:1,

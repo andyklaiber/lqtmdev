@@ -47,7 +47,7 @@ const capitalizeName = (nameString)=>{
     return parts.join(' ');
 }
 
-const generateResultData = (results, categoryOrder)=>{
+const generateResultData = (results, categoryOrder, fastestLap = false)=>{
     let out = {
         categories:{
         }
@@ -93,7 +93,19 @@ const generateResultData = (results, categoryOrder)=>{
         let totalTime = 0;
         if(out.categories[racerLap.cat].results[racername]){
             out.categories[racerLap.cat].results[racername].laps.forEach((lapdata)=>{
-                totalTime = totalTime + lapdata.duration;
+                if(fastestLap){
+                    if(totalTime !== 0){
+                        if(lapdata.duration < out.categories[racerLap.cat].results[racername].duration){
+                            totalTime = lapdata.duration;
+                            out.categories[racerLap.cat].results[racername].fastestLap = lapdata.lap;
+                        }
+                    }else{
+                        totalTime = lapdata.duration;
+                        out.categories[racerLap.cat].results[racername].fastestLap = lapdata.lap;
+                    }
+                }else{
+                    totalTime = totalTime + lapdata.duration;
+                }
             })
             out.categories[racerLap.cat].results[racername].duration = totalTime;
             out.categories[racerLap.cat].results[racername].Time = msToTimeString(totalTime);
@@ -119,20 +131,22 @@ const generateResultData = (results, categoryOrder)=>{
             }
             return 0;
         })
-        ordered = ordered.sort((a,b)=>{
-            if(a.laps.length < b.laps.length){
-                return 1;
-            }
-            if(a.laps.length > b.laps.length){
-                return -1;
-            }
-            return 0;
-        })
+        if(!fastestLap){
+            ordered = ordered.sort((a,b)=>{
+                if(a.laps.length < b.laps.length){
+                    return 1;
+                }
+                if(a.laps.length > b.laps.length){
+                    return -1;
+                }
+                return 0;
+            })
+        }
         ordered.forEach((racer,idx)=>{
             if(idx === 0){
                 return;
             }
-            if(racer.laps.length === ordered[0].laps.length){   
+            if(fastestLap || racer.laps.length === ordered[0].laps.length){   
                 ordered[idx].backMs = racer.duration - ordered[0].duration;
                 ordered[idx].back = msToTimeString(racer.duration - ordered[0].duration);
             }

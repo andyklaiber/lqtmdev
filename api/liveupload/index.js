@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const { categoryOrder, generateCategoryData } = require('../../src/categories');
 const { generateResultData } = require('../../src/result_lib')
+const dayjs = require('dayjs');
 
 const raceTemplate =
     {
@@ -28,18 +29,30 @@ module.exports = async function (fastify, opts) {
                 raceid = request.query.raceid;
             }
             let raceMeta = request.body.data.race;
-            let final = await this.mongo.db.collection("race_results")
-                .find({ 'raceid': raceid, 'final': true }).toArray();
+            let existingRace = await this.mongo.db.collection("race_results")
+                .findOne({ 'raceid': raceid });
             request.log.info('Rhesus RaceID: "'+ raceid+'"')
-            if (final.length) {
+            if (existingRace && existingRace.final) {
                 return fastify.httpErrors.conflict();
             }
-
             let results = request.body.data.RESULTS;
             this.mongo.db.collection("liveresults")
-                .updateOne({ 'race.raceid': raceid }, { $set: request.body.data }, { upsert: true });
-
-            const out = generateResultData(results, categoryOrder);
+            .updateOne({ 'race.raceid': raceid }, { $set: request.body.data }, { upsert: true });
+            
+            let out;
+            if(request.query.scoring === 'fastestlap'){
+                request.log.info('using fastlap scoring method')
+                out = generateResultData(results, categoryOrder, true);
+                out.scoringType = 'fastestlap';
+            }else{
+                out = generateResultData(results, categoryOrder);
+            }
+            if (!existingRace?.eventName){
+                out.eventName = raceMeta.racename;
+            }
+            if (!existingRace?.eventStart){
+                out.formattedStartDate = dayjs(raceMeta.eventStart).format('MMMM D, YYYY');
+            }
             if(request.query.series){
                 out.series = request.query.series;
             }
