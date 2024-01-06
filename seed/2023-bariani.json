@@ -1,0 +1,187 @@
+{
+    
+    "active": true,
+    "displayName": "2023 Bariani CX",
+    "eventStart": 1653528053477,
+    "eventDate": "2023-10-8T00:00",
+    "formattedStartDate": "10/8",
+    "raceid": "barianicx_2023",
+    "useActualStarts": false,
+    "eventDetails": {
+        "name": "Bariani CX 2023",
+        "tagline": "October 8th",
+        "logoUrl": "/barianiCxLogo.jpg",
+        "homepageUrl": "https://bikenerd.net/2023/08/2023-cx-at-bariani/",
+        "facebookShare": {}
+    },
+    "registeredRacers": [],
+    "regCategories": [
+        {
+            "id": "a_men",
+            "catdispname": "Pro/A Men",
+            "disporder": 0,
+            "startTime": "14:15"
+        },
+        {
+            "id": "a_men_35",
+            "catdispname": "A Men 35+",
+            "disporder": 1,
+            "startTime": "10:45"
+        },
+        {
+            "id": "a_men_45",
+            "catdispname": "A Men 45+",
+            "disporder": 2,
+            "startTime": "10:45"
+        },
+        {
+            "id": "a_men_55",
+            "catdispname": "A Men 55+",
+            "disporder": 3,
+            "startTime": "10:45"
+        },
+        {
+            "id": "a_men_60",
+            "catdispname": "A Men 60+",
+            "disporder": 4,
+            "startTime": "10:45"
+        },
+        {
+            "id": "b_men",
+            "catdispname": "B Men",
+            "disporder": 5,
+            "startTime": "13:10"
+        },
+        {
+            "id": "b35_men",
+            "catdispname": "B35+ Men",
+            "disporder": 6,
+            "startTime": "13:10"
+        },
+        {
+            "id": "b45_men",
+            "catdispname": "B45+ Men",
+            "disporder": 7,
+            "startTime": "13:10"
+        },
+        {
+            "id": "b55_men",
+            "catdispname": "B55+ Men",
+            "disporder": 8,
+            "startTime": "13:10"
+        },
+        {
+            "id": "single_speed_b",
+            "catdispname": "Men Singlespeed B",
+            "disporder": 9,
+            "startTime": "13:10"
+        },
+        {
+            "id": "c_men",
+            "catdispname": "C Men",
+            "disporder": 10,
+            "startTime": "9:00"
+        },
+        {
+            "id": "a_women",
+            "catdispname": "Pro/A Women",
+            "disporder": 12,
+            "startTime": "14:15"
+        },
+        {
+            "id": "b_women",
+            "catdispname": "B Women",
+            "disporder": 13,
+            "startTime": "12:15"
+        },
+        {
+            "id": "b_women_35",
+            "catdispname": "B Women 35+",
+            "disporder": 14,
+            "startTime": "12:15"
+        },
+        {
+            "id": "b_women_45",
+            "catdispname": "B Women 45+",
+            "disporder": 15,
+            "startTime": "12:15"
+        },
+        {
+            "id": "b_women_55",
+            "catdispname": "B Women 55+",
+            "disporder": 16,
+            "startTime": "12:15"
+        },
+        {
+            "id": "ss_women",
+            "catdispname": "Women Singlespeed",
+            "disporder": 17,
+            "startTime": "12:15"
+        },
+        {
+            "id": "track_women",
+            "catdispname": "Women Tracklocross",
+            "disporder": 18,
+            "startTime": "12:15"
+        },
+        {
+            "id": "c_women",
+            "catdispname": "Women C",
+            "disporder": 19,
+            "startTime": "12:15"
+        },
+        {
+            "id": "junior_boys",
+            "catdispname": "Jr. men 15-18",
+            "disporder": 20,
+            "startTime": "10:00"
+        },
+        {
+            "id": "junior_boys2",
+            "catdispname": "Jr. men 10-14",
+            "disporder": 21,
+            "startTime": "10:00"
+        },
+        {
+            "id": "junior_girls",
+            "catdispname": "Jr. women 15-18",
+            "disporder": 22,
+            "startTime": "10:00"
+        },
+        {
+            "id": "junior_girls2",
+            "catdispname": "Jr. women 15-18",
+            "disporder": 23,
+            "startTime": "10:00"
+        },
+        {
+            "id": "tracklocross",
+            "catdispname": "Men Tracklocross",
+            "disporder": 24,
+            "startTime": "14:15"
+        },
+        {
+            "id": "single_speed_a",
+            "catdispname": "Open Men Singlespeed/A",
+            "disporder": 25,
+            "startTime": "14:15"
+        }
+    ],
+    "paymentOptions": [
+        {
+            "name": "Single Entry Adult",
+            "type": "single",
+            "amount": "40"
+        },
+        {
+            "name": "Single Entry Juniors",
+            "type": "junior",
+            "amount": "20"
+        }
+    ],
+    "stripeMeta": {
+        "accountId": "acct_1LkXpaGusvrhBW9I"
+    },
+    "archived": false,
+    "contactEmail": "thebikenerd@gmail.com"
+}

@@ -1,0 +1,47 @@
+{
+  "active": true,
+  "displayName": "Flannel Grinder 2024",
+  "eventDate": "2024-04-07T00:00",
+  "formattedStartDate": "4/7",
+  "raceid": "flannel_grinder_2024",
+  "useActualStarts": false,
+  "eventDetails": {
+    "name": "Flannel Grinder 2024",
+    "formattedDates": "April 7th, 9AM",
+    "tagline": "Meadow Vista, CA",
+    "regOpenDate": "2023-10-30T07:00",
+    "logoUrl": "/flannel24.png",
+    "homepageUrl": "https://www.boundlesslocomotion.com/flannel-grinder",
+    "facebookShare": {}
+  },
+  "regCategories": [
+    {
+      "id": "normal_route",
+      "catdispname": "Normal Route",
+      "laps": 1,
+      "disporder": 0
+    },
+    {
+      "id": "longer_route",
+      "catdispname": "Longer Route",
+      "laps": 1,
+      "disporder": 1
+    }
+  ],
+  "paymentOptions": [
+    {
+      "name": "Single Entry - $90",
+      "type": "single",
+      "amount": "90"
+    }
+  ],
+  "stripeMeta": {
+    "accountId": "acct_1LjqwwBvZMvWryQV"
+  },
+  "isTestData": true,
+  "registeredRacers": [],
+  "couponsEnabled": true,
+    "couponCodes": {
+     
+    }
+}

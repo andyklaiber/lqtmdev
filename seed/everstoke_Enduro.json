@@ -1,0 +1,169 @@
+{
+  "active": true,
+  "displayName": "2023 Everstoke Enduro",
+  "eventStart": {
+    "$numberLong": "1653528053477"
+  },
+  "eventDate": "2023-09-17T09:00",
+  "formattedStartDate": "9/17",
+  "raceid": "everstoke_2023",
+  "useActualStarts": false,
+  "eventDetails": {
+    "name": "Everstoke Enduro",
+    "formattedDates": "Sept 17th",
+    "tagline": "Everstoke, Graeagle, CA - September 17th 9:00 AM",
+    "regOpenDate": "2023-07-31T08:00",
+    "regCloseDate": "2023-09-17T08:40",
+    "homepageUrl": "https://bearadventure.wixsite.com/millspeakam",
+    "facebookShare": {
+      "url": "https://bearadventure.wixsite.com/millspeakam"
+    }
+  },
+  "registeredRacers": [],
+  "regCategories": [
+    {
+      "id": "pro_men",
+      "catdispname": "Pro Men",
+      "disporder": 0
+    },
+    {
+      "id": "pro_women",
+      "catdispname": "Pro Women",
+      "disporder": 1
+    },
+    {
+      "id": "exp_18_men",
+      "catdispname": "Expert Men 18-",
+      "disporder": 2
+    },
+    {
+      "id": "exp_1939_men",
+      "catdispname": "Expert Men 19-39",
+      "disporder": 3
+    },
+    {
+      "id": "exp_40_men",
+      "catdispname": "Expert Men 40+",
+      "disporder": 4
+    },
+    {
+      "id": "exp_women_0_39",
+      "catdispname": "Expert Women 39-",
+      "disporder": 5
+    },
+    {
+      "id": "exp_women_40",
+      "catdispname": "Expert Women 40+",
+      "disporder": 6
+    },
+    {
+      "id": "sport_18_men",
+      "catdispname": "Sport Men 18-",
+      "disporder": 7
+    },
+    {
+      "id": "sport_1939_men",
+      "catdispname": "Sport Men 19-39",
+      "disporder": 8,
+      "maxAge": 39,
+      "minAge": 19
+    },
+    {
+      "id": "sport_40_men",
+      "catdispname": "Sport Men 40+",
+      "disporder": 9,
+      "minAge": 40
+    },
+    {
+      "id": "sport_women_0_39",
+      "catdispname": "Sport Women 39-",
+      "disporder": 10
+    },
+    {
+      "id": "sport_women_40",
+      "catdispname": "Sport Women 40+",
+      "disporder": 11
+    },
+    {
+      "id": "beg_18_men",
+      "catdispname": "Beginner Men 18-",
+      "disporder": 12
+    },
+    {
+      "id": "beg_1939_men",
+      "catdispname": "Beginner Men 19-39",
+      "disporder": 13,
+      "maxAge": 39,
+      "minAge": 19
+    },
+    {
+      "id": "beg_40_men",
+      "catdispname": "Beginner Men 40+",
+      "disporder": 14,
+      "minAge": 40
+    },
+    {
+      "id": "beg_0_39_women",
+      "catdispname": "Beginner Women 39-",
+      "disporder": 16
+    },
+    {
+      "id": "beg_40_women",
+      "catdispname": "Beginner Women 40+",
+      "disporder": 17
+    },
+    {
+      "id": "e_men",
+      "catdispname": "E-Bike Men",
+      "disporder": 18
+    },
+    {
+      "id": "e_women",
+      "catdispname": "E-Bike Women",
+      "disporder": 19
+    }
+  ],
+  "paymentOptions": [
+    {
+      "name": "Single Entry - $65",
+      "type": "single",
+      "amount": "65"
+    }
+  ],
+  "couponsEnabled": true,
+  "couponCodes": {
+    "Nathanisgreat": {
+      "fractionDiscount": 1
+    },
+    "Nathaniscool": {
+      "fractionDiscount": 0.5
+    },
+    "Nathanisalrightwithme": {
+      "fractionDiscount": 0.25
+    }
+  },
+  "stripeMeta": {
+    "accountId": "acct_1LgSNzKWv3GtE7MP"
+  },
+  "showPaytypeOnRoster": false,
+  "optionalPurchases": [
+    {
+      "id": "everstoke_donate_10",
+      "description": "Donate to trails at <a href='https://www.facebook.com/profile.php?id=100094321612953' target='_blank'>Everstoke</a>",
+      "amount": "10",
+      "label": "$10 Everstoke Donation"
+    },
+    {
+      "id": "everstoke_donate_25",
+      "description": "Donate to trails at <a href='https://www.facebook.com/profile.php?id=100094321612953' target='_blank'>Everstoke</a>",
+      "amount": "25",
+      "label": "$25 Everstoke Donation"
+    },
+    {
+      "id": "everstoke_donate_50",
+      "description": "Donate to trails at <a href='https://www.facebook.com/profile.php?id=100094321612953' target='_blank'>Everstoke</a>",
+      "amount": "50",
+      "label": "$50 Everstoke Donation"
+    }
+  ]
+}

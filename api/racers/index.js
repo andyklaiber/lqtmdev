@@ -160,7 +160,7 @@ module.exports = async function (fastify, opts) {
       if (!request.query.paymentId) {
         return fastify.httpErrors.badRequest('Registered racers must have a paymentID');
       }
-      const payment = await this.mongo.db.collection('payments').findOne({ '_id': this.mongo.ObjectId(request.query.paymentId) }, {
+      const payment = await this.mongo.db.collection('payments').findOne({ '_id': new this.mongo.ObjectId(request.query.paymentId) }, {
         projection: {
           regData: 1,
           status: 1,
@@ -199,7 +199,7 @@ module.exports = async function (fastify, opts) {
           })
           updateResult = await this.mongo.db.collection('races').updateMany({
             'series': race.series,
-            "registeredRacers.paymentId": this.mongo.ObjectId(request.query.paymentId)
+            "registeredRacers.paymentId": new this.mongo.ObjectId(request.query.paymentId)
           },
             { $set: fieldsToSet })
         }
@@ -207,7 +207,7 @@ module.exports = async function (fastify, opts) {
           //if single race, just update the record for the 1 race
           updateResult = await this.mongo.db.collection('races').updateOne({
             'raceid': request.params.id,
-            "registeredRacers.paymentId": this.mongo.ObjectId(request.query.paymentId)
+            "registeredRacers.paymentId": new this.mongo.ObjectId(request.query.paymentId)
           },
             { $set: fieldsToSet })
 
@@ -229,7 +229,7 @@ module.exports = async function (fastify, opts) {
       if (!request.query.paymentId) {
         return fastify.httpErrors.badRequest('Registered racers must have a paymentID');
       }
-      const payment = await this.mongo.db.collection('payments').findOne({ '_id': this.mongo.ObjectId(request.query.paymentId) }, {
+      const payment = await this.mongo.db.collection('payments').findOne({ '_id': new this.mongo.ObjectId(request.query.paymentId) }, {
         projection: {
           regData: 1,
           status: 1,
@@ -249,8 +249,8 @@ module.exports = async function (fastify, opts) {
           deleteResult = await this.mongo.db.collection('races').updateOne({
             'raceid': request.params.id
           },
-            { $pull: {registeredRacers: {paymentId: this.mongo.ObjectId(request.query.paymentId)} }})
-            await this.mongo.db.collection('payments').updateOne({ '_id': this.mongo.ObjectId(request.query.paymentId) },
+            { $pull: {registeredRacers: {paymentId: new this.mongo.ObjectId(request.query.paymentId)} }})
+            await this.mongo.db.collection('payments').updateOne({ '_id': new this.mongo.ObjectId(request.query.paymentId) },
             {
               $set:{
                 "regData.raceid": "",
@@ -341,10 +341,58 @@ module.exports = async function (fastify, opts) {
           { 'key': 'last_name', 'header': 'Last' },
           { 'key': 'first_name', 'header': 'First', },
           { 'key': 'email', 'header': 'Email' },
+          { 'key': 'bibNumber', 'header': 'Bib Number' },
           { 'key': 'category', 'header': 'Category', },
-          { 'key': 'paytype', 'header': 'Payment Type', },
+          //{ 'key': 'paytype', 'header': 'Payment Type', },
         ]
         let csvData = stringify(_.sortBy(out, ['last_name']), { columns, header: true });
+        // return _.sortBy(out, ['category','last_name'])
+        return reply.header('Content-disposition', `attachment; filename=${request.params.id}.csv`).type('text/csv').send(csvData);
+      } else {
+        return fastify.httpErrors.notFound();
+      }
+    }
+  })
+  fastify.route({
+    method: 'POST',
+    url: '/contact-list',
+    preHandler: fastify.auth([fastify.verifyAdminSession]),
+    handler: async function (request, reply) {
+      if (!request.body.raceIds) {
+        return fastify.httpErrors.badRequest('You must provide at least 1 race id');
+      }
+
+      const result = await this.mongo.db.collection('races').aggregate([
+        {
+            $match: {
+                'raceid': {$in:request.body.raceIds}
+            }
+        },
+        {
+          '$match': {
+            'raceid': {
+              '$in': request.body.raceIds
+            }
+          }
+        }, {
+          '$unwind': {
+            'path': '$registeredRacers'
+          }
+        }, {
+          '$project': {
+            'last_name': '$registeredRacers.last_name', 
+            'first_name': '$registeredRacers.first_name', 
+            'email': '$registeredRacers.email'
+          }
+        }
+      ]).toArray()
+      if (result.length) {
+        const columns = [
+          { 'key': 'last_name', 'header': 'Last' },
+          { 'key': 'first_name', 'header': 'First', },
+          { 'key': 'email', 'header': 'Email' }
+        ]
+        let csvData = stringify(_.sortBy(_.uniqBy(result, 'email'), ['last_name']), { columns, header: true });
         // return _.sortBy(out, ['category','last_name'])
         return reply.header('Content-disposition', `attachment; filename=${request.params.id}.csv`).type('text/csv').send(csvData);
       } else {

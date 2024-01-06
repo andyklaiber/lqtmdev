@@ -1,0 +1,148 @@
+{
+    "seriesRaceNumber": "1",
+    "active": true,
+    "displayName": "2024 Exchequer",
+    "eventStart": {
+      "$numberLong": "1653528053477"
+    },
+    "eventDate": "2024-03-24T00:00",
+    "formattedStartDate": "3/23",
+    "raceid": "exch_2024_live",
+    "useActualStarts": false,
+    "eventDetails": {
+      "name": "Exchequer 2024",
+      "formattedDates": "March 22-24th",
+      "tagline": "Exchequer Extravaganza 3-day mountain bike event",
+      "regOpenDate": "2023-09-03T12:20",
+      "regCloseDate": "2024-03-24T12:00",
+      "logoUrl": "/myEXCHEQUERLOGO_BlkBlue_NoDate.webp",
+      "homepageUrl": "https://bearadventure.wixsite.com/exchequermtb",
+      "facebookShare": {
+        "url": "https://bearadventure.wixsite.com/exchequermtb"
+      }
+    },
+    "regCategories": [
+      {
+        "id": "pro_men",
+        "catdispname": "Pro Men",
+        "disporder": 0
+      },
+      {
+        "id": "pro_women",
+        "catdispname": "Pro Women",
+        "disporder": 1
+      },
+      {
+        "id": "exp_men",
+        "catdispname": "Expert Men  Age Category",
+        "disporder": 2,
+        "maxAge": 18
+      },
+      {
+        "id": "exp_women",
+        "catdispname": "Expert Women  Age Category",
+        "disporder": 5
+      },
+      {
+        "id": "sport_men",
+        "catdispname": "Sport Men  Age Category",
+        "disporder": 6,
+        "maxAge": 18
+      },
+      {
+        "id": "sport_women",
+        "catdispname": "Sport Women  Age Category",
+        "disporder": 9
+      },
+      {
+        "id": "beg_men",
+        "catdispname": "Beginner Men  Age Category",
+        "disporder": 11,
+        "maxAge": 18
+      },
+      {
+        "id": "beg_women",
+        "catdispname": "Beginner Women Age Category",
+        "disporder": 14,
+        "maxAge": 18
+      },
+      {
+        "id": "ebike_men_expert",
+        "catdispname": "E-Bike Men Expert/Pro",
+        "disporder": 16
+      },
+      {
+        "id": "ebike_men_sport",
+        "catdispname": "E-Bike Men Beginner/Sport",
+        "disporder": 17
+      },
+      {
+        "id": "ebike_women_sport",
+        "catdispname": "E-Bike Women Beginner/Sport",
+        "disporder": 18
+      }
+    ],
+    "paymentOptions": [
+      {
+        "name": "XC Race (Saturday)",
+        "type": "xc",
+        "amount": "65"
+      },
+      {
+        "name": "Enduro Race (Sunday)",
+        "type": "enduro",
+        "amount": "130"
+      },
+      {
+        "name": "XC and Enduro Race",
+        "type": "season",
+        "amount": "185"
+      }
+    ],
+    "couponsEnabled": true,
+    "couponCodes": {
+      "Nathanisgreat": {
+        "fractionDiscount": 1
+      },
+      "Nathaniscool": {
+        "fractionDiscount": 0.5
+      },
+      "KidsOnBikes": {
+        "fractionDiscount": 0.3
+      }
+    },
+    "stripeMeta": {
+      "accountId": "acct_1LgSNzKWv3GtE7MP"
+    },
+    "showPaytypeOnRoster": true,
+    "series": "exch_2024",
+    "optionalPurchases": [
+      {
+        "id": "socks",
+        "description": "Exchequer Extravaganza Socks - <a href='https://static.wixstatic.com/media/96370a_ce1d9bc69ef14f978a55083eba358701~mv2.jpg/v1/fill/w_347,h_298,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/BEARAD2x(1)%20(1).jpg' target='_blank'>Picture</a>",
+        "amount": "15",
+        "label": "Socks",
+        "optionsLabel": "Sock size (US)",
+        "options": [
+          "S/M (5-9)",
+          "L/XL (9-13)"
+        ]
+      },
+      {
+        "id": "donation10",
+        "description": "Donate to <a href='https://exchequerridersclub.wixsite.com/exchequer' target='_blank'>Exchequer Riders Club</a>",
+        "amount": "10",
+        "label": "ERC Donation"
+      },
+      {
+        "id": "donation25",
+        "amount": "25",
+        "label": "ERC Donation"
+      },
+      {
+        "id": "donation50",
+        "amount": "50",
+        "label": "ERC Donation"
+      }
+    ]
+  }

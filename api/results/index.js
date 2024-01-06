@@ -38,7 +38,7 @@ module.exports = async function (fastify, opts) {
             //     return `${process.env.DOMAIN}/api/race/${request.params.id}/token/${authToken}`
             // }
             let op = this.mongo.db.collection("race_results")
-                    .updateOne({ _id: this.mongo.ObjectId(request.params.id)}, { $set: resultRecord }, { upsert: true });
+                    .updateOne({ _id: new this.mongo.ObjectId(request.params.id)}, { $set: resultRecord }, { upsert: true });
            
                 // let op = await this.mongo.db.collection('races').updateOne({ '_id': this.mongo.ObjectId(result._id) }, { $set: updateObject });
             return {op}
@@ -71,9 +71,9 @@ module.exports = async function (fastify, opts) {
         url: '/genresults/:raceid',
         preHandler: fastify.auth([fastify.verifyAdminSession]),
         handler: async function (request, reply) {
-            if (request.query.token !== process.env.UPLOAD_TOKEN) {
-                throw fastify.httpErrors.unauthorized();
-            }
+            // if (request.query.token !== process.env.UPLOAD_TOKEN) {
+            //     throw fastify.httpErrors.unauthorized();
+            // }
             const result = await this.mongo.db.collection('liveresults').findOne({ 'race.raceid': request.params.raceid });
             if (result) {
                 // return result;
@@ -265,7 +265,7 @@ module.exports = async function (fastify, opts) {
         //     published:1,
         //     final:1,
         // };
-        const result = await this.mongo.db.collection('series_results').findOne({ _id: this.mongo.ObjectId(request.params.id) });
+        const result = await this.mongo.db.collection('series_results').findOne({ _id: new this.mongo.ObjectId(request.params.id) });
         if (result) {
             return result;
         } else {
@@ -298,9 +298,9 @@ module.exports = async function (fastify, opts) {
             //     return `${process.env.DOMAIN}/api/race/${request.params.id}/token/${authToken}`
             // }
             let op = this.mongo.db.collection("series_results")
-                    .updateOne({ _id: this.mongo.ObjectId(request.params.id)}, { $set: resultRecord }, { upsert: true });
+                    .updateOne({ _id: new this.mongo.ObjectId(request.params.id)}, { $set: resultRecord }, { upsert: true });
            
-                // let op = await this.mongo.db.collection('races').updateOne({ '_id': this.mongo.ObjectId(result._id) }, { $set: updateObject });
+                // let op = await this.mongo.db.collection('races').updateOne({ '_id': new this.mongo.ObjectId(result._id) }, { $set: updateObject });
             return {op}
         
         }

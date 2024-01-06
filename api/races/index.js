@@ -3,7 +3,7 @@ const _ = require('lodash');
 const { categoryOrder } = require('../../src/categories');
 const { moveRacerInResult, generateResultData } = require('../../src/result_lib');
 const { getFees, updateRacePaymentOptions } = require('../../src/fees');
-const { v4: uuidv4 } = require('uuid');
+const { v4 } = require('uuid');
 
 const sortByLast = (a, b) => {
     const nameA = a.last_name.toUpperCase(); // ignore upper and lowercase
@@ -20,7 +20,11 @@ const sortByLast = (a, b) => {
 
 module.exports = async function (fastify, opts) {
     fastify.get('/', async function (request, reply) {
-        const cursor = this.mongo.db.collection('races').find({ active: true, archived: { $ne: true } }, {
+        let archived = { $ne: true }
+        if(request.query.archived){
+            archived = {$eq: true};
+        }
+        const cursor = this.mongo.db.collection('races').find({ active: true, archived }, {
             projection: {
                 cashPaymentsEnabled: 1,
                 contactEmail: 1,
@@ -40,12 +44,11 @@ module.exports = async function (fastify, opts) {
                 seriesRaceNumber: 1,
                 showPaytypeOnRoster: 1,
             }
-        }).sort({ eventStart: 1 })
+        }).sort({ eventDate: 1 })
 
         return await cursor.toArray();
     })
     fastify.get('/:id', async function (request, reply) {
-
         const pipeline = [
             {
                 $match: {
@@ -62,7 +65,9 @@ module.exports = async function (fastify, opts) {
                     }
                 }
             },
-            {
+        ];
+        if(!request.session.authenticated){
+            pipeline.push({
                 $project: {
                     archived: 1,
                     cashPaymentsEnabled: 1,
@@ -84,11 +89,10 @@ module.exports = async function (fastify, opts) {
                     series: 1,
                     seriesRaceNumber: 1,
                     showPaytypeOnRoster: 1,
-                    stripeMeta: 1,
                     waiver: 1,
                 }
-            }
-        ];
+            })
+        }
         const result = await this.mongo.db.collection('races').aggregate(pipeline).toArray();
 
         if (result && result.length > 0) {
@@ -137,14 +141,14 @@ module.exports = async function (fastify, opts) {
 
                 let updateObject = _.pick(request.body, updateKeys)
                 delete updateObject.registeredRacers;
-                let op = await this.mongo.db.collection('races').updateOne({ '_id': this.mongo.ObjectId(result._id) }, { $set: updateObject });
+                let op = await this.mongo.db.collection('races').updateOne({ '_id': new this.mongo.ObjectId(result._id) }, { $set: updateObject });
                 return { op, updateObject };
             } else {
                 return fastify.httpErrors.notFound();
             }
         }
     })
-    //clone a race - include series registrations
+    //clone a series race - include series registrations
     fastify.route({
         method: 'POST',
         url: '/series/clone/:raceid/',
@@ -174,6 +178,32 @@ module.exports = async function (fastify, opts) {
             
             return await this.mongo.db.collection('races').insertOne({ ...result, registeredRacers: out });
 
+            //return fastify.httpErrors.notFound();
+        }
+    })
+    // clone any single race
+    fastify.route({
+        method: 'POST',
+        url: '/clone/:raceid',
+        preHandler: fastify.auth([fastify.verifyAdminSession]),
+        handler: async function (request, reply) {
+            if (!request.params.raceid) {
+                return fastify.httpErrors.badRequest('You must provide a source race ID');
+            }
+            const result = await this.mongo.db.collection('races').findOne({ 'raceid': request.params.raceid })
+            if (!result) {
+                return fastify.httpErrors.notFound('Could not find existing race with id: ' + request.params.raceid);
+            }
+            const newRace = { ...result, ...request.body };
+            delete newRace['_id'];
+            delete newRace.registeredRacers;
+            const new_id = request.query.new_race_id || request.body.raceid;
+            if (_.isString(new_id) && new_id.length > 4) {
+                newRace.raceid = new_id;
+            } else {
+                newRace.raceid = v4();
+            }
+            return await this.mongo.db.collection('races').insertOne({ ...newRace, registeredRacers: [] });
             //return fastify.httpErrors.notFound();
         }
     })

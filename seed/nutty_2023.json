@@ -1,0 +1,160 @@
+{
+    "_id": {
+      "$oid": "63312563c5677c981c66b67a"
+    },
+    "active": true,
+    "displayName": "2023 Nutty Cross",
+    "eventStart": 1653528053477,
+    "eventDate": "2023-11-18T00:00",
+    "formattedStartDate": "11/18",
+    "raceid": "nuttycx_2023",
+    "useActualStarts": false,
+    "eventDetails": {
+      "name": "Nutty Cross 2023",
+      "tagline": "Racing. Beer. Music. Food.",
+      "logoUrl": "/nutty-cross.png",
+      "homepageUrl": "https://www.boundlesslocomotion.com/nuttycross",
+      "facebookShare": {
+        "url":"https://www.facebook.com/BoundlessLocomotion/"
+      }
+    },
+    "registeredRacers": [],
+    "regCategories": [
+      {
+          "id": "men_a",
+          "catdispname": "Men A",
+          "disporder": 0,
+          "startTime": "14:30"
+      },
+      {
+          "id": "men_b",
+          "catdispname": "Men B",
+          "disporder": 1,
+          "startTime": "11:45"
+      },
+      {
+          "id": "men_b35",
+          "catdispname": "Men B35+",
+          "disporder": 2,
+          "minAge": 35,
+          "startTime": "11:45"
+      },
+      {
+          "id": "men_c",
+          "catdispname": "Men C",
+          "disporder": 3,
+          "startTime": "10:45"
+      },
+      {
+          "id": "men_c35",
+          "catdispname": "Men C35+",
+          "disporder": 4,
+          "minAge": 35,
+          "startTime": "10:45"
+      },
+      {
+          "id": "women_a",
+          "catdispname": "Women A",
+          "disporder": 5,
+          "startTime": "14:30"
+      },
+      {
+          "id": "women_b",
+          "catdispname": "Women B",
+          "disporder": 6,
+          "startTime": "13:30"
+      },
+      {
+          "id": "women_c",
+          "catdispname": "Women C",
+          "disporder": 7,
+          "startTime": "13:30"
+      },
+      {
+          "id": "women_40p",
+          "catdispname": "Women 35+",
+          "disporder": 8,
+          "minAge": 35,
+          "startTime": "13:30"
+      },
+      {
+          "id": "women_55p",
+          "catdispname": "Women 55+",
+          "disporder": 9,
+          "minAge": 55,
+          "startTime": "13:30"
+      },
+      {
+          "id": "non_binary",
+          "catdispname": "Non-Binary",
+          "disporder": 10,
+          "minAge": 55,
+          "startTime": "13:30"
+      },
+      {
+          "id": "junior_boys",
+          "catdispname": "Junior Boys",
+          "disporder": 11,
+          "maxAge": 16,
+          "startTime": "10:45",
+          "sponsored": true,
+          "sponsorName": "Ruhstaller"
+      },
+      {
+          "id": "junior_girls",
+          "catdispname": "Junior Girls",
+          "disporder": 12,
+          "maxAge": 16,
+          "startTime": "10:45",
+          "sponsored": true,
+          "sponsorName": "Ruhstaller"
+      },
+      {
+          "id": "open_45",
+          "catdispname": "Open 45+",
+          "disporder": 13,
+          "minAge": 45,
+          "startTime": "14:30"
+      },
+      {
+          "id": "single_speed_a",
+          "catdispname": "Singlespeed A/Tracklocross",
+          "disporder": 14,
+          "startTime": "14:30"
+      },
+      {
+          "id": "single_speed_b",
+          "catdispname": "Single Speed B",
+          "disporder": 15,
+          "startTime": "11:45"
+      },
+      {
+          "id": "kids",
+          "catdispname": "Kids Race",
+          "disporder": 16,
+          "startTime": "12:30",
+          "sponsored": true,
+          "sponsorName": "Ruhstaller"
+      }
+  ],
+    "paymentOptions": [
+      {
+        "name": "Single Race - Nov 18th",
+        "type": "single",
+        "amount": "40"
+      }
+    ],
+    "couponsEnabled": true,
+    "couponCodes": {
+      "letsgetnutty": {
+        "fractionDiscount": 0.2
+      }
+    },
+    "stripeMeta": {
+      "accountId": "acct_1LjqwwBvZMvWryQV"
+    },
+    "isTestData": true,
+    "contactEmail":"chris@boundlesslocomotion.com",
+    "cashPaymentsEnabled": true,
+    "archived": true
+  }

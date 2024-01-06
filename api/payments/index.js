@@ -117,7 +117,7 @@ module.exports = async function (fastify, opts) {
             request.body.raceid=request.query.raceId;
             let paymentData = _.omit(request.body, ['paymentId','status'])
             
-            await this.mongo.db.collection('payments').updateOne({ _id: this.mongo.ObjectId(request.query.paymentId)}, { $set:{ regData:paymentData, status: 'paid'} }, { upsert: true });
+            await this.mongo.db.collection('payments').updateOne({ _id: new this.mongo.ObjectId(request.query.paymentId)}, { $set:{ regData:paymentData, status: 'paid'} }, { upsert: true });
 
             const raceData = await this.mongo.db.collection('races').findOne({ raceid: paymentData.raceid });
             return await fastify.registerRacer(_.omit(paymentData,['paymentAmount, paymentRecieved']), paymentId, raceData, request.log, false);
@@ -157,7 +157,7 @@ module.exports = async function (fastify, opts) {
                 paymentId = paymentRecord.insertedId;
             }else
             {
-                await this.mongo.db.collection('payments').updateOne({ _id: this.mongo.ObjectId(request.query.paymentId)}, { $set:{ regData:paymentData, status: 'paid'} }, { upsert: true });
+                await this.mongo.db.collection('payments').updateOne({ _id: new this.mongo.ObjectId(request.query.paymentId)}, { $set:{ regData:paymentData, status: 'paid'} }, { upsert: true });
             }
 
             const raceData = await this.mongo.db.collection('races').findOne({ raceid: paymentData.raceid });
@@ -176,7 +176,7 @@ module.exports = async function (fastify, opts) {
             if (!request.query.paymentId) {
                 return fastify.httpErrors.badRequest('Registered racers must have an existing paymentID');
             }
-            let paymentObjId = this.mongo.ObjectId(request.query.paymentId)
+            let paymentObjId = new this.mongo.ObjectId(request.query.paymentId)
             const raceData = await this.mongo.db.collection('races').findOne({ raceid: request.query.raceId });
             const payment = await this.mongo.db.collection('payments').findOne({ '_id': paymentObjId }, {
                 projection: {
@@ -203,6 +203,9 @@ module.exports = async function (fastify, opts) {
     })       
     fastify.post('/pricing', async function(request,reply){
         const {raceid, couponCode} = request.body
+        if (!raceid) {
+            return fastify.httpErrors.badRequest('You must provide a race ID');
+        }
         const raceData = await this.mongo.db.collection('races').findOne({ raceid });
         if(!raceData){
             throw fastify.httpErrors.notFound('Race not found');
@@ -248,7 +251,7 @@ module.exports = async function (fastify, opts) {
         if(!request.query.payment_id){
             return fastify.httpErrors.badRequest('Must provide payment_id query param');
         }
-        const result = await this.mongo.db.collection('payments').findOne({ '_id': this.mongo.ObjectId(request.query.payment_id) },{
+        const result = await this.mongo.db.collection('payments').findOne({ '_id': new this.mongo.ObjectId(request.query.payment_id) },{
             projection:{
                 regData: 1,
                 status: 1,
@@ -291,7 +294,7 @@ module.exports = async function (fastify, opts) {
 
         if(regData.prevPaymentId){
             //let prevSingleReg = await fastify.findSeriesRacerByBib(bibNumber, series);
-            let prevReg = await this.mongo.db.collection('payments').findOne({ '_id': this.mongo.ObjectId(regData.prevPaymentId) });
+            let prevReg = await this.mongo.db.collection('payments').findOne({ '_id': new this.mongo.ObjectId(regData.prevPaymentId) });
             if(prevReg){
                 delete regData.prevPaymentId;
                 _.defaults(regData, prevReg.regData);
@@ -307,13 +310,13 @@ module.exports = async function (fastify, opts) {
         //see if they registered for a sponsored category
         const regCat = _.find(raceData.regCategories, {"id": regData.category});
         if(request.body.paytype === 'cash'){
-            await this.mongo.db.collection('payments').updateOne({ '_id': this.mongo.ObjectId(paymentRecord.insertedId) }, { $set:{ status: "unpaid", regData } });
+            await this.mongo.db.collection('payments').updateOne({ '_id': new this.mongo.ObjectId(paymentRecord.insertedId) }, { $set:{ status: "unpaid", regData } });
             return {redirect: `${process.env.DOMAIN}/#/regconfirmation/${regData.raceid}/${paymentRecord.insertedId}`};
         }
         if(regCat && regCat.sponsored){
             // initate registration flow without payment
             regData.paytype = 'season',
-            await this.mongo.db.collection('payments').updateOne({ '_id': this.mongo.ObjectId(paymentRecord.insertedId) }, { $set:{ sponsoredPayment: true, status: "paid", regData } }, { upsert: true });
+            await this.mongo.db.collection('payments').updateOne({ '_id': new this.mongo.ObjectId(paymentRecord.insertedId) }, { $set:{ sponsoredPayment: true, status: "paid", regData } }, { upsert: true });
             request.log.info(regData, 'registering racer in sponsored category');
             await fastify.registerRacer(regData, paymentRecord.insertedId, raceData, request.log);
             return {redirect: `${process.env.DOMAIN}/#/regconfirmation/${regData.raceid}/${paymentRecord.insertedId}`};
@@ -340,7 +343,7 @@ module.exports = async function (fastify, opts) {
                     
                     await this.mongo.db.collection('races').updateOne({ raceid: regData.raceid }, {$set:{couponCodes:raceData.couponCodes}})
                 }
-                await this.mongo.db.collection('payments').updateOne({ '_id': this.mongo.ObjectId(paymentRecord.insertedId) }, { $set:{ couponCode:regData.coupon, status: "paid", regData } }, { upsert: true });
+                await this.mongo.db.collection('payments').updateOne({ '_id': new this.mongo.ObjectId(paymentRecord.insertedId) }, { $set:{ couponCode:regData.coupon, status: "paid", regData } }, { upsert: true });
                 await fastify.registerRacer(regData, paymentRecord.insertedId, raceData, request.log);
                 return {redirect: `${process.env.DOMAIN}/#/regconfirmation/${regData.raceid}/${paymentRecord.insertedId}`};
             }
@@ -393,7 +396,7 @@ module.exports = async function (fastify, opts) {
             const session = await stripe.checkout.sessions.create(sessionConfig, {
                 stripeAccount: raceData.stripeMeta.accountId,
             });
-            await this.mongo.db.collection('payments').updateOne({ '_id': this.mongo.ObjectId(paymentRecord.insertedId) }, { $set:{ payment_id: session.id, stripePayment:session,  status: session.payment_status, couponCode:regData.coupon, } }, { upsert: true });
+            await this.mongo.db.collection('payments').updateOne({ '_id': new this.mongo.ObjectId(paymentRecord.insertedId) }, { $set:{ payment_id: session.id, stripePayment:session,  status: session.payment_status, couponCode:regData.coupon, } }, { upsert: true });
             return {redirect: session.url};
         }
     });

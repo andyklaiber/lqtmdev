@@ -158,12 +158,12 @@
     {
       "name": "Adult Entry - $130",
       "type": "adult",
-      "amount": "130"
+      "amount": "145"
     },
     {
       "name": "18- Juniors - $100",
       "type": "18under",
-      "amount": "100"
+      "amount": "115"
     }
   ],
   "couponsEnabled": true,
@@ -185,6 +185,19 @@
   "series": "mills_peak_am_2023",
   "optionalPurchases": [
     {
+      "id": "tshirt",
+      "description": "Mills Peak <a href='/Mills-Peak-Shirt.png'>T-Shirt</a> ",
+      "optionsLabel": "T-shirt size",
+      "options": [
+          "S",
+          "M",
+          "L",
+          "XL"
+      ],
+      "amount": "20",
+      "label": "Mills Peak T-Shirt"
+  },
+    {
       "id": "camping_friday",
       "description": "Camping Friday Night",
       "amount": "30",
@@ -195,6 +208,24 @@
       "description": "Camping Saturday Night",
       "amount": "30",
       "label": "Camp Reservation"
-    }
+    },
+      {
+        "id": "sbts_donate_10",
+        "description": "Donate to <a href='https://sierratrails.org/' target='_blank'>SBTS</a>",
+        "amount": "10",
+        "label": "$10 Everstoke Donation"
+      },
+      {
+        "id": "sbts_donate_25",
+        "description": "Donate to <a href='https://sierratrails.org/' target='_blank'>SBTS</a>",
+        "amount": "25",
+        "label": "$25 Everstoke Donation"
+      },
+      {
+        "id": "sbts_donate_50",
+        "description": "Donate to <a href='https://sierratrails.org/' target='_blank'>SBTS</a>",
+        "amount": "50",
+        "label": "$50 Everstoke Donation"
+      }
   ]
 }

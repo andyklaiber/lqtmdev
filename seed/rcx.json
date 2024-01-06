@@ -1,0 +1,132 @@
+{
+    "_id": {
+      "$oid": "651ed54b60c8c9bfaf12c6f7"
+    },
+    "seriesRaceNumber": "5",
+    "active": true,
+    "displayName": "2023 RodeoCross #5",
+    "eventStart": 1653528053477,
+    "eventDate": "2023-10-25T19:12",
+    "formattedStartDate": "9/28",
+    "raceid": "rcx_2023_5",
+    "series": "rcx_2023",
+    "useActualStarts": false,
+    "eventDetails": {
+      "name": "RodeoCross 2023 #5",
+      "formattedDates": "Oct 25th",
+      "tagline": "Cyclocross's gateway drug",
+      "regOpenDate": "2023-08-07T10:39",
+      "regCloseDate": "2023-10-25T20:00",
+      "logoUrl": "/Folsom-Rodeocross-Logo-300x300.png",
+      "headerPhoto": "rcx_header_photo.jpg",
+      "homepageUrl": "http://folsomrodeocross.com",
+      "facebookShare": {}
+    },
+    "registeredRacers": [],
+    "regCategories": [
+      {
+        "id": "a_men",
+        "catdispname": "A Men",
+        "disporder": 0,
+        "startTime": "19:15"
+      },
+      {
+        "id": "b_men",
+        "catdispname": "B Men",
+        "disporder": 1,
+        "startTime": "19:15"
+      },
+      {
+        "id": "b35+_men",
+        "catdispname": "B35+ Men",
+        "disporder": 2,
+        "minAge": 35,
+        "startTime": "19:15"
+      },
+      {
+        "id": "c_men",
+        "catdispname": "C Men",
+        "disporder": 3,
+        "startTime": "18:15"
+      },
+      {
+        "id": "c35+_men",
+        "catdispname": "C35+ Men",
+        "disporder": 4,
+        "minAge": 35,
+        "startTime": "18:15"
+      },
+      {
+        "id": "a_women",
+        "catdispname": "A Women",
+        "disporder": 5,
+        "startTime": "19:15"
+      },
+      {
+        "id": "b_women",
+        "catdispname": "B Women",
+        "disporder": 6,
+        "startTime": "18:15"
+      },
+      {
+        "id": "c_women",
+        "catdispname": "C Women",
+        "disporder": 7,
+        "startTime": "18:15"
+      },
+      {
+        "id": "junior_boys",
+        "catdispname": "Junior Boys",
+        "disporder": 8,
+        "maxAge": 16,
+        "paytype": "junior",
+        "startTime": "18:15"
+      },
+      {
+        "id": "junior_girls",
+        "catdispname": "Junior Girls",
+        "disporder": 9,
+        "maxAge": 16,
+        "paytype": "junior",
+        "startTime": "18:15"
+      },
+      {
+        "id": "open_45+",
+        "catdispname": "Open 45+",
+        "disporder": 10,
+        "minAge": 45,
+        "startTime": "19:15"
+      },
+      {
+        "id": "single_speed",
+        "catdispname": "Single Speed/Tracklocross",
+        "disporder": 11,
+        "startTime": "19:15"
+      },
+      {
+        "id": "tandem",
+        "catdispname": "Tandem",
+        "disporder": 12,
+        "startTime": "19:15"
+      }
+    ],
+    "paymentOptions": [
+      {
+        "name": "Single Race - Oct 25",
+        "type": "single",
+        "amount": "30"
+      },
+      {
+        "name": "Junior (under 18) - Oct 25",
+        "type": "junior",
+        "amount": "15"
+      }
+    ],
+    "stripeMeta": {
+      "accountId": "acct_1LX8HmJuCa64kY2C"
+    },
+    "archived": false,
+    "isTestData": false,
+    "contactEmail": "thebikenerd@gmail.com",
+    "cashPaymentsEnabled": false
+  }
