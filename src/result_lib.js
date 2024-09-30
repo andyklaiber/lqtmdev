@@ -27,6 +27,10 @@ const capitalizeName = (nameString)=>{
     let parts = nameString.split(' ');
     _.forEach(parts, (part, id, collection)=>{
         if(part.length === 2) return;
+        if(part.toLowerCase() === 'mcatee'){
+            collection[id] = 'McAtee';
+            return;
+        } 
         if(part.match(parensRegexp)) return;
         if(part[1] === "'"){
             let lastName = _.capitalize(part)
@@ -36,10 +40,8 @@ const capitalizeName = (nameString)=>{
             if(part.indexOf("-") > -1){
                 let dashIdx = part.indexOf("-") + 1;
                 let lastName = _.capitalize(part)
-                collection[id] = lastName.slice(0,dashIdx) + lastName.charAt(dashIdx).toUpperCase() + lastName.slice(dashIdx+1)
-                
+                collection[id] = lastName.slice(0,dashIdx) + lastName.charAt(dashIdx).toUpperCase() + lastName.slice(dashIdx+1)  
             }else{
-
                 collection[id] = _.capitalize(part)
             }
         }
@@ -170,7 +172,7 @@ const getSeriesColumns = (raceMeta, catId, gromRaceNumbers)=>{
             cols.push(`${colHeader}`);
         }
         else{
-            if(gromRaceNumbers.indexOf(race.formattedStartDate) > -1){
+            if(gromRaceNumbers &&gromRaceNumbers.indexOf(race.formattedStartDate) > -1){
                 cols.push(`${race.formattedStartDate}`);
             }
 
@@ -306,19 +308,21 @@ const generatePCRSSeriesResults = (raceResults, racersMeta, categoryOrder, gromR
                 let orderedByPoints = _.orderBy(racerSeriesRow.results, 'finishPoints', 'asc');
                 if(catId.indexOf('grom') == -1){
                     // drop 2 out of 10 for general categories
-                    if(orderedByPoints.length >= 9){
+                    if(orderedByPoints.length >= 8){
                         let drop1 = _.findIndex(racerSeriesRow.results, (result)=>orderedByPoints[0].raceDate === result.raceDate)
                         racerSeriesRow.results[drop1].dropped = true;
                     }
-                    if(orderedByPoints.length >= 10){
-                        let drop2 = _.findIndex(racerSeriesRow.results, (result)=>orderedByPoints[1].raceDate === result.raceDate)
-                        racerSeriesRow.results[drop2].dropped = true;
-                    }
+                    // if(orderedByPoints.length >= 10){
+                    //     let drop2 = _.findIndex(racerSeriesRow.results, (result)=>orderedByPoints[1].raceDate === result.raceDate)
+                    //     racerSeriesRow.results[drop2].dropped = true;
+                    // }
                 }else{
                     // drop 1 race for groms
                     if(orderedByPoints.length >= gromRaceDates.length - 1){
                         let drop1 = _.findIndex(racerSeriesRow.results, (result)=>orderedByPoints[0].raceDate === result.raceDate)
-                        racerSeriesRow.results[drop1].dropped = true;
+                        if(drop1 > -1 && racerSeriesRow.results.length > 4){
+                            racerSeriesRow.results[drop1].dropped = true;
+                        }
                     }
                 }
 

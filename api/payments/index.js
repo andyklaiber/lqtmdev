@@ -18,17 +18,19 @@ module.exports = async function (fastify, opts) {
                 first_name: 'Andy',
                 last_name: 'emailTester',
                 email: 'andy.klaiber@gmail.com',
-                sponsor: 'data',
+                sponsor: 'TestSponsorName',
                 category: 'b35+_men',
                 paytype: 'cash',
                 racerAge: 38,
-                raceid: 'rcx_2022_test_1',
+                raceid: request.query.raceId,
                 status: 'unpaid',
                 paymentId: '63337dd58f99a6907d061a8f',
                 bibNumber: '545',
                 paymentReceived: true,
-                paymentAmount: '25'
+                paymentAmount: '25',
+                ...request.body
                 };
+            
             const raceData = await this.mongo.db.collection('races').findOne({ raceid: request.query.raceId });
             await fastify.sendRegConfirmEmail(testData, "testdataID", raceData, request.log);
         }

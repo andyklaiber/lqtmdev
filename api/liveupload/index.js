@@ -50,7 +50,7 @@ module.exports = async function (fastify, opts) {
             if (!existingRace?.eventName){
                 out.eventName = raceMeta.racename;
             }
-            if (!existingRace?.eventStart){
+            if (!existingRace?.formattedStartDate){
                 out.formattedStartDate = dayjs(raceMeta.eventStart).format('MMMM D, YYYY');
             }
             if(request.query.series){

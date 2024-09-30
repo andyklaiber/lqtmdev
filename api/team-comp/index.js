@@ -64,7 +64,7 @@ module.exports = async function (fastify, opts) {
             racerData.Team = racerData.Sponsor;
           }
           racerData.Series = series;
-          return await this.mongo.db.collection('team_comp').updateOne({ 'Name': racerData.Name }, { $set: racerData }, { upsert: true });
+          return await this.mongo.db.collection('team_comp').updateOne({ 'Name': racerData.Name, 'Series': series }, { $set: racerData }, { upsert: true });
         }
     });
     // fastify.get('/:name', async function (request, reply) {

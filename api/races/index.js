@@ -30,6 +30,7 @@ module.exports = async function (fastify, opts) {
                 contactEmail: 1,
                 couponsEnabled: 1,
                 displayName: 1,
+                disableSeriesRedirect: 1,
                 eventDate: 1,
                 eventDetails: 1,
                 entryCountMax: 1,
@@ -74,6 +75,8 @@ module.exports = async function (fastify, opts) {
                     contactEmail: 1,
                     couponsEnabled: 1,
                     displayName: 1,
+                    disableAge: 1,
+                    disableSeriesRedirect: 1,
                     entryCount: 1,
                     entryCountMax: 1,
                     eventDate: 1,
@@ -87,6 +90,7 @@ module.exports = async function (fastify, opts) {
                     raceid: 1,
                     regCategories: 1,
                     series: 1,
+                    seriesDisableRedirect: 1,
                     seriesRaceNumber: 1,
                     showPaytypeOnRoster: 1,
                     waiver: 1,
@@ -109,6 +113,52 @@ module.exports = async function (fastify, opts) {
     })
     fastify.route({
         method: 'PATCH',
+        url: '/temp/:id',
+        preHandler: fastify.auth([fastify.verifyAdminSession]),
+        handler: async function (request, reply) {
+
+            // const race = await this.mongo.db.collection('races').findOne({ 'raceid': request.params.id }, {
+                
+            //     projection: {
+            //         raceid: 1,
+            //         regCategories: 1,
+            //         registeredRacers: 1,
+            //     }
+            // });
+            // let renamedCategories = {};
+            
+
+            // _.forEach(race.registeredRacers, (racerData) => {
+            //     if(!_.find(race.regCategories, { 'id': racerData.category })){
+            //         renamedCategories[racerData.category] = 1;
+            //     }
+            // });
+            // return { renamedCategories: renamedCategories, catIds : _.map(race.regCategories, 'id') };
+            // let temp =  {
+            //         "black_bear_men": "black_bear_men_minus__road",
+            //         "grizzly_men": "grizzly_men_minus__gravel",
+            //         "bear_cub_women": "bear_cub_women_minus__road",
+            //         "brown_bear_men": "brown_bear_men_minus__gravel",
+            //         "grizzly_women": "grizzly_women_minus__gravel",
+            //         "black_bear_women": "black_bear_women_minus__road",
+            //         "brown_bear_women": "brown_bear_women_minus__gravel"
+            //     };
+               
+            //        // "bear_cub_men_minus__road",
+
+            // for (let [key, value] of Object.entries(temp)) {
+
+            // let   updateResult = await this.mongo.db.collection('races').updateOne({
+            //         'raceid': request.params.id
+            //         },
+            //         { $set: {"registeredRacers.$[element].category": value} },
+            //         { arrayFilters: [ { "element.category": key } ] }
+            //     )
+            // }  
+        }
+    })
+    fastify.route({
+        method: 'PATCH',
         url: '/:id',
         preHandler: fastify.auth([fastify.verifyAdminSession]),
         handler: async function (request, reply) {
@@ -119,6 +169,8 @@ module.exports = async function (fastify, opts) {
                 couponsEnabled: 1,
                 couponCodes: 1,
                 displayName: 1,
+                disableAge: 1,
+                disableSeriesRedirect: 1,
                 entryCountMax: 1,
                 eventDate: 1,
                 eventDetails: 1,
@@ -131,9 +183,11 @@ module.exports = async function (fastify, opts) {
                 raceid: 1,
                 regCategories: 1,
                 series: 1,
+                seriesDisableRedirect: 1,
                 seriesRaceNumber: 1,
                 showPaytypeOnRoster: 1,
                 stripeMeta: 1,
+                waiver: 1,
             };
             const result = await this.mongo.db.collection('races').findOne({ 'raceid': request.params.id }, { projection });
             if (result) {

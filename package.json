@@ -14,7 +14,7 @@
     "start": "fastify start -l trace app.js",
     "build": "docker build . -t andyklaiber/lqtm:latest --platform=linux/amd64",
     "publish": "docker push andyklaiber/lqtm:latest",
-    "update-live": "curl -X POST https://signup.bike:8443/api/webhooks/40fa9e8d-4f89-4a73-9c42-acd0b585bfb6",
+    "update-live": "curl -X POST https://45.63.95.47:8443/api/webhooks/40fa9e8d-4f89-4a73-9c42-acd0b585bfb6",
     "docker": "docker run -p 3000:3000 --env UPLOAD_TOKEN=somethingsecret --mount source=pcrsdata,target=/usr/src/app/public/data andyklaiber/lqtm:latest"
   },
   "keywords": [],
@@ -36,6 +36,7 @@
     "fastify": "^4.11.0",
     "fastify-cli": "^5.7.0",
     "fastify-plugin": "^4.5.0",
+    "handlebars": "^4.7.8",
     "lodash": "^4.17.21",
     "mongoose": "^6.5.2",
     "stripe": "^11.6.0",

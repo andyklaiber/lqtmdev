@@ -142,6 +142,7 @@ module.exports = async function (fastify, opts) {
       }
       let result = await fastify.findSeriesRacerByBib(bibNumber, series)
       if (result) {
+        delete result.optionalPurchases
         return result;
       } else {
         return fastify.httpErrors.notFound('Could not find previous entry with bib: ' + bibNumber);
@@ -176,6 +177,8 @@ module.exports = async function (fastify, opts) {
           "email",
           "sponsor",
           "category",
+          "contactNumber",
+          "emergencyNumber",
           "racerAge",
           "paytype",
           "bibNumber"
@@ -283,31 +286,53 @@ module.exports = async function (fastify, opts) {
       if (result) {
         let out = [];
         console.log(result.eventDate)
-        result.registeredRacers.forEach((racerObj) => {
-          let cat = _.find(result.regCategories, { id: racerObj.category })
+        let allStartTimes = _.uniq(_.map(result.regCategories, 'startTime'));
+        if (allStartTimes.length > 0) {
+          allStartTimes = _.uniq(allStartTimes);
+          allStartTimes = _.sortBy(allStartTimes, [(startTime) => {
+            return dayjs(`${dayjs(result.eventDate).format('YYYY-MM-DD')} ${startTime}`).unix();
+          }]);
           let start = dayjs(result.eventDate).format('MM/DD/YY h:mm A');
+          _.forEach(result.regCategories, (cat, index) => {
+
+            let raceIdx = _.findIndex(allStartTimes, (startTime) => cat.startTime === startTime);
+            cat.distance = `Race ${raceIdx + 1} - ${dayjs(`${dayjs(result.eventDate).format('YYYY-MM-DD')} ${cat.startTime}`).format('h:mm A')}`;
+          })
+        }
+        result.registeredRacers.forEach((racerObj) => {
+          let distance = "";
+          let cat = _.find(result.regCategories, { id: racerObj.category })
           if(cat){
             if(cat.startTime){
               start = dayjs(`${dayjs(result.eventDate).format('YYYY-MM-DD')} ${cat.startTime}`).format('MM/DD/YY h:mm A');
+              distance = cat.distance ? cat.distance : "";
             }
-          out.push(_.assign(racerObj, { category: cat.catdispname, start, eventName: result.eventDetails.name }));
+          let maleRegex = /Men|Boy/;
+          let femaleRegex = /Women|Girl/;
+          let gender = "";
+          if (maleRegex.test(cat.catdispname)) {
+            gender = "Male";
+          } else if (femaleRegex.test(cat.catdispname)) {
+            gender = "Female";
+          }
+          let sponsor = "";
+          if (racerObj.sponsor?.length > 1) {
+          sponsor = racerObj.sponsor.substring(0,25)
+          }
+          out.push(_.assign(racerObj, { category: cat.catdispname, start, gender, distance, sponsor }));
           }
         })
         const columns = [
-          { 'key': 'eventName', 'header': 'Event', },
-          { 'key': 'start', 'header': 'Start', },
+          { 'key': 'last_name', 'header': 'Last Name' },
+          { 'key': 'first_name', 'header': 'First Name', },
+          { 'key': 'bibNumber', 'header': 'Bib', },
+          { 'key': 'distance', 'header': 'Distance', },
           { 'key': 'category', 'header': 'Category', },
-          { 'key': 'maxLaps', 'header': 'maxLaps', },
-          { 'key': 'sponsor', 'header': 'Team', },
-          { 'key': 'bibNumber', 'header': 'Bibs', },
-          { 'key': 'first_name', 'header': 'First', },
-          { 'key': 'last_name', 'header': 'Last' },
-          { 'key': 'Relay', 'header': 'relay' },
-          { 'key': 'Penalties', 'header': 'penalties' },
-          { 'key': 'DNF', 'header': 'dnf' }
+          { 'key': 'racerAge', 'header': 'Age', },
+          { 'key': 'gender', 'header': 'Gender', },
+          { 'key': 'sponsor', 'header': 'Team Name', },
         ]
         let csvData = stringify(_.sortBy(out, ['category', 'last_name']), { columns, header: true });
-        // return _.sortBy(out, ['category','last_name'])
         return reply.header('Content-disposition', `attachment; filename=${request.params.id}.csv`).type('text/csv').send(csvData);
       } else {
         return fastify.httpErrors.notFound();
@@ -343,6 +368,9 @@ module.exports = async function (fastify, opts) {
           { 'key': 'email', 'header': 'Email' },
           { 'key': 'bibNumber', 'header': 'Bib Number' },
           { 'key': 'category', 'header': 'Category', },
+          { 'key': 'contactNumber', 'header': 'Contact Number', },
+          { 'key': 'emergencyNumber', 'header': 'Emergency Contact', },
+          
           //{ 'key': 'paytype', 'header': 'Payment Type', },
         ]
         let csvData = stringify(_.sortBy(out, ['last_name']), { columns, header: true });

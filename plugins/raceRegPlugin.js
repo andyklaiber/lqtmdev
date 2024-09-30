@@ -2,7 +2,9 @@
 const _ = require('lodash');
 const axios = require('axios');
 const fp = require('fastify-plugin')
+const { capitalizeName } = require('../src/result_lib');
 const dayjs = require('dayjs');
+const handlebars = require('handlebars');
  
 
 // the use of fastify-plugin is required to be able
@@ -58,21 +60,33 @@ module.exports = fp(async function (fastify, opts) {
       return;
     }
     const regCat = _.find(raceData.regCategories, {"id": regData.category});
-    let template = `<html><head></head><body>
-    <h1>Thank you for registering for ${raceData.eventDetails.name}</h1>
+    const data = {
+      name:  capitalizeName(regData.first_name + " " + regData.last_name),
+      sponsor: regData.sponsor,
+      eventHomePageUrl: raceData.eventDetails.homepageUrl,
+      eventName: raceData.eventDetails.name,
+      eventContactEmail: raceData.contactEmail ? raceData.contactEmail : `support@signup.bike`,
+      rosterLink: `${process.env.DOMAIN}/#/roster/${regData.raceid}`,
+      category: regCat ? regCat.catdispname : "Category not found",
+    }
+    let templateString = `<html><head></head><body>
+    <h1>Thank you for registering for {{eventName}}</h1>
     <p>
-    Name: ${_.capitalize(regData.first_name)}  ${_.capitalize(regData.last_name)}<br>
-    ${regData.sponsor ? `Team/Sponsor: ${regData.sponsor}<br>` :""}
-    Race Category: ${regCat ? regCat.catdispname : "Category not found"}<br>
-    <p><a href="${process.env.DOMAIN}/#/roster/${regData.raceid}">Go Here</a> to see who else is signed up<p>
-    <p>For information about the event, check out <a href="${raceData.eventDetails.homepageUrl}">${raceData.eventDetails.homepageUrl}</a></p>
-    <p>For issues with your registration information, <a href="mailto:${raceData.contactEmail ? raceData.contactEmail : `support@signup.bike`}">email us!</a>
+    Name: {{name}}<br>
+    Team/Sponsor: {{sponsor}}<br>
+    Race Category: {{category}}<br>
+    <p><a href="{{rosterLink}}">Go Here</a> to see who else is signed up<p>
+    <p>For information about the event, check out <a href="{{eventHomePageUrl}}">{{eventHomePageUrl}}</a></p>
+    <p>For issues with your registration information, <a href="mailto:{{eventContactEmail}}">email us!</a></p>
     </body></html>`
 
 
     if(raceData.emailTemplate){
-      template = raceData.emailTemplate
+      templateString = raceData.emailTemplate
     }
+
+    const template = handlebars.compile(templateString);
+    const htmlToSend = template(data);
 
     return axios.post("https://api.sendinblue.com/v3/smtp/email",{
          "sender":{  
@@ -82,11 +96,11 @@ module.exports = fp(async function (fastify, opts) {
          "to":[  
             {  
                "email":regData.email,
-               "name":`${regData.first_name}  ${regData.last_name}`
+               "name": data.name
             }
          ],
          "subject":`${raceData.eventDetails.name} Registration`,
-         "htmlContent":template,
+         "htmlContent":htmlToSend,
          "headers":{  
            "charset":"iso-8859-1"
          },

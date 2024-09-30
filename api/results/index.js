@@ -89,19 +89,21 @@ module.exports = async function (fastify, opts) {
     });
 
     fastify.get('/', async function (request, reply) {
-        // const projection = {
-        //     categories: 1,
-        //     final:1,
-        //     formattedStartDate: 1,
-        //     displayName:1,
-        //     raceid:1,
-        //     series:1
-        // };
+        const projection = {
+            final:1,
+            formattedStartDate: 1,
+            displayName:1,
+            eventName:1,
+            showMillis:1,
+            shortName:1,
+            raceid:1,
+            series:1
+        };
         let result;
         if(request.query.series){
             result = await this.mongo.db.collection('race_results').find({series:request.query.series}).toArray();
         }else{
-            result = await this.mongo.db.collection('race_results').find().toArray();
+            result = await this.mongo.db.collection('race_results').find({},{projection}).toArray();
         }
         if (result) {
             return result;
@@ -239,21 +241,21 @@ module.exports = async function (fastify, opts) {
         }
     })
     fastify.get('/series/', async function (request, reply) {
-        // const projection = {
-        //     categories: 1,
-        //     final:1,
-        //     formattedStartDate: 1,
-        //     displayName:1,
-        //     raceid:1,
-        //     series:1
-        // };
+        const projection = {
+            final:1,
+            formattedStartDate: 1,
+            displayName:1,
+            eventName:1,
+            published:1,
+            series:1
+        };
         let filter = {};
         if(request.query.series){
             filter.series = request.query.series;
             return await this.mongo.db.collection('series_results').findOne(filter);
         }
         
-        return await this.mongo.db.collection('series_results').find(filter).toArray();
+        return await this.mongo.db.collection('series_results').find(filter, { projection}).toArray();
     });
     fastify.get('/series/:id', async function (request, reply) {
         // const projection = {
@@ -326,18 +328,19 @@ module.exports = async function (fastify, opts) {
             // }
             let seriesResults, teamPoints;
             if(series.indexOf('pcrs')>-1){
-                const res = generatePCRSSeriesResults(result, racersMeta, categoryOrder, series_data.gromRaceNumbers, teamCompTeams, series_data.teamCompDates);
+                const res = generatePCRSSeriesResults(result, racersMeta, categoryOrder, series_data?.gromRaceDates || [], teamCompTeams, series_data?.teamCompDates || []);
                 seriesResults = res.seriesResults;
                 teamPoints = res.teamPoints;
+                teamPoints.forEach(async (teamRacer, idx)=>{
+                    await this.mongo.db.collection('team_comp').updateOne({ Series: series, 'Name': teamRacer.Name }, { $set: teamRacer }, { upsert: true });
+                })
             }else{
                 const res = generateSeriesResults(result, racersMeta);
                 seriesResults = res.seriesResults;
             }
             this.mongo.db.collection("series_results")
                 .updateOne({ series }, { $set: seriesResults }, {upsert: true});
-            teamPoints.forEach(async (teamRacer, idx)=>{
-                    await this.mongo.db.collection('team_comp').updateOne({ Series: series, 'Name': teamRacer.Name }, { $set: teamRacer }, { upsert: true });
-            })
+
             return { seriesResults  }
         }
     })
