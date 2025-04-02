@@ -124,7 +124,7 @@ module.exports = async function (fastify, opts) {
     }
     let result = await fastify.findSeriesRacerByBib(bibNumber, series)
     if (result) {
-      return _.omit(result, ['email']);
+      return _.omit(result, ['email', 'contactNumber', 'emergencyNumber']);
     } else {
       return fastify.httpErrors.notFound('Could not find previous entry with bib: '+bibNumber);
     }
@@ -277,7 +277,7 @@ module.exports = async function (fastify, opts) {
       if (!request.params.id) {
         return fastify.httpErrors.badRequest('You must provide a race ID');
       }
-
+      const assignedBibsOnly = request.query.assignedBibsOnly === 'true' ? true : false;
       const result = await this.mongo.db.collection('races').findOne({ 'raceid': request.params.id }, {
         projection: {
           "regCategories": 1, "registeredRacers": 1, 'eventDate': 1, 'eventDetails.name': 1
@@ -287,12 +287,13 @@ module.exports = async function (fastify, opts) {
         let out = [];
         console.log(result.eventDate)
         let allStartTimes = _.uniq(_.map(result.regCategories, 'startTime'));
+        let start = dayjs(result.eventDate).format('MM/DD/YY h:mm A');
         if (allStartTimes.length > 0) {
           allStartTimes = _.uniq(allStartTimes);
           allStartTimes = _.sortBy(allStartTimes, [(startTime) => {
             return dayjs(`${dayjs(result.eventDate).format('YYYY-MM-DD')} ${startTime}`).unix();
           }]);
-          let start = dayjs(result.eventDate).format('MM/DD/YY h:mm A');
+          
           _.forEach(result.regCategories, (cat, index) => {
 
             let raceIdx = _.findIndex(allStartTimes, (startTime) => cat.startTime === startTime);
@@ -307,19 +308,21 @@ module.exports = async function (fastify, opts) {
               start = dayjs(`${dayjs(result.eventDate).format('YYYY-MM-DD')} ${cat.startTime}`).format('MM/DD/YY h:mm A');
               distance = cat.distance ? cat.distance : "";
             }
-          let maleRegex = /Men|Boy/;
-          let femaleRegex = /Women|Girl/;
-          let gender = "";
-          if (maleRegex.test(cat.catdispname)) {
-            gender = "Male";
-          } else if (femaleRegex.test(cat.catdispname)) {
-            gender = "Female";
-          }
-          let sponsor = "";
-          if (racerObj.sponsor?.length > 1) {
-          sponsor = racerObj.sponsor.substring(0,25)
-          }
-          out.push(_.assign(racerObj, { category: cat.catdispname, start, gender, distance, sponsor }));
+            let maleRegex = /Men|Boy/;
+            let femaleRegex = /Women|Girl/;
+            let gender = "";
+            if (maleRegex.test(cat.catdispname)) {
+              gender = "Male";
+            } else if (femaleRegex.test(cat.catdispname)) {
+              gender = "Female";
+            }
+            let sponsor = "";
+            if (racerObj.sponsor?.length > 1) {
+              sponsor = racerObj.sponsor.substring(0,25)
+            }
+              if(!assignedBibsOnly || (assignedBibsOnly && _.isFinite(parseInt(racerObj.bibNumber)))){
+                out.push(_.assign(racerObj, { category: cat.catdispname, start, gender, distance, sponsor }));
+              }
           }
         })
         const columns = [

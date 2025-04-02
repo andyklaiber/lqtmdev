@@ -213,11 +213,11 @@ module.exports = async function (fastify, opts) {
             throw fastify.httpErrors.notFound('Race not found');
         }
         if(raceData.couponsEnabled && raceData.couponCodes[couponCode]){
-            let { fractionDiscount, singleUse, redemptionPaymentId } = raceData.couponCodes[couponCode];
+            let { fractionDiscount, singleUse, redemptionPaymentId, paymentTypes } = raceData.couponCodes[couponCode];
             if(singleUse && redemptionPaymentId){
                 return {validCoupon: false, reason: 'Code has already been redeemed', paymentOptions: updateRacePaymentOptions(raceData.paymentOptions)}
             }
-            return {validCoupon:true, paymentOptions: updateRacePaymentOptions(raceData.paymentOptions, fractionDiscount) }
+            return {validCoupon:true, paymentOptions: updateRacePaymentOptions(raceData.paymentOptions, fractionDiscount, paymentTypes) }
         }
         
         return {validCoupon:false, paymentOptions: updateRacePaymentOptions(raceData.paymentOptions)}
@@ -324,9 +324,9 @@ module.exports = async function (fastify, opts) {
             return {redirect: `${process.env.DOMAIN}/#/regconfirmation/${regData.raceid}/${paymentRecord.insertedId}`};
         }else{
             if(regData.coupon && raceData.couponsEnabled && raceData.couponCodes[regData.coupon]){
-                let { fractionDiscount } = raceData.couponCodes[regData.coupon];
+                let { fractionDiscount, paymentTypes } = raceData.couponCodes[regData.coupon];
                 regData.fractionDiscount = fractionDiscount;
-                raceData.paymentOptions = updateRacePaymentOptions(raceData.paymentOptions, fractionDiscount);
+                raceData.paymentOptions = updateRacePaymentOptions(raceData.paymentOptions, fractionDiscount, paymentTypes);
             }
             let payDets = _.find(raceData.paymentOptions, (payment) => payment.type === request.body.paytype);
             if(regCat && regCat.paytype){

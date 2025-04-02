@@ -18,11 +18,15 @@ function getFees(priceInDollars){
     return { stripeFee: totalCharge - onlineFee - cents, regFee: onlineFee, priceInCents:cents };
 }
 
-function updateRacePaymentOptions(paymentOptions, fractionDiscount=false){
+function updateRacePaymentOptions(paymentOptions, fractionDiscount=false, paymentTypes=[]){
         
     _.forEach(paymentOptions, (payOpt, idx)=>{
+        let applyDiscount = true && fractionDiscount > 0;
+        if(paymentTypes.length > 0 && !paymentTypes.includes(payOpt.type)){
+            applyDiscount = false;
+        }
         let fees;
-        if(fractionDiscount){
+        if(applyDiscount){
             paymentOptions[idx].discounted=true;
             paymentOptions[idx].orig = parseInt(paymentOptions[idx].amount);
             paymentOptions[idx].amount = payOpt.amount - payOpt.amount * fractionDiscount;
