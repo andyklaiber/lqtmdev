@@ -288,7 +288,7 @@ module.exports = async function (fastify, opts) {
         console.log(result.eventDate)
         let allStartTimes = _.uniq(_.map(result.regCategories, 'startTime'));
         let start = dayjs(result.eventDate).format('MM/DD/YY h:mm A');
-        if (allStartTimes.length > 0) {
+        if (allStartTimes.length > 0 && allStartTimes[0] != undefined) {
           allStartTimes = _.uniq(allStartTimes);
           allStartTimes = _.sortBy(allStartTimes, [(startTime) => {
             return dayjs(`${dayjs(result.eventDate).format('YYYY-MM-DD')} ${startTime}`).unix();
@@ -306,7 +306,13 @@ module.exports = async function (fastify, opts) {
           if(cat){
             if(cat.startTime){
               start = dayjs(`${dayjs(result.eventDate).format('YYYY-MM-DD')} ${cat.startTime}`).format('MM/DD/YY h:mm A');
-              distance = cat.distance ? cat.distance : "";
+            }
+            let category = cat.catdispname;
+            if(cat.distance){
+              distance = cat.distance;
+              if(category.toLowerCase().indexOf(distance.toLowerCase()) === 0){
+                category = category.substring(distance.length).trim();
+              }
             }
             let maleRegex = /Men|Boy/;
             let femaleRegex = /Women|Girl/;
@@ -321,7 +327,7 @@ module.exports = async function (fastify, opts) {
               sponsor = racerObj.sponsor.substring(0,25)
             }
               if(!assignedBibsOnly || (assignedBibsOnly && _.isFinite(parseInt(racerObj.bibNumber)))){
-                out.push(_.assign(racerObj, { category: cat.catdispname, start, gender, distance, sponsor }));
+                out.push(_.assign(racerObj, { order:cat.disporder, category, start, gender, distance, sponsor }));
               }
           }
         })
@@ -335,7 +341,7 @@ module.exports = async function (fastify, opts) {
           { 'key': 'gender', 'header': 'Gender', },
           { 'key': 'sponsor', 'header': 'Team Name', },
         ]
-        let csvData = stringify(_.sortBy(out, ['category', 'last_name']), { columns, header: true });
+        let csvData = stringify(_.sortBy(out, ['order','distance','category', 'last_name']), { columns, header: true });
         return reply.header('Content-disposition', `attachment; filename=${request.params.id}.csv`).type('text/csv').send(csvData);
       } else {
         return fastify.httpErrors.notFound();
