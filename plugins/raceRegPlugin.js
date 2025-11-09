@@ -32,9 +32,15 @@ module.exports = fp(async function (fastify, opts) {
   fastify.decorate('registerRacer', async function (regData, paymentId, raceData, logger, sendEmail=true) {
     // payment type - single or season
     // registrant data, race category id, payment id - reference, add to race racers[] array
+    
+    // Ensure paymentId is always stored as ObjectId for consistency
+    const paymentIdObj = typeof paymentId === 'string' 
+      ? new this.mongo.ObjectId(paymentId) 
+      : paymentId;
+    
     const racerData = {
       ...regData,
-        paymentId
+        paymentId: paymentIdObj
     }
     // fastify.log.info(racerData, );
     if(regData.paytype === 'season'){

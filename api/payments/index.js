@@ -122,7 +122,7 @@ module.exports = async function (fastify, opts) {
             await this.mongo.db.collection('payments').updateOne({ _id: new this.mongo.ObjectId(request.query.paymentId)}, { $set:{ regData:paymentData, status: 'paid'} }, { upsert: true });
 
             const raceData = await this.mongo.db.collection('races').findOne({ raceid: paymentData.raceid });
-            return await fastify.registerRacer(_.omit(paymentData,['paymentAmount, paymentRecieved']), paymentId, raceData, request.log, false);
+            return await fastify.registerRacer(_.omit(paymentData,['paymentAmount', 'paymentReceived']), paymentId, raceData, request.log, false);
         }
     }) 
     // create new reg or mark cash unpaids as registered for single entry ONLY (for now)
@@ -163,7 +163,7 @@ module.exports = async function (fastify, opts) {
             }
 
             const raceData = await this.mongo.db.collection('races').findOne({ raceid: paymentData.raceid });
-            return await fastify.registerRacer(_.omit(paymentData,['paymentAmount, paymentRecieved']), paymentId, raceData, request.log, false);
+            return await fastify.registerRacer(_.omit(paymentData,['paymentAmount', 'paymentReceived']), paymentId, raceData, request.log, false);
         }
     }) 
     // move a single reg in a series to a new race (can lose bib number, not stored in payment record)

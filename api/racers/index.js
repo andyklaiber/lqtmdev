@@ -200,17 +200,28 @@ module.exports = async function (fastify, opts) {
               series: 1
             }
           })
+          
+          // Try both ObjectId and string format for paymentId to handle both cases
+          const paymentIdObj = new this.mongo.ObjectId(request.query.paymentId);
           updateResult = await this.mongo.db.collection('races').updateMany({
             'series': race.series,
-            "registeredRacers.paymentId": new this.mongo.ObjectId(request.query.paymentId)
+            $or: [
+              { "registeredRacers.paymentId": paymentIdObj },
+              { "registeredRacers.paymentId": request.query.paymentId }
+            ]
           },
             { $set: fieldsToSet })
         }
         else {
           //if single race, just update the record for the 1 race
+          // Try both ObjectId and string format for paymentId to handle both cases
+          const paymentIdObj = new this.mongo.ObjectId(request.query.paymentId);
           updateResult = await this.mongo.db.collection('races').updateOne({
             'raceid': request.params.id,
-            "registeredRacers.paymentId": new this.mongo.ObjectId(request.query.paymentId)
+            $or: [
+              { "registeredRacers.paymentId": paymentIdObj },
+              { "registeredRacers.paymentId": request.query.paymentId }
+            ]
           },
             { $set: fieldsToSet })
 
