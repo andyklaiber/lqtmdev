@@ -4,6 +4,256 @@ const Stripe = require('stripe');
 const dayjs = require('dayjs');
 const { getFees, updateRacePaymentOptions } = require("../../src/fees");
 const { generate, parse, transform, stringify } = require('csv/sync');
+const { processRaceWithSeriesData } = require('../../src/lib/raceProcessing');
+
+/**
+ * Apply category-specific pricing from series data
+ * Uses series category group pricing by default for categories in groups
+ * 
+ * @param {Object} paymentOption - The race payment option (or partial with just {type})
+ * @param {string} categoryId - The category ID
+ * @param {Object} seriesData - Series data containing categoryGroups
+ * @param {Object} log - Logger instance
+ * @returns {Object|null} Payment option with applied pricing, or null if not found
+ */
+function getCategoryPrice(paymentOption, categoryId, seriesData, log) {
+    // If no series data or category groups, return the payment option unchanged
+    if (!seriesData || !seriesData.categoryGroups || seriesData.categoryGroups.length === 0) {
+        return paymentOption;
+    }
+    
+    // Find the category group that includes this category
+    const categoryGroup = seriesData.categoryGroups.find(group =>
+        group.categories && group.categories.includes(categoryId)
+    );
+    
+    if (categoryGroup) {
+        // Find the matching payment option within this group (by type)
+        const groupPaymentOption = categoryGroup.paymentOptions?.find(
+            opt => opt.type === paymentOption.type
+        );
+        
+        if (groupPaymentOption) {
+            // Use series group pricing for this category
+            if (log) {
+                log.info({ 
+                    categoryId, 
+                    paymentType: paymentOption.type,
+                    groupName: groupPaymentOption.name,
+                    groupAmount: groupPaymentOption.amount,
+                    raceAmount: paymentOption.amount
+                }, 'Applied series group pricing for category');
+            }
+            
+            return {
+                type: paymentOption.type,
+                amount: groupPaymentOption.amount,
+                name: groupPaymentOption.name
+            };
+        }
+    }
+    
+    // If paymentOption only has type (no amount/name), and not found in groups, return null
+    if (!paymentOption.amount && !paymentOption.name) {
+        return null;
+    }
+    
+    // Fallback to race payment option (category not in any group)
+    if (log) {
+        log.info({ 
+            categoryId, 
+            paymentType: paymentOption.type,
+            amount: paymentOption.amount 
+        }, 'Category not in any series group, using race payment option');
+    }
+    
+    return paymentOption;
+}
+
+/**
+ * Process start-registration logic
+ * Extracted for testability with dependency injection
+ * 
+ * @param {Object} params
+ * @param {Object} params.regData - Registration data
+ * @param {Object} params.raceData - Race data with categories and payment options
+ * @param {Object} params.dependencies - Injected dependencies
+ * @param {Object} params.dependencies.mongo - MongoDB collection access
+ * @param {Function} params.dependencies.createStripeSession - Stripe session creator
+ * @param {Function} params.dependencies.registerRacer - Racer registration function
+ * @param {Object} params.dependencies.log - Logger
+ * @returns {Object} - Result with redirect URL or error
+ */
+async function processStartRegistration({ regData, raceData, dependencies }) {
+    const { mongo, createStripeSession, registerRacer, log } = dependencies;
+    
+    // Find the category
+    const regCat = _.find(raceData.regCategories, {"id": regData.category});
+    
+    // Handle cash payment
+    if (regData.paytype === 'cash') {
+        const paymentRecord = await mongo.payments.insertOne({ regData });
+        await mongo.payments.updateOne(
+            { '_id': paymentRecord.insertedId }, 
+            { $set: { status: "unpaid", regData } }
+        );
+        return {
+            redirect: `${process.env.DOMAIN}/#/regconfirmation/${regData.raceid}/${paymentRecord.insertedId}`
+        };
+    }
+    
+    // Handle sponsored category
+    if (regCat && regCat.sponsored) {
+        const paymentRecord = await mongo.payments.insertOne({ regData });
+        regData.paytype = 'season';
+        await mongo.payments.updateOne(
+            { '_id': paymentRecord.insertedId }, 
+            { $set: { sponsoredPayment: true, status: "paid", regData } }
+        );
+        log.info(regData, 'registering racer in sponsored category');
+        await registerRacer(regData, paymentRecord.insertedId, raceData, log);
+        return {
+            redirect: `${process.env.DOMAIN}/#/regconfirmation/${regData.raceid}/${paymentRecord.insertedId}`
+        };
+    }
+    
+    // Handle coupon application
+    if (regData.coupon && raceData.couponsEnabled && raceData.couponCodes[regData.coupon]) {
+        let { fractionDiscount, paymentTypes } = raceData.couponCodes[regData.coupon];
+        regData.fractionDiscount = fractionDiscount;
+        raceData.paymentOptions = updateRacePaymentOptions(raceData.paymentOptions, fractionDiscount, paymentTypes);
+    }
+    
+    // Find payment details - respect user's payment type selection
+    let payDets = _.find(raceData.paymentOptions, (payment) => payment.type === regData.paytype);
+    
+    // If payment not found in race options, check series groups (for season passes)
+    // HYBRID MODEL: Series groups provide additional payment options (season passes)
+    // that aren't in the race's paymentOptions array
+    if (!payDets && raceData.seriesData && regData.category) {
+        // Payment type not found in race options - might be a series group payment (season pass)
+        // Try to get it from series groups
+        payDets = getCategoryPrice({ type: regData.paytype }, regData.category, raceData.seriesData, log);
+        
+        if (payDets) {
+            // Found in series groups - mark as category pricing applied
+            regData.categoryPricingApplied = true;
+            regData.pricingAmount = payDets.amount;
+            regData.pricingName = payDets.name;
+        }
+    }
+    
+    if (!payDets) {
+        throw new Error('Payment type not found');
+    }
+    
+    // If payment was found in race options, check if series groups provide different pricing
+    // (e.g., season pass with category-specific pricing tiers)
+    if (raceData.seriesData && regData.category && !regData.categoryPricingApplied) {
+        const originalAmount = payDets.amount;
+        const originalName = payDets.name;
+        
+        const updatedPayDets = getCategoryPrice(payDets, regData.category, raceData.seriesData, log);
+        
+        // Only apply if it actually changed (series group pricing was applied)
+        if (updatedPayDets && (updatedPayDets.amount !== originalAmount || updatedPayDets.name !== originalName)) {
+            payDets = updatedPayDets;
+            regData.categoryPricingApplied = true;
+            regData.pricingAmount = payDets.amount;
+            regData.pricingName = payDets.name;
+        }
+    }
+    
+    // Handle free registration with coupon
+    if (payDets.amount == 0) {
+        const paymentRecord = await mongo.payments.insertOne({ regData });
+        let { singleUse, redemptionPaymentId } = raceData.couponCodes[regData.coupon];
+        if (singleUse) {
+            if (redemptionPaymentId) {
+                return { message: "The provided coupon has already been redeemed" };
+            }
+            raceData.couponCodes[regData.coupon].redemptionPaymentId = paymentRecord.insertedId;
+            await mongo.races.updateOne(
+                { raceid: regData.raceid }, 
+                { $set: { couponCodes: raceData.couponCodes } }
+            );
+        }
+        await mongo.payments.updateOne(
+            { '_id': paymentRecord.insertedId }, 
+            { $set: { couponCode: regData.coupon, status: "paid", regData } }
+        );
+        await registerRacer(regData, paymentRecord.insertedId, raceData, log);
+        return {
+            redirect: `${process.env.DOMAIN}/#/regconfirmation/${regData.raceid}/${paymentRecord.insertedId}`
+        };
+    }
+    
+    // Validate Stripe configuration
+    if (!raceData.stripeMeta?.accountId) {
+        throw new Error('Stripe connect account not defined');
+    }
+    
+    // Calculate fees
+    let regAmt = parseFloat(payDets.amount);
+    let { stripeFee, regFee, priceInCents } = getFees(payDets.amount);
+    
+    // Add optional purchases
+    if (raceData.optionalPurchases && regData.optionalPurchases) {
+        raceData.optionalPurchases.forEach(({ id, amount }) => {
+            if (regData.optionalPurchases && regData.optionalPurchases[id]) {
+                regAmt += parseFloat(amount);
+            }
+        });
+        let allFees = getFees(regAmt);
+        priceInCents = allFees.priceInCents;
+        regFee = allFees.regFee;
+        stripeFee = allFees.stripeFee;
+    }
+    
+    // Create Stripe session config
+    const totalAmount = ((priceInCents + stripeFee + regFee) / 100).toFixed(2);
+    const sessionConfig = {
+        line_items: [{
+            quantity: 1,
+            price_data: {
+                currency: 'USD',
+                unit_amount: priceInCents + stripeFee + regFee,
+                product_data: {
+                    name: raceData.displayName + ' ' + payDets.name,
+                    description: payDets.description || `${payDets.type} entry fee - $${totalAmount}`
+                },
+            }
+        }],
+        invoice_creation: { enabled: true },
+        mode: 'payment',
+        success_url: `${process.env.DOMAIN}/#/regconfirmation/${regData.raceid}/PAYMENT_ID`,
+        cancel_url: `${process.env.DOMAIN}/#/regconfirmation/${regData.raceid}/PAYMENT_ID`,
+        customer_email: regData.email,
+        payment_intent_data: {
+            description: `${raceData.displayName} ${payDets.name} - $${totalAmount}`,
+            application_fee_amount: regFee,
+        },
+    };
+    
+    log.info({ regData, sessionConfig }, 'initiating stripe checkout');
+    
+    // Create Stripe session
+    const session = await createStripeSession({
+        sessionConfig,
+        stripeAccountId: raceData.stripeMeta.accountId,
+        isTestMode: raceData.isTestData
+    });
+    
+    // Update session config with actual payment ID
+    sessionConfig.success_url = sessionConfig.success_url.replace('PAYMENT_ID', session.paymentRecordId);
+    sessionConfig.cancel_url = sessionConfig.cancel_url.replace('PAYMENT_ID', session.paymentRecordId);
+    
+    return { 
+        redirect: session.url,
+        paymentRecordId: session.paymentRecordId,
+        sessionConfig
+    };
+}
 
 module.exports = async function (fastify, opts) {
     fastify.route({
@@ -273,10 +523,34 @@ module.exports = async function (fastify, opts) {
         }
         const regData = request.body
         regData.raceid = request.query.race;
-        const raceData = await this.mongo.db.collection('races').findOne({ raceid: request.query.race });
-        if(!raceData){
+        
+        // Use aggregation pipeline to fetch race with series data
+        const pipeline = [
+            {
+                $match: { raceid: request.query.race }
+            },
+            {
+                $limit: 1
+            },
+            {
+                $lookup: {
+                    from: 'series',
+                    localField: 'series',
+                    foreignField: 'seriesId',
+                    as: 'seriesData'
+                }
+            }
+        ];
+        
+        const raceResults = await this.mongo.db.collection('races').aggregate(pipeline).toArray();
+        if(!raceResults || raceResults.length === 0){
             throw fastify.httpErrors.badRequest('Race not found');
         }
+        
+        let raceData = raceResults[0];
+        
+        // Process series data to enrich payment options with category-specific pricing
+        raceData = processRaceWithSeriesData(raceData, request.log);
         // check for registration entry limit
         if(raceData.entryCountMax && raceData.entryCountMax > 1){
             if(raceData.registeredRacers?.length >= raceData.entryCountMax){
@@ -308,100 +582,66 @@ module.exports = async function (fastify, opts) {
             }
         }
 
-        const paymentRecord = await this.mongo.db.collection('payments').insertOne({ regData });
-        //see if they registered for a sponsored category
-        const regCat = _.find(raceData.regCategories, {"id": regData.category});
-        if(request.body.paytype === 'cash'){
-            await this.mongo.db.collection('payments').updateOne({ '_id': new this.mongo.ObjectId(paymentRecord.insertedId) }, { $set:{ status: "unpaid", regData } });
-            return {redirect: `${process.env.DOMAIN}/#/regconfirmation/${regData.raceid}/${paymentRecord.insertedId}`};
-        }
-        if(regCat && regCat.sponsored){
-            // initate registration flow without payment
-            regData.paytype = 'season',
-            await this.mongo.db.collection('payments').updateOne({ '_id': new this.mongo.ObjectId(paymentRecord.insertedId) }, { $set:{ sponsoredPayment: true, status: "paid", regData } }, { upsert: true });
-            request.log.info(regData, 'registering racer in sponsored category');
-            await fastify.registerRacer(regData, paymentRecord.insertedId, raceData, request.log);
-            return {redirect: `${process.env.DOMAIN}/#/regconfirmation/${regData.raceid}/${paymentRecord.insertedId}`};
-        }else{
-            if(regData.coupon && raceData.couponsEnabled && raceData.couponCodes[regData.coupon]){
-                let { fractionDiscount, paymentTypes } = raceData.couponCodes[regData.coupon];
-                regData.fractionDiscount = fractionDiscount;
-                raceData.paymentOptions = updateRacePaymentOptions(raceData.paymentOptions, fractionDiscount, paymentTypes);
-            }
-            let payDets = _.find(raceData.paymentOptions, (payment) => payment.type === request.body.paytype);
-            if(regCat && regCat.paytype){
-                payDets = _.find(raceData.paymentOptions, (payment) => payment.type === regCat.paytype);
-            }
-            if (!payDets) {
-                throw fastify.httpErrors.badRequest('Payment type not found');
-            }
-            if(payDets.amount == 0){
-                let { singleUse, redemptionPaymentId } = raceData.couponCodes[regData.coupon];
-                if (singleUse) {
-                    if (redemptionPaymentId) {
-                        return { message: "The provided coupon has already been redeemed" }
-                    }
-                    raceData.couponCodes[regData.coupon].redemptionPaymentId = paymentRecord.insertedId;
-                    
-                    await this.mongo.db.collection('races').updateOne({ raceid: regData.raceid }, {$set:{couponCodes:raceData.couponCodes}})
-                }
-                await this.mongo.db.collection('payments').updateOne({ '_id': new this.mongo.ObjectId(paymentRecord.insertedId) }, { $set:{ couponCode:regData.coupon, status: "paid", regData } }, { upsert: true });
-                await fastify.registerRacer(regData, paymentRecord.insertedId, raceData, request.log);
-                return {redirect: `${process.env.DOMAIN}/#/regconfirmation/${regData.raceid}/${paymentRecord.insertedId}`};
-            }
-            if (!raceData.stripeMeta?.accountId) {
-                throw fastify.httpErrors.internalServerError('Stripe connect account not defined');
-            }
-            let regAmt = parseFloat(payDets.amount);
-            let { stripeFee, regFee, priceInCents } = getFees(payDets.amount);
-            if(raceData.optionalPurchases && regData.optionalPurchases){
-                raceData.optionalPurchases.forEach(({ id, amount }) => {
-                    if (regData.optionalPurchases && regData.optionalPurchases[id]) {
-                        regAmt += parseFloat(amount);
-                    }
-                })
-                let allFees = getFees(regAmt)
-                priceInCents = allFees.priceInCents;
-                regFee = allFees.regFee;
-                stripeFee= allFees.stripeFee;
-            }
-            const sessionConfig = 
-            {
-                line_items: [{
-                    quantity: 1,
-                    price_data:{
-                        currency: 'USD',
-                        unit_amount: priceInCents + stripeFee + regFee, // in cents
-                        product_data:{
-                            name: raceData.displayName + ' ' + payDets.name,
-                            description: payDets.description || payDets.type + ' entry fee'
-                        },
-                    }
-                }],
-                invoice_creation: {enabled: true},
-                mode: 'payment',
-                success_url: `${process.env.DOMAIN}/#/regconfirmation/${regData.raceid}/${paymentRecord.insertedId}`,
-                cancel_url: `${process.env.DOMAIN}/#/regconfirmation/${regData.raceid}/${paymentRecord.insertedId}`,
-                customer_email: regData.email,
-                payment_intent_data: {
-                    description: raceData.displayName + ' ' + payDets.name,
-                    application_fee_amount: regFee,
-                },
-            }
+        // Create Stripe session creator with real Stripe integration
+        const createStripeSession = async ({ sessionConfig, stripeAccountId, isTestMode }) => {
             let stripe;
-            if(raceData.isTestData){
-                stripe = Stripe(process.env.STRIPE_SECRET_KEY_DEV)
-            }else{
-                stripe = Stripe(process.env.STRIPE_SECRET_KEY)
+            if (isTestMode) {
+                stripe = Stripe(process.env.STRIPE_SECRET_KEY_DEV);
+            } else {
+                stripe = Stripe(process.env.STRIPE_SECRET_KEY);
             }
-            request.log.info({regData, sessionConfig}, 'initiating stripe checkout');
+            
+            // Create payment record first
+            const paymentRecord = await this.mongo.db.collection('payments').insertOne({ regData });
+            
+            // Update URLs with actual payment ID
+            sessionConfig.success_url = sessionConfig.success_url.replace('PAYMENT_ID', paymentRecord.insertedId);
+            sessionConfig.cancel_url = sessionConfig.cancel_url.replace('PAYMENT_ID', paymentRecord.insertedId);
+            
+            // Create Stripe session
             const session = await stripe.checkout.sessions.create(sessionConfig, {
-                stripeAccount: raceData.stripeMeta.accountId,
+                stripeAccount: stripeAccountId,
             });
-            await this.mongo.db.collection('payments').updateOne({ '_id': new this.mongo.ObjectId(paymentRecord.insertedId) }, { $set:{ payment_id: session.id, stripePayment:session,  status: session.payment_status, couponCode:regData.coupon, } }, { upsert: true });
-            return {redirect: session.url};
-        }
+            
+            // Store session in database
+            await this.mongo.db.collection('payments').updateOne(
+                { '_id': paymentRecord.insertedId }, 
+                { 
+                    $set: { 
+                        payment_id: session.id, 
+                        stripePayment: session,  
+                        status: session.payment_status, 
+                        couponCode: regData.coupon 
+                    } 
+                }
+            );
+            
+            return {
+                url: session.url,
+                paymentRecordId: paymentRecord.insertedId,
+                sessionId: session.id
+            };
+        };
+
+        // Use the extracted function with injected dependencies
+        const result = await processStartRegistration({
+            regData,
+            raceData,
+            dependencies: {
+                mongo: {
+                    payments: this.mongo.db.collection('payments'),
+                    races: this.mongo.db.collection('races')
+                },
+                createStripeSession,
+                registerRacer: fastify.registerRacer,
+                log: request.log
+            }
+        });
+        
+        return result;
     });
 }
 
-
+// Export functions for testing
+module.exports.getCategoryPrice = getCategoryPrice;
+module.exports.processStartRegistration = processStartRegistration;

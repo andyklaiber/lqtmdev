@@ -2,6 +2,7 @@ const _ = require('lodash');
 const dayjs = require('dayjs');
 const { capitalizeName } = require('../../src/result_lib');
 const { generate, parse, transform, stringify } = require('csv/sync');
+const { processRaceWithSeriesData } = require('../../src/lib/raceProcessing');
 
 module.exports = async function (fastify, opts) {
 
@@ -15,26 +16,56 @@ module.exports = async function (fastify, opts) {
         return fastify.httpErrors.badRequest('You must provide a race ID');
       }
 
-      const result = await this.mongo.db.collection('races').findOne({ 'raceid': request.params.id }, {
-        projection: {
-          displayName:1,"regCategories": 1, "paymentOptions": 1, "registeredRacers": 1, series:1
+      // Use aggregation pipeline to fetch race with series data for hybrid category model
+      const pipeline = [
+        {
+          $match: { raceid: request.params.id }
+        },
+        {
+          $limit: 1
+        },
+        {
+          $lookup: {
+            from: 'series',
+            localField: 'series',
+            foreignField: 'seriesId',
+            as: 'seriesData'
+          }
         }
-      })
+      ];
+      
+      const raceResults = await this.mongo.db.collection('races').aggregate(pipeline).toArray();
+      if (!raceResults || raceResults.length === 0) {
+        return fastify.httpErrors.notFound();
+      }
+      
+      let result = raceResults[0];
+      
+      // Process series data to enrich categories with hybrid model
+      result = processRaceWithSeriesData(result, request.log);
+      
+      // Get unpaid cash registrations
       const unpaid = await this.mongo.db.collection('payments').find(
         { 'regData.raceid': request.params.id, 'regData.paytype': 'cash', status: { $ne: 'paid' } },
         { projection: { regData: 1, _id: 1, status: 1 } }).toArray();
-      if (result) {
-        if (unpaid.length) {
-          let reformatted = _.map(unpaid, (record) => {
-            return _.assign({}, record.regData, { status: record.status, paymentId: record._id });
-          })
+      
+      if (unpaid.length) {
+        let reformatted = _.map(unpaid, (record) => {
+          return _.assign({}, record.regData, { status: record.status, paymentId: record._id });
+        })
 
-          result.registeredRacers = [...result.registeredRacers, ...reformatted];
-        }
-        return result;
-      } else {
-        return fastify.httpErrors.notFound();
+        result.registeredRacers = [...result.registeredRacers, ...reformatted];
       }
+      
+      // Return only the fields needed by the frontend
+      return {
+        displayName: result.displayName,
+        regCategories: result.regCategories,
+        paymentOptions: result.paymentOptions,
+        registeredRacers: result.registeredRacers,
+        series: result.series,
+        seriesData: result.seriesData
+      };
     }
   })
   fastify.route({
@@ -289,11 +320,34 @@ module.exports = async function (fastify, opts) {
         return fastify.httpErrors.badRequest('You must provide a race ID');
       }
       const assignedBibsOnly = request.query.assignedBibsOnly === 'true' ? true : false;
-      const result = await this.mongo.db.collection('races').findOne({ 'raceid': request.params.id }, {
-        projection: {
-          "regCategories": 1, "registeredRacers": 1, 'eventDate': 1, 'eventDetails.name': 1
+      
+      // Use aggregation pipeline to fetch race with series data for hybrid category model
+      const pipeline = [
+        {
+          $match: { raceid: request.params.id }
+        },
+        {
+          $limit: 1
+        },
+        {
+          $lookup: {
+            from: 'series',
+            localField: 'series',
+            foreignField: 'seriesId',
+            as: 'seriesData'
+          }
         }
-      })
+      ];
+      
+      const raceResults = await this.mongo.db.collection('races').aggregate(pipeline).toArray();
+      if (!raceResults || raceResults.length === 0) {
+        return fastify.httpErrors.notFound();
+      }
+      
+      let result = raceResults[0];
+      
+      // Process series data to enrich categories with hybrid model
+      result = processRaceWithSeriesData(result, request.log);
       if (result) {
         let out = [];
         console.log(result.eventDate)
@@ -369,18 +423,47 @@ module.exports = async function (fastify, opts) {
         return fastify.httpErrors.badRequest('You must provide a race ID');
       }
 
-      const result = await this.mongo.db.collection('races').findOne({ 'raceid': request.params.id }, {
-        projection: {
-          "regCategories": 1, "registeredRacers": 1, 'eventDate': 1, 'eventDetails.name': 1
+      // Use aggregation pipeline to fetch race with series data for hybrid category model
+      const pipeline = [
+        {
+          $match: { raceid: request.params.id }
+        },
+        {
+          $limit: 1
+        },
+        {
+          $lookup: {
+            from: 'series',
+            localField: 'series',
+            foreignField: 'seriesId',
+            as: 'seriesData'
+          }
         }
-      })
+      ];
+      
+      const raceResults = await this.mongo.db.collection('races').aggregate(pipeline).toArray();
+      if (!raceResults || raceResults.length === 0) {
+        return fastify.httpErrors.notFound();
+      }
+      
+      let result = raceResults[0];
+      
+      // Process series data to enrich categories with hybrid model
+      result = processRaceWithSeriesData(result, request.log);
+      
       if (result) {
         let out = [];
         console.log(result.eventDate)
         result.registeredRacers.forEach((racerObj) => {
           let cat = _.find(result.regCategories, { id: racerObj.category })
-          let start = dayjs(`${dayjs(result.eventDate).format('YYYY-MM-DD')} ${cat.startTime}`).format('MM/DD/YY h:mm A');
-          out.push(_.assign(racerObj, { category: cat.catdispname, start, eventName: result.eventDetails.name }));
+          // Handle categories with or without startTime
+          let start = '';
+          if (cat && cat.startTime) {
+            start = dayjs(`${dayjs(result.eventDate).format('YYYY-MM-DD')} ${cat.startTime}`).format('MM/DD/YY h:mm A');
+          } else {
+            start = dayjs(result.eventDate).format('MM/DD/YY h:mm A');
+          }
+          out.push(_.assign(racerObj, { category: cat ? cat.catdispname : racerObj.category, start, eventName: result.eventDetails.name }));
         })
         const columns = [
           { 'key': 'last_name', 'header': 'Last' },

@@ -1,0 +1,459 @@
+[{
+  "_id": {
+    "$oid": "6910b6ecc8f008f5ef5f007b"
+  },
+  "active": true,
+  "displayName": "2026 Exchequer Off-Road",
+  "eventStart": 1653528053477,
+  "eventDate": "2026-03-28T11:00",
+  "formattedStartDate": "9/17",
+  "raceid": "2026_exchequer_off_minus_road",
+  "useActualStarts": false,
+  "eventDetails": {
+    "name": "Exchequer Off-Road 2026",
+    "formattedDates": "March 21-23rd",
+    "tagline": "Exchequer Extravaganza 3-day mountain bike event",
+    "regOpenDate": "2025-11-11T06:00",
+    "regCloseDate": "2026-03-28T12:00",
+    "logoUrl": "/myEXCHEQUERLOGO_BlkBlue_NoDate.webp",
+    "headerPhoto": "",
+    "homepageUrl": "https://www.bearraceevents.com/exchequerextravaganza",
+    "facebookShare": {
+      "url": "https://www.bearraceevents.com/exchequerextravaganza"
+    }
+  },
+  "regCategories": [
+    {
+      "id": "pro_men",
+      "catdispname": "Pro Men",
+      "paytype": "adult",
+      "disporder": 1,
+      "isFromSeries": true
+    },
+    {
+      "id": "pro_women",
+      "catdispname": "Pro Women",
+      "paytype": "adult",
+      "disporder": 2,
+      "isFromSeries": true
+    },
+    {
+      "id": "expert_men_18_minus_44",
+      "catdispname": "Expert Men 18-44",
+      "paytype": "adult",
+      "disporder": 3,
+      "isFromSeries": true
+    },
+    {
+      "id": "expert_men_age_45_plus_",
+      "catdispname": "Expert Men Age 45+",
+      "paytype": "adult",
+      "disporder": 4,
+      "isFromSeries": true
+    },
+    {
+      "id": "expert_women",
+      "catdispname": "Expert Women",
+      "paytype": "adult",
+      "disporder": 5,
+      "isFromSeries": true
+    },
+    {
+      "id": "sport_men_18_minus_44",
+      "catdispname": "Sport Men 18-44",
+      "paytype": "adult",
+      "disporder": 6,
+      "isFromSeries": true
+    },
+    {
+      "id": "sport_men_45_plus_",
+      "catdispname": "Sport Men 45+",
+      "paytype": "adult",
+      "disporder": 7,
+      "isFromSeries": true
+    },
+    {
+      "id": "sport_women",
+      "catdispname": "Sport Women",
+      "paytype": "adult",
+      "disporder": 8,
+      "isFromSeries": true
+    },
+    {
+      "id": "beginner_men",
+      "catdispname": "Beginner Men",
+      "paytype": "adult",
+      "disporder": 9,
+      "isFromSeries": true
+    },
+    {
+      "id": "beginner_women",
+      "catdispname": "Beginner Women",
+      "paytype": "adult",
+      "disporder": 10,
+      "isFromSeries": true
+    },
+    {
+      "id": "jvvarsity_boys",
+      "catdispname": "JV/Varsity Boys",
+      "paytype": "18under",
+      "disporder": 11,
+      "isFromSeries": true
+    },
+    {
+      "id": "jvvarsity_girls",
+      "catdispname": "JV/Varsity Girls",
+      "paytype": "18under",
+      "disporder": 12,
+      "isFromSeries": true
+    },
+    {
+      "id": "freshsoph_boys",
+      "catdispname": "Fresh/Soph Boys",
+      "paytype": "18under",
+      "disporder": 13,
+      "isFromSeries": true
+    },
+    {
+      "id": "freshsoph_girls",
+      "catdispname": "Fresh/Soph Girls",
+      "paytype": "18under",
+      "disporder": 14,
+      "isFromSeries": true
+    },
+    {
+      "id": "middle_school_boys",
+      "catdispname": "Middle School Boys",
+      "paytype": "18under",
+      "disporder": 15,
+      "isFromSeries": true
+    },
+    {
+      "id": "middle_school_girls",
+      "catdispname": "Middle School Girls",
+      "paytype": "18under",
+      "disporder": 16,
+      "isFromSeries": true
+    }
+  ],
+  "paymentOptions": [
+    {
+      "name": "Adult Entry",
+      "type": "adult",
+      "amount": 75
+    },
+    {
+      "name": "18- Juniors",
+      "type": "18under",
+      "amount": 55
+    }
+  ],
+  "couponsEnabled": true,
+  "couponCodes": {
+    "Nathanisgreat": {
+      "fractionDiscount": 1
+    },
+    "Nathaniscool": {
+      "fractionDiscount": 0.5
+    },
+    "GRiT": {
+      "fractionDiscount": 0.2
+    },
+    "2024NewYear10": {
+      "fractionDiscount": 0.1
+    }
+  },
+  "stripeMeta": {
+    "accountId": "acct_1LgSNzKWv3GtE7MP"
+  },
+  "showPaytypeOnRoster": false,
+  "series": "bear_offroad_2026",
+  "optionalPurchases": [
+    {
+      "id": "donation10",
+      "description": "Donate to <a href='https://www.bonc.org/' target='_blank'>Bicyclists of Nevada County</a>",
+      "amount": "10",
+      "label": "BONC Donation"
+    },
+    {
+      "id": "donation25",
+      "amount": "25",
+      "label": "BONC Donation"
+    },
+    {
+      "id": "donation50",
+      "amount": "50",
+      "label": "BONC Donation"
+    }
+  ],
+  "contactEmail": "calbearadventure@gmail.com",
+  "headerContent": "",
+  "waiver": {
+    "format": "html",
+    "text": "<h1>Release of Liability Waiver</h1><h3><span style=\"color:#FF0000;\">ALL RACERS MUST READ CAREFULLY BEFORE SIGNING WAIVER AND RELEASE OF LIABILITY!</span></h3><p>I understand and accept all risks involved in this event and that I could be injured or killed while on this premises or during this activity and that there is NO medical insurance. In consideration of my entry to participate in this event, which is of my own free will, I, for myself, my heirs, executors, and administrators HEREBY FOREVER WAIVE, RELEASE, DISCHARGE AND HOLD HARMLESS Bear Adventure LLC, it’s staff and volunteers, Bikenerd, The United States Forest Service, Nevada Irrigation District, Bicyclist of Nevada County, and their respective officers, all property owners, lessors, lessees, law enforcement agencies, medical staff, officials, employees, agents, coordinators, and sponsors from any and all liability, claims, demands, damages, costs, expenses, and attorney’s fees of any kind whatsoever, including personal injuries to me or wrongful death, caused in whole or in part, by the negligence or gross negligence or other fault of the parties or persons identified herein, my gross negligence or the negligence and/or conduct of other participants. I am aware of the potential risks and hazards in this activity and I understand that by signing this document, I am relinquishing all legal rights, releasing and waiving all claims from any and all parties named herein from any and all liability that could arise from my participation in this activity, any equipment used or from the premises whether physical or mental, natural or manmade. Additionally, I understand that I may be photographed or videotaped during this event by private persons, news, and/or other media and images may be used in commercial or other endeavors by other parties.</p>"
+  },
+  "registeredRacers": [],
+  "disableSeriesRedirect": true
+},
+{
+  "_id": {
+    "$oid": "6910cf38c8f008f5ef5f0083"
+  },
+  "active": true,
+  "displayName": "2026 Marin Off-Road",
+  "eventStart": 1653528053477,
+  "eventDate": "2026-06-06T09:00",
+  "formattedStartDate": "9/17",
+  "raceid": "2026_marin_off_minus_road",
+  "useActualStarts": false,
+  "eventDetails": {
+    "name": "Marin Off-Road 2026",
+    "formattedDates": "June 6th 2026",
+    "tagline": "",
+    "regOpenDate": "2025-11-11T06:00",
+    "regCloseDate": "2026-06-07T12:00",
+    "logoUrl": "https://static.wixstatic.com/media/96370a_f6d6b3ff90a641e7ae643d3ce12f2521~mv2.png/v1/fill/w_600,h_532,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/Marin%20Off%20Road%20Logo%20Translucent%201.png",
+    "headerPhoto": "",
+    "homepageUrl": "https://www.bearraceevents.com/bear-race-series",
+    "facebookShare": {
+      "url": "https://www.bearraceevents.com/bear-race-series"
+    }
+  },
+  "regCategories": [
+    {
+      "id": "pro_men",
+      "catdispname": "Pro Men",
+      "paytype": "expert",
+      "disporder": 1
+    },
+    {
+      "id": "pro_women",
+      "catdispname": "Pro Women",
+      "paytype": "expert",
+      "disporder": 2
+    },
+    {
+      "id": "expert_men_18_minus_44",
+      "catdispname": "Expert Men 18-44",
+      "paytype": "expert",
+      "disporder": 3
+    },
+    {
+      "id": "expert_men_age_45_plus_",
+      "catdispname": "Expert Men Age 45+",
+      "paytype": "expert",
+      "disporder": 4
+    },
+    {
+      "id": "expert_women",
+      "catdispname": "Expert Women",
+      "paytype": "expert",
+      "disporder": 5
+    },
+    {
+      "id": "sport_men_18_minus_44",
+      "catdispname": "Sport Men 18-44",
+      "paytype": "sport",
+      "disporder": 6
+    },
+    {
+      "id": "sport_men_45_plus_",
+      "catdispname": "Sport Men 45+",
+      "paytype": "sport",
+      "disporder": 7
+    },
+    {
+      "id": "sport_women",
+      "catdispname": "Sport Women",
+      "paytype": "sport",
+      "disporder": 8
+    },
+    {
+      "id": "beginner_men",
+      "catdispname": "Beginner Men",
+      "paytype": "beginner",
+      "disporder": 9
+    },
+    {
+      "id": "beginner_women",
+      "catdispname": "Beginner Women",
+      "paytype": "beginner",
+      "disporder": 10
+    },
+    {
+      "id": "jvvarsity_boys",
+      "catdispname": "JV/Varsity Boys",
+      "paytype": "jv_varsity",
+      "disporder": 11
+    },
+    {
+      "id": "jvvarsity_girls",
+      "catdispname": "JV/Varsity Girls",
+      "paytype": "jv_varsity",
+      "disporder": 12
+    },
+    {
+      "id": "freshsoph_boys",
+      "catdispname": "Fresh/Soph Boys",
+      "paytype": "fresh_soph_middle",
+      "disporder": 13
+    },
+    {
+      "id": "freshsoph_girls",
+      "catdispname": "Fresh/Soph Girls",
+      "paytype": "fresh_soph_middle",
+      "disporder": 14
+    },
+    {
+      "id": "middle_school_boys",
+      "catdispname": "Middle School Boys",
+      "paytype": "fresh_soph_middle",
+      "disporder": 15
+    },
+    {
+      "id": "middle_school_girls",
+      "catdispname": "Middle School Girls",
+      "paytype": "fresh_soph_middle",
+      "disporder": 16
+    }
+  ],
+  "paymentOptions": [
+    {
+      "name": "Expert Entry",
+      "type": "expert",
+      "amount": 130
+    },
+    {
+      "name": "Sport Entry",
+      "type": "sport",
+      "amount": 115
+    },
+    {
+      "name": "Beginner Entry",
+      "type": "beginner",
+      "amount": 100
+    },
+    {
+      "name": "JV/Varsity Entry",
+      "type": "jv_varsity",
+      "amount": 95
+    },
+    {
+      "name": "Fresh/Soph/Middle Entry",
+      "type": "fresh_soph_middle",
+      "amount": 80
+    }
+  ],
+  "couponsEnabled": true,
+  "couponCodes": {
+    "Nathanisgreat": {
+      "fractionDiscount": 1
+    },
+    "Nathaniscool": {
+      "fractionDiscount": 0.5
+    },
+    "GRiT": {
+      "fractionDiscount": 0.2
+    },
+    "2024NewYear10": {
+      "fractionDiscount": 0.1
+    }
+  },
+  "stripeMeta": {
+    "accountId": "acct_1LgSNzKWv3GtE7MP"
+  },
+  "showPaytypeOnRoster": false,
+  "series": "bear_offroad_2026",
+  "optionalPurchases": [
+    {
+      "id": "donation10",
+      "description": "Donate to <a href='https://www.bonc.org/' target='_blank'>Bicyclists of Nevada County</a>",
+      "amount": "10",
+      "label": "BONC Donation"
+    },
+    {
+      "id": "donation25",
+      "amount": "25",
+      "label": "BONC Donation"
+    },
+    {
+      "id": "donation50",
+      "amount": "50",
+      "label": "BONC Donation"
+    }
+  ],
+  "contactEmail": "calbearadventure@gmail.com",
+  "headerContent": "",
+  "waiver": {
+    "format": "html",
+    "text": "<h1>Release of Liability Waiver</h1><h3><span style=\"color:#FF0000;\">ALL RACERS MUST READ CAREFULLY BEFORE SIGNING WAIVER AND RELEASE OF LIABILITY!</span></h3><p>I understand and accept all risks involved in this event and that I could be injured or killed while on this premises or during this activity and that there is NO medical insurance. In consideration of my entry to participate in this event, which is of my own free will, I, for myself, my heirs, executors, and administrators HEREBY FOREVER WAIVE, RELEASE, DISCHARGE AND HOLD HARMLESS Bear Adventure LLC, it’s staff and volunteers, Bikenerd, The United States Forest Service, Nevada Irrigation District, Bicyclist of Nevada County, and their respective officers, all property owners, lessors, lessees, law enforcement agencies, medical staff, officials, employees, agents, coordinators, and sponsors from any and all liability, claims, demands, damages, costs, expenses, and attorney’s fees of any kind whatsoever, including personal injuries to me or wrongful death, caused in whole or in part, by the negligence or gross negligence or other fault of the parties or persons identified herein, my gross negligence or the negligence and/or conduct of other participants. I am aware of the potential risks and hazards in this activity and I understand that by signing this document, I am relinquishing all legal rights, releasing and waiving all claims from any and all parties named herein from any and all liability that could arise from my participation in this activity, any equipment used or from the premises whether physical or mental, natural or manmade. Additionally, I understand that I may be photographed or videotaped during this event by private persons, news, and/or other media and images may be used in commercial or other endeavors by other parties.</p>"
+  },
+  "registeredRacers": [],
+  "disableSeriesRedirect": true
+},
+{
+  "_id": {
+    "$oid": "6910dadcc8f008f5ef5f0085"
+  },
+  "active": true,
+  "displayName": "2026 Mills Peak Off-Road",
+  "eventStart": 1653528053477,
+  "eventDate": "2026-08-29T09:30",
+  "formattedStartDate": "9/17",
+  "raceid": "2026_mills_peak_off_minus_road",
+  "useActualStarts": false,
+  "eventDetails": {
+    "name": "Mills Peak Off-Road",
+    "formattedDates": "Aug 29th",
+    "tagline": "",
+    "regOpenDate": "2025-11-11T06:00",
+    "regCloseDate": "2026-08-30T20:00",
+    "logoUrl": "https://static.wixstatic.com/media/96370a_b38e14e7d89e413cb7850f1977572d4e~mv2.png/v1/fill/w_600,h_600,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/Bear%20Race%20Series%20Logo.png",
+    "headerPhoto": "https://static.wixstatic.com/media/96370a_516161e3ce5f4c4ca5f5935f9d550b37~mv2.png/v1/fill/w_1316,h_524,al_c,q_90,enc_auto/Screenshot%202025-11-09%20101240.png",
+    "homepageUrl": "https://www.bearraceevents.com/bear-race-series",
+    "facebookShare": {
+      "url": "https://www.bearraceevents.com/bear-race-series"
+    }
+  },
+  "paymentOptions": [],
+  "couponsEnabled": true,
+  "couponCodes": {
+    "Nathanisgreat": {
+      "fractionDiscount": 1
+    },
+    "Nathaniscool": {
+      "fractionDiscount": 0.5
+    },
+    "KidsOnBikes": {
+      "fractionDiscount": 0.25
+    },
+    "GRiT": {
+      "fractionDiscount": 0.2
+    },
+    "2024NewYear10": {
+      "fractionDiscount": 0.1
+    }
+  },
+  "stripeMeta": {
+    "accountId": "acct_1LgSNzKWv3GtE7MP"
+  },
+  "showPaytypeOnRoster": false,
+  "series": "bear_offroad_2026",
+  "optionalPurchases": [
+    {
+      "id": "parking",
+      "description": "Pre-pay for parking on site",
+      "amount": "10",
+      "label": "Parking Admission"
+    }
+  ],
+  "contactEmail": "calbearadventure@gmail.com",
+  "headerContent": "",
+  "waiver": {
+    "format": "html",
+    "text": "<h1>Release of Liability Waiver</h1><h3><span style=\"color:#FF0000;\">ALL RACERS MUST READ CAREFULLY BEFORE SIGNING WAIVER AND RELEASE OF LIABILITY!</span></h3><p>I understand and accept all risks involved in this event and that I could be injured or killed while on this premises or during this activity and that there is NO medical insurance. In consideration of my entry to participate in this event, which is of my own free will, I, for myself, my heirs, executors, and administrators HEREBY FOREVER WAIVE, RELEASE, DISCHARGE AND HOLD HARMLESS Bear Adventure LLC, it’s staff and volunteers, Bikenerd, The United State Forest Service, The Town of Graeagle, Plumas County, Sierra County, and their respective officers, all property owners, lessors, lessees, law enforcement agencies, medical staff, officials, employees, agents, coordinators, and sponsors from any and all liability, claims, demands, damages, costs, expenses, and attorney’s fees of any kind whatsoever, including personal injuries to me or wrongful death, caused in whole or in part, by the negligence or gross negligence or other fault of the parties or persons identified herein, my gross negligence or the negligence and/or conduct of other participants. I am aware of the potential risks and hazards in this activity and I understand that by signing this document, I am relinquishing all legal rights, releasing and waiving all claims from any and all parties named herein from any and all liability that could arise from my participation in this activity, any equipment used or from the premises whether physical or mental, natural or manmade. Additionally, I understand that I may be photographed or videotaped during this event by private persons, news, and/or other media and images may be used in commercial or other endeavors by other parties.</p>"
+  },
+  "registeredRacers": [],
+  "disableSeriesRedirect": true,
+  "regCategories": []
+}]

@@ -1,0 +1,44 @@
+{
+  "seriesId": "bear_gravity_2026",
+  "name": "Bear Gravity Series",
+  "displayName": "Bear Gravity Series 2026",
+  "year": 2026,
+  "active": true,
+  "description": "Bear Gravity Series downhill racing",
+  
+  "seasonPassPricing": {
+    "categoryGroups": [
+      {
+        "name": "High School/Middle School Season Pass - $300",
+        "categories": [
+          "high_school_jvvarsity_boys",
+          "high_school_freshsoph_boys",
+          "high_school_jvvarsity_girls",
+          "high_school_freshsoph_girls"
+        ],
+        "amount": 300
+      },
+      {
+        "name": "Adult Season Pass - $360",
+        "categories": [
+          "pro_men",
+          "pro_women",
+          "expert_men_18_minus_44",
+          "expert_men_age_45_plus_",
+          "expert_women",
+          "sport_men_18_minus_44",
+          "sport_men_45_plus__",
+          "sport_women",
+          "beginner_men",
+          "beginner_women",
+          "single_speed_men",
+          "single_speed_women"
+        ],
+        "amount": 360
+      }
+    ],
+    "defaultAmount": 360,
+    "defaultName": "Season Pass"
+  }
+}
+
