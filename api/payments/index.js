@@ -517,6 +517,63 @@ module.exports = async function (fastify, opts) {
             return fastify.httpErrors.notFound();
         }
     });
+    fastify.get('/receipt', async function(request,reply){
+        if(!request.query.payment_id){
+            return fastify.httpErrors.badRequest('Must provide payment_id query param');
+        }
+        const payment = await this.mongo.db.collection('payments').findOne({ '_id': new this.mongo.ObjectId(request.query.payment_id) },{
+            projection:{
+                stripePayment: 1,
+                regData: 1
+            }
+        });
+        if (!payment) {
+            return fastify.httpErrors.notFound('Payment not found');
+        }
+        
+        if (!payment.stripePayment || !payment.stripePayment.payment_intent) {
+            return fastify.httpErrors.badRequest('No Stripe payment found for this payment record');
+        }
+        
+        // Determine if this is test mode or live mode
+        const raceData = await this.mongo.db.collection('races').findOne({ raceid: payment.regData.raceid });
+        const isTestMode = raceData?.isTestData || false;
+        
+        // Initialize Stripe with appropriate key
+        const stripe = isTestMode 
+            ? Stripe(process.env.STRIPE_SECRET_KEY_DEV)
+            : Stripe(process.env.STRIPE_SECRET_KEY);
+        
+        try {
+            // Retrieve the payment intent to get the charge ID
+            const paymentIntent = await stripe.paymentIntents.retrieve(
+                payment.stripePayment.payment_intent,
+                { stripeAccount: raceData.stripeMeta.accountId }
+            );
+            
+            if (!paymentIntent.latest_charge) {
+                return fastify.httpErrors.notFound('No charge found for this payment');
+            }
+            
+            // Retrieve the charge to get the receipt URL
+            const charge = await stripe.charges.retrieve(
+                paymentIntent.latest_charge,
+                { stripeAccount: raceData.stripeMeta.accountId }
+            );
+            
+            if (!charge.receipt_url) {
+                return fastify.httpErrors.notFound('No receipt URL available for this charge');
+            }
+            
+            return { 
+                receipt_url: charge.receipt_url,
+                payment_id: request.query.payment_id
+            };
+        } catch (error) {
+            request.log.error({ error, payment_id: request.query.payment_id }, 'Error retrieving receipt from Stripe');
+            throw fastify.httpErrors.internalServerError('Failed to retrieve receipt from Stripe');
+        }
+    });
     fastify.post('/start-registration', async function (request, reply) {
         if (!request.query.race || !request.body.paytype) {
             throw fastify.httpErrors.badRequest('Missing race id or paytype');

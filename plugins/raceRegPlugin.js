@@ -4,7 +4,7 @@ const axios = require('axios');
 const fp = require('fastify-plugin')
 const { capitalizeName } = require('../src/result_lib');
 const dayjs = require('dayjs');
-const handlebars = require('handlebars');
+const emailTemplates = require('../lib/emailTemplates');
  
 
 // the use of fastify-plugin is required to be able
@@ -61,71 +61,24 @@ module.exports = fp(async function (fastify, opts) {
     return {regData, paymentId};
   })
   fastify.decorate('sendRegConfirmEmail', async function (regData, paymentId, raceData, logger) {
-    if(_.indexOf(regData.email,'test.com') > -1){
-      logger.info({regData},'test email, not sending confirmation email');
-      return;
-    }
-    const regCat = _.find(raceData.regCategories, {"id": regData.category});
-    const data = {
-      name:  capitalizeName(regData.first_name + " " + regData.last_name),
-      sponsor: regData.sponsor,
-      eventHomePageUrl: raceData.eventDetails.homepageUrl,
-      eventName: raceData.eventDetails.name,
-      eventContactEmail: raceData.contactEmail ? raceData.contactEmail : `support@signup.bike`,
-      rosterLink: `${process.env.DOMAIN}/#/roster/${regData.raceid}`,
-      category: regCat ? regCat.catdispname : "Category not found",
-    }
-    let templateString = `<html><head></head><body>
-    <h1>Thank you for registering for {{eventName}}</h1>
-    <p>
-    Name: {{name}}<br>
-    Team/Sponsor: {{sponsor}}<br>
-    Race Category: {{category}}<br>
-    <p><a href="{{rosterLink}}">Go Here</a> to see who else is signed up<p>
-    <p>For information about the event, check out <a href="{{eventHomePageUrl}}">{{eventHomePageUrl}}</a></p>
-    <p>For issues with your registration information, <a href="mailto:{{eventContactEmail}}">email us!</a></p>
-    </body></html>`
-
-
-    if(raceData.emailTemplate){
-      templateString = raceData.emailTemplate
-    }
-
-    const template = handlebars.compile(templateString);
-    const htmlToSend = template(data);
-
-    return axios.post("https://api.sendinblue.com/v3/smtp/email",{
-         "sender":{  
-            "name":"Signup.bike",
-            "email":"support@signup.bike"
-         },
-         "to":[  
-            {  
-               "email":regData.email,
-               "name": data.name
-            }
-         ],
-         "subject":`${raceData.eventDetails.name} Registration`,
-         "htmlContent":htmlToSend,
-         "headers":{  
-           "charset":"iso-8859-1"
-         },
-         "tags":[`race:${raceData.raceid}`]
-        },
-      {
-      headers:{
-        "accept": "application/json",
-        "api-key":process.env.SENDINBLUE_API_KEY,
-        "content-type": "application/json"
-      }
-    })
-      .then((resp)=>{
-
-      })
-      .catch((err)=>{
-        console.log(err.config);
-        console.log(err.message);
-        logger.error('error received sending email',{regData})
+    // Email sender function for dependency injection
+    const emailSender = async (emailPayload) => {
+      return axios.post("https://api.brevo.com/v3/smtp/email", emailPayload, {
+        headers: {
+          "accept": "application/json",
+          "api-key": process.env.SENDINBLUE_API_KEY,
+          "content-type": "application/json"
+        }
       });
+    };
+    
+    // Use the new email template service
+    return emailTemplates.sendRegistrationEmail({
+      regData,
+      raceData,
+      logger,
+      capitalizeName,
+      emailSender
+    });
   })
 })
