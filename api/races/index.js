@@ -27,6 +27,12 @@ module.exports = async function (fastify, opts) {
             archived = {$eq: true};
         }
         
+        // Allow overriding the active flag filter via query parameter
+        let activeFilter = true;
+        if (request.query.showInactive === 'true' || request.query.showInactive === '1') {
+            activeFilter = undefined; // Don't filter by active status
+        }
+        
         // Build date filter based on query parameters
         // Note: eventDate is stored as a string in the database, so we need to use string comparison
         let dateFilter = {};
@@ -53,14 +59,21 @@ module.exports = async function (fastify, opts) {
             fastify.log.info({ oneDayAgo, dateFilter }, 'Default date filter applied');
         }
         
+        // Build match criteria
+        const matchCriteria = {
+            archived,
+            eventDate: dateFilter
+        };
+        
+        // Only add active filter if it's defined
+        if (activeFilter !== undefined) {
+            matchCriteria.active = activeFilter;
+        }
+        
         // Use aggregation pipeline to join series data
         const pipeline = [
             {
-                $match: { 
-                    active: true, 
-                    archived,
-                    eventDate: dateFilter
-                }
+                $match: matchCriteria
             },
             {
                 $lookup: {
