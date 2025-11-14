@@ -29,10 +29,15 @@ function processRaceWithSeriesData(raceData, log) {
         defaultPaymentOptions: seriesConfig.defaultPaymentOptions || []
     };
     
+    // Track if race has its own payment options or is using series defaults
+    const hasRacePaymentOptions = raceData.paymentOptions && raceData.paymentOptions.length > 0;
+    
     // If race has empty payment options, use series default payment options
-    if (!raceData.paymentOptions || raceData.paymentOptions.length === 0) {
+    if (!hasRacePaymentOptions) {
         if (seriesConfig.defaultPaymentOptions && seriesConfig.defaultPaymentOptions.length > 0) {
             raceData.paymentOptions = seriesConfig.defaultPaymentOptions;
+            // Mark that these are inherited from series, not race-specific
+            raceData._paymentOptionsFromSeries = true;
             if (log) {
                 log.info({
                     raceid: raceData.raceid,
