@@ -76,6 +76,13 @@ module.exports = async function (fastify, opts) {
                 $match: matchCriteria
             },
             {
+                '$addFields': {
+                    'entryCount': {
+                        '$size': '$registeredRacers'
+                    }
+                }
+            },
+            {
                 $lookup: {
                     from: 'series',
                     localField: 'series',
@@ -90,12 +97,14 @@ module.exports = async function (fastify, opts) {
                     couponsEnabled: 1,
                     displayName: 1,
                     disableSeriesRedirect: 1,
+                    entryCount: 1,
                     eventDate: 1,
                     eventDetails: 1,
                     entryCountMax: 1,
                     facebookShare: 1,
                     formattedStartDate: 1,
                     headerContent: 1,
+                    hideRosterButton: 1,
                     isTestData: 1,
                     paymentOptions: 1,
                     raceid: 1,
@@ -162,6 +171,7 @@ module.exports = async function (fastify, opts) {
                     facebookShare: 1,
                     formattedStartDate: 1,
                     headerContent:1,
+                    hideRosterButton: 1,
                     isTestData: 1,
                     optionalPurchases: 1,
                     paymentOptions: 1,
@@ -261,6 +271,7 @@ module.exports = async function (fastify, opts) {
                 emailTemplate:1,
                 formattedStartDate: 1,
                 headerContent:1,
+                hideRosterButton: 1,
                 isTestData: 1,
                 optionalPurchases: 1,
                 paymentOptions: 1,

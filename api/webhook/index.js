@@ -39,7 +39,7 @@ module.exports = async function (fastify, opts) {
                     //update and register
                     await this.mongo.db.collection('payments').updateOne({ 'payment_id': session.id }, { $set:{ stripePayment:session, status: session.payment_status} }, { upsert: true });
                     const raceData = await this.mongo.db.collection('races').findOne({ raceid: pendingPayment.regData.raceid });
-                    await fastify.registerRacer(pendingPayment.regData, pendingPayment._id, raceData, request.log);
+                    await fastify.registerRacer.call(fastify, pendingPayment.regData, pendingPayment._id, raceData, request.log);
                 }else{
                     throw fastify.httpErrors.conflict(`Expected unpaid payment. \n
                     Payment_id:${session.id},\n
@@ -80,7 +80,7 @@ module.exports = async function (fastify, opts) {
                     //update and register
                     await this.mongo.db.collection('payments').updateOne({ 'payment_id': session.id }, { $set:{ stripePayment:session, status: session.payment_status} }, { upsert: true });
                     const raceData = await this.mongo.db.collection('races').findOne({ raceid: pendingPayment.regData.raceid });
-                    await fastify.registerRacer(pendingPayment.regData, pendingPayment._id, raceData, request.log);
+                    await fastify.registerRacer.call(fastify, pendingPayment.regData, pendingPayment._id, raceData, request.log);
                 }else{
                     throw fastify.httpErrors.conflict(`Expected unpaid payment. \n
                     Payment_id:${session.id},\n

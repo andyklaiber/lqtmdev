@@ -68,4 +68,10 @@ module.exports = async function (fastify, opts) {
     fastify.get('/public/index.html', async function (request, reply) {
         reply.redirect('/')
     })
+
+    // Gracefully close mongoose connection on shutdown
+    fastify.addHook('onClose', async (instance) => {
+        await mongoose.connection.close()
+        instance.log.info('Mongoose connection closed')
+    })
 }

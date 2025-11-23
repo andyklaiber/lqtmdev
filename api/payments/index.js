@@ -508,7 +508,9 @@ module.exports = async function (fastify, opts) {
                 regData: 1,
                 status: 1,
                 sponsoredPayment:1,
-                'stripePayment.url':1
+                'stripePayment.url':1,
+                'stripePayment.payment_intent':1,
+                'stripePayment.amount_total':1
             }
         });
         if (result) {
@@ -537,6 +539,15 @@ module.exports = async function (fastify, opts) {
         
         // Determine if this is test mode or live mode
         const raceData = await this.mongo.db.collection('races').findOne({ raceid: payment.regData.raceid });
+        
+        if (!raceData) {
+            return fastify.httpErrors.notFound('Race not found');
+        }
+        
+        if (!raceData.stripeMeta || !raceData.stripeMeta.accountId) {
+            return fastify.httpErrors.badRequest('Race does not have Stripe account configured');
+        }
+        
         const isTestMode = raceData?.isTestData || false;
         
         // Initialize Stripe with appropriate key
@@ -570,8 +581,19 @@ module.exports = async function (fastify, opts) {
                 payment_id: request.query.payment_id
             };
         } catch (error) {
-            request.log.error({ error, payment_id: request.query.payment_id }, 'Error retrieving receipt from Stripe');
-            throw fastify.httpErrors.internalServerError('Failed to retrieve receipt from Stripe');
+            request.log.error({ 
+                error: {
+                    message: error.message,
+                    type: error.type,
+                    code: error.code,
+                    statusCode: error.statusCode
+                },
+                payment_id: request.query.payment_id,
+                payment_intent: payment.stripePayment.payment_intent,
+                stripe_account: raceData.stripeMeta.accountId,
+                is_test_mode: isTestMode
+            }, 'Error retrieving receipt from Stripe');
+            throw fastify.httpErrors.internalServerError(`Failed to retrieve receipt from Stripe: ${error.message}`);
         }
     });
     fastify.post('/start-registration', async function (request, reply) {
@@ -690,12 +712,439 @@ module.exports = async function (fastify, opts) {
                     races: this.mongo.db.collection('races')
                 },
                 createStripeSession,
-                registerRacer: fastify.registerRacer,
+                registerRacer: fastify.registerRacer.bind(fastify),
                 log: request.log
             }
         });
         
         return result;
+    });
+
+    // Admin endpoint to find orphaned payments (paid but not registered)
+    fastify.get('/admin/orphaned-payments', async function (request, reply) {
+        const { raceid, startDate, endDate } = request.query;
+        
+        // Build query to find payments that are paid but might not be registered
+        const query = {
+            status: 'paid',
+            regData: { $exists: true }
+        };
+        
+        if (raceid) {
+            query['regData.raceid'] = raceid;
+        }
+        
+        if (startDate || endDate) {
+            query['stripePayment.created'] = {};
+            if (startDate) {
+                query['stripePayment.created'].$gte = new Date(startDate).getTime() / 1000;
+            }
+            if (endDate) {
+                query['stripePayment.created'].$lte = new Date(endDate).getTime() / 1000;
+            }
+        }
+        
+        const payments = await this.mongo.db.collection('payments').find(query).toArray();
+        
+        // For each payment, check if the racer is actually registered in the race
+        const orphanedPayments = [];
+        
+        for (const payment of payments) {
+            if (!payment.regData || !payment.regData.raceid || !payment.regData.email) {
+                continue;
+            }
+            
+            const race = await this.mongo.db.collection('races').findOne(
+                { raceid: payment.regData.raceid },
+                { projection: { registeredRacers: 1, series: 1 } }
+            );
+            
+            if (!race) {
+                orphanedPayments.push({
+                    ...payment,
+                    issue: 'Race not found'
+                });
+                continue;
+            }
+            
+            // Check if racer is registered
+            const isRegistered = race.registeredRacers?.some(racer => 
+                racer.email === payment.regData.email && 
+                racer.paymentId && 
+                racer.paymentId.toString() === payment._id.toString()
+            );
+            
+            if (!isRegistered) {
+                orphanedPayments.push({
+                    _id: payment._id,
+                    paymentId: payment.payment_id,
+                    regData: payment.regData,
+                    amount: payment.stripePayment?.amount_total,
+                    created: payment.stripePayment?.created ? new Date(payment.stripePayment.created * 1000) : null,
+                    issue: 'Not registered in race'
+                });
+            }
+        }
+        
+        return {
+            count: orphanedPayments.length,
+            payments: orphanedPayments
+        };
+    });
+
+    // Admin endpoint to retry registration for orphaned payment
+    fastify.post('/admin/retry-registration', async function (request, reply) {
+        const { paymentId } = request.body;
+        
+        if (!paymentId) {
+            throw fastify.httpErrors.badRequest('paymentId is required');
+        }
+        
+        // Convert string to ObjectId if needed
+        const paymentObjId = typeof paymentId === 'string' 
+            ? new this.mongo.ObjectId(paymentId) 
+            : paymentId;
+        
+        const payment = await this.mongo.db.collection('payments').findOne({ _id: paymentObjId });
+        
+        if (!payment) {
+            throw fastify.httpErrors.notFound('Payment not found');
+        }
+        
+        if (payment.status !== 'paid') {
+            throw fastify.httpErrors.badRequest(`Payment status is ${payment.status}, expected paid`);
+        }
+        
+        if (!payment.regData || !payment.regData.raceid) {
+            throw fastify.httpErrors.badRequest('Payment missing registration data');
+        }
+        
+        const raceData = await this.mongo.db.collection('races').findOne({ 
+            raceid: payment.regData.raceid 
+        });
+        
+        if (!raceData) {
+            throw fastify.httpErrors.notFound('Race not found');
+        }
+        
+        // Check if already registered
+        const isRegistered = raceData.registeredRacers?.some(racer => 
+            racer.email === payment.regData.email && 
+            racer.paymentId && 
+            racer.paymentId.toString() === payment._id.toString()
+        );
+        
+        if (isRegistered) {
+            return {
+                success: true,
+                message: 'Already registered',
+                paymentId: payment._id,
+                raceid: payment.regData.raceid,
+                email: payment.regData.email
+            };
+        }
+        
+        // Retry registration
+        try {
+            await fastify.registerRacer.call(
+                fastify, 
+                payment.regData, 
+                payment._id, 
+                raceData, 
+                request.log,
+                false // Don't send email on retry by default
+            );
+            
+            return {
+                success: true,
+                message: 'Registration completed successfully',
+                paymentId: payment._id,
+                raceid: payment.regData.raceid,
+                email: payment.regData.email
+            };
+        } catch (error) {
+            request.log.error(error, 'Failed to retry registration');
+            throw fastify.httpErrors.internalServerError(`Failed to retry registration: ${error.message}`);
+        }
+    });
+
+    // Admin endpoint to batch retry multiple orphaned payments
+    fastify.post('/admin/batch-retry-registration', async function (request, reply) {
+        const { paymentIds, raceid, sendEmails = false } = request.body;
+        
+        let paymentsToRetry = [];
+        
+        if (paymentIds && Array.isArray(paymentIds)) {
+            // Retry specific payment IDs
+            paymentsToRetry = paymentIds.map(id => 
+                typeof id === 'string' ? new this.mongo.ObjectId(id) : id
+            );
+        } else if (raceid) {
+            // Find all orphaned payments for a race
+            const payments = await this.mongo.db.collection('payments').find({
+                status: 'paid',
+                'regData.raceid': raceid,
+                regData: { $exists: true }
+            }).toArray();
+            
+            const race = await this.mongo.db.collection('races').findOne(
+                { raceid },
+                { projection: { registeredRacers: 1 } }
+            );
+            
+            if (!race) {
+                throw fastify.httpErrors.notFound('Race not found');
+            }
+            
+            // Filter to only orphaned payments
+            for (const payment of payments) {
+                const isRegistered = race.registeredRacers?.some(racer => 
+                    racer.email === payment.regData.email && 
+                    racer.paymentId && 
+                    racer.paymentId.toString() === payment._id.toString()
+                );
+                
+                if (!isRegistered) {
+                    paymentsToRetry.push(payment._id);
+                }
+            }
+        } else {
+            throw fastify.httpErrors.badRequest('Either paymentIds or raceid is required');
+        }
+        
+        const results = {
+            total: paymentsToRetry.length,
+            successful: [],
+            failed: [],
+            alreadyRegistered: []
+        };
+        
+        for (const paymentId of paymentsToRetry) {
+            try {
+                const payment = await this.mongo.db.collection('payments').findOne({ _id: paymentId });
+                
+                if (!payment || payment.status !== 'paid' || !payment.regData) {
+                    results.failed.push({
+                        paymentId: paymentId.toString(),
+                        error: 'Invalid payment'
+                    });
+                    continue;
+                }
+                
+                const raceData = await this.mongo.db.collection('races').findOne({ 
+                    raceid: payment.regData.raceid 
+                });
+                
+                if (!raceData) {
+                    results.failed.push({
+                        paymentId: paymentId.toString(),
+                        email: payment.regData.email,
+                        error: 'Race not found'
+                    });
+                    continue;
+                }
+                
+                // Check if already registered
+                const isRegistered = raceData.registeredRacers?.some(racer => 
+                    racer.email === payment.regData.email && 
+                    racer.paymentId && 
+                    racer.paymentId.toString() === payment._id.toString()
+                );
+                
+                if (isRegistered) {
+                    results.alreadyRegistered.push({
+                        paymentId: paymentId.toString(),
+                        email: payment.regData.email,
+                        raceid: payment.regData.raceid
+                    });
+                    continue;
+                }
+                
+                // Retry registration
+                await fastify.registerRacer.call(
+                    fastify, 
+                    payment.regData, 
+                    payment._id, 
+                    raceData, 
+                    request.log,
+                    sendEmails
+                );
+                
+                results.successful.push({
+                    paymentId: paymentId.toString(),
+                    email: payment.regData.email,
+                    raceid: payment.regData.raceid
+                });
+                
+            } catch (error) {
+                request.log.error(error, `Failed to retry registration for payment ${paymentId}`);
+                results.failed.push({
+                    paymentId: paymentId.toString(),
+                    error: error.message
+                });
+            }
+        }
+        
+        return results;
+    });
+
+    // Admin endpoint to find duplicate payment records
+    fastify.get('/admin/duplicate-payments', async function (request, reply) {
+        const { raceid } = request.query;
+        
+        if (!raceid) {
+            throw fastify.httpErrors.badRequest('raceid is required');
+        }
+        
+        // Get the race data with registered racers
+        const raceData = await this.mongo.db.collection('races').findOne(
+            { raceid },
+            { projection: { registeredRacers: 1, series: 1 } }
+        );
+        
+        if (!raceData) {
+            throw fastify.httpErrors.notFound('Race not found');
+        }
+        
+        // Get all paid payments for this race
+        const payments = await this.mongo.db.collection('payments').find({
+            'regData.raceid': raceid,
+            status: 'paid',
+            regData: { $exists: true }
+        }).toArray();
+        
+        // Group by first_name, last_name, and category
+        const groups = {};
+        
+        payments.forEach(payment => {
+            if (!payment.regData?.first_name || !payment.regData?.last_name || !payment.regData?.category) {
+                return;
+            }
+            
+            const key = `${payment.regData.first_name.toLowerCase()}_${payment.regData.last_name.toLowerCase()}_${payment.regData.category}`;
+            
+            if (!groups[key]) {
+                groups[key] = [];
+            }
+            
+            // Check if this payment has a matching registration
+            const isRegistered = raceData.registeredRacers?.some(racer => 
+                racer.paymentId && 
+                racer.paymentId.toString() === payment._id.toString()
+            );
+            
+            groups[key].push({
+                _id: payment._id,
+                paymentId: payment.payment_id,
+                regData: payment.regData,
+                amount: payment.stripePayment?.amount_total,
+                created: payment.stripePayment?.created ? new Date(payment.stripePayment.created * 1000) : null,
+                status: payment.status,
+                isRegistered: isRegistered
+            });
+        });
+        
+        // Filter to only groups with duplicates
+        const duplicates = [];
+        
+        Object.entries(groups).forEach(([key, paymentGroup]) => {
+            if (paymentGroup.length > 1) {
+                // Sort by creation date (oldest first)
+                paymentGroup.sort((a, b) => {
+                    if (!a.created) return 1;
+                    if (!b.created) return -1;
+                    return new Date(a.created) - new Date(b.created);
+                });
+                
+                // Count how many are actually registered
+                const registeredCount = paymentGroup.filter(p => p.isRegistered).length;
+                
+                duplicates.push({
+                    key,
+                    first_name: paymentGroup[0].regData.first_name,
+                    last_name: paymentGroup[0].regData.last_name,
+                    category: paymentGroup[0].regData.category,
+                    count: paymentGroup.length,
+                    registeredCount: registeredCount,
+                    payments: paymentGroup
+                });
+            }
+        });
+        
+        return {
+            count: duplicates.length,
+            totalDuplicatePayments: duplicates.reduce((sum, dup) => sum + dup.count, 0),
+            duplicates
+        };
+    });
+
+    // Admin endpoint to delete a specific payment record
+    fastify.delete('/admin/payment/:paymentId', async function (request, reply) {
+        const { paymentId } = request.params;
+        
+        if (!paymentId) {
+            throw fastify.httpErrors.badRequest('paymentId is required');
+        }
+        
+        // Convert string to ObjectId if needed
+        const paymentObjId = typeof paymentId === 'string' 
+            ? new this.mongo.ObjectId(paymentId) 
+            : paymentId;
+        
+        const payment = await this.mongo.db.collection('payments').findOne({ _id: paymentObjId });
+        
+        if (!payment) {
+            throw fastify.httpErrors.notFound('Payment not found');
+        }
+        
+        // Delete the payment record
+        const result = await this.mongo.db.collection('payments').deleteOne({ _id: paymentObjId });
+        
+        if (result.deletedCount === 0) {
+            throw fastify.httpErrors.internalServerError('Failed to delete payment');
+        }
+        
+        // If this payment has a registered racer, remove them from the race
+        if (payment.regData && payment.regData.raceid) {
+            const raceData = await this.mongo.db.collection('races').findOne({ 
+                raceid: payment.regData.raceid 
+            });
+            
+            if (raceData) {
+                // Remove racer with this paymentId
+                await this.mongo.db.collection('races').updateOne(
+                    { raceid: payment.regData.raceid },
+                    { 
+                        $pull: { 
+                            registeredRacers: { 
+                                paymentId: paymentObjId
+                            } 
+                        } 
+                    }
+                );
+                
+                // If it's a season pass, remove from all races in the series
+                if (payment.regData.paytype === 'season' && raceData.series) {
+                    await this.mongo.db.collection('races').updateMany(
+                        { series: raceData.series },
+                        { 
+                            $pull: { 
+                                registeredRacers: { 
+                                    paymentId: paymentObjId 
+                                } 
+                            } 
+                        }
+                    );
+                }
+            }
+        }
+        
+        return {
+            success: true,
+            message: 'Payment deleted successfully',
+            paymentId: payment._id,
+            email: payment.regData?.email
+        };
     });
 }
 
